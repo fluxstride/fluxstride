@@ -1,7 +1,6 @@
 
 # Hello there 👋 
-[![Linkedin]()
-[![Gmail]()
+
 
 <br>
 
@@ -18,14 +17,16 @@ I'm Samuel, a Computer Science Student who's a fullstack Software Developer and 
   - HTML
   - CSS
   - Javascript
-  - EJs(Nodejs) and Blade(Laravel) Templating
+  - React js
+  - Next js
+  - EJs(Nodejs) 
 
 - Backend Development 
-  - Nodejs(Express and Xpresser Frameworks)
-  - PHP(Laravel)
+  - Nodejs (Express)
+  
   
 - Mobile Development
-  - Flutter(Dart)
+  - React native
   
 - Database Management
   - SQL(MySQL, PhpMyAdmin)
@@ -34,7 +35,10 @@ I'm Samuel, a Computer Science Student who's a fullstack Software Developer and 
 - API Documentation
   - Postman
   
-- Other
+- Design tools
   - Figma 
+  - Adobe XD
+  - Adobe Photoshp
+  - Adobe Illustrator
 
 ![my github stats - dark](https://github-readme-stats.vercel.app/api?username=fluxstride&show_icons=true&count_private=true)![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=fluxstride&layout=compact&count_private=true)
