@@ -23,13 +23,15 @@ I'm Samuel, a Computer Science Student who's a fullstack Software Developer and 
 
 - Backend Development 
   - Nodejs (Express)
+  - Python
+  - Flask
   
   
 - Mobile Development
   - React native
   
 - Database Management
-  - SQL(MySQL, PhpMyAdmin)
+  - SQL(MySQL, PostgreSQL, SQLite)
   - NoSQL(MongoDB)
   
 - API Documentation
