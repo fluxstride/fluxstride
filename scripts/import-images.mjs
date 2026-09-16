@@ -55,7 +55,10 @@ const IMAGES = {
 /** Studio team portraits: about 300px wide on desktop, 170px on mobile. */
 function team(people) {
   return Object.fromEntries(
-    Object.entries(people).map(([slug, id]) => [`team/${slug}`, { src: unsplash(id), widths: [320, 480, 640] }]),
+    Object.entries(people).map(([slug, id]) => [
+      `team/${slug}`,
+      { src: unsplash(id), widths: [320, 480, 640] },
+    ]),
   )
 }
 
