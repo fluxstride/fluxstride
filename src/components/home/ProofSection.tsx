@@ -1,23 +1,25 @@
 import { CountUp } from '@/components/motion/CountUp'
 import { Reveal } from '@/components/motion/Reveal'
-import { Picture } from '@/components/ui/Picture'
 import { Section } from '@/components/ui/Section'
 import { Eyebrow } from '@/components/ui/Typography'
 import { clientLogos } from '@/content/logos.generated'
-import { stats, testimonials } from '@/content/proof'
+import { stats } from '@/content/proof'
 import { cn } from '@/lib/cn'
+import { TestimonialCarousel } from './TestimonialCarousel'
 
 /*
  * Design: Home / Proof (paper-2). Three blocks, 96px apart (40px on mobile):
  *   Stats        ink rule; four columns split by hairlines (stacked rows on mobile)
- *   Testimonial  300px author column | serif quote, 80px gap (stacked on mobile)
+ *   Testimonial  rotating quotes with a progress timer (TestimonialCarousel)
  *   Logos        wordmarks spread between two hairlines (a left-aligned list on mobile)
  */
 export function ProofSection() {
   return (
     <Section tone="paper-2" id="proof" labelledBy="proof-title" className="flex flex-col gap-10 lg:gap-24">
       <Stats />
-      <Testimonials />
+      <Reveal>
+        <TestimonialCarousel />
+      </Reveal>
       <Logos />
     </Section>
   )
@@ -48,28 +50,6 @@ function Stats() {
         ))}
       </Reveal>
     </div>
-  )
-}
-
-/** The design shows one quote. More can be added to content/proof.ts; only the first is shown for now. */
-function Testimonials() {
-  const [testimonial] = testimonials
-
-  return (
-    <Reveal as="figure" className="flex flex-col gap-6 lg:flex-row lg:gap-20">
-      <figcaption className="flex flex-col gap-4 lg:w-75 lg:shrink-0">
-        <Picture name={testimonial.avatar} alt="" sizes="72px" className="size-18 rounded-full" />
-        <span className="flex flex-col gap-1">
-          <span className="text-[clamp(1rem,0.9768rem+0.0952vw,1.0625rem)] leading-[1.2] font-semibold">
-            {testimonial.name}
-          </span>
-          <span className="text-[15px] leading-[1.2] text-stone">{testimonial.role}</span>
-        </span>
-      </figcaption>
-      <blockquote className="flex-1 font-serif text-quote">
-        <p>{testimonial.quote}</p>
-      </blockquote>
-    </Reveal>
   )
 }
 

@@ -34,3 +34,13 @@
     transform: none;
   }
 }
+
+/* Fills a progress bar over the element's animation-duration (testimonial timer). */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
