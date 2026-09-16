@@ -1,15 +1,27 @@
+import { MotionConfig } from 'motion/react'
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import '@/styles/index.css'
+import { createRoot, hydrateRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router'
+import { App } from './App'
+import './styles/index.css'
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!
+
+const app = (
   <StrictMode>
-    <main className="container-page py-section">
-      <p className="font-mono text-label text-stone uppercase">(01) Independent digital agency</p>
-      <h1 className="text-display-2xl text-ink">
-        We build software that keeps <em className="font-serif font-normal">moving.</em>
-      </h1>
-      <div className="mt-6 size-20 shape-mark bg-flux" />
-    </main>
-  </StrictMode>,
+    {/* reducedMotion="user" turns off movement for anyone who asks for it in their system settings. */}
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </MotionConfig>
+  </StrictMode>
 )
+
+// Production HTML is prerendered, so attach to the existing markup.
+// `vite dev` serves an empty container, where there is nothing to hydrate.
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app)
+} else {
+  createRoot(container).render(app)
+}
