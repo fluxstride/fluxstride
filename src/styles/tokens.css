@@ -174,7 +174,7 @@
 
   /* Discipline marquee: 26px → 40px */
   --text-marquee: clamp(1.625rem, 1.3rem + 1.3333vw, 2.5rem);
-  --text-marquee--line-height: 1.1;
+  --text-marquee--line-height: 1.2;
   --text-marquee--font-weight: 500;
 
   /* -- Body -- */

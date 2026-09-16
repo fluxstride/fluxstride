@@ -49,6 +49,7 @@ type SectionHeaderProps = {
   onDark?: boolean
   className?: string
   titleClassName?: string
+  introClassName?: string
 }
 
 /**
@@ -65,6 +66,7 @@ export function SectionHeader({
   onDark = false,
   className,
   titleClassName,
+  introClassName,
 }: SectionHeaderProps) {
   return (
     <header
@@ -86,7 +88,11 @@ export function SectionHeader({
         <Reveal
           as="p"
           delay={0.15}
-          className={cn('text-body-lg lg:w-95 lg:shrink-0', onDark ? 'text-stone-light' : 'text-stone')}
+          className={cn(
+            'text-body-lg lg:w-95 lg:shrink-0',
+            onDark ? 'text-stone-light' : 'text-stone',
+            introClassName,
+          )}
         >
           {intro}
         </Reveal>

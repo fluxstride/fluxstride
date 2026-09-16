@@ -27,14 +27,14 @@ export type ButtonStyleOptions = {
 }
 
 const base =
-  'group relative isolate inline-flex items-center overflow-hidden rounded-xs leading-[1.2] whitespace-nowrap transition-colors duration-500 ease-out-expo disabled:pointer-events-none disabled:opacity-60 ' +
+  'group relative isolate inline-flex items-center overflow-hidden rounded-xs whitespace-nowrap transition-colors duration-500 ease-out-expo disabled:pointer-events-none disabled:opacity-60 ' +
   // Sweep layer
   'before:absolute before:inset-0 before:-z-10 before:origin-bottom before:scale-y-0 before:transition-transform before:duration-500 before:ease-out-expo hover:before:scale-y-100'
 
 const sizes: Record<ButtonSize, string> = {
-  sm: 'gap-2 px-4.5 py-3 text-sm font-medium',
-  md: 'gap-2.5 px-6 py-4.5 text-base font-semibold',
-  lg: 'gap-3 px-7.5 py-5.5 text-lg font-semibold',
+  sm: 'gap-2 px-4.5 py-3 text-sm/[1.2] font-medium',
+  md: 'gap-2.5 px-6 py-4.5 text-base/[1.2] font-semibold',
+  lg: 'gap-3 px-7.5 py-5.5 text-lg/[1.2] font-semibold',
 }
 
 /** Arrow size (px) for each button size, as drawn in the design. */
