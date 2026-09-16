@@ -101,7 +101,7 @@ function ServiceCard({
 
       <div className="flex flex-col gap-7">
         <div className="flex items-start justify-between">
-          <IconCircle icon={service.icon} tone={active ? 'solid' : 'soft'} />
+          <IconCircle icon={service.icon} size="lg" tone={active ? 'solid' : 'soft'} />
           <span className={cn('font-mono text-label', colour, active ? 'text-stone-light' : 'text-stone')}>
             {pad(index + 1)}
           </span>

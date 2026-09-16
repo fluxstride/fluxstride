@@ -50,14 +50,19 @@ export const quickNeeds: { label: string; needs: NeedId[] }[] = [
 
 export type BudgetId = (typeof budgets)[number]['id']
 
-/** Link to the Contact form with the quick builder's choices filled in. Home uses the form's own budget bands. */
-export function briefHref(selectedNeeds: string[], budget: BudgetId | null) {
+/** Link to the Contact form with these options ticked, e.g. /contact?need=seo&budget=10-25k#brief */
+export function contactHref(needIds: NeedId[], budget: BudgetId | null = null) {
   const params = new URLSearchParams()
-  const ids = quickNeeds
-    .filter((option) => selectedNeeds.includes(option.label))
-    .flatMap((option) => option.needs)
-  if (ids.length) params.set('need', ids.join(','))
+  if (needIds.length) params.set('need', needIds.join(','))
   if (budget) params.set('budget', budget)
   const query = params.toString()
   return `/contact${query ? `?${query}` : ''}#brief`
+}
+
+/** Link to the Contact form with the quick builder's choices filled in. Home uses the form's own budget bands. */
+export function briefHref(selectedNeeds: string[], budget: BudgetId | null) {
+  const ids = quickNeeds
+    .filter((option) => selectedNeeds.includes(option.label))
+    .flatMap((option) => option.needs)
+  return contactHref(ids, budget)
 }

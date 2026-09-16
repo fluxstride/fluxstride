@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router'
 import { Layout } from '@/components/layout/Layout'
 import { pageFor } from '@/lib/seo'
 import { Home } from '@/pages/Home'
+import { Services } from '@/pages/Services'
 import { Work } from '@/pages/Work'
 
 // Temporary: each route renders its SEO title until the real page lands.
@@ -19,7 +20,7 @@ export function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="work" element={<Work />} />
-        <Route path="services" element={<Stub path="/services" />} />
+        <Route path="services" element={<Services />} />
         <Route path="process" element={<Stub path="/process" />} />
         <Route path="studio" element={<Stub path="/studio" />} />
         <Route path="insights" element={<Stub path="/insights" />} />

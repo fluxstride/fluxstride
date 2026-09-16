@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
+import type { NeedId } from './brief'
 import {
   CodeXml,
   Compass,
@@ -24,6 +25,8 @@ export type Service = {
   /** Shorter name used in the footer */
   shortTitle: string
   icon: LucideIcon
+  /** The Contact form option "Discuss this" ticks */
+  need: NeedId
   /** One-liner for the Home grid */
   summary: string
   /** Longer pitch for the Services page */
@@ -43,6 +46,7 @@ export const services: Service[] = [
     title: 'Software Engineering',
     shortTitle: 'Software engineering',
     icon: CodeXml,
+    need: 'software',
     summary:
       'Custom platforms, APIs and internal tools engineered to scale — clean architecture, tested and documented.',
     description:
@@ -63,6 +67,7 @@ export const services: Service[] = [
     title: 'Website Design & Development',
     shortTitle: 'Web design & development',
     icon: Laptop,
+    need: 'website',
     summary:
       'Visually striking, high-performance websites built to turn visitors into customers and grow your business.',
     description:
@@ -78,6 +83,7 @@ export const services: Service[] = [
     title: 'Mobile App Development',
     shortTitle: 'Mobile apps',
     icon: Smartphone,
+    need: 'mobile',
     summary:
       'Native and cross-platform apps with seamless experiences people return to — from MVP to App Store.',
     description:
@@ -98,6 +104,7 @@ export const services: Service[] = [
     title: 'E-commerce Websites',
     shortTitle: 'E-commerce',
     icon: Store,
+    need: 'e-commerce',
     summary: 'High-converting stores that showcase your products beautifully and make buying effortless.',
     description:
       'High-converting stores that showcase your products beautifully and make buying effortless on every device.',
@@ -117,6 +124,7 @@ export const services: Service[] = [
     title: 'UI/UX Design',
     shortTitle: 'UI/UX design',
     icon: PenTool,
+    need: 'ui-ux',
     summary:
       'Research-led journeys, prototypes and polished interfaces, backed by design systems that scale.',
     description:
@@ -132,6 +140,7 @@ export const services: Service[] = [
     title: 'Graphic Design',
     shortTitle: 'Graphic design',
     icon: Palette,
+    need: 'graphic-design',
     summary: 'Logos, identities, marketing collateral and social graphics that make your brand unmistakable.',
     description:
       'Logos, identities, marketing collateral and social graphics that make your brand unmistakable wherever it shows up.',
@@ -151,6 +160,7 @@ export const services: Service[] = [
     title: 'SEO',
     shortTitle: 'SEO',
     icon: ScanSearch,
+    need: 'seo',
     summary:
       'Technical and content SEO that lifts your Google rankings and connects you with your ideal customers.',
     description:
@@ -171,6 +181,7 @@ export const services: Service[] = [
     title: 'Tech Consultancy',
     shortTitle: 'Tech consultancy',
     icon: Compass,
+    need: 'consultancy',
     summary:
       'Independent advice on stack, architecture, audits and digital roadmaps — so you invest in the right things.',
     description:
@@ -191,6 +202,7 @@ export const services: Service[] = [
     title: 'Website Maintenance',
     shortTitle: 'Website maintenance',
     icon: Wrench,
+    need: 'maintenance',
     summary:
       'Proactive updates, security, backups and support that keep your site fast, secure and bug-free.',
     description:

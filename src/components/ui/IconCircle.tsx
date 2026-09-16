@@ -3,8 +3,8 @@ import { cn } from '@/lib/cn'
 
 type IconCircleProps = {
   icon: LucideIcon
-  /** md: 56px circle / 22px icon (desktop cards). sm: 40px / 18px (mobile rows). */
-  size?: 'sm' | 'md'
+  /** lg: 56px circle / 22px icon (Home cards). md: 52px / 22px (Services page). sm: 40px / 18px (mobile rows). */
+  size?: 'sm' | 'md' | 'lg'
   /** soft: blue tint with a blue icon. solid: Flux blue with a paper icon (highlighted card). */
   tone?: 'soft' | 'solid'
   className?: string
@@ -12,7 +12,8 @@ type IconCircleProps = {
 
 const sizes = {
   sm: { circle: 'size-10', icon: 18 },
-  md: { circle: 'size-14', icon: 22 },
+  md: { circle: 'size-13', icon: 22 },
+  lg: { circle: 'size-14', icon: 22 },
 }
 
 export function IconCircle({ icon: Icon, size = 'md', tone = 'soft', className }: IconCircleProps) {
