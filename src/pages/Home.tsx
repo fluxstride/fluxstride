@@ -4,6 +4,7 @@ import { ProcessSection } from '@/components/home/ProcessSection'
 import { ProofSection } from '@/components/home/ProofSection'
 import { SelectedWork } from '@/components/home/SelectedWork'
 import { ServicesSection } from '@/components/home/ServicesSection'
+import { StartProject } from '@/components/home/StartProject'
 
 export function Home() {
   return (
@@ -14,6 +15,7 @@ export function Home() {
       <SelectedWork />
       <ProcessSection />
       <ProofSection />
+      <StartProject />
     </>
   )
 }
