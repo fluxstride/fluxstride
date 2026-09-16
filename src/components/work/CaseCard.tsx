@@ -13,6 +13,13 @@ type CaseCardProps = {
   /** Section background the card sits on. */
   surface?: 'dark' | 'light'
   className?: string
+  /**
+   * Link the card to its case study. Off on the Work page itself, where the card is
+   * the destination: it renders as an article carrying the slug as its anchor id.
+   */
+  link?: boolean
+  /** Extra classes for the client/services row (spacing differs between Home and Work). */
+  metaClassName?: string
 }
 
 /*
@@ -22,11 +29,20 @@ type CaseCardProps = {
  *   meta   hairline, 16px above; client 24/500 → 20 and mono 12 services; side by side
  *          on desktop, stacked with a 6px gap on mobile
  */
-export function CaseCard({ study, imageClassName, sizes, surface = 'dark', className }: CaseCardProps) {
+export function CaseCard({
+  study,
+  imageClassName,
+  sizes,
+  surface = 'dark',
+  className,
+  link = true,
+  metaClassName,
+}: CaseCardProps) {
   const dark = surface === 'dark'
+  const cardClass = cn('group flex scroll-mt-28 flex-col gap-5', className)
 
-  return (
-    <SmartLink to={`/work#${study.slug}`} className={cn('group flex flex-col gap-5', className)}>
+  const content = (
+    <>
       <ImageReveal
         className={imageClassName}
         image={
@@ -51,6 +67,7 @@ export function CaseCard({ study, imageClassName, sizes, surface = 'dark', class
         className={cn(
           'flex flex-col gap-1.5 border-t pt-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6',
           dark ? 'border-line-dark' : 'border-line',
+          metaClassName,
         )}
       >
         <h3
@@ -65,6 +82,16 @@ export function CaseCard({ study, imageClassName, sizes, surface = 'dark', class
           {study.industry} — {study.services.join(', ')}
         </p>
       </div>
+    </>
+  )
+
+  return link ? (
+    <SmartLink to={`/work#${study.slug}`} className={cardClass}>
+      {content}
     </SmartLink>
+  ) : (
+    <article id={study.slug} className={cardClass}>
+      {content}
+    </article>
   )
 }

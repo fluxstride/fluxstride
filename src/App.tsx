@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router'
 import { Layout } from '@/components/layout/Layout'
 import { pageFor } from '@/lib/seo'
 import { Home } from '@/pages/Home'
+import { Work } from '@/pages/Work'
 
 // Temporary: each route renders its SEO title until the real page lands.
 function Stub({ path }: { path: string }) {
@@ -17,7 +18,7 @@ export function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="work" element={<Stub path="/work" />} />
+        <Route path="work" element={<Work />} />
         <Route path="services" element={<Stub path="/services" />} />
         <Route path="process" element={<Stub path="/process" />} />
         <Route path="studio" element={<Stub path="/studio" />} />

@@ -1,0 +1,64 @@
+import { motion } from 'motion/react'
+import { useId } from 'react'
+import { disciplines, type Discipline } from '@/content/work'
+import { cn } from '@/lib/cn'
+import { springy } from '@/lib/motion'
+
+export type DisciplineFilterValue = Discipline | 'all'
+
+const options: { id: DisciplineFilterValue; label: string }[] = [{ id: 'all', label: 'All' }, ...disciplines]
+
+type DisciplineFilterProps = {
+  value: DisciplineFilterValue
+  onChange: (value: DisciplineFilterValue) => void
+  className?: string
+}
+
+/*
+ * Design: Work / Filters / Chips. 14/500 pills, 10×16 padding, 8px apart; the active
+ * one filled with ink, the rest outlined with a hairline.
+ *
+ * The ink fill is one shared element that slides to the chosen chip. On mobile the
+ * row runs off the right edge and scrolls sideways, as drawn.
+ */
+export function DisciplineFilter({ value, onChange, className }: DisciplineFilterProps) {
+  const layoutId = useId()
+
+  return (
+    <div
+      role="group"
+      aria-label="Filter projects by discipline"
+      className={cn(
+        'scrollbar-none flex gap-2 overflow-x-auto max-lg:-mx-gutter max-lg:px-gutter',
+        className,
+      )}
+    >
+      {options.map((option) => {
+        const active = option.id === value
+        return (
+          <button
+            key={option.id}
+            type="button"
+            aria-pressed={active}
+            onClick={() => onChange(option.id)}
+            className={cn(
+              // 1px border inside the 10×16 padding keeps outlined and filled chips the same size.
+              'relative isolate shrink-0 rounded-full border px-3.75 py-2.25 text-sm/[1.2] font-medium whitespace-nowrap transition-colors duration-300',
+              active ? 'border-transparent text-paper' : 'border-line text-ink hover:border-stone',
+            )}
+          >
+            {active ? (
+              <motion.span
+                layoutId={layoutId}
+                transition={springy}
+                aria-hidden="true"
+                className="absolute -inset-px -z-10 rounded-full bg-ink"
+              />
+            ) : null}
+            {option.label}
+          </button>
+        )
+      })}
+    </div>
+  )
+}

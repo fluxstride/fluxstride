@@ -23,6 +23,8 @@ export type Discipline = (typeof disciplines)[number]['id']
 
 export type CaseStudy = {
   slug: string
+  /** Launch year, used by the Work page sort. */
+  year: number
   client: string
   industry: string
   /** Shown after the industry: "Fintech — Software, Web platform" */
@@ -38,6 +40,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'northwind',
+    year: 2026,
     client: 'Northwind',
     industry: 'Fintech',
     services: ['Software', 'Web platform'],
@@ -49,6 +52,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'halden-coffee',
+    year: 2025,
     client: 'Halden Coffee',
     industry: 'Retail',
     services: ['E-commerce', 'Graphic design'],
@@ -61,6 +65,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'orbit-health',
+    year: 2025,
     client: 'Orbit Health',
     industry: 'Healthtech',
     services: ['Mobile app', 'UI/UX'],
@@ -72,6 +77,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'kinetic-labs',
+    year: 2024,
     client: 'Kinetic Labs',
     industry: 'SaaS',
     services: ['SEO', 'Tech consultancy'],
@@ -83,6 +89,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: 'atlas-freight',
+    year: 2024,
     client: 'Atlas Freight',
     industry: 'Logistics',
     services: ['Software', 'Tech consultancy'],
