@@ -12,3 +12,4 @@ dist-ssr
 # Design exports (~90 MB of PNG/PDF). Source material, not site code: the files the
 # site actually serves are copied into public/. Regenerate from the Pencil file.
 brand-assets/
+.screenshots/
