@@ -77,6 +77,77 @@ export const images = {
     ],
     "color": "#e8e8e8"
   },
+  "insights/launch-is-the-start-line": {
+    "src": "generated-1789579506258.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#a8b8c8"
+  },
+  "insights/headless-or-monolith": {
+    "src": "generated-1789579532172.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      480,
+      800
+    ],
+    "color": "#b8c8c8"
+  },
+  "insights/checkout-audit": {
+    "src": "generated-1789579522787.png",
+    "width": 768,
+    "height": 1376,
+    "widths": [
+      480,
+      768
+    ],
+    "color": "#c8c8d8"
+  },
+  "insights/design-systems-second-year": {
+    "src": "generated-1789579520168.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      480,
+      800
+    ],
+    "color": "#b8c8c8"
+  },
+  "insights/technical-seo-javascript": {
+    "src": "generated-1789579525110.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      480,
+      800
+    ],
+    "color": "#b8b8c8"
+  },
+  "insights/build-buy-or-integrate": {
+    "src": "generated-1789579529376.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      480,
+      800
+    ],
+    "color": "#b8c8d8"
+  },
+  "insights/website-packages": {
+    "src": "generated-1789579530858.png",
+    "width": 768,
+    "height": 1376,
+    "widths": [
+      480,
+      768
+    ],
+    "color": "#b8c8c8"
+  },
   "team/daniel-mensah": {
     "src": "https://images.unsplash.com/photo-1763745315951-7daac4821af6?fm=jpg&q=90&w=1600&fit=max",
     "width": 1600,

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Picture } from '@/components/ui/Picture'
 import { testimonials, type Testimonial } from '@/content/proof'
 import { cn } from '@/lib/cn'
-import { pad } from '@/lib/format'
+import { initials, pad } from '@/lib/format'
 import { EASE_OUT } from '@/lib/motion'
 import { useMediaQuery, usePageVisible } from '@/lib/useMediaQuery'
 
@@ -172,18 +172,12 @@ function Avatar({ testimonial }: { testimonial: Testimonial }) {
   if (testimonial.avatar) {
     return <Picture name={testimonial.avatar} alt="" sizes="72px" className="size-18 rounded-full" />
   }
-  const initials = testimonial.name
-    .replace(/^(Dr|Mr|Mrs|Ms)\.?\s+/, '')
-    .split(/\s+/)
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join('')
   return (
     <span
       aria-hidden="true"
       className="flex size-18 items-center justify-center rounded-full bg-flux-soft text-xl font-semibold text-flux"
     >
-      {initials}
+      {initials(testimonial.name)}
     </span>
   )
 }

@@ -40,6 +40,13 @@ const IMAGES = {
   'work/atlas-freight': { src: 'generated-1789579203190.png' },
   'people/amara-okafor': { src: unsplash('photo-1784926119174-1b471595aa5a'), widths: [96, 144, 216] },
   'studio/monday-planning': { src: 'generated-1789579395826.png' },
+  'insights/launch-is-the-start-line': { src: 'generated-1789579506258.png' },
+  'insights/headless-or-monolith': { src: 'generated-1789579532172.png', widths: [480, 800] },
+  'insights/checkout-audit': { src: 'generated-1789579522787.png', widths: [480, 800] },
+  'insights/design-systems-second-year': { src: 'generated-1789579520168.png', widths: [480, 800] },
+  'insights/technical-seo-javascript': { src: 'generated-1789579525110.png', widths: [480, 800] },
+  'insights/build-buy-or-integrate': { src: 'generated-1789579529376.png', widths: [480, 800] },
+  'insights/website-packages': { src: 'generated-1789579530858.png', widths: [480, 800] },
   ...team({
     'daniel-mensah': 'photo-1763745315951-7daac4821af6',
     'priya-raman': 'photo-1760552069633-c05f246a5d8c',
