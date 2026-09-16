@@ -1,0 +1,203 @@
+import { ArrowUp } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useState, type FormEvent, type ReactNode } from 'react'
+import { Reveal } from '@/components/motion/Reveal'
+import { ArrowIcon } from '@/components/ui/ArrowIcon'
+import { Logo } from '@/components/ui/Logo'
+import { SmartLink } from '@/components/ui/SmartLink'
+import { Eyebrow } from '@/components/ui/Typography'
+import { services } from '@/content/services'
+import { LEGAL_NAME, socialLinks, studioLinks } from '@/content/site'
+import { cn } from '@/lib/cn'
+import { subscribe } from '@/lib/newsletter'
+import { EASE_OUT } from '@/lib/motion'
+
+/*
+ * Design (Component / Footer): ink, 80px gutters, 64px between rows.
+ *   Row 1  hairline, 56px top padding: newsletter (460px) + Services / Studio / Social columns
+ *   Row 2  giant lockup filling the full content width
+ *   Row 3  hairline bar: copyright · legal · back to top (mono 12, stone-light)
+ * Mobile (Component / Footer Mobile): single column, 40px gaps, Studio and Social side by side.
+ */
+export function Footer() {
+  return (
+    <footer className="bg-ink text-paper">
+      <div className="container-page flex flex-col gap-10 lg:gap-16">
+        <div className="flex flex-col gap-10 border-t border-line-dark pt-12 lg:flex-row lg:pt-14">
+          <Newsletter />
+
+          <FooterColumn title="Services" className="lg:flex-1">
+            {services.map((service) => (
+              <FooterLink key={service.slug} to={`/services#${service.slug}`}>
+                {service.shortTitle}
+              </FooterLink>
+            ))}
+          </FooterColumn>
+
+          <div className="flex gap-6 lg:contents">
+            <FooterColumn title="Studio" className="flex-1">
+              {studioLinks.map((link) => (
+                <FooterLink key={link.label} to={link.to}>
+                  {link.label}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+            <FooterColumn title="Social" className="flex-1">
+              {socialLinks.map((link) => (
+                <FooterLink key={link.label} to={link.href}>
+                  {link.label}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+          </div>
+        </div>
+
+        <GiantLockup />
+
+        <div className="flex flex-col gap-2.5 border-t border-line-dark pt-5 pb-7 font-mono text-label-sm text-stone-light uppercase lg:flex-row lg:justify-between lg:text-label">
+          <p>
+            © {new Date().getFullYear()} {LEGAL_NAME}
+          </p>
+          <div className="flex justify-between lg:contents">
+            {/* TODO: link these once the legal pages exist. */}
+            <p>Privacy · Terms · Cookies</p>
+            <BackToTop />
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+function FooterColumn({
+  title,
+  className,
+  children,
+}: {
+  title: string
+  className?: string
+  children: ReactNode
+}) {
+  return (
+    <div className={cn('flex flex-col gap-3', className)}>
+      <h2>
+        <Eyebrow onDark className="max-lg:text-label-sm">
+          {title}
+        </Eyebrow>
+      </h2>
+      <ul className="flex flex-col gap-3">{children}</ul>
+    </div>
+  )
+}
+
+function FooterLink({ to, children }: { to: string; children: ReactNode }) {
+  return (
+    <li className="flex">
+      <SmartLink
+        to={to}
+        className="group inline-flex items-center gap-1.5 text-[15px] leading-[1.2] text-paper transition-colors hover:text-flux-light"
+      >
+        <span className="relative">
+          {children}
+          <span
+            aria-hidden="true"
+            className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-current transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100"
+          />
+        </span>
+      </SmartLink>
+    </li>
+  )
+}
+
+function Newsletter() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setStatus('sending')
+    try {
+      const result = await subscribe(email)
+      setStatus(result === 'subscribed' ? 'done' : 'idle')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-3.5 lg:w-115 lg:shrink-0 lg:gap-4">
+      <h2 id="newsletter-title" className="text-value max-lg:text-[20px]">
+        The Stride — monthly notes on software &amp; design
+      </h2>
+      <form onSubmit={onSubmit} aria-labelledby="newsletter-title" className="relative">
+        <label htmlFor="newsletter-email" className="sr-only">
+          Email address
+        </label>
+        <div className="group flex items-center justify-between border-b border-stone py-3.5 transition-colors focus-within:border-paper">
+          <input
+            id="newsletter-email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="you@company.com"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            className="w-full bg-transparent text-base leading-[1.2] text-paper placeholder:text-stone-light focus:outline-none"
+          />
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            aria-label="Subscribe"
+            className="group -m-2 p-2 text-paper disabled:opacity-50"
+          >
+            <ArrowIcon size={20} className="block" />
+          </button>
+        </div>
+        <AnimatePresence>
+          {status === 'done' || status === 'error' ? (
+            <motion.p
+              role="status"
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: EASE_OUT }}
+              className="absolute top-full pt-2 font-mono text-label-sm text-stone-light uppercase"
+            >
+              {status === 'done' ? 'Subscribed. See you next month.' : 'That did not work. Try again?'}
+            </motion.p>
+          ) : null}
+        </AnimatePresence>
+      </form>
+    </div>
+  )
+}
+
+/**
+ * The lockup scales with its container so it always spans the full content width,
+ * as in the design (desktop: 243px wordmark across 1280px; mobile: 65px across 350px).
+ */
+function GiantLockup() {
+  return (
+    <Reveal y={40} className="@container">
+      <Logo tone="paper" className="w-full text-[18.57cqw] leading-none lg:text-[18.98cqw]" />
+    </Reveal>
+  )
+}
+
+function BackToTop() {
+  return (
+    <button
+      type="button"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="group inline-flex items-center gap-1 uppercase transition-colors hover:text-paper"
+    >
+      Back to top
+      <ArrowUp
+        aria-hidden="true"
+        size={12}
+        strokeWidth={2}
+        className="transition-transform duration-500 ease-out-expo group-hover:-translate-y-0.5"
+      />
+    </button>
+  )
+}
