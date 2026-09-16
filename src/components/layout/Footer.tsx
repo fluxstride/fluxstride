@@ -1,6 +1,6 @@
 import { ArrowUp } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useState, type FormEvent, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { Logo } from '@/components/ui/Logo'
@@ -9,7 +9,7 @@ import { Eyebrow } from '@/components/ui/Typography'
 import { services } from '@/content/services'
 import { LEGAL_NAME, socialLinks, studioLinks } from '@/content/site'
 import { cn } from '@/lib/cn'
-import { subscribe } from '@/lib/newsletter'
+import { newsletterMessages, useNewsletter } from '@/lib/useNewsletter'
 import { EASE_OUT } from '@/lib/motion'
 
 /*
@@ -108,19 +108,7 @@ function FooterLink({ to, children }: { to: string; children: ReactNode }) {
 }
 
 function Newsletter() {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setStatus('sending')
-    try {
-      const result = await subscribe(email)
-      setStatus(result === 'subscribed' ? 'done' : 'idle')
-    } catch {
-      setStatus('error')
-    }
-  }
+  const { email, setEmail, status, onSubmit } = useNewsletter()
 
   return (
     <div className="flex flex-col gap-3.5 lg:w-115 lg:shrink-0 lg:gap-4">
@@ -161,7 +149,7 @@ function Newsletter() {
               transition={{ duration: 0.3, ease: EASE_OUT }}
               className="absolute top-full pt-2 font-mono text-label-sm text-stone-light uppercase"
             >
-              {status === 'done' ? 'Subscribed. See you next month.' : 'That did not work. Try again?'}
+              {newsletterMessages[status]}
             </motion.p>
           ) : null}
         </AnimatePresence>

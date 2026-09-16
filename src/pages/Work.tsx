@@ -3,15 +3,18 @@ import { useState } from 'react'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { PageHeader } from '@/components/sections/PageHeader'
 import { Reveal } from '@/components/motion/Reveal'
+import { FilterChips } from '@/components/ui/FilterChips'
 import { Accent } from '@/components/ui/Typography'
 import { CaseCard } from '@/components/work/CaseCard'
-import { DisciplineFilter, type DisciplineFilterValue } from '@/components/work/DisciplineFilter'
 import { ProjectIndex } from '@/components/work/ProjectIndex'
-import { caseStudies, moreProjects, PROJECT_COUNT } from '@/content/work'
+import { caseStudies, disciplines, moreProjects, PROJECT_COUNT, type Discipline } from '@/content/work'
 import { ScrollTrigger } from '@/lib/gsap'
 import { EASE_OUT } from '@/lib/motion'
 
 type SortOrder = 'newest' | 'oldest'
+type DisciplineFilterValue = Discipline | 'all'
+
+const filterOptions = [{ id: 'all' as const, label: 'All' }, ...disciplines]
 
 /** Filters by discipline and orders by year. The sort is stable, so equal years keep their curated order. */
 function select<T extends { year: number; disciplines: readonly string[] }>(
@@ -59,7 +62,12 @@ export function Work() {
         delay={0.45}
         className="container-page flex flex-col gap-4 pb-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:pb-12"
       >
-        <DisciplineFilter value={filter} onChange={setFilter} />
+        <FilterChips
+          options={filterOptions}
+          value={filter}
+          onChange={setFilter}
+          label="Filter projects by discipline"
+        />
         <button
           type="button"
           onClick={() => setOrder(order === 'newest' ? 'oldest' : 'newest')}

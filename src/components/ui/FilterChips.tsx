@@ -1,33 +1,39 @@
 import { motion } from 'motion/react'
 import { useId } from 'react'
-import { disciplines, type Discipline } from '@/content/work'
 import { cn } from '@/lib/cn'
 import { springy } from '@/lib/motion'
 
-export type DisciplineFilterValue = Discipline | 'all'
+export type FilterOption<T extends string> = { id: T; label: string }
 
-const options: { id: DisciplineFilterValue; label: string }[] = [{ id: 'all', label: 'All' }, ...disciplines]
-
-type DisciplineFilterProps = {
-  value: DisciplineFilterValue
-  onChange: (value: DisciplineFilterValue) => void
+type FilterChipsProps<T extends string> = {
+  options: readonly FilterOption<T>[]
+  value: T
+  onChange: (value: T) => void
+  /** Names the group for screen readers, e.g. "Filter projects by discipline". */
+  label: string
   className?: string
 }
 
 /*
- * Design: Work / Filters / Chips. 14/500 pills, 10×16 padding, 8px apart; the active
- * one filled with ink, the rest outlined with a hairline.
+ * Design: "Filters / Chips" on Work and Insights. 14/500 pills, 10×16 padding, 8px apart;
+ * the active one filled with ink, the rest outlined with a hairline.
  *
  * The ink fill is one shared element that slides to the chosen chip. On mobile the
  * row runs off the right edge and scrolls sideways, as drawn.
  */
-export function DisciplineFilter({ value, onChange, className }: DisciplineFilterProps) {
+export function FilterChips<T extends string>({
+  options,
+  value,
+  onChange,
+  label,
+  className,
+}: FilterChipsProps<T>) {
   const layoutId = useId()
 
   return (
     <div
       role="group"
-      aria-label="Filter projects by discipline"
+      aria-label={label}
       className={cn(
         'scrollbar-none flex gap-2 overflow-x-auto max-lg:-mx-gutter max-lg:px-gutter',
         className,
