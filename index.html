@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Marks JS as available before first paint so reveal animations start hidden
+         instead of flashing. See src/styles/motion.css. -->
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
     <meta name="theme-color" content="#F5F7FB" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0A0F1E" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
