@@ -1,0 +1,10 @@
+# pnpm 11 reads settings from this file, not the "pnpm" field in package.json.
+#
+# Both packages ship platform binaries and need their install scripts to run:
+#   esbuild  - used by Vite
+#   workerd  - Cloudflare's local runtime, used by `wrangler dev` (pnpm cf:preview)
+#
+# Without this, pnpm refuses the build scripts and exits 1, which blocks `pnpm build` too.
+allowBuilds:
+  esbuild: true
+  workerd: true

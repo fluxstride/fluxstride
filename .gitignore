@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+.wrangler
+*.local
+*.tsbuildinfo
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Design exports (~90 MB of PNG/PDF). Source material, not site code: the files the
+# site actually serves are copied into public/. Regenerate from the Pencil file.
+brand-assets/
