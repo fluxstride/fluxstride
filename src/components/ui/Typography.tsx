@@ -8,13 +8,21 @@ type TextProps = { children: ReactNode; className?: string }
  * metadata. Write the content in normal case; CSS uppercases it, so screen
  * readers say words instead of spelling out letters.
  */
-export function Eyebrow({ children, className, onDark = false }: TextProps & { onDark?: boolean }) {
+type EyebrowProps = TextProps & {
+  onDark?: boolean
+  /** Render as a heading when the eyebrow is the only title a block has. */
+  as?: 'p' | 'h2' | 'h3' | 'span'
+  id?: string
+}
+
+export function Eyebrow({ children, className, onDark = false, as: Tag = 'p', id }: EyebrowProps) {
   return (
-    <p
+    <Tag
+      id={id}
       className={cn('font-mono text-label uppercase', onDark ? 'text-stone-light' : 'text-stone', className)}
     >
       {children}
-    </p>
+    </Tag>
   )
 }
 

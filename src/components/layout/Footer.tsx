@@ -80,11 +80,9 @@ function FooterColumn({
 }) {
   return (
     <div className={cn('flex flex-col gap-3', className)}>
-      <h2>
-        <Eyebrow onDark className="max-lg:text-label-sm">
-          {title}
-        </Eyebrow>
-      </h2>
+      <Eyebrow as="h2" onDark className="max-lg:text-label-sm">
+        {title}
+      </Eyebrow>
       <ul className="flex flex-col gap-3">{children}</ul>
     </div>
   )
