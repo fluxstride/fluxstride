@@ -43,7 +43,6 @@ const twMerge = extendTailwindMerge({
     theme: {
       text: TEXT_TOKENS,
       spacing: ['gutter', 'section'],
-      tracking: ['badge'],
       ease: ['out-expo', 'in-out-quart'],
     },
   },
