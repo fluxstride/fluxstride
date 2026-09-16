@@ -56,7 +56,9 @@ export function RevealText({
       const onScreen = element.getBoundingClientRect().top < window.innerHeight * 0.92
       const playNow = on === 'mount' || (on === 'auto' && onScreen)
 
-      gsap.set(words, { yPercent: 110 })
+      // y: 0 discards the pre-paint translateY from motion.css, which GSAP would otherwise
+      // read as a pixel offset and keep on top of yPercent, leaving the words stuck below.
+      gsap.set(words, { y: 0, yPercent: 110 })
       element.dataset.revealReady = ''
       gsap.to(words, {
         yPercent: 0,
