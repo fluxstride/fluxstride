@@ -15,11 +15,13 @@ import { EMAIL_CAREERS, EMAIL_NEW_BUSINESS, mailto, STUDIO_HOURS } from '@/conte
  * what you need and budget) beside a 400px contact column on a hairline.
  * The builder's choices are carried to the Contact form (content/brief.ts).
  *
- * Mobile: no builder. Headline, a full-width "Send us a brief" button and the email.
+ * Mobile: the design drops the builder and contact column, but everything is kept here
+ * (by request) and stacked: chips wrap, the button goes full width, and the contact
+ * details sit under a hairline instead of beside one.
  */
 export function StartProject() {
   return (
-    <section aria-labelledby="start-title" className="bg-ink pt-16 pb-10 text-paper lg:pt-35 lg:pb-30">
+    <section aria-labelledby="start-title" className="bg-ink py-16 text-paper lg:pt-35 lg:pb-30">
       <div className="container-page flex flex-col gap-7 lg:gap-18">
         <div className="@container flex flex-col gap-7">
           <Reveal>
@@ -39,21 +41,12 @@ export function StartProject() {
           </RevealText>
         </div>
 
-        <div className="flex flex-col gap-7 lg:hidden">
-          <ButtonLink to={briefHref([], null)} surface="dark" block>
-            Send us a brief
-          </ButtonLink>
-          <a href={mailto(EMAIL_NEW_BUSINESS)} className="text-value max-lg:text-[20px]">
-            {EMAIL_NEW_BUSINESS}
-          </a>
-        </div>
-
-        <div className="flex gap-20 max-lg:hidden">
+        <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
           <BriefBuilder />
           <Reveal
             as="dl"
             stagger={0.08}
-            className="flex w-100 shrink-0 flex-col gap-7 self-start border-l border-line-dark pl-10"
+            className="flex flex-col gap-6 border-t border-line-dark pt-8 lg:w-100 lg:shrink-0 lg:gap-7 lg:self-start lg:border-t-0 lg:border-l lg:pt-0 lg:pl-10"
           >
             <ContactItem label="New business" value={EMAIL_NEW_BUSINESS} href={mailto(EMAIL_NEW_BUSINESS)} />
             <ContactItem label="Careers" value={EMAIL_CAREERS} href={mailto(EMAIL_CAREERS)} />
@@ -109,8 +102,14 @@ function BriefBuilder() {
         </div>
       </div>
 
-      <div className="flex items-center gap-6 pt-2">
-        <ButtonLink to={briefHref(selected, budget)} size="lg" surface="dark">
+      {/* Mobile: full-width button with the call link centred underneath. */}
+      <div className="flex flex-col items-center gap-5 pt-2 lg:flex-row lg:gap-6">
+        <ButtonLink
+          to={briefHref(selected, budget)}
+          size="lg"
+          surface="dark"
+          className="max-lg:flex max-lg:w-full max-lg:justify-between max-lg:px-5"
+        >
           Send brief — reply in 24h
         </ButtonLink>
         <SmartLink
