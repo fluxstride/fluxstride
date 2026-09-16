@@ -18,6 +18,11 @@ export default tseslint.config(
     },
   },
   {
+    // Entry points are never hot-reloaded, so the Fast Refresh rule does not apply.
+    files: ['src/main.tsx', 'src/entry-server.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+  {
     files: ['scripts/**/*.mjs'],
     extends: [js.configs.recommended],
     languageOptions: { globals: globals.node },

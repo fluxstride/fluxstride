@@ -1,0 +1,32 @@
+import type { LucideIcon } from 'lucide-react'
+import { cn } from '@/lib/cn'
+
+type IconCircleProps = {
+  icon: LucideIcon
+  /** md: 56px circle / 22px icon (desktop cards). sm: 40px / 18px (mobile rows). */
+  size?: 'sm' | 'md'
+  /** soft: blue tint with a blue icon. solid: Flux blue with a paper icon (highlighted card). */
+  tone?: 'soft' | 'solid'
+  className?: string
+}
+
+const sizes = {
+  sm: { circle: 'size-10', icon: 18 },
+  md: { circle: 'size-14', icon: 22 },
+}
+
+export function IconCircle({ icon: Icon, size = 'md', tone = 'soft', className }: IconCircleProps) {
+  return (
+    <span
+      aria-hidden="true"
+      className={cn(
+        'inline-flex shrink-0 items-center justify-center rounded-full transition-colors duration-500 ease-out-expo',
+        sizes[size].circle,
+        tone === 'soft' ? 'bg-flux-soft text-flux' : 'bg-flux text-paper',
+        className,
+      )}
+    >
+      <Icon size={sizes[size].icon} strokeWidth={2} />
+    </span>
+  )
+}
