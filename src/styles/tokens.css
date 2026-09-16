@@ -70,7 +70,7 @@
   --text-display-2xl--line-height: 0.92;
   --text-display-2xl--font-weight: 600;
 
-  /* CTA band headline: 52px → 136px */
+  /* Home "Start a project" headline: 52px → 136px */
   --text-display-xl: clamp(3.25rem, 1.3rem + 8vw, 8.5rem);
   --text-display-xl--line-height: 0.95;
   --text-display-xl--font-weight: 600;
@@ -113,6 +113,11 @@
   --text-numeral-md--font-weight: 500;
 
   /* -- Headings -- */
+
+  /* Inner-page CTA band, "Ready when you are.": 52px → 88px */
+  --text-heading-3xl: clamp(3.25rem, 2.4143rem + 3.4286vw, 5.5rem);
+  --text-heading-3xl--line-height: 1;
+  --text-heading-3xl--font-weight: 600;
 
   /* Newsletter sign-up heading: 37px → 72px */
   --text-heading-2xl: clamp(2.3125rem, 1.5rem + 3.3333vw, 4.5rem);
@@ -263,4 +268,12 @@
   width: 100%;
   max-width: var(--container-page);
   padding-inline: var(--spacing-gutter);
+}
+
+/* Hides the scrollbar on a horizontally scrolling strip (mobile filter chips) without disabling scroll. */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

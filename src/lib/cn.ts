@@ -18,6 +18,7 @@ const TEXT_TOKENS = [
   'numeral-xl',
   'numeral-lg',
   'numeral-md',
+  'heading-3xl',
   'heading-2xl',
   'heading-xl',
   'heading-lg',

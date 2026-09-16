@@ -2,6 +2,7 @@ import {
   Children,
   cloneElement,
   createElement,
+  Fragment,
   isValidElement,
   useRef,
   type ReactElement,
@@ -118,6 +119,11 @@ function splitWords(node: ReactNode, path = 'w'): ReactNode[] {
 
     if (isValidElement(child)) {
       const element = child as ReactElement<{ children?: ReactNode; className?: string }>
+      // Fragments (a title passed in as a prop) are just their contents.
+      if (element.type === Fragment) {
+        out.push(...splitWords(element.props.children, key))
+        return
+      }
       // Forced line breaks pass straight through.
       if (element.type === 'br') {
         out.push(cloneElement(element, { key }))
