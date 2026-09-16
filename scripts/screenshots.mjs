@@ -21,6 +21,9 @@ import { chromium } from 'playwright-core'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const outDir = join(root, '.screenshots')
 const baseUrl = process.env.BASE_URL ?? 'http://localhost:5173'
+// With motion on, give scroll-triggered reveals time to fire and finish.
+const motion = Boolean(process.env.MOTION)
+const scrollPause = motion ? 250 : 60
 
 const ALL_PAGES = ['/', '/work', '/services', '/process', '/studio', '/insights', '/contact', '/404-example']
 
@@ -51,7 +54,7 @@ for (const viewport of viewports) {
   const context = await browser.newContext({
     viewport: { width: viewport.width, height: viewport.height },
     deviceScaleFactor: 1,
-    reducedMotion: process.env.MOTION ? 'no-preference' : 'reduce',
+    reducedMotion: motion ? 'no-preference' : 'reduce',
   })
   const page = await context.newPage()
 
@@ -59,14 +62,14 @@ for (const viewport of viewports) {
     await page.goto(new URL(path, baseUrl).href, { waitUntil: 'networkidle' })
     await page.evaluate(() => document.fonts.ready)
     // Scroll through once so scroll-triggered content and lazy images load.
-    await page.evaluate(async () => {
+    await page.evaluate(async (pause) => {
       for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
         window.scrollTo(0, y)
-        await new Promise((done) => setTimeout(done, 60))
+        await new Promise((done) => setTimeout(done, pause))
       }
       window.scrollTo(0, 0)
-    })
-    await page.waitForTimeout(400)
+    }, scrollPause)
+    await page.waitForTimeout(motion ? 2000 : 400)
 
     const name = path === '/' ? 'home' : path.replace(/^\//, '').replace(/\//g, '-')
     const file = join(outDir, `${name}-${viewport.name}.png`)
