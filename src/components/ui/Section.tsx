@@ -49,6 +49,8 @@ type SectionHeaderProps = {
   onDark?: boolean
   className?: string
   titleClassName?: string
+  /** Classes for the eyebrow + title stack, e.g. to change the gap between them. */
+  titleGroupClassName?: string
   introClassName?: string
 }
 
@@ -66,13 +68,14 @@ export function SectionHeader({
   onDark = false,
   className,
   titleClassName,
+  titleGroupClassName,
   introClassName,
 }: SectionHeaderProps) {
   return (
     <header
       className={cn('flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10', className)}
     >
-      <div className="flex flex-col gap-3.5 lg:gap-5">
+      <div className={cn('flex flex-col gap-3.5 lg:gap-5', titleGroupClassName)}>
         <Reveal>
           <Eyebrow onDark={onDark}>{eyebrow}</Eyebrow>
         </Reveal>

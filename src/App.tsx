@@ -4,6 +4,7 @@ import { pageFor } from '@/lib/seo'
 import { Home } from '@/pages/Home'
 import { Process } from '@/pages/Process'
 import { Services } from '@/pages/Services'
+import { Studio } from '@/pages/Studio'
 import { Work } from '@/pages/Work'
 
 // Temporary: each route renders its SEO title until the real page lands.
@@ -23,7 +24,7 @@ export function App() {
         <Route path="work" element={<Work />} />
         <Route path="services" element={<Services />} />
         <Route path="process" element={<Process />} />
-        <Route path="studio" element={<Stub path="/studio" />} />
+        <Route path="studio" element={<Studio />} />
         <Route path="insights" element={<Stub path="/insights" />} />
         <Route path="contact" element={<Stub path="/contact" />} />
         <Route path="*" element={<Stub path="/404" />} />

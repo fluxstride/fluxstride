@@ -65,6 +65,105 @@ export const images = {
       216
     ],
     "color": "#282828"
+  },
+  "studio/monday-planning": {
+    "src": "generated-1789579395826.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#e8e8e8"
+  },
+  "team/daniel-mensah": {
+    "src": "https://images.unsplash.com/photo-1763745315951-7daac4821af6?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 2312,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#e8e8d8"
+  },
+  "team/priya-raman": {
+    "src": "https://images.unsplash.com/photo-1760552069633-c05f246a5d8c?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 2400,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#485858"
+  },
+  "team/tom-keller": {
+    "src": "https://images.unsplash.com/photo-1601233748618-c0d3963fd030?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 1148,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#689868"
+  },
+  "team/aisha-bello": {
+    "src": "https://images.unsplash.com/photo-1591618828412-c1a160a7fb20?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 1067,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#080808"
+  },
+  "team/leo-martins": {
+    "src": "https://images.unsplash.com/photo-1676131161005-ec2b897f1323?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 1068,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#b8a8a8"
+  },
+  "team/sofia-lind": {
+    "src": "https://images.unsplash.com/photo-1581182830442-e8bc7babbf15?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 1067,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#a8a8a8"
+  },
+  "team/kwame-asante": {
+    "src": "https://images.unsplash.com/photo-1763849049538-5ec4a2729c5d?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 2400,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#180808"
+  },
+  "team/hannah-cole": {
+    "src": "https://images.unsplash.com/photo-1631377307692-36a9b6ae3ef6?fm=jpg&q=90&w=1600&fit=max",
+    "width": 1600,
+    "height": 2400,
+    "widths": [
+      320,
+      480,
+      640
+    ],
+    "color": "#080808"
   }
 } as const
 

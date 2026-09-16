@@ -41,7 +41,7 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       '“They sat in on patient interviews before drawing a single screen. That’s why people actually open the app every morning.”',
-    name: 'Dr Priya Raman',
+    name: 'Dr Elena Novak',
     role: 'Head of Product, Orbit Health',
   },
   {
@@ -59,7 +59,7 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       '“It feels like having a senior product team in-house. Design, engineering and security reviews all move at the same pace.”',
-    name: 'Daniel Mensah',
+    name: 'Ruth Adeyemi',
     role: 'CTO, Meridian Bank',
   },
 ]

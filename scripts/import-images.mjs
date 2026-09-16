@@ -39,6 +39,24 @@ const IMAGES = {
   'work/kinetic-labs': { src: 'generated-1789578363583.png' },
   'work/atlas-freight': { src: 'generated-1789579203190.png' },
   'people/amara-okafor': { src: unsplash('photo-1784926119174-1b471595aa5a'), widths: [96, 144, 216] },
+  'studio/monday-planning': { src: 'generated-1789579395826.png' },
+  ...team({
+    'daniel-mensah': 'photo-1763745315951-7daac4821af6',
+    'priya-raman': 'photo-1760552069633-c05f246a5d8c',
+    'tom-keller': 'photo-1601233748618-c0d3963fd030',
+    'aisha-bello': 'photo-1591618828412-c1a160a7fb20',
+    'leo-martins': 'photo-1676131161005-ec2b897f1323',
+    'sofia-lind': 'photo-1581182830442-e8bc7babbf15',
+    'kwame-asante': 'photo-1763849049538-5ec4a2729c5d',
+    'hannah-cole': 'photo-1631377307692-36a9b6ae3ef6',
+  }),
+}
+
+/** Studio team portraits: about 300px wide on desktop, 170px on mobile. */
+function team(people) {
+  return Object.fromEntries(
+    Object.entries(people).map(([slug, id]) => [`team/${slug}`, { src: unsplash(id), widths: [320, 480, 640] }]),
+  )
 }
 
 const DEFAULT_WIDTHS = [640, 1024, 1408]
