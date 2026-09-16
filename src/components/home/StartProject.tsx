@@ -5,7 +5,7 @@ import { ButtonLink } from '@/components/ui/Button'
 import { Chip } from '@/components/ui/Chip'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
-import { briefHref, quickBudgets, quickNeeds } from '@/content/brief'
+import { briefHref, budgets, quickNeeds, type BudgetId } from '@/content/brief'
 import { EMAIL_CAREERS, EMAIL_NEW_BUSINESS, mailto, STUDIO_HOURS } from '@/content/site'
 
 /*
@@ -61,7 +61,8 @@ export function StartProject() {
 function BriefBuilder() {
   // Starts with the selection shown in the design.
   const [selected, setSelected] = useState<string[]>(['Software', 'Website / e-commerce'])
-  const [budget, setBudget] = useState<string | null>('£40–100k')
+  // The design showed £40–100k; the nearest band on the shared scale is £50–100k.
+  const [budget, setBudget] = useState<BudgetId | null>('50-100k')
   const needsId = useId()
   const budgetId = useId()
 
@@ -90,11 +91,11 @@ function BriefBuilder() {
           Budget
         </Eyebrow>
         <div role="group" aria-labelledby={budgetId} className="flex flex-wrap gap-2.5">
-          {quickBudgets.map((label) => (
+          {budgets.map(({ id, label }) => (
             <Chip
-              key={label}
-              selected={budget === label}
-              onToggle={() => setBudget((current) => (current === label ? null : label))}
+              key={id}
+              selected={budget === id}
+              onToggle={() => setBudget((current) => (current === id ? null : id))}
             >
               {label}
             </Chip>

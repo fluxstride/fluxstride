@@ -48,15 +48,10 @@ export const quickNeeds: { label: string; needs: NeedId[] }[] = [
   { label: 'Consultancy', needs: ['consultancy'] },
 ]
 
-/**
- * Home's budget chips, as drawn. NOTE: these bands differ from the Contact form's
- * (the design uses two sets), so the chosen band is passed along as text for the
- * form to show rather than being mapped onto one of its options.
- */
-export const quickBudgets = ['< £15k', '£15–40k', '£40–100k', '£100k+']
+export type BudgetId = (typeof budgets)[number]['id']
 
-/** Link to the Contact form with the quick builder's choices filled in. */
-export function briefHref(selectedNeeds: string[], budget: string | null) {
+/** Link to the Contact form with the quick builder's choices filled in. Home uses the form's own budget bands. */
+export function briefHref(selectedNeeds: string[], budget: BudgetId | null) {
   const params = new URLSearchParams()
   const ids = quickNeeds
     .filter((option) => selectedNeeds.includes(option.label))
