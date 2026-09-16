@@ -1,4 +1,5 @@
 import { BRAND, EMAIL_NEW_BUSINESS, LEGAL_NAME, socialLinks, X_HANDLE } from '@/content/site'
+import { faqs } from '@/content/process'
 import { services } from '@/content/services'
 
 /**
@@ -278,11 +279,25 @@ function breadcrumbs(page: PageSeo) {
   }
 }
 
+/** The Process page FAQ. Built from the same list the page renders, so the answers always match what is visible. */
+function faqPage() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  }
+}
+
 /** JSON-LD blocks for one route. */
 export function structuredData(path: string): object[] {
   const page = pageFor(path)
   if (page.noindex) return []
   if (page.path === '/') return [organisation(), website()]
+  if (page.path === '/process') return [breadcrumbs(page), faqPage()]
   return [breadcrumbs(page)]
 }
 

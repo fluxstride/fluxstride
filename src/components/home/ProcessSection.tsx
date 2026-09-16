@@ -86,7 +86,7 @@ function Step({ step, current, className }: { step: ProcessStep; current: boolea
             <span className="font-mono text-label-sm text-stone uppercase">{step.duration}</span>
           </div>
           <h3 className="text-title-lg leading-[1.2]">{step.title}</h3>
-          <p className="text-body text-stone">{step.description}</p>
+          <p className="text-body text-stone">{step.summary}</p>
           <ul className="flex flex-col gap-2 border-t border-line pt-4">
             {step.deliverables.map((deliverable) => (
               <li
