@@ -5,3 +5,4 @@ brand-assets
 pnpm-lock.yaml
 public
 .screenshots
+src/content/images.generated.ts
