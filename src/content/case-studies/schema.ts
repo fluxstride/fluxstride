@@ -1,0 +1,320 @@
+import type { LucideIcon } from 'lucide-react'
+import type { ImageName } from '@/content/images.generated'
+
+/**
+ * The shape of a case study page (/work/<slug>).
+ *
+ * Every case study is plain data: the page components read it and never need
+ * editing for a new project. Start from a template instead of an empty file:
+ *
+ *   pnpm new:case-study <service> <slug>
+ *
+ * See docs/case-studies.md for the full workflow.
+ *
+ * Placeholders: anything written as [Like this], and any image left as null,
+ * counts as unfinished. Drafts show them in a banner in development; a
+ * published case study with placeholders fails the build.
+ */
+
+/** A heading with the one serif italic phrase: ['A portal customers', 'actually use.'] */
+export type SplitTitle = readonly [plain: string, accent: string]
+
+/** One of the nine services on /services, matching `slug` in content/services.ts. */
+export type ServiceSlug =
+  | 'software-engineering'
+  | 'website-design-development'
+  | 'mobile-app-development'
+  | 'e-commerce'
+  | 'ui-ux-design'
+  | 'graphic-design'
+  | 'seo'
+  | 'tech-consultancy'
+  | 'website-maintenance'
+
+/**
+ * An image from content/images.generated.ts. Leave `image` as null while you wait
+ * for the real asset: the page shows a grey slot with the `brief` in it instead.
+ */
+export type Media = {
+  image: ImageName | null
+  /** Describe what the image shows. Required, even for screenshots. */
+  alt: string
+  /** What the image should be, e.g. "Product screenshot · desktop 2560×1200". Shown in the empty slot. */
+  brief: string
+  /**
+   * Width / height, e.g. 16 / 9. Only needed while `image` is null; a real image
+   * keeps its own proportions so screenshots are never cropped.
+   */
+  aspect?: number
+}
+
+/**
+ * How media is framed.
+ * browser: a desktop screenshot in a browser chrome. It stays a scaled-down desktop
+ *          screenshot on phones; never swap in a mobile layout.
+ * phone:   an app screen in a device outline.
+ * plain:   photography and artwork, no frame.
+ */
+export type MediaFrame = 'browser' | 'phone' | 'plain'
+
+export type Stat = {
+  /** "+212%", "4.8★", "£2.4m" */
+  value: string
+  label: string
+  /** Baseline or timeframe, e.g. "Was 11" or "May 2025 → Apr 2026" */
+  detail?: string
+}
+
+export type Feature = { icon: LucideIcon; title: string; body: string }
+
+/** Section background. Alternate: two ink sections should never touch. */
+export type SectionTone = 'paper' | 'ink'
+
+type SectionBase = {
+  /** Mono label after the section number, e.g. "Process" → "03 — Process" */
+  label: string
+  title: SplitTitle
+  /** Short paragraph beside the heading. */
+  intro?: string
+  tone?: SectionTone
+  /** A row of figures closing the section. */
+  stats?: Stat[]
+}
+
+/** One screenshot or image, optionally followed by three features. */
+export type ScreenshotSection = SectionBase & {
+  kind: 'screenshot'
+  media: Media
+  frame: MediaFrame
+  features?: Feature[]
+}
+
+/** A grid of images: page templates, app screens, components, deliverables, applications. */
+export type GallerySection = SectionBase & {
+  kind: 'gallery'
+  frame: MediaFrame
+  /** Columns on desktop. Phones show two (one for 'plain' galleries of 1–2 items). */
+  columns: 2 | 3 | 4
+  items: { media: Media; caption?: string; meta?: string }[]
+}
+
+type Comparison = { label: string; media: Media; metrics: Stat[] }
+
+/** The same page before and after, with metrics under each. */
+export type BeforeAfterSection = SectionBase & {
+  kind: 'before-after'
+  frame: MediaFrame
+  before: Comparison
+  after: Comparison
+}
+
+/** Numbered steps: project phases, or a user journey. */
+export type StepsSection = SectionBase & {
+  kind: 'steps'
+  variant: 'phases' | 'journey'
+  steps: { title: string; body: string; /** "4 weeks" or "92% complete this step" */ meta?: string }[]
+}
+
+export type FeaturesSection = SectionBase & { kind: 'features'; features: Feature[] }
+
+export type Card = {
+  eyebrow?: string
+  title: string
+  body?: string
+  /** A quote set in the serif, e.g. what a research participant said. */
+  quote?: string
+  /** Label/value rows, e.g. [['Cost', '£120k'], ['Time', '4 months']] */
+  facts?: [label: string, value: string][]
+  pros?: string[]
+  cons?: string[]
+  /** Small chips, e.g. the tech in an architecture layer. */
+  chips?: string[]
+  /** Outline the card and show this badge, e.g. "Recommended". */
+  highlight?: string
+}
+
+/** Cards: research insights, options, architecture layers, service levels. */
+export type CardsSection = SectionBase & { kind: 'cards'; columns: 2 | 3; cards: Card[] }
+
+/** App store rating with review cards. */
+export type ReviewsSection = SectionBase & {
+  kind: 'reviews'
+  rating: string
+  ratingLabel: string
+  reviews: { quote: string; author: string }[]
+}
+
+/** Lighthouse-style score rings, with optional before/after vitals. */
+export type ScoresSection = SectionBase & {
+  kind: 'scores'
+  scores: { value: string; label: string }[]
+  vitals?: { name: string; before: string; after: string }[]
+}
+
+/** Horizontal before/after bars: funnels, task success, share of voice. `value` is 0–100. */
+export type BarsSection = SectionBase & {
+  kind: 'bars'
+  legend: [before: string, after: string]
+  rows: {
+    label: string
+    before: { value: number; display: string }
+    after: { value: number; display: string }
+    /** Draw this row in Flux blue, e.g. the client among competitors. */
+    highlight?: boolean
+  }[]
+  source?: string
+}
+
+/** A column chart over time: traffic, revenue, uptime. Values are relative; the tallest fills the chart. */
+export type ChartSection = SectionBase & {
+  kind: 'chart'
+  kpi: Stat
+  legend?: [before: string, after: string]
+  points: { label: string; value: number }[]
+  /** Index of the first "after" point, marked with `markerLabel` (e.g. "Launch"). */
+  changeAt?: number
+  markerLabel?: string
+  source?: string
+}
+
+export type TableCell =
+  | string
+  | { tag: string; tone?: 'flux' | 'risk' }
+  /** Filled dots out of five. */
+  | { rating: number }
+
+/** Rankings, audit scorecards, support logs. Rows stack into cards on phones. */
+export type TableSection = SectionBase & {
+  kind: 'table'
+  columns: {
+    key: string
+    label: string
+    /** fill takes the remaining width. Defaults to 'md'. */
+    width?: 'sm' | 'md' | 'fill'
+    emphasis?: 'strong' | 'muted'
+  }[]
+  rows: Record<string, TableCell>[]
+  source?: string
+}
+
+/** Ticked items: technical fixes, what a care plan includes. */
+export type ChecklistSection = SectionBase & {
+  kind: 'checklist'
+  columns: 1 | 2
+  items: { title: string; body?: string; tag?: string }[]
+}
+
+/** Now / Next / Later. */
+export type RoadmapSection = SectionBase & {
+  kind: 'roadmap'
+  horizons: { name: string; when: string; items: { title: string; meta: string }[] }[]
+}
+
+/** A key task as steps, before and after. */
+export type FlowSection = SectionBase & {
+  kind: 'flow'
+  before: { label: string; steps: string[] }
+  after: { label: string; steps: string[] }
+}
+
+/** SEO topic clusters: a pillar page and its supporting articles. */
+export type ClustersSection = SectionBase & {
+  kind: 'clusters'
+  clusters: {
+    pillar: string
+    rank: string
+    visits: string
+    articles: { title: string; rank: string; visits: string }[]
+  }[]
+}
+
+export type PaletteSection = SectionBase & {
+  kind: 'palette'
+  colours: { name: string; hex: string; rgb: string; cmyk: string }[]
+}
+
+export type TypographySection = SectionBase & {
+  kind: 'typography'
+  specimens: { role: string; typeface: string; sample: string; style: 'serif' | 'sans' }[]
+}
+
+export type CaseStudySection =
+  | ScreenshotSection
+  | GallerySection
+  | BeforeAfterSection
+  | StepsSection
+  | FeaturesSection
+  | CardsSection
+  | ReviewsSection
+  | ScoresSection
+  | BarsSection
+  | ChartSection
+  | TableSection
+  | ChecklistSection
+  | RoadmapSection
+  | FlowSection
+  | ClustersSection
+  | PaletteSection
+  | TypographySection
+
+export type StoryBlock = {
+  /** The point in one line. */
+  title: string
+  paragraphs: string[]
+  /** Up to three short bullets. */
+  points?: string[]
+}
+
+export type CaseStudy = {
+  /** URL: /work/<slug>. Lowercase, hyphenated. */
+  slug: string
+  /**
+   * draft:     visible in development only, never prerendered or listed in the sitemap.
+   * published: prerendered; the build fails if any placeholder is left.
+   */
+  status: 'draft' | 'published'
+  service: ServiceSlug
+  client: string
+  industry: string
+  year: number
+
+  seo: {
+    /** ~50–60 characters, e.g. "Northwind: a customer portal for 12,000 finance teams" */
+    title: string
+    /** ~140–160 characters, leading with the result. */
+    description: string
+  }
+
+  hero: {
+    title: SplitTitle
+    intro: string
+    /** Six label/value pairs. */
+    facts: [label: string, value: string][]
+    media: Media
+    frame: MediaFrame
+  }
+
+  results: {
+    /** "First 12 months" */
+    timeframe: string
+    /** One sentence on the business impact. */
+    summary: string
+    stats: [Stat, Stat, Stat, Stat]
+  }
+
+  challenge: StoryBlock
+  approach: StoryBlock
+
+  /** The service-specific middle of the page. Numbered from 03. */
+  sections: CaseStudySection[]
+
+  quote?: { text: string; name: string; role: string; initials: string }
+
+  credits: { services: string[]; team: string[]; tools: string[] }
+
+  /** Slug of the case study linked at the bottom. Defaults to the next published one. */
+  next?: string
+}
+
+/** Identity helper that type-checks a case study and keeps literal types. */
+export const defineCaseStudy = (study: CaseStudy) => study
