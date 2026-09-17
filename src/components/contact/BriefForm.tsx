@@ -1,7 +1,7 @@
 import { Paperclip, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Children, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react'
-import { useLocation } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { Reveal } from '@/components/motion/Reveal'
 import { Button } from '@/components/ui/Button'
 import { Chip } from '@/components/ui/Chip'
@@ -285,7 +285,11 @@ export function BriefForm() {
 
             <div className="flex flex-col gap-5 border-t border-line pt-6.75 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
               <p className="text-[13px]/[1.5] text-stone lg:w-75">
-                We&apos;ll only use your details to reply to this enquiry. See our privacy policy.
+                We&apos;ll only use your details to reply to this enquiry. See our{' '}
+                <Link to="/privacy" className="underline underline-offset-4 transition-colors hover:text-ink">
+                  privacy policy
+                </Link>
+                .
               </p>
               <Button
                 type="submit"

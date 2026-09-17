@@ -1,6 +1,7 @@
 import { ArrowUp } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import type { ReactNode } from 'react'
+import { Link } from 'react-router'
 import { Reveal } from '@/components/motion/Reveal'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { Logo } from '@/components/ui/Logo'
@@ -9,6 +10,7 @@ import { Eyebrow } from '@/components/ui/Typography'
 import { services } from '@/content/services'
 import { LEGAL_NAME, socialLinks, studioLinks } from '@/content/site'
 import { cn } from '@/lib/cn'
+import { openCookieSettings } from '@/lib/consent'
 import { newsletterMessages, useNewsletter } from '@/lib/useNewsletter'
 import { EASE_OUT } from '@/lib/motion'
 
@@ -21,7 +23,7 @@ import { EASE_OUT } from '@/lib/motion'
  */
 export function Footer() {
   return (
-    <footer className="bg-ink text-paper">
+    <footer className="bg-ink text-paper print:hidden">
       <div className="container-page flex flex-col gap-10 lg:gap-16">
         <div className="flex flex-col gap-10 border-t border-line-dark pt-12 lg:flex-row lg:pt-14">
           <Newsletter />
@@ -55,12 +57,38 @@ export function Footer() {
         <GiantLockup />
 
         <div className="flex flex-col gap-2.5 border-t border-line-dark pt-5 pb-7 font-mono text-label-sm text-stone-light uppercase lg:flex-row lg:justify-between lg:text-label">
-          <p>
-            © {new Date().getFullYear()} {LEGAL_NAME}
-          </p>
+          {/* Mobile: Cookie settings shares the copyright row, so the legal row still fits. */}
           <div className="flex justify-between lg:contents">
-            {/* TODO: link these once the legal pages exist. */}
-            <p>Privacy · Terms · Cookies</p>
+            <p>
+              © {new Date().getFullYear()} {LEGAL_NAME}
+            </p>
+            <CookieSettingsButton className="lg:hidden" />
+          </div>
+          <div className="flex justify-between lg:contents">
+            <nav aria-label="Legal">
+              <ul className="flex">
+                {legalLinks.map((link, i) => (
+                  <li key={link.to}>
+                    {i > 0 ? (
+                      <span aria-hidden="true" className="whitespace-pre">
+                        {' '}
+                        ·{' '}
+                      </span>
+                    ) : null}
+                    <Link to={link.to} className="transition-colors hover:text-paper">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li className="max-lg:hidden">
+                  <span aria-hidden="true" className="whitespace-pre">
+                    {' '}
+                    ·{' '}
+                  </span>
+                  <CookieSettingsButton />
+                </li>
+              </ul>
+            </nav>
             <BackToTop />
           </div>
         </div>
@@ -167,6 +195,25 @@ function GiantLockup() {
     <Reveal y={40} className="@container">
       <Logo tone="paper" className="w-full text-[18.57cqw] leading-none lg:text-[18.98cqw]" />
     </Reveal>
+  )
+}
+
+const legalLinks = [
+  { to: '/privacy', label: 'Privacy' },
+  { to: '/terms', label: 'Terms' },
+  { to: '/cookies', label: 'Cookies' },
+]
+
+/** Withdrawing consent must be as easy as giving it, so Cookie settings is on every page. */
+function CookieSettingsButton({ className }: { className?: string }) {
+  return (
+    <button
+      type="button"
+      onClick={openCookieSettings}
+      className={cn('uppercase transition-colors hover:text-paper', className)}
+    >
+      Cookie settings
+    </button>
   )
 }
 
