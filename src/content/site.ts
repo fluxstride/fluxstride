@@ -11,6 +11,10 @@ export const LEGAL_NAME = 'Fluxstride Ltd'
 
 export const EMAIL_NEW_BUSINESS = 'hello@fluxstride.com'
 export const EMAIL_CAREERS = 'jobs@fluxstride.com'
+/** Used by the legal pages. */
+export const EMAIL_PRIVACY = 'privacy@fluxstride.com'
+export const EMAIL_LEGAL = 'legal@fluxstride.com'
+export const EMAIL_ACCOUNTS = 'accounts@fluxstride.com'
 
 /**
  * "Book a 20-min intro call". PLACEHOLDER: set VITE_INTRO_CALL_URL to the booking page
