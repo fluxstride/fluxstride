@@ -13,12 +13,14 @@ export type { CaseStudy, CaseStudySection, ServiceSlug } from './schema'
 export { defineCaseStudy } from './schema'
 export { findPlaceholders } from './placeholders'
 
-type StudyModule = { default: CaseStudy }
+/** `null` in production builds for drafts and templates (see vite.config.ts). */
+type StudyModule = { default: CaseStudy | null }
 
 const byYear = (a: CaseStudy, b: CaseStudy) => b.year - a.year
 
 const studies = Object.values(import.meta.glob<StudyModule>('./studies/*.ts', { eager: true }))
   .map((module) => module.default)
+  .filter((study): study is CaseStudy => study !== null)
   .sort(byYear)
 
 const seen = new Set<string>()
@@ -54,13 +56,12 @@ const templateModules = import.meta.glob<StudyModule>('./templates/*.ts', { eage
 
 /** Starter templates keyed by service. File names must match the service slug. */
 export const templates = Object.fromEntries(
-  Object.entries(templateModules).map(([file, module]) => {
+  Object.entries(templateModules).flatMap(([file, { default: template }]) => {
+    if (!template) return []
     const service = file.replace(/^.*\/(.+)\.ts$/, '$1') as ServiceSlug
-    if (module.default.service !== service) {
-      throw new Error(
-        `${file} declares service "${module.default.service}"; rename the file or fix the field`,
-      )
+    if (template.service !== service) {
+      throw new Error(`${file} declares service "${template.service}"; rename the file or fix the field`)
     }
-    return [service, module.default]
+    return [[service, template] as const]
   }),
 ) as Partial<Record<ServiceSlug, CaseStudy>>
