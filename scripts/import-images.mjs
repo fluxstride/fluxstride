@@ -25,6 +25,9 @@ const outDir = join(root, 'public', 'images')
 const manifestPath = join(root, 'src', 'content', 'images.generated.ts')
 const force = process.argv.includes('--force')
 
+/** Full-width product screenshots: sharp on 2x screens at the 1280px container. */
+const SCREENSHOT_WIDTHS = [640, 1024, 1600, 2560]
+
 const unsplash = (id) => `https://images.unsplash.com/${id}?fm=jpg&q=90&w=1600&fit=max`
 
 /**
@@ -47,6 +50,12 @@ const IMAGES = {
   'insights/technical-seo-javascript': { src: 'generated-1789579525110.png', widths: [480, 800] },
   'insights/build-buy-or-integrate': { src: 'generated-1789579529376.png', widths: [480, 800] },
   'insights/website-packages': { src: 'generated-1789579530858.png', widths: [480, 800] },
+  // Case studies (src/content/case-studies/studies). Hero photos double as the "Next project"
+  // cover. Screenshots are exported from the design at 2x without their browser chrome,
+  // which the page draws itself.
+  'case-studies/northwind-hero': { src: 'generated-1789579203190.png' },
+  'case-studies/northwind-dashboard': { src: 'cs-northwind-dashboard.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/orbit-health-hero': { src: 'generated-1789577326370.png' },
   ...team({
     'daniel-mensah': 'photo-1763745315951-7daac4821af6',
     'priya-raman': 'photo-1760552069633-c05f246a5d8c',

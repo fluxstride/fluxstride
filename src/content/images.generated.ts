@@ -148,6 +148,40 @@ export const images = {
     ],
     "color": "#b8c8c8"
   },
+  "case-studies/northwind-hero": {
+    "src": "generated-1789579203190.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#081838"
+  },
+  "case-studies/northwind-dashboard": {
+    "src": "cs-northwind-dashboard.png",
+    "width": 2560,
+    "height": 1106,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/orbit-health-hero": {
+    "src": "generated-1789577326370.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#e8e8d8"
+  },
   "team/daniel-mensah": {
     "src": "https://images.unsplash.com/photo-1763745315951-7daac4821af6?fm=jpg&q=90&w=1600&fit=max",
     "width": 1600,
