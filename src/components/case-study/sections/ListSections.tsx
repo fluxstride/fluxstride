@@ -12,7 +12,7 @@ import type {
   StepsSection,
 } from '@/content/case-studies/schema'
 import { cn } from '@/lib/cn'
-import { CheckIcon, FeatureGrid, Tag } from '../parts'
+import { FeatureGrid } from '../parts'
 import { tone } from '../tone'
 
 type Props<T> = { section: T; dark: boolean }
@@ -168,30 +168,113 @@ export function Architecture({ section, dark }: Props<ArchitectureSection>) {
 
 export function Checklist({ section, dark }: Props<ChecklistSection>) {
   const t = tone(dark)
-  return (
+  const list = (
     <Reveal
       as="ul"
       stagger={0.05}
-      className={cn('grid', section.columns === 2 && 'lg:grid-cols-2 lg:gap-x-10')}
+      className={cn('grid lg:flex-1', section.columns === 2 && 'lg:grid-cols-2 lg:gap-x-10')}
     >
       {section.items.map((item) => (
-        <li key={item.title} className={cn('flex gap-3.5 border-t py-4 lg:py-5', t.border)}>
-          <CheckIcon dark={dark} />
-          <div className="flex flex-1 flex-col gap-1.5 lg:flex-row lg:items-start lg:gap-6">
-            <div className="flex flex-1 flex-col gap-1">
-              <p className={cn('text-base/[1.35] lg:text-lg/[1.35]', item.body && 'font-semibold')}>
+        // The rule sits inside the design's padding (16px, 22px on desktop).
+        <li
+          key={item.title}
+          className={cn('flex gap-3 border-t pt-3.75 pb-4 lg:gap-4 lg:pt-5.25 lg:pb-5.5', t.border)}
+        >
+          <Check aria-hidden="true" className={cn('size-4.5 shrink-0 lg:size-5', t.accent)} strokeWidth={2} />
+          <div className="flex flex-1 flex-col gap-1.5 lg:flex-row lg:items-start lg:gap-4">
+            <div className="flex flex-1 flex-col gap-1.5 lg:gap-1">
+              <p className={cn('text-base/[21px] lg:text-[19px]/[25px]', item.body && 'font-semibold')}>
                 {item.title}
               </p>
-              {item.body ? <p className={cn('text-body', t.muted)}>{item.body}</p> : null}
+              {item.body ? (
+                <p className={cn('text-sm/[21px] lg:text-[15px]/[23px]', t.muted)}>{item.body}</p>
+              ) : null}
             </div>
             {item.tag ? (
-              <span className="self-start">
-                <Tag dark={dark}>{item.tag}</Tag>
+              <span
+                className={cn(
+                  'self-start rounded-full border px-2.5 py-1 font-mono text-[10px]/[13px] uppercase',
+                  dark ? 'border-flux-light/50 text-flux-light' : 'border-flux/50 text-flux',
+                )}
+              >
+                {item.tag}
               </span>
             ) : null}
           </div>
         </li>
       ))}
+    </Reveal>
+  )
+
+  if (!section.panel) return list
+  return (
+    <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+      {list}
+      <ResultsPanel panel={section.panel} dark={dark} />
+    </div>
+  )
+}
+
+/*
+ * Design: Case Study — SEO & Growth, "05 — Technical SEO". A 440px outlined panel: each
+ * metric with a green verdict, its value (40px, 32px on phones) beside the old one and a
+ * 4px bar, then two figures split by a hairline.
+ */
+function ResultsPanel({ panel, dark }: { panel: NonNullable<ChecklistSection['panel']>; dark: boolean }) {
+  const t = tone(dark)
+  return (
+    <Reveal
+      className={cn('flex flex-col gap-5.5 border p-4.75 lg:w-110 lg:shrink-0 lg:gap-7 lg:p-7.75', t.border)}
+    >
+      <Label className={cn('text-[10px]/[15px]', t.muted)}>{panel.label}</Label>
+      <dl className="flex flex-col gap-5.5 lg:gap-7">
+        {panel.metrics.map((metric) => (
+          <div key={metric.name} className="flex flex-col gap-2.5">
+            <dt className="flex items-center justify-between gap-3">
+              <span className="text-sm/[17px] font-medium lg:text-[15px]/[18px]">{metric.name}</span>
+              {metric.status ? (
+                // Green reads clearly on ink; the design only uses this panel on dark bands.
+                <span
+                  className={cn(
+                    'font-mono text-[10px]/[13px] uppercase',
+                    dark ? 'text-[#34d399]' : 'text-[#047857]',
+                  )}
+                >
+                  {metric.status}
+                </span>
+              ) : null}
+            </dt>
+            <dd className="flex flex-col gap-2.5">
+              <p className="flex items-end gap-2.5">
+                <span className="text-[2rem]/[1] font-semibold tracking-[-0.04em] lg:text-[2.5rem]/[1]">
+                  {metric.value}
+                </span>
+                <span className={cn('text-sm/[17px]', t.muted)}>was {metric.before}</span>
+              </p>
+              <span aria-hidden="true" className={cn('flex h-1', t.quiet)}>
+                <span
+                  className={t.accentBg}
+                  style={{ width: `${Math.min(100, Math.max(0, metric.score))}%` }}
+                />
+              </span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      {panel.stats?.length ? (
+        <dl className={cn('grid grid-cols-2 border-t', t.border)}>
+          {panel.stats.map(([value, label], i) => (
+            // The rule sits inside the design's 18px padding.
+            <div
+              key={label}
+              className={cn('flex flex-col gap-1 pt-4.25', i > 0 && cn('border-l pl-4.5', t.border))}
+            >
+              <dt className={cn('order-2 font-mono text-[9px]/[12px] uppercase', t.muted)}>{label}</dt>
+              <dd className="order-1 text-[1.75rem]/[34px] font-semibold lg:text-[2rem]/[39px]">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : null}
     </Reveal>
   )
 }

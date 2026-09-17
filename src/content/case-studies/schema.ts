@@ -227,6 +227,13 @@ export type ScoresSection = SectionBase & {
  */
 export type BarsSection = SectionBase & {
   kind: 'bars'
+  /**
+   * funnel:  a legend, then thick paired bars beside each stage (Halden Coffee's conversion)
+   * compare: thin paired bars labelled "2025 · 6%", no legend; the `highlight` row is the
+   *          client in Flux blue, the rest grey (Atlas Freight's share of voice)
+   */
+  style?: 'funnel' | 'compare'
+  /** Names for the two bars, e.g. ['Before', 'After'] or ['2025', '2026']. */
   legend: [before: string, after: string]
   rows: {
     label: string
@@ -253,7 +260,15 @@ export type ChartSection = SectionBase & {
    * `display` is what screen readers hear for the point, e.g. "71,900 sessions".
    * `stack` sits on top of `value`, e.g. subscription revenue over one-off orders.
    */
-  points: { label: string; value: number; stack?: number; display?: string }[]
+  points: {
+    /** Month or period. Phones show only its first letter. */
+    label: string
+    value: number
+    stack?: number
+    display?: string
+    /** A figure over the column on desktop, e.g. "71.9K" on the latest month. */
+    callout?: string
+  }[]
   /** Legend label for the `stack` segment, e.g. "Subscriptions". */
   stackLabel?: string
   /** Index of the first "after" point, marked with `markerLabel` (e.g. "Launch"). */
@@ -287,6 +302,41 @@ export type ChecklistSection = SectionBase & {
   kind: 'checklist'
   columns: 1 | 2
   items: { title: string; body?: string; tag?: string }[]
+  /**
+   * A panel of measured results beside the list (Atlas Freight's Core Web Vitals): each
+   * metric with its old value and a bar, then two figures underneath. One column only.
+   */
+  panel?: {
+    label: string
+    metrics: {
+      name: string
+      value: string
+      /** The old value, shown as "was 4.8s". */
+      before: string
+      /** e.g. "Good", in green. */
+      status?: string
+      /** How full the bar is, 0–100. */
+      score: number
+    }[]
+    stats?: [value: string, label: string][]
+  }
+}
+
+/** Keyword rankings: a table on desktop, one card per keyword on phones (Atlas Freight). */
+export type RankingsSection = SectionBase & {
+  kind: 'rankings'
+  rows: {
+    keyword: string
+    /** Monthly searches, e.g. "12,100". */
+    volume: string
+    /** Position before, e.g. "38" or ">100". */
+    before: string
+    /** Position now, e.g. "#3". */
+    after: string
+    /** e.g. "+35 places". A leading minus turns the arrow down. */
+    change: string
+  }[]
+  source?: string
 }
 
 /** Now / Next / Later. */
@@ -403,6 +453,7 @@ export type CaseStudySection =
   | ChartSection
   | TableSection
   | ChecklistSection
+  | RankingsSection
   | RoadmapSection
   | FlowSection
   | ClustersSection

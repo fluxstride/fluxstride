@@ -77,11 +77,13 @@ export default defineCaseStudy({
       title: ['[How much', 'traffic grew.]'],
       intro: '[Monthly organic sessions and what drove the growth.]',
       kpi: { value: '[00,000]', label: 'Organic sessions / month', detail: '[+000%]' },
-      legend: ['Before', 'After'],
-      points: [26, 27, 25, 28, 31, 38, 47, 50, 62, 74, 87, 100].map((value) => ({
+      legend: ['Old site', 'New site'],
+      points: [26, 27, 25, 28, 31, 38, 47, 50, 62, 74, 87, 100].map((value, i) => ({
         label: '[Mon]',
         value,
         display: '[0,000] sessions',
+        // The latest month's figure, shown over its column on desktop.
+        callout: i === 11 ? '[00.0K]' : undefined,
       })),
       changeAt: 4,
       markerLabel: 'Start',
@@ -90,27 +92,21 @@ export default defineCaseStudy({
     // RANKINGS: five to eight keywords with buying intent. Same country and device before
     // and after; name the source tool.
     {
-      kind: 'table',
+      kind: 'rankings',
       label: 'Rankings',
       title: ['[The keywords', 'that bring leads.]'],
       intro: '[Commercial terms that now rank, not vanity keywords.]',
-      columns: [
-        { key: 'keyword', label: 'Keyword', width: 'fill', emphasis: 'strong' },
-        { key: 'volume', label: 'Searches / month', emphasis: 'muted' },
-        { key: 'before', label: 'Before', width: 'sm', emphasis: 'muted' },
-        { key: 'after', label: 'After', width: 'sm' },
-        { key: 'change', label: 'Change', width: 'sm' },
-      ],
-      rows: [1, 2, 3, 4, 5].map(() => ({
+      rows: [1, 2, 3, 4, 5, 6].map(() => ({
         keyword: '[keyword phrase]',
         volume: '[0,000]',
         before: '[00]',
-        after: { tag: '#[0]' },
+        after: '#[0]',
         change: '[+00 places]',
       })),
       source: 'Source: [tool] · [country] · [Month Year] vs [Month Year]',
     },
     // TECHNICAL: four to six fixes, biggest impact first, each explained in one sentence.
+    // The panel shows Core Web Vitals from the Chrome UX Report (mobile, 75th percentile).
     {
       kind: 'checklist',
       tone: 'ink',
@@ -123,11 +119,24 @@ export default defineCaseStudy({
         { title: '[Fix name]', body: '[What we changed and why it mattered.]', tag: '[Medium]' },
         { title: '[Fix name]', body: '[What we changed and why it mattered.]', tag: '[Medium]' },
       ],
-      stats: [
-        { value: '[0.0s]', label: 'Largest Contentful Paint', detail: '[Was 0.0s]' },
-        { value: '[000ms]', label: 'Interaction to Next Paint', detail: '[Was 000ms]' },
-        { value: '[0.00]', label: 'Cumulative Layout Shift', detail: '[Was 0.00]' },
-      ],
+      panel: {
+        label: 'Core Web Vitals · Mobile · 75th percentile',
+        metrics: [
+          { name: 'Largest Contentful Paint', value: '[0.0s]', before: '[0.0s]', status: 'Good', score: 80 },
+          {
+            name: 'Interaction to Next Paint',
+            value: '[000ms]',
+            before: '[000ms]',
+            status: 'Good',
+            score: 80,
+          },
+          { name: 'Cumulative Layout Shift', value: '[0.00]', before: '[0.00]', status: 'Good', score: 80 },
+        ],
+        stats: [
+          ['[000]', 'Lighthouse SEO'],
+          ['[0,000]', 'Clean URLs indexed'],
+        ],
+      },
     },
     // CONTENT: up to three pillar pages, each with three or four supporting articles.
     {
@@ -145,6 +154,39 @@ export default defineCaseStudy({
           visits: '[0,000]',
         })),
       })),
+      stats: [
+        { value: '[00]', label: '[articles published in 12 months]' },
+        { value: '[00%]', label: '[of organic traffic from the clusters]' },
+        { value: '[00]', label: '[featured snippets won]' },
+      ],
+    },
+    // VISIBILITY: share of voice against three or four named competitors, same keyword set
+    // both years. Highlight the client.
+    {
+      kind: 'bars',
+      style: 'compare',
+      label: 'Visibility',
+      title: ['[Share of voice,', 'up 0 times.]'],
+      intro: '[How many keywords were tracked, and where the client moved in its market.]',
+      legend: ['[2025]', '[2026]'],
+      rows: [
+        {
+          label: '[Client]',
+          highlight: true,
+          before: { value: 6, display: '[0%]' },
+          after: { value: 24, display: '[00%]' },
+        },
+        ...[1, 2, 3].map(() => ({
+          label: '[Competitor]',
+          before: { value: 18, display: '[00%]' },
+          after: { value: 15, display: '[00%]' },
+        })),
+        {
+          label: 'Everyone else',
+          before: { value: 42, display: '[00%]' },
+          after: { value: 31, display: '[00%]' },
+        },
+      ],
     },
   ],
 

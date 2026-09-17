@@ -6,7 +6,7 @@ import { cn } from '@/lib/cn'
 import { StatRow } from './parts'
 import { Cards, Reviews } from './sections/CardSections'
 import { DesignSystem, Palette, Typography } from './sections/BrandSections'
-import { Bars, Chart, Clusters, Scores, Table } from './sections/DataSections'
+import { Bars, Chart, Clusters, Rankings, Scores, Table } from './sections/DataSections'
 import { Architecture, Checklist, Features, Flow, Roadmap, Steps } from './sections/ListSections'
 import { BeforeAfter, Gallery, Screenshot } from './sections/MediaSections'
 
@@ -34,6 +34,7 @@ const renderers: Renderers = {
   chart: Chart,
   table: Table,
   checklist: Checklist,
+  rankings: Rankings,
   roadmap: Roadmap,
   flow: Flow,
   clusters: Clusters,
@@ -46,7 +47,8 @@ const renderers: Renderers = {
 /** Space between the heading and the content: 32px / 56px unless the design says otherwise. */
 function contentGap(section: CaseStudySection) {
   if (section.kind === 'features' && section.style !== 'cards') return 'gap-8 lg:gap-12'
-  if (section.kind === 'bars' || section.kind === 'flow') return 'gap-7 lg:gap-12'
+  if ((section.kind === 'bars' && section.style !== 'compare') || section.kind === 'flow')
+    return 'gap-7 lg:gap-12'
   return 'gap-8 lg:gap-14'
 }
 

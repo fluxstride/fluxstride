@@ -1,10 +1,12 @@
-import type { CSSProperties } from 'react'
+import { ArrowDown, ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
+import type { CSSProperties, ReactNode } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
   BarsSection,
   ChartSection,
   ClustersSection,
+  RankingsSection,
   ScoresSection,
   TableCell,
   TableSection,
@@ -22,6 +24,7 @@ type Props<T> = { section: T; dark: boolean }
  * Bars are decorative; the figures carry the numbers.
  */
 export function Bars({ section, dark }: Props<BarsSection>) {
+  if (section.style === 'compare') return <CompareBars section={section} dark={dark} />
   const t = tone(dark)
   const max = Math.max(...section.rows.flatMap((row) => [row.before.value, row.after.value]), 1)
   const bar = (value: number, className: string) => (
@@ -96,18 +99,25 @@ export function Chart({ section, dark }: Props<ChartSection>) {
   return (
     <Reveal
       as="figure"
-      className={cn('flex flex-col gap-6 lg:gap-10', !dark && 'border border-line bg-white p-5 lg:p-12')}
+      className={cn(
+        'flex flex-col gap-6 border p-4.75 lg:gap-10 lg:p-11.75',
+        dark ? 'border-line-dark' : 'border-line bg-white',
+      )}
     >
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
         {section.kpi ? (
           <div className="flex flex-col gap-1.5">
-            <Label className={t.muted}>{section.kpi.label}</Label>
+            <Label className={cn('text-[10px]/[13px] lg:text-label-sm/[15px]', t.muted)}>
+              {section.kpi.label}
+            </Label>
             <p className="flex items-end gap-3">
-              <span className="text-[2.5rem]/[1] font-semibold tracking-tight lg:text-[4rem]/[1]">
+              <span className="text-[2.5rem]/[1] font-semibold tracking-[-0.04em] lg:text-[4rem]/[1]">
                 {section.kpi.value}
               </span>
               {section.kpi.detail ? (
-                <Label className={cn('pb-1', t.accent)}>{section.kpi.detail}</Label>
+                <Label className={cn('text-xs/[16px] lg:text-sm/[18px]', t.accent)}>
+                  {section.kpi.detail}
+                </Label>
               ) : null}
             </p>
           </div>
@@ -115,17 +125,19 @@ export function Chart({ section, dark }: Props<ChartSection>) {
         {section.legend ? (
           <Legend
             keys={[
-              { label: section.legend[0], swatch: t.quiet },
+              { label: section.legend[0], swatch: t.baseline },
               { label: section.legend[1], swatch: t.accentBg },
             ]}
             dark={dark}
+            size="xs"
           />
         ) : null}
       </div>
 
-      <div aria-hidden="true" className="flex h-45 lg:h-90">
+      {/* Design: 385px of columns (222px on phones); the tallest reaches 96% of the plot. */}
+      <div aria-hidden="true" className="flex h-55.5 lg:h-96.25">
         {section.points.map((point, i) => (
-          <div key={point.label + i} className="flex flex-1 flex-col items-center">
+          <div key={point.label + i} className="flex flex-1 flex-col items-center gap-2.5">
             <div
               className={cn(
                 'flex w-full flex-1 flex-col items-center justify-end gap-1.5 border-b px-0.5 lg:px-3',
@@ -133,14 +145,25 @@ export function Chart({ section, dark }: Props<ChartSection>) {
               )}
             >
               {i === changeAt && section.markerLabel ? (
-                <Label className={cn('max-lg:text-[8px]', t.accent)}>{section.markerLabel}</Label>
+                <>
+                  <ArrowDown className={cn('size-3 lg:hidden', t.accent)} strokeWidth={2} />
+                  <Label className={cn('text-[10px]/[13px] max-lg:hidden', t.accent)}>
+                    {section.markerLabel}
+                  </Label>
+                </>
+              ) : null}
+              {point.callout ? (
+                <Label className="text-label-sm/[15px] max-lg:hidden">{point.callout}</Label>
               ) : null}
               <span
-                className={cn('w-full', i < changeAt ? t.quiet : t.accentBg)}
-                style={{ height: `${(point.value / max) * 85}%` }}
+                className={cn('w-full shrink-0', i < changeAt ? t.baseline : t.accentBg)}
+                style={{ height: `${(point.value / max) * 96}%` }}
               />
             </div>
-            <Label className={cn('pt-2.5 max-lg:text-[9px]', t.muted)}>{point.label}</Label>
+            <Label className={cn('text-[9px]/[12px] lg:text-label-sm/[15px]', t.muted)}>
+              <span className="lg:hidden">{point.label.slice(0, 1)}</span>
+              <span className="max-lg:hidden">{point.label}</span>
+            </Label>
           </div>
         ))}
       </div>
@@ -154,10 +177,81 @@ export function Chart({ section, dark }: Props<ChartSection>) {
 
       {section.source ? (
         <figcaption>
-          <Source dark={dark}>{section.source}</Source>
+          <SmallSource dark={dark}>{section.source}</SmallSource>
         </figcaption>
       ) : null}
     </Reveal>
+  )
+}
+
+/** Source line under Atlas Freight's charts and tables: 10px, 9px on phones. */
+function SmallSource({ children, dark }: { children: ReactNode; dark: boolean }) {
+  return (
+    <Label
+      className={cn('block text-[9px]/[1.5] lg:text-[10px]/[13px]', dark ? 'text-stone' : 'text-stone-light')}
+    >
+      {children}
+    </Label>
+  )
+}
+
+/*
+ * Design: Case Study — SEO & Growth, "07 — Visibility". One row per competitor under a
+ * hairline: 260px name beside two thin bars labelled "2025 · 6%". The highlighted row
+ * (the client) is in Flux blue, the others' new bars in grey. Name above the bars on phones.
+ */
+function CompareBars({ section, dark }: Props<BarsSection>) {
+  const t = tone(dark)
+  const max = Math.max(...section.rows.flatMap((row) => [row.before.value, row.after.value]), 1)
+  const bar = (value: number, className: string) => (
+    // The longest bar spans 78% of the track (66% on phones).
+    <span
+      aria-hidden="true"
+      className={cn('h-2 w-[calc(var(--bar)*66%)] shrink-0 lg:h-3 lg:w-[calc(var(--bar)*78%)]', className)}
+      style={{ '--bar': Math.max(0, value) / max } as CSSProperties}
+    />
+  )
+  const figure = 'font-mono text-[10px]/[13px] uppercase'
+
+  return (
+    <div className="flex flex-col gap-8 lg:gap-14">
+      <Reveal as="ul" stagger={0.06}>
+        {section.rows.map((row) => (
+          // The rule sits inside the design's padding (16px, 22px on desktop).
+          <li
+            key={row.label}
+            className={cn(
+              'flex flex-col gap-2.5 border-t pt-3.75 pb-4 lg:flex-row lg:items-center lg:gap-10 lg:pt-5.25 lg:pb-5.5',
+              t.border,
+            )}
+          >
+            <span
+              className={cn(
+                'text-base/[19px] lg:w-65 lg:shrink-0 lg:text-lg/[22px]',
+                row.highlight ? cn('font-semibold', t.accent) : 'font-medium',
+              )}
+            >
+              {row.label}
+            </span>
+            <div className="flex flex-1 flex-col gap-2">
+              <p className="flex items-center gap-2.5">
+                {bar(row.before.value, t.baseline)}
+                <span className={cn(figure, t.muted)}>
+                  {section.legend[0]} · {row.before.display}
+                </span>
+              </p>
+              <p className="flex items-center gap-2.5">
+                {bar(row.after.value, row.highlight ? t.accentBg : dark ? 'bg-stone-light' : 'bg-stone')}
+                <span className={cn(figure, row.highlight ? t.accent : t.text)}>
+                  {section.legend[1]} · {row.after.display}
+                </span>
+              </p>
+            </div>
+          </li>
+        ))}
+      </Reveal>
+      {section.source ? <SmallSource dark={dark}>{section.source}</SmallSource> : null}
+    </div>
   )
 }
 
@@ -378,23 +472,53 @@ export function Scores({ section, dark }: Props<ScoresSection>) {
   )
 }
 
-/** Pillar page cards with their supporting articles hanging off a blue line. */
+/** A position like "#3" in a Flux pill. */
+function Position({
+  children,
+  dark,
+  large = false,
+}: {
+  children: ReactNode
+  dark: boolean
+  large?: boolean
+}) {
+  return (
+    <span
+      className={cn(
+        'inline-flex shrink-0 rounded-full font-semibold',
+        large
+          ? 'px-2.5 py-1 text-[13px]/[16px] lg:px-3 lg:py-1.5 lg:text-[15px]/[18px]'
+          : 'px-2.5 py-1 text-[13px]/[16px]',
+        dark ? 'bg-ink-2 text-flux-light' : 'bg-flux-soft text-flux',
+      )}
+    >
+      {children}
+    </span>
+  )
+}
+
+/*
+ * Design: Case Study — SEO & Growth, "06 — Content". Three clusters 24px apart (stacked 40px
+ * apart on phones): a white pillar card, then its articles hanging off a Flux line.
+ */
 export function Clusters({ section, dark }: Props<ClustersSection>) {
   const t = tone(dark)
   const line = dark ? 'border-flux-light' : 'border-flux'
   return (
-    <Reveal stagger className="grid gap-10 lg:grid-cols-3 lg:gap-6">
+    <Reveal stagger className="grid items-start gap-10 lg:grid-cols-3 lg:gap-6">
       {section.clusters.map((cluster, i) => (
         <div key={cluster.pillar}>
-          <div className={cn('flex flex-col gap-3 p-5 lg:p-6', t.card)}>
-            <div className="flex items-center justify-between">
-              <Label className={t.accent}>Pillar {String(i + 1).padStart(2, '0')}</Label>
-              <Tag dark={dark}>{cluster.rank}</Tag>
+          <div className={cn('flex flex-col gap-3.5 p-4.75 lg:p-5.75', t.card)}>
+            <div className="flex items-center justify-between gap-3">
+              <Label className={cn('text-[10px]/[13px]', t.accent)}>
+                Pillar {String(i + 1).padStart(2, '0')}
+              </Label>
+              <Position dark={dark}>{cluster.rank}</Position>
             </div>
             <h3 className="text-xl/[1.2] font-semibold lg:text-[1.375rem]/[1.2]">{cluster.pillar}</h3>
             <p className="flex items-end gap-2">
               <span className="text-2xl/[1] font-semibold lg:text-[1.75rem]/[1]">{cluster.visits}</span>
-              <span className={cn('text-body-sm', t.muted)}>visits / month</span>
+              <span className={cn('text-sm/[17px]', t.muted)}>visits / month</span>
             </p>
           </div>
           <ul className={cn('ml-5 border-l pt-2 lg:ml-7', line)}>
@@ -405,8 +529,8 @@ export function Clusters({ section, dark }: Props<ClustersSection>) {
                   className={cn('h-px w-4 shrink-0', dark ? 'bg-flux-light' : 'bg-flux')}
                 />
                 <span className="flex flex-col gap-1">
-                  <span className="text-body/[1.35] font-medium">{article.title}</span>
-                  <Label className={t.muted}>
+                  <span className="text-[15px]/[1.35] font-medium">{article.title}</span>
+                  <Label className={cn('text-[10px]/[13px]', t.muted)}>
                     {article.rank} · {article.visits} visits / mo
                   </Label>
                 </span>
@@ -416,5 +540,98 @@ export function Clusters({ section, dark }: Props<ClustersSection>) {
         </div>
       ))}
     </Reveal>
+  )
+}
+
+/*
+ * Design: Case Study — SEO & Growth, "04 — Rankings". A table on desktop: mono headings,
+ * 70px rows, the new position in a Flux pill and the change with a trend arrow. On phones
+ * each keyword is a row with its searches on the left and "38 → #3" on the right.
+ */
+export function Rankings({ section, dark }: Props<RankingsSection>) {
+  const t = tone(dark)
+  const heading = cn('pb-4 font-mono text-label-sm/[15px] font-normal uppercase', t.muted)
+
+  return (
+    <div className="flex flex-col gap-8 lg:gap-14">
+      <Reveal className="max-lg:hidden">
+        <table className="w-full border-collapse text-left">
+          <thead>
+            <tr>
+              <th scope="col" className={heading}>
+                Keyword
+              </th>
+              <th scope="col" className={cn(heading, 'w-50')}>
+                Searches / month
+              </th>
+              <th scope="col" className={cn(heading, 'w-37.5')}>
+                Before
+              </th>
+              <th scope="col" className={cn(heading, 'w-37.5')}>
+                After
+              </th>
+              <th scope="col" className={cn(heading, 'w-40')}>
+                Change
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {section.rows.map((row) => {
+              const Trend = /^[−-]/.test(row.change) ? TrendingDown : TrendingUp
+              return (
+                // The rule sits inside the design's 20px padding.
+                <tr key={row.keyword} className={cn('border-t', t.border)}>
+                  <th scope="row" className="pt-4.75 pb-5 align-middle text-xl/[24px] font-medium">
+                    {row.keyword}
+                  </th>
+                  <td className={cn('pt-4.75 pb-5 align-middle text-[17px]/[21px]', t.muted)}>
+                    {row.volume}
+                  </td>
+                  <td className={cn('pt-4.75 pb-5 align-middle text-[17px]/[21px]', t.muted)}>
+                    {row.before}
+                  </td>
+                  <td className="pt-4.75 pb-5 align-middle">
+                    <Position dark={dark} large>
+                      {row.after}
+                    </Position>
+                  </td>
+                  <td className="pt-4.75 pb-5 align-middle">
+                    <span className="flex items-center gap-2 text-base/[19px] font-medium">
+                      <Trend
+                        aria-hidden="true"
+                        className={cn('size-4.5 shrink-0', t.accent)}
+                        strokeWidth={2}
+                      />
+                      {row.change}
+                    </span>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </Reveal>
+
+      <Reveal as="ul" stagger={0.05} className="lg:hidden">
+        {section.rows.map((row) => (
+          <li key={row.keyword} className={cn('flex flex-col gap-2.5 border-t pt-3.75 pb-4', t.border)}>
+            <p className="text-[17px]/[21px] font-semibold">{row.keyword}</p>
+            <div className="flex items-center justify-between gap-3">
+              <Label className={cn('text-[10px]/[13px]', t.muted)}>{row.volume} / mo</Label>
+              <p className={cn('flex items-center gap-2 text-sm/[17px]', t.muted)}>
+                <span className="sr-only">Position </span>
+                {row.before}
+                <ArrowRight aria-hidden="true" className="size-3.5" strokeWidth={2} />
+                <span className="sr-only"> now </span>
+                <Position dark={dark}>{row.after}</Position>
+                <span className="sr-only">, {row.change}</span>
+              </p>
+            </div>
+          </li>
+        ))}
+      </Reveal>
+
+      {section.source ? <SmallSource dark={dark}>{section.source}</SmallSource> : null}
+    </div>
   )
 }

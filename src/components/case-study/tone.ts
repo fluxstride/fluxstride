@@ -16,5 +16,7 @@ export function tone(dark: boolean) {
     card: dark ? 'border border-line-dark' : 'border border-line bg-white',
     /** "Before" bars and inactive dots */
     quiet: dark ? 'bg-line-dark' : 'bg-line',
+    /** "Before" bars that sit next to other greys (Atlas Freight's charts): a shade darker */
+    baseline: dark ? 'bg-line-dark' : 'bg-[#cbd3e6]',
   }
 }

@@ -36,13 +36,25 @@ export function Tag({
 }
 
 /** Figures in a row under a hairline. Closes a section when it has `stats`. */
+/*
+ * Figures in a row, each under a heavy rule: 40px value (28px on phones) over a short label.
+ * Design: Case Study — SEO & Growth, "06 — Content". Three stay in a row on phones.
+ */
 export function StatRow({ stats, dark }: { stats: Stat[]; dark: boolean }) {
   const t = tone(dark)
   return (
-    <Reveal as="dl" stagger className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:flex lg:gap-6">
+    <Reveal
+      as="dl"
+      stagger
+      className={cn(
+        'grid gap-3 lg:gap-6',
+        stats.length === 3 ? 'grid-cols-3' : 'grid-cols-2 gap-y-6 lg:grid-cols-4',
+      )}
+    >
       {stats.map((stat) => (
-        <div key={stat.label} className={cn('flex flex-col gap-1.5 border-t pt-4 lg:flex-1', t.rule)}>
-          <dt className={cn('order-2 font-mono text-label-sm uppercase', t.muted)}>{stat.label}</dt>
+        // The rule sits inside the design's 20px padding.
+        <div key={stat.label} className={cn('flex flex-col gap-1.5 border-t pt-4.75', t.rule)}>
+          <dt className={cn('order-2 text-xs/[1.4] lg:text-[15px]/[1.4]', t.muted)}>{stat.label}</dt>
           <dd className="order-1 text-[1.75rem]/[1] font-semibold tracking-tight lg:text-[2.5rem]/[1]">
             {stat.value}
           </dd>
@@ -139,8 +151,8 @@ export function Legend({
 }: {
   keys: { label: string; swatch: string; strong?: boolean }[]
   dark: boolean
-  /** md: 14px keys, 11px labels (funnels). sm: 12px keys, 10px labels (charts). */
-  size?: 'sm' | 'md'
+  /** md: 14px keys, 11px labels (funnels). sm: 12px keys, 10px labels. xs: 10px keys, 10px labels. */
+  size?: 'xs' | 'sm' | 'md'
   className?: string
 }) {
   const t = tone(dark)
@@ -150,7 +162,7 @@ export function Legend({
         <li key={key.label} className="flex items-center gap-2">
           <span
             aria-hidden="true"
-            className={cn('shrink-0', size === 'md' ? 'size-3.5' : 'size-3', key.swatch)}
+            className={cn('shrink-0', { xs: 'size-2.5', sm: 'size-3', md: 'size-3.5' }[size], key.swatch)}
           />
           <Label
             className={cn(
