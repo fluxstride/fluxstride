@@ -18,9 +18,14 @@ type StudyModule = { default: CaseStudy | null }
 
 const byYear = (a: CaseStudy, b: CaseStudy) => b.year - a.year
 
-const studies = Object.values(import.meta.glob<StudyModule>('./studies/*.ts', { eager: true }))
-  .map((module) => module.default)
-  .filter((study): study is CaseStudy => study !== null)
+const studies = Object.entries(import.meta.glob<StudyModule>('./studies/*.ts', { eager: true }))
+  .flatMap(([file, { default: study }]) => {
+    if (!study) return []
+    if (file !== `./studies/${study.slug}.ts`) {
+      throw new Error(`${file} has slug "${study.slug}"; the file name and slug must match`)
+    }
+    return [study]
+  })
   .sort(byYear)
 
 const seen = new Set<string>()
