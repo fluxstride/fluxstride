@@ -21,6 +21,7 @@
     "assets:brand": "node scripts/import-brand-assets.mjs",
     "assets:images": "node scripts/import-images.mjs",
     "assets:logos": "node scripts/build-logos.mjs",
+    "new:case-study": "node scripts/new-case-study.mjs",
     "shots": "node scripts/screenshots.mjs"
   },
   "dependencies": {

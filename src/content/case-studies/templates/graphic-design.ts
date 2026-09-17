@@ -111,9 +111,9 @@ export default defineCaseStudy({
       intro: "[The thinking behind the palette and how it's used.]",
       colours: [1, 2, 3, 4, 5].map(() => ({
         name: '[Colour name]',
-        hex: '[#000000]',
-        rgb: '[0 0 0]',
-        cmyk: '[0 0 0 0]',
+        hex: '[#RRGGBB]',
+        rgb: '[R G B]',
+        cmyk: '[C M Y K]',
       })),
     },
     // TYPE: name both typefaces and show real brand lines, not lorem ipsum.

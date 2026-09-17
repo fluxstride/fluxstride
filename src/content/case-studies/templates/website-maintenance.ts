@@ -1,3 +1,4 @@
+import { Activity, Gauge, ListChecks, ShieldCheck } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
@@ -111,7 +112,8 @@ export default defineCaseStudy({
         { value: '[0.0s]', label: 'Average load time' },
       ],
     },
-    // REPORT: one real monthly report page (remove sensitive data).
+    // REPORT: one real monthly report page (remove sensitive data), beside the four
+    // sections every report covers.
     {
       kind: 'screenshot',
       label: 'Reporting',
@@ -124,6 +126,28 @@ export default defineCaseStudy({
         brief: 'Monthly report page · 1240×1754 (A4)',
         aspect: 1240 / 1754,
       },
+      features: [
+        {
+          icon: Activity,
+          title: '[Uptime & incidents]',
+          body: '[What the report shows and why it matters to the client.]',
+        },
+        {
+          icon: ShieldCheck,
+          title: '[Security & updates]',
+          body: '[What the report shows and why it matters to the client.]',
+        },
+        {
+          icon: Gauge,
+          title: '[Performance]',
+          body: '[What the report shows and why it matters to the client.]',
+        },
+        {
+          icon: ListChecks,
+          title: '[Work completed]',
+          body: '[What the report shows and why it matters to the client.]',
+        },
+      ],
     },
     // LOG: four to six representative issues with real dates and fix times.
     {
