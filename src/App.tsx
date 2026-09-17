@@ -1,22 +1,13 @@
 import { Route, Routes } from 'react-router'
 import { Layout } from '@/components/layout/Layout'
-import { pageFor } from '@/lib/seo'
 import { Contact } from '@/pages/Contact'
 import { Home } from '@/pages/Home'
 import { Insights } from '@/pages/Insights'
+import { NotFound } from '@/pages/NotFound'
 import { Process } from '@/pages/Process'
 import { Services } from '@/pages/Services'
 import { Studio } from '@/pages/Studio'
 import { Work } from '@/pages/Work'
-
-// Temporary: each route renders its SEO title until the real page lands.
-function Stub({ path }: { path: string }) {
-  return (
-    <section className="container-page py-section">
-      <h1 className="text-heading-xl">{pageFor(path).title}</h1>
-    </section>
-  )
-}
 
 export function App() {
   return (
@@ -29,8 +20,9 @@ export function App() {
         <Route path="studio" element={<Studio />} />
         <Route path="insights" element={<Insights />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<Stub path="/404" />} />
       </Route>
+      {/* A standalone screen in the design, without the site header and footer. */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
