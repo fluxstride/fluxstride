@@ -1,6 +1,7 @@
 import { ImageReveal } from '@/components/motion/ImageReveal'
 import { Picture } from '@/components/ui/Picture'
 import { SmartLink } from '@/components/ui/SmartLink'
+import { caseStudyHref } from '@/content/case-studies'
 import type { CaseStudy } from '@/content/work'
 import { cn } from '@/lib/cn'
 
@@ -14,8 +15,9 @@ type CaseCardProps = {
   surface?: 'dark' | 'light'
   className?: string
   /**
-   * Link the card to its case study. Off on the Work page itself, where the card is
-   * the destination: it renders as an article carrying the slug as its anchor id.
+   * Link the card to its case study page (or its anchor on /work until that page exists).
+   * Off on the Work page for projects without a page: the card is the destination there,
+   * rendered as an article carrying the slug as its anchor id.
    */
   link?: boolean
   /** Extra classes for the client/services row (spacing differs between Home and Work). */
@@ -86,7 +88,7 @@ export function CaseCard({
   )
 
   return link ? (
-    <SmartLink to={`/work#${study.slug}`} className={cardClass}>
+    <SmartLink to={caseStudyHref(study.slug)} className={cardClass}>
       {content}
     </SmartLink>
   ) : (

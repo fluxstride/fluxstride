@@ -1,3 +1,4 @@
+import { serviceTitle, templates, visibleCaseStudies } from '@/content/case-studies'
 import { BRAND, EMAIL_NEW_BUSINESS, LEGAL_NAME, socialLinks, X_HANDLE } from '@/content/site'
 import { faqs } from '@/content/process'
 import { services } from '@/content/services'
@@ -44,6 +45,8 @@ export type PageSeo = {
   description: string
   /** Name used in the breadcrumb trail. Defaults to the title. */
   breadcrumb?: string
+  /** Path of the page this one sits under in the breadcrumb trail, e.g. '/work' for a case study. */
+  parent?: string
   image?: OgImage
   /** Left out of the sitemap and marked noindex. */
   noindex?: boolean
@@ -51,7 +54,7 @@ export type PageSeo = {
   priority?: number
 }
 
-export const pages: PageSeo[] = [
+const staticPages: PageSeo[] = [
   {
     path: '/',
     title: 'Fluxstride · Software Engineering & Design Studio',
@@ -114,6 +117,35 @@ export const pages: PageSeo[] = [
     priority: 0.8,
   },
 ]
+
+/**
+ * Case studies: one page per file in content/case-studies/studies. Production builds only
+ * see published ones; drafts (and the starter templates) exist in development, marked noindex.
+ */
+const caseStudyPages: PageSeo[] = [
+  ...visibleCaseStudies.map((study) => ({
+    path: `/work/${study.slug}`,
+    title: study.seo.title,
+    description: study.seo.description,
+    breadcrumb: study.client,
+    parent: '/work',
+    image: og('og-work', `${study.client} case study by Fluxstride.`),
+    noindex: study.status !== 'published',
+    priority: 0.8,
+  })),
+  ...(import.meta.env.DEV
+    ? [
+        { path: '/work/templates', title: 'Case study templates', noindex: true },
+        ...Object.values(templates).map((template) => ({
+          path: `/work/templates/${template.service}`,
+          title: `Template · ${serviceTitle(template)}`,
+          noindex: true,
+        })),
+      ].map((page) => ({ ...page, description: 'Development preview.', parent: '/work' }))
+    : []),
+]
+
+export const pages: PageSeo[] = [...staticPages, ...caseStudyPages]
 
 export const notFoundSeo: PageSeo = {
   path: '/404',
@@ -269,13 +301,16 @@ function website() {
 }
 
 function breadcrumbs(page: PageSeo) {
+  const parent = page.parent ? pages.find((candidate) => candidate.path === page.parent) : undefined
+  const trail = [
+    { name: 'Home', item: `${origin}/` },
+    ...(parent ? [{ name: parent.breadcrumb ?? parent.title, item: absolute(parent.path) }] : []),
+    { name: page.breadcrumb ?? page.title, item: absolute(page.path) },
+  ]
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
-      { '@type': 'ListItem', position: 2, name: page.breadcrumb ?? page.title, item: absolute(page.path) },
-    ],
+    itemListElement: trail.map((crumb, i) => ({ '@type': 'ListItem', position: i + 1, ...crumb })),
   }
 }
 

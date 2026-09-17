@@ -20,6 +20,7 @@ export function render(url: string) {
 }
 
 // Re-exported so the prerender script has a single module to import.
+export { findPlaceholders, publishedCaseStudies } from './content/case-studies'
 export {
   headTags,
   notFoundSeo,

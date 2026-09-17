@@ -41,6 +41,8 @@ export function findPlaceholders(study: CaseStudy): Placeholder[] {
     }
   }
 
+  // Templates ship with year 0 so a forgotten year can't slip through as a real one.
+  if (study.year < 2000) found.push({ path: 'year', value: String(study.year) })
   walk(study, '')
   return found
 }

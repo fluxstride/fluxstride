@@ -7,6 +7,7 @@ import { FilterChips } from '@/components/ui/FilterChips'
 import { Accent } from '@/components/ui/Typography'
 import { CaseCard } from '@/components/work/CaseCard'
 import { ProjectIndex } from '@/components/work/ProjectIndex'
+import { findCaseStudy } from '@/content/case-studies'
 import { caseStudies, disciplines, moreProjects, PROJECT_COUNT, type Discipline } from '@/content/work'
 import { ScrollTrigger } from '@/lib/gsap'
 import { EASE_OUT } from '@/lib/motion'
@@ -95,7 +96,7 @@ export function Work() {
             {featured ? (
               <CaseCard
                 study={featured}
-                link={false}
+                link={Boolean(findCaseStudy(featured.slug))}
                 metaClassName="gap-0"
                 surface="light"
                 imageClassName="aspect-[35/32] lg:aspect-auto lg:h-160"
@@ -110,7 +111,7 @@ export function Work() {
                   <CaseCard
                     key={study.slug}
                     study={study}
-                    link={false}
+                    link={Boolean(findCaseStudy(study.slug))}
                     metaClassName="gap-0"
                     surface="light"
                     imageClassName="aspect-[35/24] lg:aspect-auto lg:h-120"

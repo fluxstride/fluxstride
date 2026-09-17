@@ -27,6 +27,27 @@ if (!template.includes(ROOT)) {
   throw new Error(`index.html is missing ${ROOT}`)
 }
 
+// A published case study must be finished: no [bracketed] text, no empty image slots.
+// Drafts are never built, so they can stay half-written. See docs/case-studies.md.
+const unfinished = server.publishedCaseStudies
+  .map((study) => ({ study, placeholders: server.findPlaceholders(study) }))
+  .filter(({ placeholders }) => placeholders.length > 0)
+
+if (unfinished.length) {
+  const report = unfinished
+    .map(({ study, placeholders }) =>
+      [
+        `  src/content/case-studies/studies/${study.slug}.ts (${placeholders.length} left)`,
+        ...placeholders.slice(0, 12).map(({ path, value }) => `    ${path}: ${value}`),
+        ...(placeholders.length > 12 ? [`    …and ${placeholders.length - 12} more`] : []),
+      ].join('\n'),
+    )
+    .join('\n\n')
+  throw new Error(
+    `Published case studies still contain placeholders. Finish them or set status: 'draft'.\n\n${report}\n`,
+  )
+}
+
 function outputPathFor(routePath) {
   if (routePath === '/') return join(distDir, 'index.html')
   if (routePath === '/404') return join(distDir, '404.html')
