@@ -42,10 +42,11 @@ export const visibleCaseStudies = import.meta.env.DEV ? studies : publishedCaseS
 
 export const findCaseStudy = (slug: string) => visibleCaseStudies.find((study) => study.slug === slug)
 
-/** The case study linked at the bottom of the page: `next` if set, otherwise the following one. */
+/** The case study linked at the bottom of the page: `next` if it can be shown, otherwise the following one. */
 export function nextCaseStudy(study: CaseStudy) {
   const pool = visibleCaseStudies.filter((candidate) => candidate.slug !== study.slug)
-  if (study.next) return pool.find((candidate) => candidate.slug === study.next)
+  const chosen = study.next ? pool.find((candidate) => candidate.slug === study.next) : undefined
+  if (chosen) return chosen
   const index = visibleCaseStudies.findIndex((candidate) => candidate.slug === study.slug)
   return visibleCaseStudies[index + 1] ?? pool[0]
 }

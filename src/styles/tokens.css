@@ -100,6 +100,11 @@
   --text-display-legal--line-height: 0.9;
   --text-display-legal--font-weight: 600;
 
+  /* Case study hero title: 48px → 112px. The serif phrase is 54px → 124px (see CaseHero). */
+  --text-display-case: clamp(3rem, 1.5143rem + 6.0952vw, 7rem);
+  --text-display-case--line-height: 0.98;
+  --text-display-case--font-weight: 600;
+
   /* -- Numerals -- */
 
   /* Process phase numbers: 67px → 160px */
@@ -118,6 +123,16 @@
   --text-numeral-md--font-weight: 500;
 
   /* -- Headings -- */
+
+  /* Case study "Next project" client name: 40px → 96px */
+  --text-heading-next: clamp(2.5rem, 1.2rem + 5.3333vw, 6rem);
+  --text-heading-next--line-height: 1;
+  --text-heading-next--font-weight: 600;
+
+  /* Case study section titles, "Twelve weeks, four phases.": 34px → 64px (1.02 on desktop) */
+  --text-heading-case: clamp(2.125rem, 1.4286rem + 2.8571vw, 4rem);
+  --text-heading-case--line-height: 1.05;
+  --text-heading-case--font-weight: 600;
 
   /* Inner-page CTA band, "Ready when you are.": 52px → 88px */
   --text-heading-3xl: clamp(3.25rem, 2.4143rem + 3.4286vw, 5.5rem);

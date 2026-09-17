@@ -7,7 +7,7 @@ import { StatRow } from './parts'
 import { Cards, Reviews } from './sections/CardSections'
 import { Palette, Typography } from './sections/BrandSections'
 import { Bars, Chart, Clusters, Scores, Table } from './sections/DataSections'
-import { Checklist, Features, Flow, Roadmap, Steps } from './sections/ListSections'
+import { Architecture, Checklist, Features, Flow, Roadmap, Steps } from './sections/ListSections'
 import { BeforeAfter, Gallery, Screenshot } from './sections/MediaSections'
 
 type Renderers = {
@@ -39,7 +39,11 @@ const renderers: Renderers = {
   clusters: Clusters,
   palette: Palette,
   typography: Typography,
+  architecture: Architecture,
 }
+
+/** Sections whose content starts 48px under the heading on desktop instead of 56px. */
+const TIGHT_KINDS = new Set<CaseStudySection['kind']>(['features', 'bars', 'flow'])
 
 type CaseSectionProps = {
   section: CaseStudySection
@@ -63,10 +67,14 @@ export function CaseSection({ section, number }: CaseSectionProps) {
       aria-labelledby={titleId}
       className={cn(dark ? 'mt-22 bg-ink py-16 text-paper lg:mt-40 lg:py-30' : 'pt-22 text-ink lg:pt-40')}
     >
-      <div className="container-page flex flex-col gap-7 lg:gap-12">
+      <div
+        className={cn(
+          'container-page flex flex-col gap-8',
+          TIGHT_KINDS.has(section.kind) ? 'lg:gap-12' : 'lg:gap-14',
+        )}
+      >
         <SectionHeader
           eyebrow={`${String(number).padStart(2, '0')} — ${section.label}`}
-          eyebrowClassName={dark ? 'text-flux-light' : 'text-flux'}
           title={
             <>
               {section.title[0]}
@@ -76,7 +84,11 @@ export function CaseSection({ section, number }: CaseSectionProps) {
           }
           titleId={titleId}
           intro={section.intro}
-          introClassName="lg:w-105"
+          className="gap-4 lg:gap-20"
+          titleGroupClassName="gap-4 lg:gap-5"
+          eyebrowClassName={cn('max-lg:text-label-sm', dark ? 'text-flux-light' : 'text-flux')}
+          titleClassName="text-heading-case lg:leading-[1.02]"
+          introClassName="text-base/[1.6] lg:w-105 lg:text-lg/[1.6]"
           onDark={dark}
         />
         <Body section={section} dark={dark} />

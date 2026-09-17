@@ -13,8 +13,8 @@ export function ResultsBand({ results }: { results: CaseStudy['results'] }) {
   return (
     <section aria-labelledby="case-results" className="mt-22 bg-ink text-paper lg:mt-40">
       <div className="container-page flex flex-col gap-7 py-14 lg:gap-14 lg:py-28">
-        <div className="flex flex-col gap-5 lg:flex-row lg:justify-between lg:gap-20">
-          <Eyebrow as="h2" id="case-results" onDark className="max-lg:text-label-sm">
+        <div className="flex flex-col gap-7 lg:flex-row lg:justify-between lg:gap-20">
+          <Eyebrow as="h2" id="case-results" onDark className="max-lg:text-[10px]/[1.3]">
             The results · {results.timeframe}
           </Eyebrow>
           <Reveal as="p" className="text-[1.375rem]/[1.35] tracking-tight lg:w-160 lg:text-[2rem]/[1.3]">
@@ -26,7 +26,7 @@ export function ResultsBand({ results }: { results: CaseStudy['results'] }) {
             <div
               key={stat.label}
               className={cn(
-                'flex flex-col gap-2 border-line-dark max-lg:border-t max-lg:py-4.5 max-lg:pr-3 lg:px-6 lg:pt-7',
+                'flex flex-col gap-2 border-line-dark max-lg:border-t max-lg:pt-4.25 max-lg:pr-3 max-lg:pb-4.5 lg:px-6 lg:pt-7',
                 i === 0 ? 'lg:pl-0' : 'lg:border-l',
               )}
             >
@@ -64,7 +64,7 @@ export function CaseStory({ challenge, approach }: Pick<CaseStudy, 'challenge' |
         <section
           key={number}
           aria-labelledby={`story-${number}`}
-          className="grid gap-4 lg:grid-cols-[28.75rem_1fr] lg:gap-20 lg:border-t lg:border-line lg:pt-12"
+          className="grid gap-4 lg:grid-cols-[28.75rem_1fr] lg:gap-20 lg:border-t lg:border-line lg:pt-11.75"
         >
           <div className="flex flex-col gap-4">
             <Eyebrow className="text-flux max-lg:text-label-sm">
@@ -87,7 +87,7 @@ export function CaseStory({ challenge, approach }: Pick<CaseStudy, 'challenge' |
               <ul className="flex flex-col gap-2.5 lg:gap-3">
                 {block.points.map((point) => (
                   <li key={point} className="flex gap-3 text-[15px]/[1.5] lg:gap-3.5 lg:text-lg/[1.5]">
-                    <ArrowIcon size={18} className="mt-0.5 text-flux" />
+                    <ArrowIcon size={18} className="mt-0.5 text-flux max-lg:size-4" />
                     {point}
                   </li>
                 ))}

@@ -1,11 +1,13 @@
-import { ArrowDown, ArrowRight } from 'lucide-react'
+import { ArrowDown, ArrowRight, Check } from 'lucide-react'
 import { Reveal } from '@/components/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
+  ArchitectureSection,
   ChecklistSection,
   FeaturesSection,
   FlowSection,
   RoadmapSection,
+  Step,
   StepsSection,
 } from '@/content/case-studies/schema'
 import { cn } from '@/lib/cn'
@@ -22,6 +24,7 @@ const two = (n: number) => String(n).padStart(2, '0')
 export function Steps({ section, dark }: Props<StepsSection>) {
   const t = tone(dark)
   const phases = section.variant === 'phases'
+  if (section.variant === 'cards') return <PhaseCards steps={section.steps} dark={dark} />
 
   return (
     <Reveal
@@ -53,7 +56,7 @@ export function Steps({ section, dark }: Props<StepsSection>) {
             </span>
           )}
           <h3 className="text-xl/[1.2] font-semibold tracking-tight lg:text-2xl/[1.2]">{step.title}</h3>
-          <p className={cn('text-body lg:text-base/[1.55]', t.muted)}>{step.body}</p>
+          {step.body ? <p className={cn('text-body lg:text-base/[1.55]', t.muted)}>{step.body}</p> : null}
           {!phases && step.meta ? <Label className={t.accent}>{step.meta}</Label> : null}
         </li>
       ))}
@@ -61,8 +64,105 @@ export function Steps({ section, dark }: Props<StepsSection>) {
   )
 }
 
+/*
+ * Design: Case Study — Software Platform, "03 — Process". Four white cards, 16px apart
+ * (stacked on mobile): 24px padding (20px), mono meta and number, a 3px rule (Flux blue
+ * when highlighted), 26px title (22px), then ticked deliverables at 15px/1.45.
+ */
+function PhaseCards({ steps, dark }: { steps: Step[]; dark: boolean }) {
+  const t = tone(dark)
+  return (
+    <Reveal as="ol" stagger className={cn('grid gap-4', stepColumns[Math.min(steps.length, 4)])}>
+      {steps.map((step, i) => (
+        // Borders sit inside the design's padding, so each side loses a pixel.
+        <li key={step.title + i} className={cn('flex flex-col gap-3 p-4.75 lg:p-5.75', t.card)}>
+          <div className="flex items-center justify-between gap-3">
+            <Label className={cn('text-label-sm/[15px]', t.accent)}>{step.meta}</Label>
+            <Label className={cn('text-label-sm/[15px] max-lg:hidden', t.muted)}>{two(i + 1)}</Label>
+          </div>
+          <span
+            aria-hidden="true"
+            className={cn('h-0.75', step.highlight ? t.accentBg : dark ? 'bg-paper' : 'bg-ink')}
+          />
+          <h3 className="text-[1.375rem]/[1.2] font-semibold lg:text-[1.625rem]/[1.2]">{step.title}</h3>
+          {step.body ? <p className={cn('text-body/[1.45]', t.muted)}>{step.body}</p> : null}
+          {step.points?.length ? (
+            <ul className="flex flex-col gap-3">
+              {step.points.map((point) => (
+                <li key={point} className={cn('flex gap-2.5 text-[15px]/[1.45]', t.muted)}>
+                  <Check aria-hidden="true" className={cn('size-3.75 shrink-0', t.accent)} strokeWidth={2} />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </li>
+      ))}
+    </Reveal>
+  )
+}
+
 export function Features({ section, dark }: Props<FeaturesSection>) {
-  return <FeatureGrid features={section.features} dark={dark} />
+  return <FeatureGrid features={section.features} dark={dark} variant={section.style} tint={section.tint} />
+}
+
+/*
+ * Design: Case Study — Software Platform, "05 — Engineering". Three columns 24px apart
+ * (stacked 12px apart on mobile): a mono layer name with a hairline and arrow, then boxes
+ * 10px apart (15px title, 10px mono meta, 14/16px padding). A "Stack" row of chips follows.
+ */
+export function Architecture({ section, dark }: Props<ArchitectureSection>) {
+  const t = tone(dark)
+  const box = dark ? 'border border-line-dark bg-ink-2' : 'border border-line bg-white'
+  return (
+    <div className="flex flex-col gap-8 lg:gap-14">
+      <Reveal stagger className={cn('grid gap-3 lg:gap-6', stepColumns[Math.min(section.layers.length, 4)])}>
+        {section.layers.map((layer, i) => {
+          const last = i === section.layers.length - 1
+          return (
+            <section key={layer.name} aria-label={layer.name} className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-2">
+                <Label className={cn('text-label-sm/[15px]', t.accent)}>{layer.name}</Label>
+                {last ? null : (
+                  <>
+                    <span aria-hidden="true" className={cn('h-px flex-1 max-lg:hidden', t.quiet)} />
+                    <ArrowRight
+                      aria-hidden="true"
+                      className={cn('size-3.5 max-lg:hidden', t.accent)}
+                      strokeWidth={2}
+                    />
+                  </>
+                )}
+              </div>
+              <ul className="flex flex-col gap-2.5">
+                {layer.nodes.map((node) => (
+                  <li key={node.title} className={cn('flex flex-col gap-1 px-3.75 pt-3.25 pb-3.25', box)}>
+                    <span className="text-[15px]/[1.2] font-semibold">{node.title}</span>
+                    <span className={cn('font-mono text-[10px]/[1.3]', t.muted)}>{node.meta}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        })}
+      </Reveal>
+      {section.stack ? (
+        <Reveal className="flex items-center gap-3 lg:gap-6">
+          <Label className={cn('shrink-0 text-label-sm/[15px]', t.muted)}>{section.stack.label}</Label>
+          <ul className="flex flex-wrap gap-2">
+            {section.stack.items.map((item) => (
+              <li
+                key={item}
+                className={cn('rounded-full border px-3.25 py-1.75 text-[13px]/[1.2] font-medium', t.border)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      ) : null}
+    </div>
+  )
 }
 
 export function Checklist({ section, dark }: Props<ChecklistSection>) {

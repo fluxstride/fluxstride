@@ -18,7 +18,7 @@ type CaseHeroProps = { study: CaseStudy; serviceTitle: string }
  */
 export function CaseHero({ study, serviceTitle }: CaseHeroProps) {
   const { hero } = study
-  const year = study.year || '[Year]'
+  const tags = hero.tags ?? [study.industry, serviceTitle, study.year || '[Year]']
 
   return (
     <header>
@@ -30,21 +30,19 @@ export function CaseHero({ study, serviceTitle }: CaseHeroProps) {
           <ArrowLeft aria-hidden="true" size={16} strokeWidth={2} />
           All work
         </Link>
-        <Eyebrow className="truncate max-lg:text-label-sm">
+        <Eyebrow className="truncate max-lg:text-[10px]/[1.3] lg:text-label-sm">
           Work / {study.industry} / {study.client}
         </Eyebrow>
       </div>
 
       <div className="container-page flex flex-col gap-6 pt-8 pb-10 lg:gap-12 lg:pt-14 lg:pb-18">
         <Reveal on="mount">
-          <Eyebrow>
-            (Case study) {study.industry} · {serviceTitle} · {year}
-          </Eyebrow>
+          <Eyebrow className="max-lg:text-[10px]/[1.6]">(Case study) {tags.join(' · ')}</Eyebrow>
         </Reveal>
-        <RevealText as="h1" on="mount" delay={0.1} className="text-display-md text-ink">
+        <RevealText as="h1" on="mount" delay={0.1} className="text-display-case text-ink">
           {hero.title[0]}
           <br />
-          <Accent>{hero.title[1]}</Accent>
+          <Accent className="leading-none lg:text-[1.107em]">{hero.title[1]}</Accent>
         </RevealText>
 
         <div className="flex flex-col gap-6 lg:flex-row lg:gap-24">
@@ -64,8 +62,11 @@ export function CaseHero({ study, serviceTitle }: CaseHeroProps) {
             className="grid flex-1 grid-cols-2 lg:grid-cols-3"
           >
             {hero.facts.map(([label, value]) => (
-              <div key={label} className="flex flex-col gap-1.5 border-t border-line py-3.5 pr-4 lg:py-4.5">
-                <dt className="font-mono text-label-sm text-stone uppercase">{label}</dt>
+              <div
+                key={label}
+                className="flex flex-col gap-1.5 border-t border-line pt-3.25 pr-4 pb-3.5 lg:pt-4.25 lg:pb-4.5"
+              >
+                <dt className="font-mono text-[10px]/[1.3] text-stone uppercase lg:text-label-sm">{label}</dt>
                 <dd className="text-[15px]/[1.35] font-semibold lg:text-[17px]/[1.35]">{value}</dd>
               </div>
             ))}

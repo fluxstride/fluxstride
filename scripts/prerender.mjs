@@ -86,6 +86,18 @@ if (server.SITE_URL_IS_PLACEHOLDER) {
 `)
 }
 
+const samples = server.publishedCaseStudies.filter((study) => study.sample)
+if (samples.length) {
+  console.warn(`
+  ----------------------------------------------------------------
+  WARNING: ${samples.length} published case ${samples.length === 1 ? 'study uses' : 'studies use'} invented sample content
+${samples.map((study) => `    - src/content/case-studies/studies/${study.slug}.ts (${study.client})`).join('\n')}
+  Replace them with real, client-approved projects (or set status:
+  'draft') and remove \`sample: true\` before launch.
+  ----------------------------------------------------------------
+`)
+}
+
 if (server.LEGAL_TODO.length) {
   console.warn(`
   ----------------------------------------------------------------

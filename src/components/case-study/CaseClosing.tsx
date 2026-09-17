@@ -14,9 +14,9 @@ import { MediaView } from './MediaView'
 export function ClientQuote({ quote }: { quote: NonNullable<CaseStudy['quote']> }) {
   return (
     <figure className="container-page flex flex-col gap-6 pt-22 lg:gap-10 lg:px-50 lg:pt-40">
-      <Quote aria-hidden="true" className="size-7 fill-flux text-flux lg:size-10" strokeWidth={0} />
+      <Quote aria-hidden="true" className="size-7 text-flux lg:size-10" strokeWidth={2} />
       <Reveal as="div">
-        <blockquote className="font-serif text-quote italic">“{quote.text}”</blockquote>
+        <blockquote className="font-serif text-quote/[1.15] italic">“{quote.text}”</blockquote>
       </Reveal>
       <figcaption className="flex items-center gap-3.5">
         <span
@@ -49,7 +49,7 @@ export function Credits({ credits }: { credits: CaseStudy['credits'] }) {
             <Eyebrow as="h2" className="text-label-sm">
               {heading}
             </Eyebrow>
-            <ul className="flex flex-col gap-1.5 text-[15px]/[1.4] lg:text-[17px]/[1.4]">
+            <ul className="flex flex-col gap-3.5 text-[15px]/[1.2] lg:text-[17px]/[1.2]">
               {items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -58,7 +58,7 @@ export function Credits({ credits }: { credits: CaseStudy['credits'] }) {
         ))}
         <div className="flex flex-col gap-3.5">
           <Eyebrow as="h2" className="text-label-sm">
-            Tools
+            {credits.toolsLabel ?? 'Tools'}
           </Eyebrow>
           <ul className="flex flex-wrap gap-2">
             {credits.tools.map((tool) => (
@@ -91,20 +91,23 @@ export function NextProject({ next, serviceTitle }: NextProjectProps) {
   const content = (
     <>
       <div className="flex items-center justify-between border-t border-ink pt-6">
-        <Eyebrow className="max-lg:text-label-sm">Next project</Eyebrow>
-        <Eyebrow className="max-lg:text-label-sm">
-          {next ? `${serviceTitle ?? ''} · ${next.industry}` : '[Service · Industry]'}
+        <Eyebrow className="max-lg:text-[10px]/[1.3]">Next project</Eyebrow>
+        <Eyebrow className="max-lg:text-[10px]/[1.3]">
+          {next ? `${next.discipline ?? serviceTitle ?? ''} · ${next.industry}` : '[Service · Industry]'}
         </Eyebrow>
       </div>
       <div className="flex items-center justify-between gap-4">
-        <RevealText as="h2" className="text-heading-3xl">
+        <RevealText as="h2" className="text-heading-next">
           {title}
         </RevealText>
         <ArrowIcon direction="up-right" size={72} className="max-lg:hidden" />
         <ArrowIcon direction="up-right" size={32} className="lg:hidden" />
       </div>
       <MediaView
-        media={next?.hero.media ?? { image: null, alt: '', brief: 'Next project cover image · 2560×960' }}
+        media={
+          next?.cover ??
+          next?.hero.media ?? { image: null, alt: '', brief: 'Next project cover image · 2560×960' }
+        }
         frame="plain"
         sizes="(min-width: 90rem) 1280px, 100vw"
         aspectClassName="aspect-[35/22] lg:aspect-[128/48]"

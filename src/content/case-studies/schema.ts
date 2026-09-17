@@ -46,6 +46,8 @@ export type Media = {
    * keeps its own proportions so screenshots are never cropped.
    */
   aspect?: number
+  /** Browser frame only: the address shown in the chrome, e.g. "app.northwind.example/overview". */
+  url?: string
 }
 
 /**
@@ -87,6 +89,7 @@ export type ScreenshotSection = SectionBase & {
   media: Media
   frame: MediaFrame
   features?: Feature[]
+  featureStyle?: FeatureStyle
 }
 
 /** A grid of images: page templates, app screens, components, deliverables, applications. */
@@ -108,14 +111,52 @@ export type BeforeAfterSection = SectionBase & {
   after: Comparison
 }
 
-/** Numbered steps: project phases, or a user journey. */
-export type StepsSection = SectionBase & {
-  kind: 'steps'
-  variant: 'phases' | 'journey'
-  steps: { title: string; body: string; /** "4 weeks" or "92% complete this step" */ meta?: string }[]
+export type Step = {
+  title: string
+  /** A sentence under the title. Phase cards usually list `points` instead. */
+  body?: string
+  /** "4 weeks", "Weeks 1–2" or "92% complete this step" */
+  meta?: string
+  /** Ticked deliverables. Shown by the `cards` variant. */
+  points?: string[]
+  /** `cards` variant: draw this card's rule in Flux blue, e.g. the longest phase. */
+  highlight?: boolean
 }
 
-export type FeaturesSection = SectionBase & { kind: 'features'; features: Feature[] }
+/**
+ * Numbered steps.
+ * phases:  project phases under a rule
+ * cards:   project phases as white cards with a list of deliverables (Northwind)
+ * journey: numbered circles joined by a line
+ */
+export type StepsSection = SectionBase & {
+  kind: 'steps'
+  variant: 'phases' | 'cards' | 'journey'
+  steps: Step[]
+}
+
+/**
+ * ruled: under a hairline, the default
+ * plain: no rule, e.g. under a screenshot (Northwind)
+ * cards: white cards with the icon in a tinted square (Halden). `tint` colours the square
+ *        in the client's palette: { background: '#EFE4D4', icon: '#6B3F24' }
+ */
+export type FeatureStyle = 'ruled' | 'plain' | 'cards'
+
+export type FeaturesSection = SectionBase & {
+  kind: 'features'
+  features: Feature[]
+  style?: FeatureStyle
+  tint?: { background: string; icon: string }
+}
+
+/** A system diagram: columns of layers, each a stack of boxes, then the tech stack as chips. */
+export type ArchitectureSection = SectionBase & {
+  kind: 'architecture'
+  /** Usually three: e.g. Clients → Core → Integrations. Arrows join each to the next. */
+  layers: { name: string; nodes: { title: string; meta: string }[] }[]
+  stack?: { label: string; items: string[] }
+}
 
 export type Card = {
   eyebrow?: string
@@ -257,6 +298,7 @@ export type CaseStudySection =
   | ClustersSection
   | PaletteSection
   | TypographySection
+  | ArchitectureSection
 
 export type StoryBlock = {
   /** The point in one line. */
@@ -274,8 +316,20 @@ export type CaseStudy = {
    * published: prerendered; the build fails if any placeholder is left.
    */
   status: 'draft' | 'published'
+  /**
+   * Set on case studies whose client, figures and quotes are invented (the design mockups).
+   * They publish normally so the site can be reviewed, but every build lists them in a
+   * warning until the flag is removed. Never launch with one.
+   */
+  sample?: true
   service: ServiceSlug
+  /**
+   * How the work is labelled where other pages link to it, e.g. "Mobile app" in the
+   * "Next project" block. Defaults to the service title.
+   */
+  discipline?: string
   client: string
+  /** Short, for breadcrumbs and links: "Fintech", "Food & drink". */
   industry: string
   year: number
 
@@ -291,9 +345,20 @@ export type CaseStudy = {
     intro: string
     /** Six label/value pairs. */
     facts: [label: string, value: string][]
+    /**
+     * The eyebrow after "(Case study)". Defaults to [industry, service title, year];
+     * set it to name more disciplines or a year range: ['Logistics', 'SEO & growth', '2025–26'].
+     */
+    tags?: string[]
     media: Media
     frame: MediaFrame
   }
+
+  /**
+   * The photo other pages show for this case study, e.g. the "Next project" block.
+   * Defaults to the hero image; set it when the hero is a screenshot.
+   */
+  cover?: Media
 
   results: {
     /** "First 12 months" */
@@ -311,7 +376,13 @@ export type CaseStudy = {
 
   quote?: { text: string; name: string; role: string; initials: string }
 
-  credits: { services: string[]; team: string[]; tools: string[] }
+  credits: {
+    services: string[]
+    team: string[]
+    tools: string[]
+    /** Heading over `tools`. "Stack" suits software projects. Defaults to "Tools". */
+    toolsLabel?: string
+  }
 
   /** Slug of the case study linked at the bottom. Defaults to the next published one. */
   next?: string

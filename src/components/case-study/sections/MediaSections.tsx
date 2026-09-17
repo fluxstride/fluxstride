@@ -25,7 +25,9 @@ export function Screenshot({ section, dark }: Props<ScreenshotSection>) {
         <Reveal>
           <MediaView media={media} frame={section.frame} sizes="(min-width: 64rem) 40vw, 100vw" dark={dark} />
         </Reveal>
-        {section.features?.length ? <FeatureGrid features={section.features} dark={dark} stacked /> : null}
+        {section.features?.length ? (
+          <FeatureGrid features={section.features} dark={dark} variant={section.featureStyle} stacked />
+        ) : null}
       </div>
     )
   }
@@ -35,7 +37,9 @@ export function Screenshot({ section, dark }: Props<ScreenshotSection>) {
       <Reveal>
         <MediaView media={media} frame={section.frame} sizes={FULL_WIDTH} dark={dark} />
       </Reveal>
-      {section.features?.length ? <FeatureGrid features={section.features} dark={dark} /> : null}
+      {section.features?.length ? (
+        <FeatureGrid features={section.features} dark={dark} variant={section.featureStyle} />
+      ) : null}
     </>
   )
 }

@@ -1,4 +1,5 @@
-import { ImageIcon } from 'lucide-react'
+import { ImageIcon, Lock } from 'lucide-react'
+import type { CSSProperties } from 'react'
 import { Picture } from '@/components/ui/Picture'
 import type { Media, MediaFrame } from '@/content/case-studies/schema'
 import { images } from '@/content/images.generated'
@@ -19,6 +20,13 @@ type MediaViewProps = {
   dark?: boolean
   priority?: boolean
   className?: string
+  /**
+   * Browser frame: the frame's width in the desktop design (1280 full width, 620 in a
+   * before/after pair). Below that width the chrome shrinks in proportion.
+   */
+  designWidth?: number
+  /** Browser frame: the soft drop shadow on desktop. */
+  shadow?: boolean
 }
 
 const DEFAULT_ASPECT: Record<MediaFrame, number> = { browser: 16 / 9, phone: 9 / 19.5, plain: 4 / 3 }
@@ -38,6 +46,8 @@ export function MediaView({
   dark = false,
   priority = false,
   className,
+  designWidth = 1280,
+  shadow = true,
 }: MediaViewProps) {
   const source = media.image ? images[media.image] : null
   const ratio = aspect ?? (source ? source.width / source.height : (media.aspect ?? DEFAULT_ASPECT[frame]))
@@ -65,21 +75,12 @@ export function MediaView({
     return (
       <figure
         className={cn(
-          'overflow-hidden rounded-md border border-line bg-white shadow-[0_24px_60px_rgb(10_15_30/0.08)]',
+          '@container overflow-hidden rounded-md border border-line bg-white',
+          shadow && 'lg:shadow-[0_24px_60px_rgb(10_15_30/0.08)]',
           className,
         )}
       >
-        <div
-          aria-hidden="true"
-          className="flex items-center gap-2 border-b border-line px-2.5 py-1.5 lg:gap-3 lg:px-4 lg:py-3"
-        >
-          <span className="flex gap-1 lg:gap-1.5">
-            {[0, 1, 2].map((dot) => (
-              <span key={dot} className="size-1.5 rounded-full bg-line lg:size-2.5" />
-            ))}
-          </span>
-          <span className="h-2.5 w-20 rounded-full bg-paper lg:h-5 lg:w-40" />
-        </div>
+        <BrowserChrome url={media.url} designWidth={designWidth} />
         {box}
       </figure>
     )
@@ -99,6 +100,36 @@ export function MediaView({
   }
 
   return <figure className={cn('overflow-hidden', className)}>{box}</figure>
+}
+
+/*
+ * Design: Browser chrome, 47px tall on desktop at any width. 16px side padding, three 10px
+ * dots, then an address pill (lock icon, 12px URL). Sizes are in em from a 16px base so
+ * that on phones the whole frame scales down like the desktop screenshot it holds.
+ */
+function BrowserChrome({ url, designWidth }: { url?: string; designWidth: number }) {
+  return (
+    <div
+      aria-hidden="true"
+      className="flex items-center gap-[0.875em] border-b border-line bg-white px-[1em] pt-[0.6875em] pb-[0.625em] text-(length:--chrome-size) lg:text-base"
+      // 100cqw is the frame's width; at designWidth it resolves to exactly 16px.
+      style={{ '--chrome-size': `calc(100cqw / ${designWidth / 16})` } as CSSProperties}
+    >
+      <span className="flex gap-[0.375em]">
+        {[0, 1, 2].map((dot) => (
+          <span key={dot} className="size-[0.625em] rounded-full bg-line" />
+        ))}
+      </span>
+      <span className="flex items-center gap-[0.5em] rounded-[0.75em] bg-paper px-[0.75em] py-[0.3125em] text-stone">
+        <Lock className="size-[0.6875em]" strokeWidth={2} />
+        {url ? (
+          <span className="text-[0.75em]/[1.25] whitespace-nowrap">{url}</span>
+        ) : (
+          <span className="h-[0.9375em] w-[6.25em]" />
+        )}
+      </span>
+    </div>
+  )
 }
 
 /** Stand-in for a missing image. Only ever seen on drafts and templates. */

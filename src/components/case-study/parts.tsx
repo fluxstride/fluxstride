@@ -2,7 +2,7 @@ import { Check } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
-import type { Feature, Stat } from '@/content/case-studies/schema'
+import type { Feature, FeaturesSection, FeatureStyle, Stat } from '@/content/case-studies/schema'
 import { cn } from '@/lib/cn'
 import { tone } from './tone'
 
@@ -55,25 +55,71 @@ export function StatRow({ stats, dark }: { stats: Stat[]; dark: boolean }) {
   )
 }
 
-/** Three features with an icon, under a hairline. */
+/*
+ * Features with an icon, three to a row on desktop.
+ *   ruled  Orbit Health "06 — Built in": 20px under a hairline, 40px apart; two columns on mobile
+ *   plain  Northwind "04 — The product": no rule, under a screenshot; one column on mobile
+ *   cards  Halden "06 — Checkout": white cards, icon in a 44px square tinted in the client's colours
+ */
 export function FeatureGrid({
   features,
   dark,
+  variant = 'ruled',
+  tint,
   stacked = false,
 }: {
   features: Feature[]
   dark: boolean
+  variant?: FeatureStyle
+  tint?: FeaturesSection['tint']
   /** One column on every screen, for a list beside portrait media. */
   stacked?: boolean
 }) {
   const t = tone(dark)
+  const columns = stacked ? '' : 'lg:grid-cols-3'
+
+  if (variant === 'cards') {
+    return (
+      <Reveal as="ul" stagger className={cn('grid gap-4 lg:gap-5', columns)}>
+        {features.map(({ icon: Icon, title, body }) => (
+          // The border sits inside the design's 18px / 24px padding.
+          <li key={title} className={cn('flex gap-4 p-4.25 lg:p-5.75', t.card)}>
+            <span
+              aria-hidden="true"
+              className={cn(
+                'flex size-11 shrink-0 items-center justify-center',
+                !tint && 'bg-flux-soft text-flux',
+              )}
+              style={tint ? { backgroundColor: tint.background, color: tint.icon } : undefined}
+            >
+              <Icon className="size-5" strokeWidth={2} />
+            </span>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-base/[1.2] font-semibold lg:text-lg/[1.2]">{title}</h3>
+              <p className={cn('text-sm/[1.5] lg:text-[15px]/[1.5]', t.muted)}>{body}</p>
+            </div>
+          </li>
+        ))}
+      </Reveal>
+    )
+  }
+
+  const ruled = variant === 'ruled'
   return (
-    <Reveal as="ul" stagger className={cn('grid', !stacked && 'lg:grid-cols-3 lg:gap-6')}>
+    <Reveal
+      as="ul"
+      stagger
+      className={cn('grid gap-5 lg:gap-10', ruled && !stacked && 'max-lg:grid-cols-2', columns)}
+    >
       {features.map(({ icon: Icon, title, body }) => (
-        <li key={title} className={cn('flex flex-col gap-3 border-t py-5', t.border)}>
-          <Icon aria-hidden="true" className={cn('size-6 lg:size-7', t.accent)} strokeWidth={1.75} />
-          <h3 className="text-lg/[1.25] font-semibold lg:text-xl/[1.25]">{title}</h3>
-          <p className={cn('text-body lg:text-base/[1.55]', t.muted)}>{body}</p>
+        <li key={title} className={cn('flex flex-col gap-2.5', ruled && cn('border-t pt-5', t.border))}>
+          <Icon aria-hidden="true" className={cn('size-6', t.accent)} strokeWidth={2} />
+          <h3 className={cn('font-semibold lg:text-xl/[1.2]', ruled ? 'text-base/[1.2]' : 'text-lg/[1.2]')}>
+            {title}
+          </h3>
+          <p className={cn(ruled ? 'text-sm/[1.5] lg:text-[15px]/[1.5]' : 'text-[15px]/[1.55]', t.muted)}>
+            {body}
+          </p>
         </li>
       ))}
     </Reveal>
