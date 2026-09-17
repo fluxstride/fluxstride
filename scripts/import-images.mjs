@@ -64,6 +64,19 @@ const IMAGES = {
   'case-studies/kinetic-labs-after': { src: 'cs-kinetic-after.png', widths: [640, 1240] },
   'case-studies/halden-coffee-hero': { src: 'generated-1789577320469.png' },
   'case-studies/halden-coffee-product': { src: 'cs-halden-product.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/aurora-architects-hero': { src: 'generated-1789577323589.png' },
+  // Brand artwork panels: the design arranges them differently on phones, so each has a mobile crop (3x of 350px).
+  'case-studies/aurora-architects-mark': { src: 'cs-aurora-mark.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/aurora-architects-mark-mobile': { src: 'cs-aurora-mark-mobile.png', widths: [700, 1050] },
+  'case-studies/aurora-architects-applications': {
+    src: 'cs-aurora-applications.png',
+    widths: SCREENSHOT_WIDTHS,
+  },
+  'case-studies/aurora-architects-applications-mobile': {
+    src: 'cs-aurora-applications-mobile.png',
+    widths: [700, 1050],
+  },
+  'case-studies/atlas-freight-cover': { src: 'generated-1789579525110.png' },
   ...thumbnails(
     'kinetic-labs',
     ['home', 'product', 'pricing', 'customers', 'docs', 'blog-article'],

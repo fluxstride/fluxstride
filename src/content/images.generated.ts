@@ -292,6 +292,72 @@ export const images = {
     ],
     "color": "#f8e8e8"
   },
+  "case-studies/aurora-architects-hero": {
+    "src": "generated-1789577323589.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#e8e8d8"
+  },
+  "case-studies/aurora-architects-mark": {
+    "src": "cs-aurora-mark.png",
+    "width": 2560,
+    "height": 1120,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#183828"
+  },
+  "case-studies/aurora-architects-mark-mobile": {
+    "src": "cs-aurora-mark-mobile.png",
+    "width": 1050,
+    "height": 2076,
+    "widths": [
+      700,
+      1050
+    ],
+    "color": "#183828"
+  },
+  "case-studies/aurora-architects-applications": {
+    "src": "cs-aurora-applications.png",
+    "width": 2560,
+    "height": 1312,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#b86838"
+  },
+  "case-studies/aurora-architects-applications-mobile": {
+    "src": "cs-aurora-applications-mobile.png",
+    "width": 1050,
+    "height": 1800,
+    "widths": [
+      700,
+      1050
+    ],
+    "color": "#b86838"
+  },
+  "case-studies/atlas-freight-cover": {
+    "src": "generated-1789579525110.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#b8b8c8"
+  },
   "case-studies/kinetic-labs-home-thumb": {
     "src": "cs-kinetic-template-home.png",
     "width": 827,
