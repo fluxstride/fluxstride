@@ -57,6 +57,16 @@ const IMAGES = {
   'case-studies/northwind-dashboard': { src: 'cs-northwind-dashboard.png', widths: SCREENSHOT_WIDTHS },
   'case-studies/orbit-health-hero': { src: 'generated-1789577326370.png' },
   ...appScreens('orbit-health', ['home', 'choose-time', 'confirm', 'booked'], 'cs-orbit-screen'),
+  'case-studies/kinetic-labs-cover': { src: 'generated-1789578363583.png' },
+  'case-studies/kinetic-labs-home': { src: 'cs-kinetic-hero.png', widths: SCREENSHOT_WIDTHS },
+  // Before/after pair: 620px wide on desktop, so 2x is 1240.
+  'case-studies/kinetic-labs-before': { src: 'cs-kinetic-before.png', widths: [640, 1240] },
+  'case-studies/kinetic-labs-after': { src: 'cs-kinetic-after.png', widths: [640, 1240] },
+  ...thumbnails(
+    'kinetic-labs',
+    ['home', 'product', 'pricing', 'customers', 'docs', 'blog-article'],
+    'cs-kinetic-template',
+  ),
   ...team({
     'daniel-mensah': 'photo-1763745315951-7daac4821af6',
     'priya-raman': 'photo-1760552069633-c05f246a5d8c',
@@ -67,6 +77,22 @@ const IMAGES = {
     'kwame-asante': 'photo-1763849049538-5ec4a2729c5d',
     'hannah-cole': 'photo-1631377307692-36a9b6ae3ef6',
   }),
+}
+
+/**
+ * Page template thumbnails: a desktop crop (413×220, exported at 2x) and the design's own
+ * mobile crop (169×130, at 3x), used through `mobileImage`.
+ */
+function thumbnails(study, pages, filePrefix) {
+  return Object.fromEntries(
+    pages.flatMap((page) => [
+      [`case-studies/${study}-${page}-thumb`, { src: `${filePrefix}-${page}.png`, widths: [480, 827] }],
+      [
+        `case-studies/${study}-${page}-thumb-mobile`,
+        { src: `${filePrefix}-${page}-mobile.png`, widths: [340, 507] },
+      ],
+    ]),
+  )
 }
 
 /** App screens exported at 3x (756×1626), shown about 250px wide in a phone frame. */

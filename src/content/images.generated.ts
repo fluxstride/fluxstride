@@ -226,6 +226,169 @@ export const images = {
     ],
     "color": "#f8f8f8"
   },
+  "case-studies/kinetic-labs-cover": {
+    "src": "generated-1789578363583.png",
+    "width": 1376,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1376
+    ],
+    "color": "#0828d8"
+  },
+  "case-studies/kinetic-labs-home": {
+    "src": "cs-kinetic-hero.png",
+    "width": 2560,
+    "height": 1426,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-before": {
+    "src": "cs-kinetic-before.png",
+    "width": 1240,
+    "height": 746,
+    "widths": [
+      640,
+      1240
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-after": {
+    "src": "cs-kinetic-after.png",
+    "width": 1240,
+    "height": 746,
+    "widths": [
+      640,
+      1240
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-home-thumb": {
+    "src": "cs-kinetic-template-home.png",
+    "width": 827,
+    "height": 440,
+    "widths": [
+      480,
+      827
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-home-thumb-mobile": {
+    "src": "cs-kinetic-template-home-mobile.png",
+    "width": 507,
+    "height": 390,
+    "widths": [
+      340,
+      507
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-product-thumb": {
+    "src": "cs-kinetic-template-product.png",
+    "width": 827,
+    "height": 440,
+    "widths": [
+      480,
+      827
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-product-thumb-mobile": {
+    "src": "cs-kinetic-template-product-mobile.png",
+    "width": 507,
+    "height": 390,
+    "widths": [
+      340,
+      507
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-pricing-thumb": {
+    "src": "cs-kinetic-template-pricing.png",
+    "width": 827,
+    "height": 440,
+    "widths": [
+      480,
+      827
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-pricing-thumb-mobile": {
+    "src": "cs-kinetic-template-pricing-mobile.png",
+    "width": 507,
+    "height": 390,
+    "widths": [
+      340,
+      507
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-customers-thumb": {
+    "src": "cs-kinetic-template-customers.png",
+    "width": 827,
+    "height": 440,
+    "widths": [
+      480,
+      827
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-customers-thumb-mobile": {
+    "src": "cs-kinetic-template-customers-mobile.png",
+    "width": 507,
+    "height": 390,
+    "widths": [
+      340,
+      507
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-docs-thumb": {
+    "src": "cs-kinetic-template-docs.png",
+    "width": 827,
+    "height": 440,
+    "widths": [
+      480,
+      827
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-docs-thumb-mobile": {
+    "src": "cs-kinetic-template-docs-mobile.png",
+    "width": 507,
+    "height": 390,
+    "widths": [
+      340,
+      507
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/kinetic-labs-blog-article-thumb": {
+    "src": "cs-kinetic-template-blog-article.png",
+    "width": 827,
+    "height": 440,
+    "widths": [
+      480,
+      827
+    ],
+    "color": "#081828"
+  },
+  "case-studies/kinetic-labs-blog-article-thumb-mobile": {
+    "src": "cs-kinetic-template-blog-article-mobile.png",
+    "width": 507,
+    "height": 390,
+    "widths": [
+      340,
+      507
+    ],
+    "color": "#081828"
+  },
   "team/daniel-mensah": {
     "src": "https://images.unsplash.com/photo-1763745315951-7daac4821af6?fm=jpg&q=90&w=1600&fit=max",
     "width": 1600,
