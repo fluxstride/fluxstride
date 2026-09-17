@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { MarkRings } from '@/components/ui/MarkRings'
 import { cn } from '@/lib/cn'
 import { gsap, MOTION_OK } from '@/lib/gsap'
 import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
@@ -9,27 +10,10 @@ import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
  * Design (Hero Visual): 820×380 on desktop, 350×240 on mobile. Everything in it is
  * a fixed proportion of the box on both canvases, so it is built from ratios:
  *   - rings and core are centred at 66% / 52% (the glow's centre too)
- *   - their sizes are multiples of the box height (cqh), e.g. outer ring 1.7×
+ *   - their sizes are multiples of the box height (MarkRings, unit 100cqh)
  *   - grid lines sit at quarter widths, the horizon at 52% height
  * Only the captions and padding change size between canvases (fluid 390→1440).
  */
-
-const RINGS = [
-  { size: 1.7, className: 'border-white/8' },
-  { size: 1.3, className: 'border-white/12' },
-  { size: 0.95, className: 'border-flux-light/25' },
-  { size: 0.62, className: 'border-flux-light/50' },
-]
-const CORE_SIZE = 0.26
-
-/** Centres a square of `size` × box height on the rings' origin, without using transforms (GSAP owns those). */
-function centred(size: number) {
-  return {
-    width: `${size * 100}cqh`,
-    height: `${size * 100}cqh`,
-    margin: `${size * -50}cqh 0 0 ${size * -50}cqh`,
-  }
-}
 
 export function HeroVisual({ className }: { className?: string }) {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -118,17 +102,7 @@ export function HeroVisual({ className }: { className?: string }) {
         ))}
         <span data-grid="y" className="absolute inset-x-0 top-[52%] h-px bg-white/4" />
 
-        <div className="absolute top-[52%] left-[66%]">
-          {RINGS.map((ring) => (
-            <span
-              key={ring.size}
-              data-ring=""
-              className={cn('absolute shape-ring border', ring.className)}
-              style={centred(ring.size)}
-            />
-          ))}
-          <span data-core="" className="absolute shape-mark bg-flux" style={centred(CORE_SIZE)} />
-        </div>
+        <MarkRings className="top-[52%] left-[66%] [--rings-unit:100cqh]" />
 
         {/* Padding and caption sizes: 18px / 9px / 18px on mobile → 22px / 11px / 22px on desktop */}
         <div className="absolute inset-0 flex flex-col justify-between p-[clamp(1.125rem,1.0321rem+0.381vw,1.375rem)]">
