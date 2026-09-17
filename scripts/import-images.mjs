@@ -56,6 +56,7 @@ const IMAGES = {
   'case-studies/northwind-hero': { src: 'generated-1789579203190.png' },
   'case-studies/northwind-dashboard': { src: 'cs-northwind-dashboard.png', widths: SCREENSHOT_WIDTHS },
   'case-studies/orbit-health-hero': { src: 'generated-1789577326370.png' },
+  ...appScreens('orbit-health', ['home', 'choose-time', 'confirm', 'booked'], 'cs-orbit-screen'),
   ...team({
     'daniel-mensah': 'photo-1763745315951-7daac4821af6',
     'priya-raman': 'photo-1760552069633-c05f246a5d8c',
@@ -66,6 +67,16 @@ const IMAGES = {
     'kwame-asante': 'photo-1763849049538-5ec4a2729c5d',
     'hannah-cole': 'photo-1631377307692-36a9b6ae3ef6',
   }),
+}
+
+/** App screens exported at 3x (756×1626), shown about 250px wide in a phone frame. */
+function appScreens(study, screens, filePrefix) {
+  return Object.fromEntries(
+    screens.map((screen) => [
+      `case-studies/${study}-${screen}`,
+      { src: `${filePrefix}-${screen}.png`, widths: [320, 540, 756] },
+    ]),
+  )
 }
 
 /** Studio team portraits: about 300px wide on desktop, 170px on mobile. */

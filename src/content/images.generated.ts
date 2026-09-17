@@ -182,6 +182,50 @@ export const images = {
     ],
     "color": "#e8e8d8"
   },
+  "case-studies/orbit-health-home": {
+    "src": "cs-orbit-screen-home.png",
+    "width": 756,
+    "height": 1626,
+    "widths": [
+      320,
+      540,
+      756
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/orbit-health-choose-time": {
+    "src": "cs-orbit-screen-choose-time.png",
+    "width": 756,
+    "height": 1626,
+    "widths": [
+      320,
+      540,
+      756
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/orbit-health-confirm": {
+    "src": "cs-orbit-screen-confirm.png",
+    "width": 756,
+    "height": 1626,
+    "widths": [
+      320,
+      540,
+      756
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/orbit-health-booked": {
+    "src": "cs-orbit-screen-booked.png",
+    "width": 756,
+    "height": 1626,
+    "widths": [
+      320,
+      540,
+      756
+    ],
+    "color": "#f8f8f8"
+  },
   "team/daniel-mensah": {
     "src": "https://images.unsplash.com/photo-1763745315951-7daac4821af6?fm=jpg&q=90&w=1600&fit=max",
     "width": 1600,
