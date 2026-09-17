@@ -14,6 +14,11 @@
     "html_handling": "drop-trailing-slash",
   },
 
+  "routes": [
+    { "pattern": "fluxstride.com", "custom_domain": true },
+    { "pattern": "www.fluxstride.com", "custom_domain": true },
+  ],
+
   "observability": {
     "enabled": true,
   },
