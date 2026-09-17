@@ -27,21 +27,21 @@ export function Hero() {
           <Eyebrow className="max-lg:hidden">Design · Build · Run</Eyebrow>
         </Reveal>
 
-        {/* On desktop the size is also capped by the container (11.25cqw = 144px at 1280px wide)
-            so "We build software" stays on one line on laptops narrower than the canvas. */}
+        {/* On desktop the size is also capped by the container (8.9cqw = 114px at 1280px wide)
+            so "We build digital products" stays on one line on laptops narrower than the canvas. */}
         <RevealText
           as="h1"
           id="hero-title"
           on="mount"
           stagger={0.06}
-          className="text-display-2xl leading-[0.95] lg:text-[length:min(var(--text-display-2xl),11.25cqw)] lg:leading-[0.92]"
+          className="text-display-2xl leading-[0.95] lg:text-[length:min(var(--text-display-2xl),8.9cqw)] lg:leading-[0.92]"
         >
-          We build software <br className="max-lg:hidden" />
+          We build digital products <br className="max-lg:hidden" />
           that <br className="lg:hidden" />
-          <span className="max-lg:font-serif max-lg:text-[1.103em] max-lg:font-normal max-lg:italic">
-            keeps
+          <span className="max-lg:font-serif max-lg:text-[1.1em] max-lg:font-normal max-lg:italic">
+            keep
           </span>{' '}
-          <Accent className="text-[1.103em] lg:text-[1.139em]">moving.</Accent>
+          <Accent className="text-[1.1em] lg:text-[1.14em]">moving.</Accent>
         </RevealText>
       </div>
 

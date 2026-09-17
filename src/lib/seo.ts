@@ -37,7 +37,7 @@ const og = (name: string, alt: string): OgImage => ({
   alt,
 })
 
-export const DEFAULT_OG = og('og-default', 'Fluxstride — We build software that keeps moving.')
+export const DEFAULT_OG = og('og-default', 'Fluxstride — We build digital products that keep moving.')
 
 export type PageSeo = {
   path: string

@@ -65,8 +65,8 @@
 
   /* -- Display: page-level headlines -- */
 
-  /* Home hero: 58px → 144px */
-  --text-display-2xl: clamp(3.625rem, 1.6286rem + 8.1905vw, 9rem);
+  /* Home hero: 50px → 114px */
+  --text-display-2xl: clamp(3.125rem, 1.6393rem + 6.0952vw, 7.125rem);
   --text-display-2xl--line-height: 0.92;
   --text-display-2xl--font-weight: 600;
 
