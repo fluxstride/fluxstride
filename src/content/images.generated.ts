@@ -269,6 +269,29 @@ export const images = {
     ],
     "color": "#081828"
   },
+  "case-studies/halden-coffee-hero": {
+    "src": "generated-1789577320469.png",
+    "width": 1408,
+    "height": 768,
+    "widths": [
+      640,
+      1024,
+      1408
+    ],
+    "color": "#d8c8b8"
+  },
+  "case-studies/halden-coffee-product": {
+    "src": "cs-halden-product.png",
+    "width": 2560,
+    "height": 1306,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8e8e8"
+  },
   "case-studies/kinetic-labs-home-thumb": {
     "src": "cs-kinetic-template-home.png",
     "width": 827,

@@ -62,6 +62,8 @@ const IMAGES = {
   // Before/after pair: 620px wide on desktop, so 2x is 1240.
   'case-studies/kinetic-labs-before': { src: 'cs-kinetic-before.png', widths: [640, 1240] },
   'case-studies/kinetic-labs-after': { src: 'cs-kinetic-after.png', widths: [640, 1240] },
+  'case-studies/halden-coffee-hero': { src: 'generated-1789577320469.png' },
+  'case-studies/halden-coffee-product': { src: 'cs-halden-product.png', widths: SCREENSHOT_WIDTHS },
   ...thumbnails(
     'kinetic-labs',
     ['home', 'product', 'pricing', 'customers', 'docs', 'blog-article'],
