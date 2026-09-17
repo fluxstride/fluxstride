@@ -172,7 +172,15 @@ const caseStudyPages: PageSeo[] = [
     : []),
 ]
 
-export const pages: PageSeo[] = [...staticPages, ...legalPages, ...caseStudyPages]
+/** The holding page served at every URL during maintenance (worker/maintenance.mjs). Never indexed. */
+const maintenancePage: PageSeo = {
+  path: '/maintenance',
+  title: 'Back in a moment',
+  description: "We're making a few improvements. The site will be back shortly.",
+  noindex: true,
+}
+
+export const pages: PageSeo[] = [...staticPages, ...legalPages, ...caseStudyPages, maintenancePage]
 
 export const notFoundSeo: PageSeo = {
   path: '/404',

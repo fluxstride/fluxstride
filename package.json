@@ -18,6 +18,7 @@
     "check": "pnpm typecheck && pnpm lint && pnpm format:check",
     "cf:preview": "pnpm build && wrangler dev",
     "cf:deploy": "pnpm build && wrangler deploy",
+    "cf:maintenance": "pnpm build && wrangler deploy --config wrangler.maintenance.jsonc",
     "assets:brand": "node scripts/import-brand-assets.mjs",
     "assets:images": "node scripts/import-images.mjs",
     "assets:logos": "node scripts/build-logos.mjs",

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router'
+import { Route, Routes, useLocation } from 'react-router'
 import { CookieConsent } from '@/components/consent/CookieConsent'
 import { Layout } from '@/components/layout/Layout'
 import { templates, visibleCaseStudies } from '@/content/case-studies'
@@ -9,6 +9,7 @@ import { Contact } from '@/pages/Contact'
 import { Home } from '@/pages/Home'
 import { Insights } from '@/pages/Insights'
 import { LegalPage } from '@/pages/Legal'
+import { Maintenance } from '@/pages/Maintenance'
 import { NotFound } from '@/pages/NotFound'
 import { Process } from '@/pages/Process'
 import { Services } from '@/pages/Services'
@@ -16,10 +17,13 @@ import { Studio } from '@/pages/Studio'
 import { Work } from '@/pages/Work'
 
 export function App() {
+  const { pathname } = useLocation()
+
   return (
     <>
-      {/* First in the DOM, so keyboard users reach the cookie banner before the page. */}
-      <CookieConsent />
+      {/* First in the DOM, so keyboard users reach the cookie banner before the page.
+          Not while the site is down: nothing runs that needs consent. */}
+      {pathname === '/maintenance' ? null : <CookieConsent />}
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
@@ -49,7 +53,8 @@ export function App() {
             <Route key={doc.slug} path={doc.slug} element={<LegalPage doc={doc} />} />
           ))}
         </Route>
-        {/* A standalone screen in the design, without the site header and footer. */}
+        {/* Standalone screens in the design, without the site header and footer. */}
+        <Route path="maintenance" element={<Maintenance />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
