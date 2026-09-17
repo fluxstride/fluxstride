@@ -10,6 +10,8 @@ type ChipProps = {
   onToggle: () => void
   /** Surface the chip sits on. */
   surface?: 'dark' | 'light'
+  /** md: Home's brief builder. sm: the Contact form (14/500, 10×14, 13px check 6px from the label). */
+  size?: 'md' | 'sm'
   className?: string
 }
 
@@ -18,8 +20,9 @@ type ChipProps = {
  * Design: 15/500, 12×18 padding, fully rounded. Selected chips fill with paper
  * and gain a 14px check; unselected ones are outlined.
  */
-export function Chip({ children, selected, onToggle, surface = 'dark', className }: ChipProps) {
+export function Chip({ children, selected, onToggle, surface = 'dark', size = 'md', className }: ChipProps) {
   const dark = surface === 'dark'
+  const small = size === 'sm'
 
   return (
     <motion.button
@@ -29,7 +32,8 @@ export function Chip({ children, selected, onToggle, surface = 'dark', className
       aria-pressed={selected}
       onClick={onToggle}
       className={cn(
-        'inline-flex items-center rounded-full border px-4.25 py-2.75 text-[15px] leading-[1.2] font-medium transition-colors duration-300',
+        'inline-flex items-center rounded-full border font-medium transition-colors duration-300',
+        small ? 'px-3.25 py-2.25 text-sm/[1.2]' : 'px-4.25 py-2.75 text-[15px]/[1.2]',
         dark
           ? selected
             ? 'border-paper bg-paper text-ink'
@@ -45,14 +49,14 @@ export function Chip({ children, selected, onToggle, surface = 'dark', className
           <motion.span
             key="check"
             aria-hidden="true"
-            // 22px = 14px check + the design's 8px gap, so the label slides over as it grows.
+            // 22px = 14px check + the design's 8px gap (19px = 13 + 6 when small), so the label slides over as it grows.
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 22, opacity: 1 }}
+            animate={{ width: small ? 19 : 22, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={springy}
             className="inline-flex overflow-hidden"
           >
-            <Check size={14} strokeWidth={2.25} />
+            <Check size={small ? 13 : 14} strokeWidth={2.25} />
           </motion.span>
         ) : null}
       </AnimatePresence>

@@ -66,3 +66,23 @@ export function briefHref(selectedNeeds: string[], budget: BudgetId | null) {
     .flatMap((option) => option.needs)
   return contactHref(ids, budget)
 }
+
+export type TimelineId = (typeof timelines)[number]['id']
+
+const needIds = new Set<string>(needs.map((need) => need.id))
+const budgetIds = new Set<string>(budgets.map((budget) => budget.id))
+
+/** Reads the options a contactHref link ticks: "?need=seo,website&budget=10-25k". Unknown ids are ignored. */
+export function briefFromSearch(search: string) {
+  const params = new URLSearchParams(search)
+  const need = (params.get('need') ?? '').split(',').filter((id): id is NeedId => needIds.has(id))
+  const budget = params.get('budget')
+  return { needs: need, budget: budget && budgetIds.has(budget) ? (budget as BudgetId) : null }
+}
+
+/** "What happens next" beside the Contact form. */
+export const nextSteps = [
+  { title: 'We reply within 24 hours', body: 'With questions, or a time for a call.' },
+  { title: 'Intro call — 20 minutes', body: "We listen, then tell you honestly if we're the right fit." },
+  { title: 'Proposal in 5 days', body: 'Scope, timeline and a fixed price. No obligation.' },
+]

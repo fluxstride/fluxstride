@@ -11,6 +11,14 @@ export const LEGAL_NAME = 'Fluxstride Ltd'
 
 export const EMAIL_NEW_BUSINESS = 'hello@fluxstride.com'
 export const EMAIL_CAREERS = 'jobs@fluxstride.com'
+
+/**
+ * "Book a 20-min intro call". PLACEHOLDER: set VITE_INTRO_CALL_URL to the booking page
+ * (Cal.com, Calendly…). Until then it opens an email asking for a call.
+ */
+export const INTRO_CALL_URL: string =
+  import.meta.env.VITE_INTRO_CALL_URL || mailto(EMAIL_NEW_BUSINESS, 'Intro call')
+
 export const STUDIO_HOURS = 'Mon–Fri · 9:00–18:00 GMT'
 
 /** Shown beside the nav CTA. Update each quarter. */

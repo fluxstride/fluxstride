@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router'
 import { Layout } from '@/components/layout/Layout'
 import { pageFor } from '@/lib/seo'
+import { Contact } from '@/pages/Contact'
 import { Home } from '@/pages/Home'
 import { Insights } from '@/pages/Insights'
 import { Process } from '@/pages/Process'
@@ -27,7 +28,7 @@ export function App() {
         <Route path="process" element={<Process />} />
         <Route path="studio" element={<Studio />} />
         <Route path="insights" element={<Insights />} />
-        <Route path="contact" element={<Stub path="/contact" />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="*" element={<Stub path="/404" />} />
       </Route>
     </Routes>
