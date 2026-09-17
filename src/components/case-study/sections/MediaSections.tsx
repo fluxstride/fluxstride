@@ -40,7 +40,30 @@ export function Screenshot({ section, dark }: Props<ScreenshotSection>) {
       {section.features?.length ? (
         <FeatureGrid features={section.features} dark={dark} variant={section.featureStyle} />
       ) : null}
+      {section.deliverables?.length ? <Deliverables items={section.deliverables} dark={dark} /> : null}
     </>
+  )
+}
+
+/*
+ * Design: Case Study — Brand Identity, "06 — Applications". Four columns 24px apart (two,
+ * 16px apart, on phones): name and mono count on one line under a hairline.
+ */
+function Deliverables({ items, dark }: { items: [string, string][]; dark: boolean }) {
+  const t = tone(dark)
+  return (
+    <Reveal as="dl" stagger className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+      {items.map(([label, meta]) => (
+        // The rule sits inside the design's 14px padding.
+        <div
+          key={label}
+          className={cn('flex items-center justify-between gap-1 border-t pt-3.25 pb-3.5', t.border)}
+        >
+          <dt className="text-sm/[17px] font-semibold lg:text-[17px]/[21px]">{label}</dt>
+          <dd className={cn('shrink-0 font-mono text-[10px]/[13px] uppercase', t.muted)}>{meta}</dd>
+        </div>
+      ))}
+    </Reveal>
   )
 }
 

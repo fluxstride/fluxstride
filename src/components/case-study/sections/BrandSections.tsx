@@ -25,6 +25,11 @@ function readableOn(hex: string) {
   return luminance > 0.4 ? 'text-ink' : 'text-white'
 }
 
+/*
+ * Design: Case Study — Brand Identity, "04 — Colour". Five 420px swatches edge to edge, the
+ * name at the top (24px) and the values at the bottom; stacked 8px apart on phones, 115px
+ * tall with the values straight under the name.
+ */
 export function Palette({ section }: Props<PaletteSection>) {
   return (
     <Reveal as="ul" stagger className="grid gap-2 lg:grid-cols-5 lg:gap-0">
@@ -32,22 +37,16 @@ export function Palette({ section }: Props<PaletteSection>) {
         // A bracketed placeholder like "[#RRGGBB]" falls back to the grey ramp.
         const hex =
           colour.hex.trim().match(/^#[0-9a-f]{6}$/i)?.[0] ?? PLACEHOLDER_RAMP[i % PLACEHOLDER_RAMP.length]
-        const text = readableOn(hex)
         return (
           <li
             key={colour.name + i}
-            className={cn(
-              'flex flex-col justify-between gap-6 p-4.5 lg:h-100 lg:p-6',
-              text,
-              // Pale swatches need an edge against the paper background.
-              text === 'text-ink' && 'border border-line',
-            )}
-            style={{ backgroundColor: hex }}
+            className={cn('flex flex-col gap-1.5 p-4.5 lg:h-105 lg:p-6', !colour.text && readableOn(hex))}
+            style={{ backgroundColor: hex, color: colour.text }}
           >
-            <p className="text-lg font-semibold lg:text-[1.375rem]">{colour.name}</p>
-            <dl className="flex flex-col gap-1 font-mono text-[10px]/[1.3] uppercase">
+            <p className="text-lg/[22px] font-semibold lg:text-2xl/[29px]">{colour.name}</p>
+            <dl className="flex flex-col gap-1.5 font-mono text-[10px]/[13px] uppercase lg:mt-auto">
               {(['hex', 'rgb', 'cmyk'] as const).map((format) => (
-                <div key={format} className="flex gap-1.5">
+                <div key={format} className="flex gap-[1ch]">
                   <dt>{format}</dt>
                   <dd>{colour[format]}</dd>
                 </div>
@@ -60,22 +59,70 @@ export function Palette({ section }: Props<PaletteSection>) {
   )
 }
 
+/** Weight names a specimen can list, set in that weight. */
+const FONT_WEIGHTS: Record<string, number> = {
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+}
+
+/*
+ * Design: Case Study — Brand Identity, "05 — Typography", on ink. Two outlined cards 16px
+ * apart (stacked on phones), aligned to the top: mono label, 180px "Aa" (96px), a sample line
+ * (serif 40px / sans 24px; 26px / 18px on phones), then the alphabet or the weights.
+ */
 export function Typography({ section, dark }: Props<TypographySection>) {
   const t = tone(dark)
   return (
-    <Reveal stagger className="grid gap-4 lg:grid-cols-2">
+    <Reveal stagger className="flex flex-col gap-4 lg:flex-row lg:items-start">
       {section.specimens.map((specimen) => {
-        const font = specimen.style === 'serif' ? 'font-serif' : 'font-sans font-medium'
+        const serif = specimen.style === 'serif'
         return (
-          <figure key={specimen.role} className={cn('flex flex-col gap-4 p-5.5 lg:p-10', t.card)}>
-            <Label className={t.muted}>
+          <figure
+            key={specimen.role}
+            className={cn(
+              'flex flex-col gap-4 border p-5.25 lg:flex-1 lg:p-9.75',
+              dark ? 'border-line-dark' : 'border-line bg-white',
+            )}
+          >
+            <Label className={cn('text-label-sm/[15px]', t.muted)}>
               {specimen.role} · {specimen.typeface}
             </Label>
-            <p aria-hidden="true" className={cn('text-[6rem]/[1] lg:text-[11.25rem]/[1]', font)}>
-              Aa
-            </p>
-            <p className={cn('text-2xl/[1.2] lg:text-[2.25rem]/[1.2]', font)}>{specimen.sample}</p>
-            <Label className={cn('break-all', t.muted)}>ABCDEFGHIJKLMNOPQRSTUVWXYZ · 0123456789</Label>
+            <div className="flex flex-col gap-4" style={{ color: section.colour }}>
+              <p
+                aria-hidden="true"
+                className={cn(
+                  'text-[6rem]/[1] lg:text-[11.25rem]/[1]',
+                  serif ? 'font-serif' : 'font-sans font-medium tracking-[-0.04em]',
+                )}
+              >
+                Aa
+              </p>
+              <p
+                className={
+                  serif
+                    ? 'font-serif text-[1.625rem]/[1.15] lg:text-[2.5rem]/[1.15]'
+                    : 'text-lg/[1.4] lg:text-2xl/[1.4]'
+                }
+              >
+                {specimen.sample}
+              </p>
+            </div>
+            {specimen.weights?.length ? (
+              <ul className={cn('flex flex-wrap gap-4 text-[13px]/[16px] lg:text-[15px]/[18px]', t.muted)}>
+                {specimen.weights.map((weight) => (
+                  <li key={weight} style={{ fontWeight: FONT_WEIGHTS[weight.toLowerCase()] ?? 400 }}>
+                    {weight}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <Label className={cn('text-[9px]/[12px] break-all lg:text-label-sm/[15px]', t.muted)}>
+                ABCDEFGHIJKLMNOPQRSTUVWXYZ · 0123456789
+              </Label>
+            )}
           </figure>
         )
       })}

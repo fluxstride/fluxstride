@@ -91,13 +91,15 @@ type SectionBase = {
   stats?: Stat[]
 }
 
-/** One screenshot or image, optionally followed by three features. */
+/** One screenshot or image, optionally followed by three features or a row of deliverables. */
 export type ScreenshotSection = SectionBase & {
   kind: 'screenshot'
   media: Media
   frame: MediaFrame
   features?: Feature[]
   featureStyle?: FeatureStyle
+  /** Label and count under a hairline, four across (two on phones): ['Stationery', '12 items'] */
+  deliverables?: [label: string, meta: string][]
 }
 
 /** A grid of images: page templates, app screens, components, deliverables, applications. */
@@ -324,14 +326,35 @@ export type ClustersSection = SectionBase & {
   }[]
 }
 
+/** Brand colours as tall swatches in a row (stacked on phones), with their values. */
 export type PaletteSection = SectionBase & {
   kind: 'palette'
-  colours: { name: string; hex: string; rgb: string; cmyk: string }[]
+  colours: {
+    name: string
+    hex: string
+    rgb: string
+    cmyk: string
+    /**
+     * Text colour on the swatch, usually another brand colour (Aurora sets Sage in Forest).
+     * Defaults to ink or white, whichever reads better.
+     */
+    text?: string
+  }[]
 }
 
+/** Typefaces side by side (stacked on phones), each with a big "Aa" and a sample line. */
 export type TypographySection = SectionBase & {
   kind: 'typography'
-  specimens: { role: string; typeface: string; sample: string; style: 'serif' | 'sans' }[]
+  specimens: {
+    role: string
+    typeface: string
+    sample: string
+    style: 'serif' | 'sans'
+    /** Weights shown under the sample, e.g. ['Regular', 'Medium', 'Semibold']. Without them, the alphabet. */
+    weights?: string[]
+  }[]
+  /** Colour of the specimens, e.g. the brand's sand on ink. Defaults to the section's text colour. */
+  colour?: string
 }
 
 /** A sample component in the design system row, drawn in `components.colours`. */
