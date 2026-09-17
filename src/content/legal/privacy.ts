@@ -41,12 +41,12 @@ export default defineLegalDocument({
       blocks: [
         {
           type: 'paragraph',
-          text: 'Fluxstride Ltd ("Fluxstride", "we", "us") is a software and design studio registered in England & Wales (company no. 00000000) at 00 Example Street, London EC1A 0AA. We are the data controller for the personal information described in this policy and are registered with the Information Commissioner\'s Office (ICO) under reference ZA000000.',
+          text: 'Fluxstride Ltd ("Fluxstride", "we", "us") is a design and engineering studio registered in England & Wales (company no. 00000000) at 00 Example Street, London EC1A 0AA. We are the data controller for the personal information described in this policy and are registered with the Information Commissioner\'s Office (ICO) under reference ZA000000.',
         },
         {
           type: 'note',
           icon: Info,
-          text: "Where we build software that processes your customers' data, we act as your data processor under a separate Data Processing Agreement.",
+          text: "Where we build products that process your customers' data, we act as your data processor under a separate Data Processing Agreement.",
         },
       ],
     },

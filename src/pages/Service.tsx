@@ -13,8 +13,15 @@ import { groupLabels, service as findService, serviceHref, services, type Servic
 import { caseStudies } from '@/content/work'
 import { pad } from '@/lib/format'
 
-/** Case studies shown under "Selected work", from the projects tagged with the service. */
+/** Case studies shown under "Selected work". */
 const WORK_LIMIT = 2
+
+/** The service's curated studies first, then any other project tagged with it. */
+function selectedWork(service: Service) {
+  const tagged = caseStudies.filter((study) => study.disciplines.includes(service.slug))
+  const curated = (service.work ?? []).flatMap((slug) => tagged.filter((study) => study.slug === slug))
+  return [...curated, ...tagged.filter((study) => !curated.includes(study))].slice(0, WORK_LIMIT)
+}
 
 /*
  * Design: Fluxstride — Service · Website Design & Frontend Development (desktop 1440, mobile 390).
@@ -31,7 +38,7 @@ const WORK_LIMIT = 2
  */
 export function ServicePage({ service }: { service: Service }) {
   const index = services.indexOf(service)
-  const work = caseStudies.filter((study) => study.disciplines.includes(service.slug)).slice(0, WORK_LIMIT)
+  const work = selectedWork(service)
 
   return (
     <>

@@ -21,7 +21,7 @@ export function StudioIntro() {
         </Reveal>
         <RevealText as="h1" on="mount" delay={0.1} stagger={0.035} className="text-statement text-ink">
           A senior studio for <br className="max-lg:hidden" />
-          software &amp; design<span className="max-lg:hidden"> —</span>
+          design &amp; engineering<span className="max-lg:hidden"> —</span>
           <br />
           <Accent className="text-[1.1em] lg:text-[1.125em]">
             <span className="mr-[0.25em] lg:hidden">—</span>and every decision in between.

@@ -141,7 +141,7 @@ function Newsletter() {
   return (
     <div className="flex flex-col gap-3.5 lg:w-115 lg:shrink-0 lg:gap-4">
       <h2 id="newsletter-title" className="text-value max-lg:text-[20px]">
-        The Stride — monthly notes on software &amp; design
+        The Stride — monthly notes on design &amp; engineering
       </h2>
       <form onSubmit={onSubmit} aria-labelledby="newsletter-title" className="relative">
         <label htmlFor="newsletter-email" className="sr-only">

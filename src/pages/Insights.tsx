@@ -72,7 +72,7 @@ export function Insights() {
             <Accent className="text-[1.017em] lg:text-[1.109em]">&amp; notes.</Accent>
           </>
         }
-        intro="Practical thinking on software, design and growth — written by the people doing the work."
+        intro="Practical thinking on design, engineering and growth — written by the people doing the work."
         introClassName="lg:w-75"
       />
 

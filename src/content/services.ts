@@ -66,6 +66,11 @@ export type Service = {
   handover: string
   /** Services that usually join this one on a project */
   pairsWith: ServiceSlug[]
+  /**
+   * "Selected work": case study slugs, in the order they should appear. Anything left out is
+   * filled in from the studies tagged with this service, so this is optional curation.
+   */
+  work?: string[]
   /** "How it works": four phases */
   process: ServicePhase[]
   /** Also published as FAQPage structured data on the service page. */
@@ -110,6 +115,7 @@ export const services: Service[] = [
     team: 'Designer + researcher',
     handover: 'Figma files & design system',
     pairsWith: ['web-design-frontend', 'mobile-development'],
+    work: ['orbit-health', 'kinetic-labs'],
     process: [
       {
         name: 'Research',
@@ -284,6 +290,7 @@ export const services: Service[] = [
     team: 'Designer + 2 engineers',
     handover: 'Code, CMS & training',
     pairsWith: ['product-design', 'backend-development'],
+    work: ['kinetic-labs', 'halden-coffee'],
     process: [
       {
         name: 'Discover',
@@ -457,6 +464,7 @@ export const services: Service[] = [
     team: '2–3 engineers',
     handover: 'Code, docs & runbooks',
     pairsWith: ['web-design-frontend', 'cloud-devops'],
+    work: ['northwind', 'atlas-freight'],
     process: [
       {
         name: 'Discover',

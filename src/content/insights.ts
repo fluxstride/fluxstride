@@ -28,7 +28,7 @@ export type Article = {
 
 export const featuredArticle: Article = {
   slug: 'launch-is-the-start-line',
-  title: 'Launch is the start line: our playbook for software that keeps moving',
+  title: 'Launch is the start line: our playbook for products that keep moving',
   category: 'Engineering',
   readTime: 12,
   date: '2026-09-04',

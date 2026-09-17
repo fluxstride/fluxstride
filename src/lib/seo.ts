@@ -103,10 +103,10 @@ const staticPages: PageSeo[] = [
   },
   {
     path: '/insights',
-    title: 'Insights & Notes on Software and Design',
+    title: 'Insights & Notes on Design and Engineering',
     breadcrumb: 'Insights',
     description:
-      'Practical writing on engineering, design, SEO and growth from the Fluxstride team — plus The Stride, our monthly newsletter.',
+      'Practical writing on design, engineering, SEO and growth from the Fluxstride team — plus The Stride, our monthly newsletter.',
     image: og('og-insights', 'Insights and notes from the Fluxstride team.'),
     priority: 0.7,
   },
@@ -180,7 +180,7 @@ const servicePages: PageSeo[] = services.map((service) => ({
   breadcrumb: service.shortTitle,
   parent: '/services',
   description: service.description,
-  image: og('og-services', `${service.title} at Fluxstride.`),
+  image: og(`og-service-${service.slug}`, `${service.title} at Fluxstride.`),
   priority: 0.8,
 }))
 

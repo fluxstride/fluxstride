@@ -163,12 +163,12 @@ export const faqs: { question: string; answer: string }[] = [
   {
     question: 'How much does a project cost?',
     answer:
-      'Websites start from £8k, apps and custom software from £25k. After discovery you get a fixed price, so there are no surprises.',
+      'Websites start from £8k, apps and platforms from £25k. After discovery you get a fixed price, so there are no surprises.',
   },
   {
     question: 'How long until we launch?',
     answer:
-      'Most websites launch in 4–8 weeks; apps and custom software take 8–20. You get a dated plan at the end of the Define phase and see progress every Friday.',
+      'Most websites launch in 4–8 weeks; apps and platforms take 8–20. You get a dated plan at the end of the Define phase and see progress every Friday.',
   },
   {
     question: 'Do we own the code and designs?',
