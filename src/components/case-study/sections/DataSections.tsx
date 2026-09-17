@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
@@ -14,52 +15,68 @@ import { tone } from '../tone'
 
 type Props<T> = { section: T; dark: boolean }
 
-/** Before/after bars per row. Bars are decorative; the labels carry the numbers. */
+/*
+ * Design: Case Study — E-commerce, "04 — Conversion". A legend, then one row per stage
+ * under a hairline: 220px name beside two bars (20px, 14px on phones) with their figure,
+ * old in grey and new in Flux blue. Phones put the name above the bars.
+ * Bars are decorative; the figures carry the numbers.
+ */
 export function Bars({ section, dark }: Props<BarsSection>) {
   const t = tone(dark)
+  const max = Math.max(...section.rows.flatMap((row) => [row.before.value, row.after.value]), 1)
   const bar = (value: number, className: string) => (
-    // Bars top out at 75% so the label always fits beside the longest one.
+    // The longest bar spans 77% of the track (70% on phones), leaving room for its figure.
     <span
       aria-hidden="true"
-      className={cn('h-2.5 shrink-0 lg:h-3.5', className)}
-      style={{ width: `${Math.max(1, Math.min(100, value)) * 0.75}%` }}
+      className={cn('h-3.5 w-[calc(var(--bar)*70%)] shrink-0 lg:h-5 lg:w-[calc(var(--bar)*77%)]', className)}
+      style={{ '--bar': Math.max(0, value) / max } as CSSProperties}
     />
   )
 
   return (
-    <div className="flex flex-col gap-5">
-      <Legend labels={section.legend} dark={dark} />
-      <Reveal as="ul" stagger={0.06}>
+    <div className="flex flex-col gap-7 lg:gap-12">
+      <Legend
+        keys={[
+          { label: section.legend[0], swatch: t.quiet },
+          { label: section.legend[1], swatch: t.accentBg, strong: true },
+        ]}
+        dark={dark}
+        className="max-lg:flex-col max-lg:gap-2"
+      />
+      <Reveal as="ul" stagger={0.06} className="flex flex-col gap-4.5 lg:gap-5.5">
         {section.rows.map((row) => (
+          // The rule sits inside the design's bottom padding (16px, 22px on desktop).
           <li
             key={row.label}
             className={cn(
-              'flex flex-col gap-2.5 border-t py-4 lg:flex-row lg:items-center lg:gap-10 lg:py-5.5',
+              'flex flex-col gap-2 border-b pb-3.75 lg:flex-row lg:items-center lg:gap-6 lg:pb-5.25',
               t.border,
             )}
           >
             <span
               className={cn(
-                'text-base font-semibold lg:w-70 lg:shrink-0 lg:text-lg',
+                'text-[15px]/[1.2] font-semibold lg:w-55 lg:shrink-0 lg:text-lg/[1.2]',
                 row.highlight && t.accent,
               )}
             >
               {row.label}
             </span>
-            <div className="flex flex-1 flex-col gap-2">
+            <dl className="flex flex-1 flex-col gap-1.5">
               <div className="flex items-center gap-2.5">
+                <dt className="sr-only">{section.legend[0]}</dt>
                 {bar(row.before.value, t.quiet)}
-                <Label className={t.muted}>
-                  {section.legend[0]} · {row.before.display}
-                </Label>
+                <dd className={cn('font-mono text-label-sm/[15px] uppercase', t.muted)}>
+                  {row.before.display}
+                </dd>
               </div>
               <div className="flex items-center gap-2.5">
+                <dt className="sr-only">{section.legend[1]}</dt>
                 {bar(row.after.value, t.accentBg)}
-                <Label className={t.accent}>
-                  {section.legend[1]} · {row.after.display}
-                </Label>
+                <dd className={cn('font-mono text-label-sm/[15px] uppercase', t.text)}>
+                  {row.after.display}
+                </dd>
               </div>
-            </div>
+            </dl>
           </li>
         ))}
       </Reveal>
@@ -70,6 +87,8 @@ export function Bars({ section, dark }: Props<BarsSection>) {
 
 /** Column chart. Heights are relative to the largest value. */
 export function Chart({ section, dark }: Props<ChartSection>) {
+  if (section.points.some((point) => point.stack != null))
+    return <StackedChart section={section} dark={dark} />
   const t = tone(dark)
   const max = Math.max(...section.points.map((point) => point.value), 1)
   const changeAt = section.changeAt ?? 0
@@ -80,16 +99,28 @@ export function Chart({ section, dark }: Props<ChartSection>) {
       className={cn('flex flex-col gap-6 lg:gap-10', !dark && 'border border-line bg-white p-5 lg:p-12')}
     >
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div className="flex flex-col gap-1.5">
-          <Label className={t.muted}>{section.kpi.label}</Label>
-          <p className="flex items-end gap-3">
-            <span className="text-[2.5rem]/[1] font-semibold tracking-tight lg:text-[4rem]/[1]">
-              {section.kpi.value}
-            </span>
-            {section.kpi.detail ? <Label className={cn('pb-1', t.accent)}>{section.kpi.detail}</Label> : null}
-          </p>
-        </div>
-        {section.legend ? <Legend labels={section.legend} dark={dark} /> : null}
+        {section.kpi ? (
+          <div className="flex flex-col gap-1.5">
+            <Label className={t.muted}>{section.kpi.label}</Label>
+            <p className="flex items-end gap-3">
+              <span className="text-[2.5rem]/[1] font-semibold tracking-tight lg:text-[4rem]/[1]">
+                {section.kpi.value}
+              </span>
+              {section.kpi.detail ? (
+                <Label className={cn('pb-1', t.accent)}>{section.kpi.detail}</Label>
+              ) : null}
+            </p>
+          </div>
+        ) : null}
+        {section.legend ? (
+          <Legend
+            keys={[
+              { label: section.legend[0], swatch: t.quiet },
+              { label: section.legend[1], swatch: t.accentBg },
+            ]}
+            dark={dark}
+          />
+        ) : null}
       </div>
 
       <div aria-hidden="true" className="flex h-45 lg:h-90">
@@ -126,6 +157,68 @@ export function Chart({ section, dark }: Props<ChartSection>) {
           <Source dark={dark}>{section.source}</Source>
         </figcaption>
       ) : null}
+    </Reveal>
+  )
+}
+
+/*
+ * Design: Case Study — E-commerce, "05 — Revenue", on ink. Twelve columns 14px apart (4px on
+ * phones) on a 340px baseline (200px): `value` at the bottom, `stack` 2px above it in the
+ * lighter blue. Columns before `changeAt` are grey. Month labels 12px below, the legend
+ * 56px under the chart (32px, stacked).
+ */
+function StackedChart({ section, dark }: Props<ChartSection>) {
+  const t = tone(dark)
+  const total = (point: ChartSection['points'][number]) => point.value + (point.stack ?? 0)
+  const max = Math.max(...section.points.map(total), 1)
+  const changeAt = section.changeAt ?? 0
+  // Flux blue below, the lighter blue stacked on top (on paper, a tint of Flux).
+  const stackColour = dark ? 'bg-flux-light' : 'bg-flux/40'
+
+  return (
+    <Reveal as="figure" className="flex flex-col gap-8 lg:gap-14">
+      <div aria-hidden="true" className="flex flex-col gap-3">
+        <div className={cn('flex h-50 items-end gap-1 border-b lg:h-85 lg:gap-3.5', t.border)}>
+          {section.points.map((point, i) => (
+            // The tallest column reaches 94% of the chart (97% on desktop).
+            <div
+              key={point.label + i}
+              className="flex h-[calc(var(--column)*94%)] flex-1 flex-col justify-end gap-0.5 lg:h-[calc(var(--column)*97%)]"
+              style={{ '--column': total(point) / max } as CSSProperties}
+            >
+              {point.stack ? <span className={stackColour} style={{ flexGrow: point.stack }} /> : null}
+              <span className={i < changeAt ? t.quiet : 'bg-flux'} style={{ flexGrow: point.value }} />
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-1 lg:gap-3.5">
+          {section.points.map((point, i) => (
+            <Label key={point.label + i} className={cn('flex-1 text-center text-[10px]/[13px]', t.muted)}>
+              {point.label}
+            </Label>
+          ))}
+        </div>
+      </div>
+      <ul className="sr-only">
+        {section.points.map((point, i) => (
+          <li key={point.label + i}>
+            {point.label}: {point.display ?? total(point)}
+          </li>
+        ))}
+      </ul>
+      <figcaption className="flex flex-col gap-4">
+        <Legend
+          keys={[
+            ...(section.legend ? [{ label: section.legend[1], swatch: 'bg-flux' }] : []),
+            ...(section.stackLabel ? [{ label: section.stackLabel, swatch: stackColour }] : []),
+            ...(section.legend && changeAt > 0 ? [{ label: section.legend[0], swatch: t.quiet }] : []),
+          ]}
+          dark={dark}
+          size="sm"
+          className="max-lg:flex-col max-lg:gap-2"
+        />
+        {section.source ? <Source dark={dark}>{section.source}</Source> : null}
+      </figcaption>
     </Reveal>
   )
 }

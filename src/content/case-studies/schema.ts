@@ -218,7 +218,11 @@ export type ScoresSection = SectionBase & {
   }[]
 }
 
-/** Horizontal before/after bars: funnels, task success, share of voice. `value` is 0–100. */
+/**
+ * Horizontal before/after bars: funnels, task success, share of voice. `value` is 0–100;
+ * bars are drawn relative to the largest value in the section, which spans about three
+ * quarters of the width so its figure fits beside it.
+ */
 export type BarsSection = SectionBase & {
   kind: 'bars'
   legend: [before: string, after: string]
@@ -232,13 +236,24 @@ export type BarsSection = SectionBase & {
   source?: string
 }
 
-/** A column chart over time: traffic, revenue, uptime. Values are relative; the tallest fills the chart. */
+/**
+ * A column chart over time: traffic, revenue, uptime. Values are relative; the tallest
+ * column fills the chart.
+ *
+ * Stacked (Halden Coffee): give points a `stack` and name it with `stackLabel`. The chart
+ * drops the KPI and card, and the legend moves underneath.
+ */
 export type ChartSection = SectionBase & {
   kind: 'chart'
-  kpi: Stat
+  kpi?: Stat
   legend?: [before: string, after: string]
-  /** `display` is what screen readers hear for the point, e.g. "71,900 sessions". */
-  points: { label: string; value: number; display?: string }[]
+  /**
+   * `display` is what screen readers hear for the point, e.g. "71,900 sessions".
+   * `stack` sits on top of `value`, e.g. subscription revenue over one-off orders.
+   */
+  points: { label: string; value: number; stack?: number; display?: string }[]
+  /** Legend label for the `stack` segment, e.g. "Subscriptions". */
+  stackLabel?: string
   /** Index of the first "after" point, marked with `markerLabel` (e.g. "Launch"). */
   changeAt?: number
   markerLabel?: string

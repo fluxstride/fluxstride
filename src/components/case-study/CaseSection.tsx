@@ -44,10 +44,10 @@ const renderers: Renderers = {
 }
 
 /** Space between the heading and the content: 32px / 56px unless the design says otherwise. */
-const CONTENT_GAP: Partial<Record<CaseStudySection['kind'], string>> = {
-  features: 'gap-8 lg:gap-12',
-  bars: 'gap-8 lg:gap-12',
-  flow: 'gap-7 lg:gap-12',
+function contentGap(section: CaseStudySection) {
+  if (section.kind === 'features' && section.style !== 'cards') return 'gap-8 lg:gap-12'
+  if (section.kind === 'bars' || section.kind === 'flow') return 'gap-7 lg:gap-12'
+  return 'gap-8 lg:gap-14'
 }
 
 type CaseSectionProps = {
@@ -78,7 +78,7 @@ export function CaseSection({ section, number }: CaseSectionProps) {
         section.tone === 'mist' && 'bg-paper-2',
       )}
     >
-      <div className={cn('container-page flex flex-col', CONTENT_GAP[section.kind] ?? 'gap-8 lg:gap-14')}>
+      <div className={cn('container-page flex flex-col', contentGap(section))}>
         <SectionHeader
           eyebrow={`${String(number).padStart(2, '0')} — ${section.label}`}
           title={

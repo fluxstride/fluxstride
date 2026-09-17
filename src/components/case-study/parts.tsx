@@ -127,14 +127,39 @@ export function FeatureGrid({
 }
 
 /** "Before / After" key for charts and bars. */
-export function Legend({ labels, dark }: { labels: [string, string]; dark: boolean }) {
+/**
+ * Colour keys for a chart. `swatch` is the key's background class; `strong` sets the label
+ * in the text colour instead of muted, e.g. the "After" key of a funnel.
+ */
+export function Legend({
+  keys,
+  dark,
+  size = 'md',
+  className,
+}: {
+  keys: { label: string; swatch: string; strong?: boolean }[]
+  dark: boolean
+  /** md: 14px keys, 11px labels (funnels). sm: 12px keys, 10px labels (charts). */
+  size?: 'sm' | 'md'
+  className?: string
+}) {
   const t = tone(dark)
   return (
-    <ul className="flex gap-5">
-      {labels.map((label, i) => (
-        <li key={label} className="flex items-center gap-2">
-          <span aria-hidden="true" className={cn('size-2.5', i === 0 ? t.quiet : t.accentBg)} />
-          <Label className={t.muted}>{label}</Label>
+    <ul className={cn('flex gap-5', className)}>
+      {keys.map((key) => (
+        <li key={key.label} className="flex items-center gap-2">
+          <span
+            aria-hidden="true"
+            className={cn('shrink-0', size === 'md' ? 'size-3.5' : 'size-3', key.swatch)}
+          />
+          <Label
+            className={cn(
+              size === 'md' ? 'text-label-sm/[15px]' : 'text-[10px]/[13px]',
+              key.strong ? t.text : t.muted,
+            )}
+          >
+            {key.label}
+          </Label>
         </li>
       ))}
     </ul>
