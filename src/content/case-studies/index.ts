@@ -6,7 +6,7 @@ import type { CaseStudy } from './schema'
  *
  * Every file in ./studies is picked up automatically: add one (ideally with
  * `pnpm new:case-study`) and it gets a page at /work/<slug>. Nothing to register.
- * Starter templates live in ./templates, one per service, named after its slug.
+ * Starter templates live in ./templates: page structures, each named after its file.
  */
 
 export type { CaseStudy, CaseStudySection, ServiceSlug } from './schema'
