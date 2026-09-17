@@ -37,7 +37,7 @@ Browse every template, rendered as a page, at **http://localhost:5173/work/templ
 A case study is **plain data**. You never edit a component to publish one.
 
 ```
-src/content/services.ts   The six services. Case studies, Work filters and cards read their names from here.
+src/content/services.ts   The six services, each with its own page. Case studies, Work filters and cards read their names from here.
 
 src/content/case-studies/
 ├── schema.ts          Types for every field and section. Hover in your editor for docs.
@@ -644,7 +644,7 @@ const cards: Card[] = [
 
 **A new service:**
 
-1. Add the slug to `ServiceSlug` and an entry to `services` in `src/content/services.ts`, placed in its Design, Build or Run `group`. The Home grid, Services page, footer, Work filters and structured data all read this list.
+1. Add the slug to `ServiceSlug` and an entry to `services` in `src/content/services.ts`, placed in its Design, Build or Run `group`, with every field its own page needs (see [services-and-careers.md](./services-and-careers.md)). The Home grid, Services page, the page at /services/<slug>, footer, Work filters and structured data all read this list.
 2. Add a matching need to `needs` in `src/content/brief.ts`, so "Discuss this" pre-ticks it on the Contact form.
 3. Add it to the Home marquee (`DisciplineMarquee.tsx`) and update the counts in copy ("Six services") on Home, Services, Studio and in `src/lib/seo.ts`.
 4. Tag studies that used it. Templates don't change unless the service needs a new page structure.
