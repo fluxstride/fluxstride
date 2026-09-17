@@ -25,7 +25,19 @@ const baseUrl = process.env.BASE_URL ?? 'http://localhost:5173'
 const motion = Boolean(process.env.MOTION)
 const scrollPause = motion ? 250 : 60
 
-const ALL_PAGES = ['/', '/work', '/services', '/process', '/studio', '/insights', '/contact', '/404-example']
+const ALL_PAGES = [
+  '/',
+  '/work',
+  '/services',
+  '/process',
+  '/studio',
+  '/insights',
+  '/contact',
+  '/privacy',
+  '/terms',
+  '/cookies',
+  '/404-example',
+]
 
 // Accept "work" as well as "/work": Git Bash rewrites a leading slash into a Windows path.
 const toPath = (arg) => (arg === 'home' ? '/' : `/${arg.replace(/^\/+/, '')}`)

@@ -2,11 +2,13 @@ import { Route, Routes } from 'react-router'
 import { CookieConsent } from '@/components/consent/CookieConsent'
 import { Layout } from '@/components/layout/Layout'
 import { templates, visibleCaseStudies } from '@/content/case-studies'
+import { legalDocuments } from '@/content/legal'
 import { CaseStudyPage } from '@/pages/CaseStudy'
 import { CaseStudyTemplatePreview, CaseStudyTemplates } from '@/pages/CaseStudyTemplates'
 import { Contact } from '@/pages/Contact'
 import { Home } from '@/pages/Home'
 import { Insights } from '@/pages/Insights'
+import { LegalPage } from '@/pages/Legal'
 import { NotFound } from '@/pages/NotFound'
 import { Process } from '@/pages/Process'
 import { Services } from '@/pages/Services'
@@ -43,6 +45,9 @@ export function App() {
           <Route path="studio" element={<Studio />} />
           <Route path="insights" element={<Insights />} />
           <Route path="contact" element={<Contact />} />
+          {legalDocuments.map((doc) => (
+            <Route key={doc.slug} path={doc.slug} element={<LegalPage doc={doc} />} />
+          ))}
         </Route>
         {/* A standalone screen in the design, without the site header and footer. */}
         <Route path="*" element={<NotFound />} />

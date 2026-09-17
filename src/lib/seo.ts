@@ -1,5 +1,6 @@
 import { serviceTitle, templates, visibleCaseStudies } from '@/content/case-studies'
 import { BRAND, EMAIL_NEW_BUSINESS, LEGAL_NAME, socialLinks, X_HANDLE } from '@/content/site'
+import { legalDocuments, type LegalSlug } from '@/content/legal'
 import { faqs } from '@/content/process'
 import { services } from '@/content/services'
 
@@ -118,6 +119,32 @@ const staticPages: PageSeo[] = [
   },
 ]
 
+/** Privacy policy, terms and cookie policy: one page per document in content/legal. */
+const legalSeo: Record<LegalSlug, Pick<PageSeo, 'title' | 'description'>> = {
+  privacy: {
+    title: 'Privacy Policy',
+    description:
+      'How Fluxstride collects, uses and protects personal information when you visit our website, work with us or apply to join the team.',
+  },
+  terms: {
+    title: 'Terms of Service',
+    description:
+      'The agreement between you and Fluxstride Ltd for using this website and for the projects, retainers and consultancy we deliver.',
+  },
+  cookies: {
+    title: 'Cookie Policy',
+    description:
+      'The cookies and similar technologies used on fluxstride.com, why we use them, and how to change your choices at any time.',
+  },
+}
+
+const legalPages: PageSeo[] = legalDocuments.map((doc) => ({
+  path: `/${doc.slug}`,
+  breadcrumb: doc.name,
+  priority: 0.3,
+  ...legalSeo[doc.slug],
+}))
+
 /**
  * Case studies: one page per file in content/case-studies/studies. Production builds only
  * see published ones; drafts (and the starter templates) exist in development, marked noindex.
@@ -145,7 +172,7 @@ const caseStudyPages: PageSeo[] = [
     : []),
 ]
 
-export const pages: PageSeo[] = [...staticPages, ...caseStudyPages]
+export const pages: PageSeo[] = [...staticPages, ...legalPages, ...caseStudyPages]
 
 export const notFoundSeo: PageSeo = {
   path: '/404',

@@ -61,7 +61,7 @@ export function Header() {
         animate={{ y: hidden && !open ? '-100%' : '0%' }}
         transition={{ duration: 0.5, ease: EASE_OUT }}
         className={cn(
-          'sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500',
+          'sticky top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 print:hidden',
           scrolled && !open ? 'border-line bg-paper/85 backdrop-blur-md' : 'border-transparent bg-paper',
           open && 'border-transparent bg-transparent',
         )}

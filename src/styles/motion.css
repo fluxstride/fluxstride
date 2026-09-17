@@ -44,3 +44,17 @@
     transform: scaleX(1);
   }
 }
+
+/*
+ * Printing (and the legal PDFs) must show everything, including blocks further down the
+ * page that haven't scrolled into view yet. !important beats GSAP's inline start state.
+ */
+@media print {
+  [data-reveal],
+  [data-reveal] > *,
+  [data-reveal] [data-word] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
