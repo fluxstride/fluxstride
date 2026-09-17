@@ -1,3 +1,4 @@
+import { roles, type Role } from '@/content/careers'
 import { templates, templateTitle, visibleCaseStudies } from '@/content/case-studies'
 import { BRAND, EMAIL_NEW_BUSINESS, LEGAL_NAME, socialLinks, X_HANDLE } from '@/content/site'
 import { legalDocuments, type LegalSlug } from '@/content/legal'
@@ -96,7 +97,7 @@ const staticPages: PageSeo[] = [
     title: 'Studio · About Fluxstride',
     breadcrumb: 'Studio',
     description:
-      'A senior studio for software and design. Meet the people, the values and the open roles behind Fluxstride.',
+      'A senior design and engineering studio. Meet the people, the values and the open roles behind Fluxstride.',
     image: og('og-studio', 'The Fluxstride studio — people, values and careers.'),
     priority: 0.7,
   },
@@ -172,6 +173,17 @@ const caseStudyPages: PageSeo[] = [
     : []),
 ]
 
+/** One page per open role in content/careers. */
+const rolePages: PageSeo[] = roles.map((role) => ({
+  path: `/careers/${role.slug}`,
+  title: `${role.title} · Careers`,
+  breadcrumb: role.title,
+  parent: '/studio',
+  description: role.summary,
+  image: og('og-studio', `${role.title} — join the Fluxstride team.`),
+  priority: 0.6,
+}))
+
 /** The holding page served at every URL during maintenance (worker/maintenance.mjs). Never indexed. */
 const maintenancePage: PageSeo = {
   path: '/maintenance',
@@ -180,7 +192,13 @@ const maintenancePage: PageSeo = {
   noindex: true,
 }
 
-export const pages: PageSeo[] = [...staticPages, ...legalPages, ...caseStudyPages, maintenancePage]
+export const pages: PageSeo[] = [
+  ...staticPages,
+  ...legalPages,
+  ...rolePages,
+  ...caseStudyPages,
+  maintenancePage,
+]
 
 export const notFoundSeo: PageSeo = {
   path: '/404',
@@ -362,12 +380,83 @@ function faqPage() {
   }
 }
 
+/** Strips the Markdown links content text allows: "[our work](/work)" → "our work". */
+const plain = (text: string) => text.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1')
+
+/**
+ * A role as a Google JobPosting. The description is the role's own sections as HTML.
+ * Sample roles get none: advertising jobs that don't exist breaks Google's policy.
+ */
+function jobPosting(role: Role) {
+  const description = role.sections
+    .map((section) => {
+      const blocks = section.blocks.map((block) => {
+        if (block.type === 'paragraph') return `<p>${esc(plain(block.text))}</p>`
+        if (block.type === 'list')
+          return `<ul>${block.items.map((item) => `<li>${esc(plain(item))}</li>`).join('')}</ul>`
+        return ''
+      })
+      return `<h2>${esc(section.title)}</h2>${blocks.join('')}`
+    })
+    .join('')
+
+  const location = role.location.remote
+    ? {
+        jobLocationType: 'TELECOMMUTE',
+        applicantLocationRequirements: role.location.countries.map((name) => ({ '@type': 'Country', name })),
+      }
+    : {
+        jobLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: role.location.locality,
+            addressCountry: role.location.country,
+          },
+        },
+      }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: role.title,
+    description: `<p>${esc(role.summary)}</p>${description}`,
+    datePosted: role.posted,
+    ...(role.closes ? { validThrough: `${role.closes}T23:59:59Z` } : {}),
+    employmentType: role.employment,
+    hiringOrganization: {
+      '@type': 'Organization',
+      name: BRAND,
+      sameAs: `${origin}/`,
+      logo: absolute('/logo.png'),
+    },
+    ...location,
+    ...(role.salary
+      ? {
+          baseSalary: {
+            '@type': 'MonetaryAmount',
+            currency: role.salary.currency,
+            value: {
+              '@type': 'QuantitativeValue',
+              minValue: role.salary.min,
+              maxValue: role.salary.max,
+              unitText: role.salary.per,
+            },
+          },
+        }
+      : {}),
+    directApply: false,
+  }
+}
+
 /** JSON-LD blocks for one route. */
 export function structuredData(path: string): object[] {
   const page = pageFor(path)
   if (page.noindex) return []
   if (page.path === '/') return [organisation(), website()]
   if (page.path === '/process') return [breadcrumbs(page), faqPage()]
+  const role = roles.find((candidate) => `/careers/${candidate.slug}` === page.path)
+  if (role && !role.sample) return [breadcrumbs(page), jobPosting(role)]
   return [breadcrumbs(page)]
 }
 

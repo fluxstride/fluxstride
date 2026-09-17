@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router'
 import { CookieConsent } from '@/components/consent/CookieConsent'
 import { Layout } from '@/components/layout/Layout'
+import { roles } from '@/content/careers'
 import { templates, visibleCaseStudies } from '@/content/case-studies'
 import { legalDocuments } from '@/content/legal'
 import { CaseStudyPage } from '@/pages/CaseStudy'
@@ -12,6 +13,7 @@ import { LegalPage } from '@/pages/Legal'
 import { Maintenance } from '@/pages/Maintenance'
 import { NotFound } from '@/pages/NotFound'
 import { Process } from '@/pages/Process'
+import { RolePage } from '@/pages/Role'
 import { Services } from '@/pages/Services'
 import { Studio } from '@/pages/Studio'
 import { Work } from '@/pages/Work'
@@ -47,6 +49,9 @@ export function App() {
           <Route path="services" element={<Services />} />
           <Route path="process" element={<Process />} />
           <Route path="studio" element={<Studio />} />
+          {roles.map((role) => (
+            <Route key={role.slug} path={`careers/${role.slug}`} element={<RolePage role={role} />} />
+          ))}
           <Route path="insights" element={<Insights />} />
           <Route path="contact" element={<Contact />} />
           {legalDocuments.map((doc) => (

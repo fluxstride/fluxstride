@@ -1,8 +1,9 @@
+import { Link } from 'react-router'
 import { Reveal } from '@/components/motion/Reveal'
 import { RevealText } from '@/components/motion/RevealText'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
-import { roles } from '@/content/studio'
+import { roles } from '@/content/careers'
 import { EMAIL_CAREERS, mailto } from '@/content/site'
 
 /*
@@ -11,7 +12,7 @@ import { EMAIL_CAREERS, mailto } from '@/content/site'
  * 28px padding: 26/500 title (20px mobile), mono team (140px) and terms (180px), arrow.
  * Mobile stacks each role's details 8px apart.
  *
- * Linked from the footer as /studio#careers.
+ * Each role links to its page at /careers/<slug>. Linked from the footer as /studio#careers.
  */
 export function CareersSection() {
   return (
@@ -40,9 +41,9 @@ export function CareersSection() {
 
         <Reveal as="ul" stagger={0.08} className="flex-1 border-b border-ink">
           {roles.map((role) => (
-            <li key={role.title} className="border-t border-ink">
-              <a
-                href={role.href}
+            <li key={role.slug} className="border-t border-ink">
+              <Link
+                to={`/careers/${role.slug}`}
                 className="group flex flex-col gap-2 pt-6.75 pb-7 lg:flex-row lg:items-center lg:gap-6"
               >
                 <span className="flex-1 text-[clamp(1.25rem,1.1107rem+0.5714vw,1.625rem)] leading-[1.2] font-medium text-ink transition-colors group-hover:text-flux">
@@ -50,9 +51,8 @@ export function CareersSection() {
                 </span>
                 <span className="font-mono text-label/[1.2] text-stone uppercase lg:w-35">{role.team}</span>
                 <span className="font-mono text-label/[1.2] text-stone uppercase lg:w-45">{role.terms}</span>
-                <ArrowIcon direction="up-right" size={20} className="text-ink" />
-                <span className="sr-only">— apply by email</span>
-              </a>
+                <ArrowIcon direction="right" size={20} className="text-ink" />
+              </Link>
             </li>
           ))}
         </Reveal>

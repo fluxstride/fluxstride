@@ -1,12 +1,11 @@
 import type { ImageName } from './images.generated'
-import { EMAIL_CAREERS, mailto } from './site'
 
 /**
- * Studio page: story, facts, values, team and open roles.
+ * Studio page: story, facts, values and team. Open roles live in content/careers.ts.
  *
- * PLACEHOLDERS: the team are stock photos with invented names, and the facts and
- * roles come from the design. Replace with real people (with their consent), real
- * numbers and live vacancies before launch.
+ * PLACEHOLDERS: the team are stock photos with invented names, and the facts come
+ * from the design. Replace with real people (with their consent), real
+ * numbers before launch.
  */
 
 export const story = {
@@ -62,29 +61,4 @@ export const team: TeamMember[] = [
   { name: 'Sofia Lind', role: 'Brand & Graphic Designer', photo: 'team/sofia-lind' },
   { name: 'Kwame Asante', role: 'SEO & Growth Lead', photo: 'team/kwame-asante' },
   { name: 'Hannah Cole', role: 'Client Partner', photo: 'team/hannah-cole' },
-]
-
-export type Role = { title: string; team: string; terms: string; href: string }
-
-const apply = (title: string) => mailto(EMAIL_CAREERS, `Application: ${title}`)
-
-export const roles: Role[] = [
-  {
-    title: 'Senior Full-stack Engineer',
-    team: 'Engineering',
-    terms: 'Remote · Full-time',
-    href: apply('Senior Full-stack Engineer'),
-  },
-  {
-    title: 'Product Designer (UI/UX)',
-    team: 'Design',
-    terms: 'Hybrid · Full-time',
-    href: apply('Product Designer (UI/UX)'),
-  },
-  {
-    title: 'Cloud & DevOps Engineer',
-    team: 'Engineering',
-    terms: 'Remote · Contract',
-    href: apply('Cloud & DevOps Engineer'),
-  },
 ]

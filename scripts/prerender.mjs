@@ -98,6 +98,18 @@ ${samples.map((study) => `    - src/content/case-studies/studies/${study.slug}.t
 `)
 }
 
+const sampleRoles = server.roles.filter((role) => role.sample)
+if (sampleRoles.length) {
+  console.warn(`
+  ----------------------------------------------------------------
+  WARNING: ${sampleRoles.length} open ${sampleRoles.length === 1 ? 'role is' : 'roles are'} invented sample content
+${sampleRoles.map((role) => `    - /careers/${role.slug} (${role.title})`).join('\n')}
+  Replace them with live vacancies in src/content/careers.ts and
+  remove \`sample: true\` (sample roles get no JobPosting data).
+  ----------------------------------------------------------------
+`)
+}
+
 if (server.LEGAL_TODO.length) {
   console.warn(`
   ----------------------------------------------------------------
