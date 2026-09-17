@@ -41,6 +41,11 @@ for (const file of icons) {
 console.log(`  ${icons.length} icons -> public/`)
 
 // -- Open Graph images: PNG exports are ~600 KB each; JPEG at q86 is ~10x smaller --
+//
+// The dark variants ship, and the "-light" ones are skipped on purpose. A link preview is
+// scraped once by the platform's crawler and served from its CDN, so it cannot follow the
+// reader's colour scheme; one card has to work everywhere. The ink card stands out against
+// light feeds (LinkedIn, X, Google) and still reads inside dark-mode apps.
 await mkdir(join(pub, 'og'), { recursive: true })
 const ogDir = join(kit, '01-open-graph')
 const og = (await readdir(ogDir)).filter(

@@ -249,6 +249,15 @@ All in `brand-assets/04-social/`:
 | YouTube banner             | `banners/youtube-banner-*`                                     |
 | IG highlights              | `profile-and-highlights/ig-highlight-*` (one theme, all eight) |
 
+**Dark or light?** Use the dark set everywhere. Neither link previews nor profile banners can follow the
+viewer's colour scheme: a preview image is scraped once and cached by the platform, and every platform
+takes a single banner upload. One image has to work on a white feed and inside a dark-mode app, and the
+ink cards do both — they stand out against light feeds and sit naturally on dark profiles. The light
+variants are for surfaces you don't control: a partner's press page, print, a slide on white.
+
+When you upload a banner, remember the avatar overlaps the lower-left corner on LinkedIn and X, and
+YouTube crops hard on TV and mobile. The designs keep their text inside those safe areas.
+
 Use the same avatar everywhere so the studio is recognisable in a crowded feed. Posting templates, the weekly schedule and the caption formulas live in `04-social/SOCIAL-PLAYBOOK.md`.
 
 ---
