@@ -1,3 +1,4 @@
+import { services } from '@/content/services'
 import type { CaseStudy, ServiceSlug } from './schema'
 
 /**
@@ -41,6 +42,10 @@ export function nextCaseStudy(study: CaseStudy) {
   const index = visibleCaseStudies.findIndex((candidate) => candidate.slug === study.slug)
   return visibleCaseStudies[index + 1] ?? pool[0]
 }
+
+/** The service's display name, e.g. "SEO" or "Website Design & Development". */
+export const serviceTitle = (study: Pick<CaseStudy, 'service'>) =>
+  services.find((service) => service.slug === study.service)?.title ?? study.service
 
 /** Where a Work card should point: the full case study once one exists, otherwise its anchor on /work. */
 export const caseStudyHref = (slug: string) => (findCaseStudy(slug) ? `/work/${slug}` : `/work#${slug}`)

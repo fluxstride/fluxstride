@@ -170,7 +170,8 @@ export type ChartSection = SectionBase & {
   kind: 'chart'
   kpi: Stat
   legend?: [before: string, after: string]
-  points: { label: string; value: number }[]
+  /** `display` is what screen readers hear for the point, e.g. "71,900 sessions". */
+  points: { label: string; value: number; display?: string }[]
   /** Index of the first "after" point, marked with `markerLabel` (e.g. "Launch"). */
   changeAt?: number
   markerLabel?: string
