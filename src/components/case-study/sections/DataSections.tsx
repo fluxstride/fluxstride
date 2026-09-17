@@ -54,7 +54,7 @@ export function Bars({ section, dark }: Props<BarsSection>) {
                 </Label>
               </div>
               <div className="flex items-center gap-2.5">
-                {bar(row.after.value, row.highlight || dark ? t.accentBg : 'bg-stone')}
+                {bar(row.after.value, t.accentBg)}
                 <Label className={t.accent}>
                   {section.legend[1]} · {row.after.display}
                 </Label>

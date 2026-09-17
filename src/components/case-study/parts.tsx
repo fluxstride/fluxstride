@@ -23,7 +23,7 @@ export function Tag({
   return (
     <span
       className={cn(
-        'inline-flex shrink-0 items-center rounded-full px-2.5 py-1 font-mono text-label-sm whitespace-nowrap uppercase',
+        'inline-flex w-fit shrink-0 items-center rounded-full px-2.5 py-1 font-mono text-label-sm whitespace-nowrap uppercase',
         variant === 'risk' && 'bg-[#fde8e8] text-[#b42318]',
         variant === 'solid' && 'bg-flux text-white',
         variant === 'flux' &&
@@ -56,10 +56,19 @@ export function StatRow({ stats, dark }: { stats: Stat[]; dark: boolean }) {
 }
 
 /** Three features with an icon, under a hairline. */
-export function FeatureGrid({ features, dark }: { features: Feature[]; dark: boolean }) {
+export function FeatureGrid({
+  features,
+  dark,
+  stacked = false,
+}: {
+  features: Feature[]
+  dark: boolean
+  /** One column on every screen, for a list beside portrait media. */
+  stacked?: boolean
+}) {
   const t = tone(dark)
   return (
-    <Reveal as="ul" stagger className="grid lg:grid-cols-3 lg:gap-6">
+    <Reveal as="ul" stagger className={cn('grid', !stacked && 'lg:grid-cols-3 lg:gap-6')}>
       {features.map(({ icon: Icon, title, body }) => (
         <li key={title} className={cn('flex flex-col gap-3 border-t py-5', t.border)}>
           <Icon aria-hidden="true" className={cn('size-6 lg:size-7', t.accent)} strokeWidth={1.75} />

@@ -23,7 +23,9 @@ export function Palette({ section }: Props<PaletteSection>) {
   return (
     <Reveal as="ul" stagger className="grid gap-2 lg:grid-cols-5 lg:gap-0">
       {section.colours.map((colour, i) => {
-        const hex = colour.hex.match(/#[0-9a-f]{6}/i)?.[0] ?? PLACEHOLDER_RAMP[i % PLACEHOLDER_RAMP.length]
+        // A bracketed placeholder like "[#RRGGBB]" falls back to the grey ramp.
+        const hex =
+          colour.hex.trim().match(/^#[0-9a-f]{6}$/i)?.[0] ?? PLACEHOLDER_RAMP[i % PLACEHOLDER_RAMP.length]
         const text = readableOn(hex)
         return (
           <li

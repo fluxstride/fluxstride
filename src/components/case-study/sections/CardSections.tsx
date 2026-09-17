@@ -31,11 +31,14 @@ function CardView({ card, dark }: { card: Card; dark: boolean }) {
     <article
       className={cn(
         'flex flex-col gap-3.5 p-5 lg:p-7',
-        card.highlight ? cn('border-2', dark ? 'border-flux-light' : 'border-flux bg-white') : t.card,
+        card.highlight
+          ? // A ring rather than a thicker border, so highlighted cards line up with their neighbours.
+            cn('border ring-1', dark ? 'border-flux-light ring-flux-light' : 'border-flux bg-white ring-flux')
+          : t.card,
       )}
     >
       {card.eyebrow || card.highlight ? (
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex min-h-6 items-center justify-between gap-3">
           {card.eyebrow ? (
             <Label className={card.highlight ? t.accent : t.muted}>{card.eyebrow}</Label>
           ) : (

@@ -1,6 +1,7 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type { BeforeAfterSection, GallerySection, ScreenshotSection } from '@/content/case-studies/schema'
+import { images } from '@/content/images.generated'
 import { cn } from '@/lib/cn'
 import { MediaView } from '../MediaView'
 import { FeatureGrid, Tag } from '../parts'
@@ -11,10 +12,28 @@ type Props<T> = { section: T; dark: boolean }
 const FULL_WIDTH = '(min-width: 90rem) 1280px, 100vw'
 
 export function Screenshot({ section, dark }: Props<ScreenshotSection>) {
+  const { media } = section
+  const ratio = media.image
+    ? images[media.image].width / images[media.image].height
+    : (media.aspect ?? 16 / 9)
+
+  // Portrait media (a report page, a poster) would be enormous at full width, so it
+  // sits beside its features instead.
+  if (ratio < 1) {
+    return (
+      <div className="grid items-start gap-10 lg:grid-cols-[5fr_7fr] lg:gap-20">
+        <Reveal>
+          <MediaView media={media} frame={section.frame} sizes="(min-width: 64rem) 40vw, 100vw" dark={dark} />
+        </Reveal>
+        {section.features?.length ? <FeatureGrid features={section.features} dark={dark} stacked /> : null}
+      </div>
+    )
+  }
+
   return (
     <>
       <Reveal>
-        <MediaView media={section.media} frame={section.frame} sizes={FULL_WIDTH} dark={dark} />
+        <MediaView media={media} frame={section.frame} sizes={FULL_WIDTH} dark={dark} />
       </Reveal>
       {section.features?.length ? <FeatureGrid features={section.features} dark={dark} /> : null}
     </>

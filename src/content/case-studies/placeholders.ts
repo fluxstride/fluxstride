@@ -1,7 +1,11 @@
 import type { CaseStudy } from './schema'
 
-/** Text written as [Like this] is a placeholder waiting for real content. */
-const PLACEHOLDER = /\[[^\]]+\]/
+/**
+ * Text written as [Like this] is a placeholder waiting for real content. A bracket that
+ * opens or closes a string counts too, for placeholders split across the two halves of a
+ * title: ['[Outcome-led headline,', 'one italic phrase.]'].
+ */
+const PLACEHOLDER = /\[[^\]]*\]|^\s*\[|\]\s*$/
 
 export type Placeholder = {
   /** Where it is, e.g. "results.stats[0].value" */
@@ -21,7 +25,7 @@ export function findPlaceholders(study: CaseStudy): Placeholder[] {
   const walk = (value: unknown, path: string) => {
     if (typeof value === 'string') {
       const match = value.match(PLACEHOLDER)
-      if (match) found.push({ path, value: match[0] })
+      if (match) found.push({ path, value: match[0].length > 1 ? match[0] : value })
       return
     }
     if (Array.isArray(value)) {
