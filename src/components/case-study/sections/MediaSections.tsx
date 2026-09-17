@@ -52,6 +52,7 @@ const galleryColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-c
  */
 export function Gallery({ section, dark }: Props<GallerySection>) {
   const t = tone(dark)
+  if (section.panel) return <PanelGallery section={section} dark={dark} />
   return (
     <Reveal
       as="ul"
@@ -77,6 +78,40 @@ export function Gallery({ section, dark }: Props<GallerySection>) {
               ) : null}
               {item.meta ? <Label className={t.muted}>{item.meta}</Label> : null}
             </div>
+          ) : null}
+        </li>
+      ))}
+    </Reveal>
+  )
+}
+
+/*
+ * Design: Case Study — Mobile App, "03 — The app". Four 270px phones spread across a
+ * tinted panel (48px / 40px padding), a mono caption 20px under each. Mobile: no panel,
+ * two 162px phones per row, 10px apart and 16px between rows; captions are read out only.
+ */
+function PanelGallery({ section, dark }: Props<GallerySection>) {
+  const t = tone(dark)
+  return (
+    <Reveal
+      as="ul"
+      stagger
+      className={cn(
+        'grid grid-cols-2 gap-x-2.5 gap-y-4 lg:flex lg:justify-between lg:px-10 lg:py-12',
+        dark ? 'lg:bg-ink-2' : 'lg:bg-paper-2',
+      )}
+    >
+      {section.items.map((item, i) => (
+        <li key={item.caption ?? i} className="flex flex-col items-center gap-5 lg:w-67.5">
+          <MediaView
+            media={item.media}
+            frame={section.frame}
+            sizes="(min-width: 64rem) 252px, 152px"
+            dark={dark}
+            className={cn('max-lg:max-w-40.5', i % 2 === 0 ? 'max-lg:mr-0' : 'max-lg:ml-0')}
+          />
+          {item.caption ? (
+            <Label className={cn('text-label-sm/[15px] max-lg:sr-only', t.muted)}>{item.caption}</Label>
           ) : null}
         </li>
       ))}

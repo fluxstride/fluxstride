@@ -88,13 +88,15 @@ export function MediaView({
 
   if (frame === 'phone') {
     return (
+      // Design: Phone. 270px wide on desktop, 9px bezel, 40px corners (screen 32px);
+      // 162px on mobile, 5px bezel, 24px corners (screen 19px). Soft ink shadow.
       <figure
         className={cn(
-          'mx-auto w-full max-w-65 rounded-[1.75rem] bg-ink p-1.5 lg:rounded-[2.25rem] lg:p-2.5',
+          'mx-auto w-full max-w-67.5 rounded-3xl bg-ink p-1.25 shadow-[0_12px_30px_rgb(10_15_30/0.15)] lg:rounded-[2.5rem] lg:p-2.25 lg:shadow-[0_20px_50px_rgb(10_15_30/0.15)]',
           className,
         )}
       >
-        <div className="overflow-hidden rounded-[1.4rem] lg:rounded-[1.75rem]">{box}</div>
+        <div className="overflow-hidden rounded-[1.1875rem] lg:rounded-[2rem]">{box}</div>
       </figure>
     )
   }

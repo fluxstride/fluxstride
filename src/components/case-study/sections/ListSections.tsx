@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowRight, Check } from 'lucide-react'
+import type { CSSProperties } from 'react'
 import { Reveal } from '@/components/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
@@ -227,9 +228,62 @@ export function Roadmap({ section, dark }: Props<RoadmapSection>) {
   )
 }
 
+/*
+ * Design: Case Study — Mobile App, "04 — Journey". One row per path under a hairline
+ * (28px padding, 20px mobile): mono label and summary, then a numbered box per step.
+ * Every box is as wide as one step of the longer path, so the shorter row visibly shrinks.
+ * Desktop 56px boxes 10px apart (16px numbers); mobile six to a row, 36px, 6px apart.
+ */
+function NumberedFlow({ section, dark }: Props<FlowSection>) {
+  const t = tone(dark)
+  const longest = Math.max(section.before.steps.length, section.after.steps.length)
+  return (
+    <div className="flex flex-col gap-7 lg:gap-12">
+      {[section.before, section.after].map((flow, f) => {
+        const after = f === 1
+        return (
+          <Reveal
+            key={flow.label}
+            className={cn('flex flex-col gap-3.5 border-t pt-4.75 pb-5 lg:pt-6.75 lg:pb-7', t.border)}
+          >
+            <div className="flex items-baseline justify-between gap-4">
+              <Label
+                className={cn('text-label-sm/[15px]', after ? t.accent : dark ? 'text-paper' : 'text-ink')}
+              >
+                {flow.label}
+              </Label>
+              {flow.meta ? (
+                <Label className={cn('text-[9px]/[1.3] lg:text-label-sm/[15px]', t.muted)}>{flow.meta}</Label>
+              ) : null}
+            </div>
+            <ol
+              className="grid grid-cols-6 gap-1.5 lg:grid-cols-(--steps) lg:gap-2.5"
+              style={{ '--steps': `repeat(${longest}, minmax(0, 1fr))` } as CSSProperties}
+            >
+              {flow.steps.map((step, i) => (
+                <li
+                  key={step + i}
+                  className={cn(
+                    'flex h-9 items-center justify-center rounded-sm text-[13px]/[1.2] font-semibold lg:h-14 lg:text-base/[1.2]',
+                    after ? 'bg-flux text-white' : cn(t.quiet, t.muted),
+                  )}
+                >
+                  <span aria-hidden="true">{i + 1}</span>
+                  <span className="sr-only">{step}</span>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+        )
+      })}
+    </div>
+  )
+}
+
 /** The key task as boxes joined by arrows: across on desktop, two columns down on phones. */
 export function Flow({ section, dark }: Props<FlowSection>) {
   const t = tone(dark)
+  if (section.style === 'numbered') return <NumberedFlow section={section} dark={dark} />
   return (
     <Reveal className={cn('grid grid-cols-2 gap-4 p-5 lg:grid-cols-1 lg:gap-10 lg:p-10', t.card)}>
       {[section.before, section.after].map((flow, f) => {

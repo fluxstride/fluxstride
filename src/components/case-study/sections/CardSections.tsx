@@ -106,37 +106,46 @@ function CardView({ card, dark }: { card: Card; dark: boolean }) {
   )
 }
 
-function Stars({ size, dark }: { size: string; dark: boolean }) {
+function Stars({ size, gap, dark }: { size: string; gap: string; dark: boolean }) {
   return (
-    <span aria-hidden="true" className={cn('flex gap-1', dark ? 'text-flux-light' : 'text-flux')}>
+    <span aria-hidden="true" className={cn('flex', gap, dark ? 'text-flux-light' : 'text-flux')}>
       {[0, 1, 2, 3, 4].map((star) => (
-        <Star key={star} className={cn(size, 'fill-current')} strokeWidth={0} />
+        <Star key={star} className={size} strokeWidth={2} />
       ))}
     </span>
   )
 }
 
-/** The store rating on the left, review cards on the right. */
+/*
+ * Design: Case Study — Mobile App, "05 — Ratings". The rating (120px, 80px mobile) with
+ * outline stars in a 320px column, then review cards side by side, 16px apart and aligned
+ * to the top: 24px padding, 14px stars, 18px quote (16px mobile), mono author. Stacked on mobile.
+ */
 export function Reviews({ section, dark }: Props<ReviewsSection>) {
   const t = tone(dark)
   return (
-    <div className="flex flex-col gap-10 lg:flex-row lg:gap-12">
-      <Reveal className="flex flex-col gap-3 lg:w-90 lg:shrink-0">
-        <p className="text-[4.5rem]/[1] font-semibold tracking-tight lg:text-[8.75rem]/[1]">
+    <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
+      <Reveal className="flex flex-col gap-2.5 lg:w-80 lg:shrink-0">
+        <p className="text-[5rem]/[1] font-semibold lg:text-[7.5rem]/[1]">
           {section.rating}
           <span className="sr-only"> out of 5</span>
         </p>
-        <Stars size="size-4.5 lg:size-5.5" dark={dark} />
-        <Label className={t.muted}>{section.ratingLabel}</Label>
+        <Stars size="size-5" gap="gap-1" dark={dark} />
+        <Label className={cn('text-label-sm/[15px]', t.muted)}>{section.ratingLabel}</Label>
       </Reveal>
-      <Reveal as="ul" stagger className="flex flex-1 flex-col gap-4">
+      <Reveal as="ul" stagger className="flex flex-col gap-4 lg:flex-1 lg:flex-row lg:items-start">
         {section.reviews.map((review) => (
-          <li key={review.quote} className={cn('flex flex-col gap-3 p-5 lg:p-6', t.card)}>
-            <Stars size="size-3.5" dark={dark} />
-            <blockquote className="font-serif text-xl/[1.2] italic lg:text-[1.625rem]/[1.2]">
-              “{review.quote}”
-            </blockquote>
-            <Label className={t.muted}>{review.author}</Label>
+          // The border sits inside the design's 24px padding.
+          <li
+            key={review.quote}
+            className={cn(
+              'flex flex-col gap-3.5 p-5.75 lg:flex-1',
+              dark ? 'border border-line-dark bg-ink-2' : t.card,
+            )}
+          >
+            <Stars size="size-3.5" gap="gap-0.75" dark={dark} />
+            <blockquote className="text-base/[1.5] lg:text-lg/[1.5]">“{review.quote}”</blockquote>
+            <Label className={cn('text-[10px]/[1.3]', t.muted)}>{review.author}</Label>
           </li>
         ))}
       </Reveal>

@@ -99,6 +99,11 @@ export type GallerySection = SectionBase & {
   /** Columns on desktop. Phones always show two. */
   columns: 2 | 3 | 4
   items: { media: Media; caption?: string; meta?: string }[]
+  /**
+   * App screens on a tinted panel, spread evenly with a centred caption under each
+   * (Orbit Health). On phones the panel and captions give way to a 2×2 grid.
+   */
+  panel?: boolean
 }
 
 type Comparison = { label: string; media: Media; metrics: Stat[] }
@@ -253,10 +258,23 @@ export type RoadmapSection = SectionBase & {
 }
 
 /** A key task as steps, before and after. */
+type FlowPath = {
+  label: string
+  /** Name every step: the boxes show them, or read them out when `style` is 'numbered'. */
+  steps: string[]
+  /** Right-aligned summary, e.g. "4 min 10 s · 58% abandoned". */
+  meta?: string
+}
+
+/**
+ * boxes:    named boxes joined by arrows, in a card
+ * numbered: numbered boxes only, one row per path, so the drop in steps is what you see (Orbit Health)
+ */
 export type FlowSection = SectionBase & {
   kind: 'flow'
-  before: { label: string; steps: string[] }
-  after: { label: string; steps: string[] }
+  style?: 'boxes' | 'numbered'
+  before: FlowPath
+  after: FlowPath
 }
 
 /** SEO topic clusters: a pillar page and its supporting articles. */

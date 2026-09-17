@@ -42,8 +42,12 @@ const renderers: Renderers = {
   architecture: Architecture,
 }
 
-/** Sections whose content starts 48px under the heading on desktop instead of 56px. */
-const TIGHT_KINDS = new Set<CaseStudySection['kind']>(['features', 'bars', 'flow'])
+/** Space between the heading and the content: 32px / 56px unless the design says otherwise. */
+const CONTENT_GAP: Partial<Record<CaseStudySection['kind'], string>> = {
+  features: 'gap-8 lg:gap-12',
+  bars: 'gap-8 lg:gap-12',
+  flow: 'gap-7 lg:gap-12',
+}
 
 type CaseSectionProps = {
   section: CaseStudySection
@@ -67,12 +71,7 @@ export function CaseSection({ section, number }: CaseSectionProps) {
       aria-labelledby={titleId}
       className={cn(dark ? 'mt-22 bg-ink py-16 text-paper lg:mt-40 lg:py-30' : 'pt-22 text-ink lg:pt-40')}
     >
-      <div
-        className={cn(
-          'container-page flex flex-col gap-8',
-          TIGHT_KINDS.has(section.kind) ? 'lg:gap-12' : 'lg:gap-14',
-        )}
-      >
+      <div className={cn('container-page flex flex-col', CONTENT_GAP[section.kind] ?? 'gap-8 lg:gap-14')}>
         <SectionHeader
           eyebrow={`${String(number).padStart(2, '0')} — ${section.label}`}
           title={

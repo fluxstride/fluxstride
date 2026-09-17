@@ -49,7 +49,7 @@ export function Credits({ credits }: { credits: CaseStudy['credits'] }) {
             <Eyebrow as="h2" className="text-label-sm">
               {heading}
             </Eyebrow>
-            <ul className="flex flex-col gap-3.5 text-[15px]/[1.2] lg:text-[17px]/[1.2]">
+            <ul className="flex flex-col gap-3.5 text-[15px]/[18px] lg:text-[17px]/[21px]">
               {items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
