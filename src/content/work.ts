@@ -1,9 +1,14 @@
+import { publishedCaseStudies } from './case-studies'
 import type { ImageName } from './images.generated'
 
 /**
- * Case studies and the project index. Feeds Home "Selected work" and the Work page.
+ * Case study cards and the project index. Feeds Home "Selected work" and the Work page.
  *
- * PLACEHOLDERS: every client, result and image here comes from the design mockups.
+ * Cards read their client, industry, year, photo and headline figure from the case study
+ * itself (src/content/case-studies/studies), so a card always matches its page. Only the
+ * filter chips, the short services line and the badge label are written here.
+ *
+ * PLACEHOLDERS: every client, result and image comes from the design mockups.
  * Replace with real, approved case studies before launch.
  */
 
@@ -37,69 +42,75 @@ export type CaseStudy = {
   imageAlt: string
 }
 
-export const caseStudies: CaseStudy[] = [
+type Card = {
+  slug: string
+  services: string[]
+  disciplines: Discipline[]
+  /** Which of the case study's result figures goes on the badge, and its short label. */
+  metric: { stat: number; label: string }
+}
+
+/** In curated order: the Work page keeps it for projects from the same year. */
+const cards: Card[] = [
   {
     slug: 'northwind',
-    year: 2026,
-    client: 'Northwind',
-    industry: 'Fintech',
     services: ['Software', 'Web platform'],
     disciplines: ['software', 'web'],
-    metric: '+212%',
-    metricLabel: 'Qualified leads',
-    image: 'work/northwind',
-    imageAlt: 'Dark green payment card, business cards and notebook embossed with a geometric brand mark',
+    metric: { stat: 0, label: 'Qualified leads' },
   },
   {
     slug: 'halden-coffee',
-    year: 2025,
-    client: 'Halden Coffee',
-    industry: 'Retail',
-    services: ['E-commerce', 'Graphic design'],
-    disciplines: ['e-commerce', 'graphic-design'],
-    metric: '3.4×',
-    metricLabel: 'Online revenue',
-    image: 'work/halden-coffee',
-    imageAlt:
-      'A row of kraft-paper coffee bags labelled Ethiopia, Colombia, Kenya and Guatemala on a stone shelf',
+    services: ['E-commerce', 'Shopify Plus'],
+    disciplines: ['e-commerce'],
+    metric: { stat: 1, label: 'Online revenue' },
   },
   {
     slug: 'orbit-health',
-    year: 2025,
-    client: 'Orbit Health',
-    industry: 'Healthtech',
     services: ['Mobile app', 'UI/UX'],
     disciplines: ['mobile', 'ui-ux'],
-    metric: '4.8★',
-    metricLabel: 'App Store rating',
-    image: 'work/orbit-health',
-    imageAlt: 'Hand holding a phone showing a daily wellbeing score of 85 with steps and sleep tracking',
+    metric: { stat: 1, label: 'App Store rating' },
   },
   {
     slug: 'kinetic-labs',
-    year: 2024,
-    client: 'Kinetic Labs',
-    industry: 'SaaS',
-    services: ['SEO', 'Tech consultancy'],
-    disciplines: ['seo', 'consultancy'],
-    metric: '+180%',
-    metricLabel: 'Organic traffic',
-    image: 'work/kinetic-labs',
-    imageAlt: 'Large blue and white geometric billboard on a concrete wall above a busy city street',
+    services: ['Website', 'Development'],
+    disciplines: ['web'],
+    metric: { stat: 0, label: 'Demo requests' },
+  },
+  {
+    slug: 'aurora-architects',
+    services: ['Brand identity', 'Graphic design'],
+    disciplines: ['graphic-design'],
+    metric: { stat: 0, label: 'Competition shortlists' },
   },
   {
     slug: 'atlas-freight',
-    year: 2024,
-    client: 'Atlas Freight',
-    industry: 'Logistics',
-    services: ['Software', 'Tech consultancy'],
-    disciplines: ['software', 'consultancy'],
-    metric: '−38%',
-    metricLabel: 'Dispatch time',
-    image: 'work/atlas-freight',
-    imageAlt: 'Operations dashboard with a global shipping map on a wall screen in an open-plan office',
+    services: ['SEO', 'Content'],
+    disciplines: ['seo'],
+    metric: { stat: 0, label: 'Organic traffic' },
   },
 ]
+
+export const caseStudies: CaseStudy[] = cards.map((card) => {
+  const study = publishedCaseStudies.find((candidate) => candidate.slug === card.slug)
+  if (!study) throw new Error(`Work card "${card.slug}" has no published case study`)
+  // The cover when the hero is a screenshot, otherwise the hero photo.
+  const photo = study.cover ?? study.hero.media
+  if (!photo.image) throw new Error(`Case study "${card.slug}" needs a cover image for its Work card`)
+  const stat = study.results.stats[card.metric.stat]
+  if (!stat) throw new Error(`Case study "${card.slug}" has no result figure ${card.metric.stat}`)
+  return {
+    slug: card.slug,
+    year: study.year,
+    client: study.client,
+    industry: study.industry,
+    services: card.services,
+    disciplines: card.disciplines,
+    metric: stat.value,
+    metricLabel: card.metric.label,
+    image: photo.image,
+    imageAlt: photo.alt,
+  }
+})
 
 export const caseStudy = (slug: string) => {
   const found = caseStudies.find((item) => item.slug === slug)

@@ -36,11 +36,6 @@ const unsplash = (id) => `https://images.unsplash.com/${id}?fm=jpg&q=90&w=1600&f
  * PLACEHOLDERS: every image here is design-stage artwork or stock photography.
  */
 const IMAGES = {
-  'work/northwind': { src: 'generated-1789577323589.png' },
-  'work/halden-coffee': { src: 'generated-1789577320469.png' },
-  'work/orbit-health': { src: 'generated-1789577326370.png' },
-  'work/kinetic-labs': { src: 'generated-1789578363583.png' },
-  'work/atlas-freight': { src: 'generated-1789579203190.png' },
   'people/amara-okafor': { src: unsplash('photo-1784926119174-1b471595aa5a'), widths: [96, 144, 216] },
   'studio/monday-planning': { src: 'generated-1789579395826.png' },
   'insights/launch-is-the-start-line': { src: 'generated-1789579506258.png' },
