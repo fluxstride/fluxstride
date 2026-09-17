@@ -10,7 +10,7 @@ import { optionalCategories, type OptionalCategory } from '@/content/consent'
  * banner asks again. Anything that needs consent registers with `onConsent` (see
  * lib/trackers.ts) instead of checking the cookie itself.
  *
- *   const { choices, decided } = useConsent()
+ *   const { status, choices } = useConsent()   // status: 'pending' | 'undecided' | 'decided'
  *   openCookieSettings()        // e.g. from the footer link
  */
 
