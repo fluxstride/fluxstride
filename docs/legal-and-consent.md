@@ -127,7 +127,7 @@ export default defineLegalDocument({
 
 **Anchors.** Each section gets an anchor such as `/privacy#who-we-are` or `/terms#fees-and-payment`. If other pages or emails link to a section, set `id` explicitly so that renaming the title doesn't break those links.
 
-**Links in text.** Any text field in a block, plus `contact.note`, accepts Markdown-style links: `[ico.org.uk](https://ico.org.uk)`, `[cookie settings](/cookies)`, `[privacy@fluxstride.com](mailto:privacy@fluxstride.com)`. Internal paths navigate client-side, `https://` links open in a new tab, and `mailto:` and `tel:` links work as usual. Nothing else is parsed: no bold, no italics.
+**Links in text.** Paragraphs, notes, list items, table cells and `contact.note` accept Markdown-style links: `[ico.org.uk](https://ico.org.uk)`, `[cookie settings](/cookies)`, `[privacy@fluxstride.com](mailto:privacy@fluxstride.com)`. Internal paths navigate client-side, `https://` links open in a new tab, and `mailto:` and `tel:` links work as usual. Nothing else is parsed: no bold, no italics.
 
 **Emails.** The studio addresses are constants in `src/content/site.ts` (`EMAIL_PRIVACY`, `EMAIL_LEGAL`, `EMAIL_ACCOUNTS`), so they only need changing in one place.
 
