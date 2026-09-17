@@ -216,48 +216,72 @@ export function Table({ section, dark }: Props<TableSection>) {
   )
 }
 
-/** Score rings, then before → after vitals. */
+/*
+ * Design: Case Study — Website, "06 — Performance". Four white cards 20px apart (2×2, 12px
+ * on phones): a 120px ring (88px) with the score, the category under it. Vitals follow as
+ * rows: mono code, name, old value, new value and a verdict tag on desktop.
+ */
 export function Scores({ section, dark }: Props<ScoresSection>) {
   const t = tone(dark)
   return (
-    <>
-      <Reveal as="ul" stagger className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+    <div className="flex flex-col gap-8 lg:gap-14">
+      <Reveal as="ul" stagger className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
         {section.scores.map((score) => (
-          <li key={score.label} className="flex flex-col items-center gap-3">
+          <li
+            key={score.label}
+            className={cn(
+              'flex flex-col items-center gap-3.5 p-4.75 lg:p-7.75',
+              dark ? 'border border-line-dark bg-ink-2' : t.card,
+            )}
+          >
             <span
               className={cn(
-                'flex size-24 items-center justify-center rounded-full border-3 text-[1.625rem] font-semibold lg:size-35 lg:border-4 lg:text-[2.5rem]',
+                'flex size-22 items-center justify-center rounded-full border-5 text-[1.875rem]/[1.2] font-semibold tracking-[-0.03em] lg:size-30 lg:border-7 lg:text-[2.5rem]/[1.2]',
                 dark ? 'border-flux-light' : 'border-flux',
               )}
             >
               {score.value}
             </span>
-            <Label className={t.muted}>{score.label}</Label>
+            <span className="text-center text-sm/[1.2] font-medium lg:text-base/[1.2]">{score.label}</span>
           </li>
         ))}
       </Reveal>
       {section.vitals?.length ? (
-        <Reveal as="dl" stagger className="grid lg:grid-cols-3 lg:gap-x-6">
+        <Reveal as="dl" stagger>
           {section.vitals.map((vital) => (
-            <div
-              key={vital.name}
-              className={cn('flex items-center justify-between gap-4 border-t py-4', t.border)}
-            >
-              <dt>
-                <Label className={t.muted}>{vital.name}</Label>
+            // The rule sits inside the design's 16px padding.
+            <div key={vital.name} className={cn('flex items-center gap-4 border-b pt-4 pb-3.75', t.border)}>
+              <dt className="flex flex-1 items-center gap-4">
+                {vital.key ? (
+                  <Label className={cn('w-12 shrink-0 text-label/[16px]', t.accent)}>{vital.key}</Label>
+                ) : null}
+                <span className="text-sm/[1.2] font-medium lg:text-[17px]/[1.2]">{vital.name}</span>
               </dt>
-              <dd className="flex items-center gap-2.5">
-                <span className={cn('text-body', t.muted)}>was {vital.before}</span>
-                <span aria-hidden="true" className={t.accent}>
-                  →
+              <dd className="flex items-center gap-4">
+                <span className={cn('text-[13px]/[1.2] lg:text-[15px]/[1.2]', t.muted)}>
+                  <span className="sr-only">was </span>
+                  {vital.before}
                 </span>
-                <span className="text-[1.375rem] font-semibold lg:text-[1.75rem]">{vital.after}</span>
+                <span className="text-[15px]/[1.2] font-semibold lg:text-[17px]/[1.2]">
+                  <span className="sr-only">, now </span>
+                  {vital.after}
+                </span>
+                {vital.status ? (
+                  <span
+                    className={cn(
+                      'rounded-xl px-2.5 py-1 font-mono text-[10px]/[1.2] uppercase max-lg:hidden',
+                      dark ? 'bg-ink-2 text-flux-light' : 'bg-flux-soft text-flux',
+                    )}
+                  >
+                    {vital.status}
+                  </span>
+                ) : null}
               </dd>
             </div>
           ))}
         </Reveal>
       ) : null}
-    </>
+    </div>
   )
 }
 

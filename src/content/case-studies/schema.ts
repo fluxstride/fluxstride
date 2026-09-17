@@ -48,6 +48,11 @@ export type Media = {
   aspect?: number
   /** Browser frame only: the address shown in the chrome, e.g. "app.northwind.example/overview". */
   url?: string
+  /**
+   * A different crop for phones, e.g. a page thumbnail redrawn for a narrower card.
+   * Only for artwork made for both sizes; screenshots stay the desktop image.
+   */
+  mobileImage?: ImageName
 }
 
 /**
@@ -69,8 +74,11 @@ export type Stat = {
 
 export type Feature = { icon: LucideIcon; title: string; body: string }
 
-/** Section background. Alternate: two ink sections should never touch. */
-export type SectionTone = 'paper' | 'ink'
+/**
+ * Section background. Alternate: two ink sections should never touch.
+ * mist: a pale blue-grey band, padded like ink (Kinetic Labs' design system).
+ */
+export type SectionTone = 'paper' | 'ink' | 'mist'
 
 type SectionBase = {
   /** Mono label after the section number, e.g. "Process" → "03 — Process" */
@@ -104,6 +112,11 @@ export type GallerySection = SectionBase & {
    * (Orbit Health). On phones the panel and captions give way to a 2×2 grid.
    */
   panel?: boolean
+  /**
+   * Thumbnails with a hairline edge, at their own proportions (Kinetic Labs' templates)
+   * instead of the 4:3 crop plain galleries get.
+   */
+  outline?: boolean
 }
 
 type Comparison = { label: string; media: Media; metrics: Stat[] }
@@ -190,11 +203,19 @@ export type ReviewsSection = SectionBase & {
   reviews: { quote: string; author: string }[]
 }
 
-/** Lighthouse-style score rings, with optional before/after vitals. */
+/** Lighthouse-style score rings in cards, with optional before/after vitals under them. */
 export type ScoresSection = SectionBase & {
   kind: 'scores'
   scores: { value: string; label: string }[]
-  vitals?: { name: string; before: string; after: string }[]
+  vitals?: {
+    /** Short code in Flux blue, e.g. "LCP". */
+    key?: string
+    name: string
+    before: string
+    after: string
+    /** A verdict tag, desktop only, e.g. "Good". */
+    status?: string
+  }[]
 }
 
 /** Horizontal before/after bars: funnels, task success, share of voice. `value` is 0–100. */
@@ -298,6 +319,39 @@ export type TypographySection = SectionBase & {
   specimens: { role: string; typeface: string; sample: string; style: 'serif' | 'sans' }[]
 }
 
+/** A sample component in the design system row, drawn in `components.colours`. */
+export type SampleComponent =
+  | { kind: 'button'; label: string; variant?: 'solid' | 'outline' }
+  | { kind: 'input'; placeholder: string }
+  | { kind: 'badge'; label: string }
+  /** Mono text, e.g. "+ 22 more blocks". */
+  | { kind: 'note'; label: string }
+
+/**
+ * A product's design system on one band (Kinetic Labs): a palette card and a type card
+ * side by side, then a row of sample components. Phones show only the buttons.
+ */
+export type DesignSystemSection = SectionBase & {
+  kind: 'design-system'
+  /** Five swatches read best. Text on each swatch turns ink or white to stay readable. */
+  colours: { name: string; hex: string }[]
+  type: {
+    /** The big specimen. Defaults to "Aa". */
+    sample?: string
+    /** Name and setting, e.g. ['Display', '64 / 1.0'] */
+    scale: [name: string, value: string][]
+    /** The typefaces, e.g. "Satoshi & JetBrains Mono". */
+    note: string
+  }
+  components?: {
+    items: SampleComponent[]
+    /** The client's colours: buttons, badge background, badge text. */
+    colours: { primary: string; soft: string; accent: string }
+    /** Read out instead of the row, which is only a picture of the components. */
+    description: string
+  }
+}
+
 export type CaseStudySection =
   | ScreenshotSection
   | GallerySection
@@ -317,6 +371,7 @@ export type CaseStudySection =
   | PaletteSection
   | TypographySection
   | ArchitectureSection
+  | DesignSystemSection
 
 export type StoryBlock = {
   /** The point in one line. */

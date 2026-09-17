@@ -12,20 +12,39 @@ type PictureProps = {
   imgClassName?: string
   /** Above-the-fold images: load straight away at high priority. */
   priority?: boolean
+  /** Art direction: a different image below the lg breakpoint (64rem). */
+  mobileName?: ImageName
 }
+
+const MOBILE = '(max-width: 63.999rem)'
 
 /**
  * Responsive image from the generated manifest (scripts/import-images.mjs):
  * AVIF with a WebP fallback, several widths, and the image's dominant colour
  * behind it while it loads.
  */
-export function Picture({ name, alt, sizes, className, imgClassName, priority = false }: PictureProps) {
+export function Picture({
+  name,
+  alt,
+  sizes,
+  className,
+  imgClassName,
+  priority = false,
+  mobileName,
+}: PictureProps) {
   const image = images[name]
-  const srcSet = (ext: string) => image.widths.map((w) => `/images/${name}-${w}.${ext} ${w}w`).join(', ')
+  const srcSet = (ext: string, source = name) =>
+    images[source].widths.map((w) => `/images/${source}-${w}.${ext} ${w}w`).join(', ')
   const largest = image.widths[image.widths.length - 1]
 
   return (
     <picture className={cn('block overflow-hidden', className)} style={{ backgroundColor: image.color }}>
+      {mobileName ? (
+        <>
+          <source media={MOBILE} type="image/avif" srcSet={srcSet('avif', mobileName)} sizes={sizes} />
+          <source media={MOBILE} type="image/webp" srcSet={srcSet('webp', mobileName)} sizes={sizes} />
+        </>
+      ) : null}
       <source type="image/avif" srcSet={srcSet('avif')} sizes={sizes} />
       <img
         src={`/images/${name}-${largest}.webp`}

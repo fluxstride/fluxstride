@@ -27,6 +27,8 @@ type MediaViewProps = {
   designWidth?: number
   /** Browser frame: the soft drop shadow on desktop. */
   shadow?: boolean
+  /** Plain frame: a hairline edge, for thumbnails with white in them. */
+  outline?: boolean
 }
 
 const DEFAULT_ASPECT: Record<MediaFrame, number> = { browser: 16 / 9, phone: 9 / 19.5, plain: 4 / 3 }
@@ -48,14 +50,27 @@ export function MediaView({
   className,
   designWidth = 1280,
   shadow = true,
+  outline = false,
 }: MediaViewProps) {
   const source = media.image ? images[media.image] : null
+  const mobile = media.image && media.mobileImage ? images[media.mobileImage] : null
   const ratio = aspect ?? (source ? source.width / source.height : (media.aspect ?? DEFAULT_ASPECT[frame]))
+
+  // A mobile crop brings its own proportions below lg.
+  const boxStyle: CSSProperties | undefined = aspectClassName
+    ? undefined
+    : mobile && !aspect
+      ? ({ '--ratio': ratio, '--ratio-mobile': mobile.width / mobile.height } as CSSProperties)
+      : { aspectRatio: ratio }
 
   const box = (
     <div
-      className={cn('relative w-full', aspectClassName)}
-      style={aspectClassName ? undefined : { aspectRatio: ratio }}
+      className={cn(
+        'relative w-full',
+        mobile && !aspect && !aspectClassName && 'aspect-(--ratio-mobile) lg:aspect-(--ratio)',
+        aspectClassName,
+      )}
+      style={boxStyle}
     >
       {media.image ? (
         <Picture
@@ -63,6 +78,7 @@ export function MediaView({
           alt={media.alt}
           sizes={sizes}
           priority={priority}
+          mobileName={media.mobileImage}
           className="absolute inset-0 size-full"
         />
       ) : (
@@ -101,7 +117,7 @@ export function MediaView({
     )
   }
 
-  return <figure className={cn('overflow-hidden', className)}>{box}</figure>
+  return <figure className={cn('overflow-hidden', outline && 'border border-line', className)}>{box}</figure>
 }
 
 /*

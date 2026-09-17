@@ -5,7 +5,7 @@ import type { CaseStudySection } from '@/content/case-studies/schema'
 import { cn } from '@/lib/cn'
 import { StatRow } from './parts'
 import { Cards, Reviews } from './sections/CardSections'
-import { Palette, Typography } from './sections/BrandSections'
+import { DesignSystem, Palette, Typography } from './sections/BrandSections'
 import { Bars, Chart, Clusters, Scores, Table } from './sections/DataSections'
 import { Architecture, Checklist, Features, Flow, Roadmap, Steps } from './sections/ListSections'
 import { BeforeAfter, Gallery, Screenshot } from './sections/MediaSections'
@@ -40,6 +40,7 @@ const renderers: Renderers = {
   palette: Palette,
   typography: Typography,
   architecture: Architecture,
+  'design-system': DesignSystem,
 }
 
 /** Space between the heading and the content: 32px / 56px unless the design says otherwise. */
@@ -59,7 +60,7 @@ type CaseSectionProps = {
  * Design: the numbered modules in the middle of every case study.
  *   Heading   "03 — Process" in Flux blue, 64px title (34px mobile) with the serif phrase
  *             on its own line, intro pinned bottom-right
- *   Spacing   160px above (88px mobile); ink bands are full-bleed with 120px padding (64px)
+ *   Spacing   160px above (88px mobile); ink and mist bands are full-bleed with 120px padding (64px)
  */
 export function CaseSection({ section, number }: CaseSectionProps) {
   const dark = section.tone === 'ink'
@@ -69,7 +70,13 @@ export function CaseSection({ section, number }: CaseSectionProps) {
   return (
     <section
       aria-labelledby={titleId}
-      className={cn(dark ? 'mt-22 bg-ink py-16 text-paper lg:mt-40 lg:py-30' : 'pt-22 text-ink lg:pt-40')}
+      className={cn(
+        section.tone === 'ink' || section.tone === 'mist'
+          ? 'mt-22 py-16 lg:mt-40 lg:py-30'
+          : 'pt-22 lg:pt-40',
+        dark ? 'bg-ink text-paper' : 'text-ink',
+        section.tone === 'mist' && 'bg-paper-2',
+      )}
     >
       <div className={cn('container-page flex flex-col', CONTENT_GAP[section.kind] ?? 'gap-8 lg:gap-14')}>
         <SectionHeader
