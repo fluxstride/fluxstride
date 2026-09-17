@@ -93,7 +93,7 @@ export type ScreenshotSection = SectionBase & {
 export type GallerySection = SectionBase & {
   kind: 'gallery'
   frame: MediaFrame
-  /** Columns on desktop. Phones show two (one for 'plain' galleries of 1–2 items). */
+  /** Columns on desktop. Phones always show two. */
   columns: 2 | 3 | 4
   items: { media: Media; caption?: string; meta?: string }[]
 }
