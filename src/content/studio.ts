@@ -82,9 +82,9 @@ export const roles: Role[] = [
     href: apply('Product Designer (UI/UX)'),
   },
   {
-    title: 'Technical SEO Specialist',
-    team: 'Growth',
+    title: 'Cloud & DevOps Engineer',
+    team: 'Engineering',
     terms: 'Remote · Contract',
-    href: apply('Technical SEO Specialist'),
+    href: apply('Cloud & DevOps Engineer'),
   },
 ]

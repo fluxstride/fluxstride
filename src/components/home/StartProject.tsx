@@ -60,7 +60,7 @@ export function StartProject() {
 
 function BriefBuilder() {
   // Starts with the selection shown in the design.
-  const [selected, setSelected] = useState<string[]>(['Website', 'Backend'])
+  const [selected, setSelected] = useState<string[]>(['Website', 'Mobile app'])
   // The design showed £40–100k; the nearest band on the shared scale is £50–100k.
   const [budget, setBudget] = useState<BudgetId | null>('50-100k')
   const needsId = useId()
