@@ -2,7 +2,10 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Atlas Freight · Web & frontend, Backend
- * Design: "Case Study — SEO & Growth" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study — Website Rebuild" (desktop) and "(Mobile)" in the Pencil file.
+ *
+ * A website rebuild told through its search results: the new server-rendered site is what
+ * moved the traffic and rankings.
  *
  * SAMPLE CONTENT: the client, traffic, rankings, vitals, team credits and quote are invented
  * for the design mockups. Replace them with a real, client-approved project and remove
@@ -28,7 +31,7 @@ export default defineCaseStudy({
   status: 'published',
   sample: true,
   services: ['web-design-frontend', 'backend-development'],
-  discipline: 'SEO & growth',
+  discipline: 'Website rebuild',
   client: 'Atlas Freight',
   industry: 'Logistics',
   year: 2026,
@@ -36,21 +39,21 @@ export default defineCaseStudy({
   seo: {
     title: 'Atlas Freight: from page five to first choice',
     description:
-      'Organic sessions up 291% and 148 commercial keywords on page one. How we rebuilt the technical SEO and content behind Atlas Freight’s biggest lead source.',
+      'Organic sessions up 291% and 148 commercial keywords on page one. How we rebuilt Atlas Freight’s website so Google could finally read it.',
   },
 
   hero: {
     title: ['From page five', 'to first choice.'],
     intro:
-      "Atlas Freight had a decade of expertise and a website Google couldn't read. We rebuilt the technical foundations, restructured 6,800 URLs and published content that answers what shippers actually search for.",
-    tags: ['Logistics', 'SEO & growth', '2025–26'],
+      "Atlas Freight had a decade of expertise and a website Google couldn't read. We rebuilt it as a fast, server-rendered site, restructured 6,800 URLs and gave every service and route a page of its own.",
+    tags: ['Logistics', 'Website rebuild', '2025–26'],
     facts: [
       ['Client', 'Atlas Freight'],
       ['Industry', 'Logistics · B2B'],
-      ['Services', 'Technical SEO, content, analytics'],
+      ['Services', 'Web design, frontend, backend'],
       ['Timeline', '12 months · 2025–26'],
       ['Audit', '6,800 URLs crawled'],
-      ['Content', '42 articles, 3 pillars'],
+      ['Stack', 'Next.js · Node · Vercel'],
     ],
     media: {
       image: 'case-studies/atlas-freight-cover',
@@ -86,9 +89,9 @@ export default defineCaseStudy({
   },
 
   approach: {
-    title: 'Fix the foundations, then publish.',
+    title: 'Rebuild the foundations first.',
     paragraphs: [
-      'We ran the work in three phases: a full technical audit and rebuild of the site structure, a content programme built around the questions buyers ask before requesting a quote, and monthly reporting tied to leads, not just rankings.',
+      'We ran the work in three phases: a full technical audit, a new server-rendered site on a clean URL structure, and a backend that builds a fast page for every service, route and industry, with reporting tied to leads, not just rankings.',
     ],
   },
 
@@ -98,7 +101,7 @@ export default defineCaseStudy({
       label: 'Organic traffic',
       title: ['Four times the traffic,', 'same budget.'],
       intro:
-        'Monthly organic sessions from Google. The new site launched in September, and growth compounded as new content was indexed.',
+        'Monthly organic sessions from Google. The new site launched in September, and growth compounded as Google indexed its new pages.',
       kpi: { value: '71,900', label: 'Organic sessions / month', detail: '+291%' },
       legend: ['Old site', 'New site'],
       points: sessions.map(([label, value], i) => ({
@@ -149,7 +152,7 @@ export default defineCaseStudy({
       kind: 'checklist',
       tone: 'ink',
       columns: 1,
-      label: 'Technical SEO',
+      label: 'The rebuild',
       title: ['Fix what Google', "couldn't see."],
       items: [
         {
@@ -196,82 +199,6 @@ export default defineCaseStudy({
         ],
       },
     },
-    {
-      kind: 'clusters',
-      label: 'Content',
-      title: ['Answer the question,', 'own the topic.'],
-      intro:
-        'Three topic clusters built around the questions shippers ask before they request a quote. Each pillar page links to every article in its cluster.',
-      clusters: [
-        {
-          pillar: 'Exporting to the EU after Brexit',
-          rank: '#1',
-          visits: '9,800',
-          articles: [
-            { title: 'EORI numbers explained', rank: '#1', visits: '2,400' },
-            { title: 'Incoterms 2020 cheat sheet', rank: '#2', visits: '1,900' },
-            { title: 'How long does EU customs take?', rank: '#1', visits: '1,300' },
-            { title: 'Commodity codes: a practical guide', rank: '#3', visits: '880' },
-          ],
-        },
-        {
-          pillar: 'The pallet shipping handbook',
-          rank: '#1',
-          visits: '7,200',
-          articles: [
-            { title: 'Pallet sizes: UK vs EU', rank: '#1', visits: '3,100' },
-            { title: 'Full vs half pallet: which is cheaper?', rank: '#2', visits: '1,450' },
-            { title: 'How to wrap a pallet for transport', rank: '#1', visits: '1,120' },
-            { title: 'Pallet delivery costs in 2026', rank: '#4', visits: '760' },
-          ],
-        },
-        {
-          pillar: 'Container shipping for first-time importers',
-          rank: '#1',
-          visits: '5,600',
-          articles: [
-            { title: 'FCL vs LCL explained', rank: '#1', visits: '2,050' },
-            { title: 'What is demurrage?', rank: '#2', visits: '1,380' },
-            { title: 'Shipping container sizes', rank: '#3', visits: '1,210' },
-            { title: 'Port delays: what to do', rank: '#1', visits: '690' },
-          ],
-        },
-      ],
-      stats: [
-        { value: '42', label: 'articles published in 12 months' },
-        { value: '31%', label: 'of organic traffic from the clusters' },
-        { value: '18', label: 'featured snippets won' },
-      ],
-    },
-    {
-      kind: 'bars',
-      style: 'compare',
-      label: 'Visibility',
-      title: ['Share of voice,', 'up four times.'],
-      intro:
-        'Across 1,200 tracked keywords, Atlas Freight moved from fifth to first in its market — without increasing ad spend.',
-      legend: ['2025', '2026'],
-      rows: [
-        {
-          label: 'Atlas Freight',
-          highlight: true,
-          before: { value: 6, display: '6%' },
-          after: { value: 24, display: '24%' },
-        },
-        { label: 'Freightline', before: { value: 21, display: '21%' }, after: { value: 18, display: '18%' } },
-        {
-          label: 'Northgate Logistics',
-          before: { value: 17, display: '17%' },
-          after: { value: 15, display: '15%' },
-        },
-        { label: 'CargoHub', before: { value: 14, display: '14%' }, after: { value: 12, display: '12%' } },
-        {
-          label: 'Everyone else',
-          before: { value: 42, display: '42%' },
-          after: { value: 31, display: '31%' },
-        },
-      ],
-    },
   ],
 
   quote: {
@@ -283,14 +210,19 @@ export default defineCaseStudy({
 
   credits: {
     services: [
-      'Technical SEO audit',
+      'Technical audit',
       'Information architecture',
-      'Content strategy & writing',
-      'Structured data',
+      'Web design & frontend build',
+      'Backend & page generation',
       'Analytics & reporting',
     ],
-    team: ['Leo Park — SEO Lead', 'Daniel Mensah — Engineer', 'Hannah Cole — Client Partner'],
-    tools: ['Ahrefs', 'Search Console', 'Screaming Frog', 'GA4', 'Looker Studio', 'Next.js'],
+    team: [
+      'Daniel Mensah — Engineering Lead',
+      'Leo Park — Frontend Engineer',
+      'Hannah Cole — Client Partner',
+    ],
+    tools: ['Next.js', 'Node', 'PostgreSQL', 'Vercel', 'Search Console', 'Screaming Frog'],
+    toolsLabel: 'Stack',
   },
 
   next: 'northwind',

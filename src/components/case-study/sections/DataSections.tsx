@@ -196,7 +196,7 @@ function SmallSource({ children, dark }: { children: ReactNode; dark: boolean })
 }
 
 /*
- * Design: Case Study — SEO & Growth, "07 — Visibility". One row per competitor under a
+ * Design: "Case Study Section — Share of Voice". One row per competitor under a
  * hairline: 260px name beside two thin bars labelled "2025 · 6%". The highlighted row
  * (the client) is in Flux blue, the others' new bars in grey. Name above the bars on phones.
  */
@@ -498,7 +498,7 @@ function Position({
 }
 
 /*
- * Design: Case Study — SEO & Growth, "06 — Content". Three clusters 24px apart (stacked 40px
+ * Design: "Case Study Section — Content Clusters". Three clusters 24px apart (stacked 40px
  * apart on phones): a white pillar card, then its articles hanging off a Flux line.
  */
 export function Clusters({ section, dark }: Props<ClustersSection>) {
@@ -544,7 +544,7 @@ export function Clusters({ section, dark }: Props<ClustersSection>) {
 }
 
 /*
- * Design: Case Study — SEO & Growth, "04 — Rankings". A table on desktop: mono headings,
+ * Design: Case Study — Website Rebuild, "04 — Rankings". A table on desktop: mono headings,
  * 70px rows, the new position in a Flux pill and the change with a trend arrow. On phones
  * each keyword is a row with its searches on the left and "38 → #3" on the right.
  */

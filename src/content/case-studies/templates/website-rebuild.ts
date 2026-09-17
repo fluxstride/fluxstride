@@ -3,7 +3,7 @@ import { defineCaseStudy } from '../schema'
 /**
  * STARTER TEMPLATE · Website rebuild
  * Design: "Case Study Template — Website rebuild" in the Pencil file.
- * Example of a finished page: "Case Study — SEO & Growth" (Atlas Freight).
+ * Example of a finished page: "Case Study — Website Rebuild" (Atlas Freight).
  *
  * Copy it with `pnpm new:case-study website-rebuild <slug>`.
  * Guide: docs/case-studies.md
@@ -112,7 +112,7 @@ export default defineCaseStudy({
       kind: 'checklist',
       tone: 'ink',
       columns: 1,
-      label: 'Technical SEO',
+      label: 'The rebuild',
       title: ['[What we fixed', 'under the hood.]'],
       items: [
         { title: '[Fix name]', body: '[What we changed and why it mattered.]', tag: '[High impact]' },
@@ -138,56 +138,6 @@ export default defineCaseStudy({
           ['[0,000]', 'Clean URLs indexed'],
         ],
       },
-    },
-    // CONTENT: up to three pillar pages, each with three or four supporting articles.
-    {
-      kind: 'clusters',
-      label: 'Content',
-      title: ['[Answering what', 'buyers search for.]'],
-      intro: '[The topic clusters we built and how they connect.]',
-      clusters: [1, 2, 3].map(() => ({
-        pillar: '[Pillar page topic]',
-        rank: '#[0]',
-        visits: '[0,000]',
-        articles: [1, 2, 3].map(() => ({
-          title: '[Supporting article title]',
-          rank: '#[0]',
-          visits: '[0,000]',
-        })),
-      })),
-      stats: [
-        { value: '[00]', label: '[articles published in 12 months]' },
-        { value: '[00%]', label: '[of organic traffic from the clusters]' },
-        { value: '[00]', label: '[featured snippets won]' },
-      ],
-    },
-    // VISIBILITY: share of voice against three or four named competitors, same keyword set
-    // both years. Highlight the client.
-    {
-      kind: 'bars',
-      style: 'compare',
-      label: 'Visibility',
-      title: ['[Share of voice,', 'up 0 times.]'],
-      intro: '[How many keywords were tracked, and where the client moved in its market.]',
-      legend: ['[2025]', '[2026]'],
-      rows: [
-        {
-          label: '[Client]',
-          highlight: true,
-          before: { value: 6, display: '[0%]' },
-          after: { value: 24, display: '[00%]' },
-        },
-        ...[1, 2, 3].map(() => ({
-          label: '[Competitor]',
-          before: { value: 18, display: '[00%]' },
-          after: { value: 15, display: '[00%]' },
-        })),
-        {
-          label: 'Everyone else',
-          before: { value: 42, display: '[00%]' },
-          after: { value: 31, display: '[00%]' },
-        },
-      ],
     },
   ],
 

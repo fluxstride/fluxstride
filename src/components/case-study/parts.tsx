@@ -38,7 +38,7 @@ export function Tag({
 /** Figures in a row under a hairline. Closes a section when it has `stats`. */
 /*
  * Figures in a row, each under a heavy rule: 40px value (28px on phones) over a short label.
- * Design: Case Study — SEO & Growth, "06 — Content". Three stay in a row on phones.
+ * Design: "Case Study Section — Content Clusters". Three stay in a row on phones.
  */
 export function StatRow({ stats, dark }: { stats: Stat[]; dark: boolean }) {
   const t = tone(dark)

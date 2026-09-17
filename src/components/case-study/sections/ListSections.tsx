@@ -216,7 +216,7 @@ export function Checklist({ section, dark }: Props<ChecklistSection>) {
 }
 
 /*
- * Design: Case Study — SEO & Growth, "05 — Technical SEO". A 440px outlined panel: each
+ * Design: Case Study — Website Rebuild, "05 — The Rebuild". A 440px outlined panel: each
  * metric with a green verdict, its value (40px, 32px on phones) beside the old one and a
  * 4px bar, then two figures split by a hairline.
  */
