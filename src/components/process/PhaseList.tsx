@@ -8,6 +8,18 @@ import { cn } from '@/lib/cn'
 /** The phase drawn in flux blue: where most of the work (and most of the calendar) happens. */
 const HIGHLIGHTED = '03'
 
+/** A service page phase has no "What happens" or "Your involvement"; only "You get" shows. */
+export type PhaseStep = Pick<ProcessStep, 'number' | 'duration' | 'title' | 'description' | 'outcomes'> &
+  Partial<Pick<ProcessStep, 'activities' | 'involvement'>>
+
+type PhaseListProps = {
+  steps?: PhaseStep[]
+  /** Heading level for each phase name: h3 when the list sits under a section heading. */
+  titleAs?: 'h2' | 'h3'
+  /** Replaces the list's container and padding. */
+  className?: string
+}
+
 /*
  * Design: Process / Phases. Each phase sits under an ink rule with 64px padding
  * (40px on mobile):
@@ -15,18 +27,20 @@ const HIGHLIGHTED = '03'
  *   Content            56px name (360px wide) beside the 20px description, then three
  *                      columns under a hairline: what happens, you get, your involvement
  * Mobile stacks everything: number, name, description, then the three lists 24px apart.
+ *
+ * Also "How it works" on a service page (Service · <name>), with only the "You get" column.
  */
-export function PhaseList() {
+export function PhaseList({ steps = processSteps, titleAs = 'h2', className }: PhaseListProps) {
   return (
-    <ol aria-label="The four phases" className="container-page pb-18 lg:pb-32">
-      {processSteps.map((step) => (
-        <Phase key={step.number} step={step} />
+    <ol aria-label={`The ${steps.length} phases`} className={className ?? 'container-page pb-18 lg:pb-32'}>
+      {steps.map((step) => (
+        <Phase key={step.number} step={step} titleAs={titleAs} />
       ))}
     </ol>
   )
 }
 
-function Phase({ step }: { step: ProcessStep }) {
+function Phase({ step, titleAs }: { step: PhaseStep; titleAs: 'h2' | 'h3' }) {
   const titleId = `phase-${step.number}-title`
 
   return (
@@ -46,7 +60,7 @@ function Phase({ step }: { step: ProcessStep }) {
 
       <div className="flex flex-1 flex-col gap-9">
         <div className="flex flex-col gap-6 lg:flex-row lg:gap-12">
-          <RevealText id={titleId} as="h2" className="text-heading-lg text-ink lg:w-90 lg:shrink-0">
+          <RevealText id={titleId} as={titleAs} className="text-heading-lg text-ink lg:w-90 lg:shrink-0">
             {step.title}
           </RevealText>
           <Reveal as="p" delay={0.1} className="flex-1 text-lead text-ink">
@@ -58,14 +72,18 @@ function Phase({ step }: { step: ProcessStep }) {
           stagger={0.08}
           className="flex flex-col gap-6 border-t border-line pt-6.75 lg:flex-row lg:gap-8"
         >
-          <Column title="What happens" items={step.activities} icon={ArrowRight} iconClass="text-stone" />
+          {step.activities ? (
+            <Column title="What happens" items={step.activities} icon={ArrowRight} iconClass="text-stone" />
+          ) : null}
           <Column title="You get" items={step.outcomes} icon={Check} iconClass="text-flux" />
-          <div className="flex flex-1 flex-col gap-3">
-            <Eyebrow as="h3" className="text-label-sm/[1.2]">
-              Your involvement
-            </Eyebrow>
-            <p className="text-[15px]/[1.5] text-stone">{step.involvement}</p>
-          </div>
+          {step.involvement ? (
+            <div className="flex flex-1 flex-col gap-3">
+              <Eyebrow as="h3" className="text-label-sm/[1.2]">
+                Your involvement
+              </Eyebrow>
+              <p className="text-[15px]/[1.5] text-stone">{step.involvement}</p>
+            </div>
+          ) : null}
         </Reveal>
       </div>
     </li>

@@ -1,10 +1,11 @@
 import { Minus, Plus } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useId, useState } from 'react'
+import { RichText } from '@/components/legal/RichText'
 import { Reveal } from '@/components/motion/Reveal'
 import { RevealText } from '@/components/motion/RevealText'
 import { Eyebrow } from '@/components/ui/Typography'
-import { faqs } from '@/content/process'
+import { faqs as processFaqs } from '@/content/process'
 import { EMAIL_NEW_BUSINESS, mailto } from '@/content/site'
 import { cn } from '@/lib/cn'
 import { EASE_OUT } from '@/lib/motion'
@@ -15,9 +16,10 @@ import { EASE_OUT } from '@/lib/motion'
  * (flux minus when open, ink plus when closed), 16px stone answer up to 640px wide.
  * Mobile: heading above the list, 72px padding, 20px questions.
  *
+ * Also on each service page with that service's questions. Answers accept inline links.
  * The answers are also published as FAQPage structured data (lib/seo.ts), from the same list.
  */
-export function Faq() {
+export function Faq({ items = processFaqs }: { items?: { question: string; answer: string }[] }) {
   // The first question starts open, as drawn. Any number can be open at once.
   const [open, setOpen] = useState<number[]>([0])
 
@@ -49,7 +51,7 @@ export function Faq() {
       </div>
 
       <Reveal as="ul" stagger={0.06} className="flex-1 border-b border-ink">
-        {faqs.map((faq, index) => (
+        {items.map((faq, index) => (
           <Question
             key={faq.question}
             question={faq.question}
@@ -116,7 +118,9 @@ function Question({
             transition={{ duration: 0.45, ease: EASE_OUT }}
             className="overflow-hidden"
           >
-            <p className="max-w-160 pb-7 text-base/[1.55] text-stone">{answer}</p>
+            <p className="max-w-160 pb-7 text-base/[1.55] text-stone">
+              <RichText text={answer} linkClassName="hover:text-ink" />
+            </p>
           </motion.div>
         ) : null}
       </AnimatePresence>

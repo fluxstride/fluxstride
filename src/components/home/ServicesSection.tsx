@@ -6,7 +6,7 @@ import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { IconCircle } from '@/components/ui/IconCircle'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { SmartLink } from '@/components/ui/SmartLink'
-import { services, type Service } from '@/content/services'
+import { serviceHref, services, type Service } from '@/content/services'
 import { cn } from '@/lib/cn'
 import { pad } from '@/lib/format'
 import { EASE_OUT } from '@/lib/motion'
@@ -84,7 +84,7 @@ function ServiceCard({
 
   return (
     <SmartLink
-      to={`/services#${service.slug}`}
+      to={serviceHref(service.slug)}
       onPointerEnter={onActivate}
       onFocus={onActivate}
       className="group relative isolate flex h-full flex-col justify-between gap-8 p-9 focus-visible:outline-offset-[-4px]"

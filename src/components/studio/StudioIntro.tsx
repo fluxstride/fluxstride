@@ -29,24 +29,31 @@ export function StudioIntro() {
         </RevealText>
       </header>
 
-      <div className="container-page">
-        <ImageReveal
-          className="aspect-[35/30] lg:aspect-auto lg:h-150"
-          image={
-            <Picture
-              name="studio/monday-planning"
-              alt="Five people reviewing printed wireframes and laptops around a long table in a bright studio"
-              sizes="(min-width: 90rem) 1280px, 100vw"
-              priority
-              className="size-full"
-            />
-          }
-        >
-          <p className="absolute bottom-6 left-6 rounded-xs bg-paper px-3 py-2 font-mono text-label-sm/[1.2] text-ink uppercase">
-            The studio — Monday planning
-          </p>
-        </ImageReveal>
-      </div>
+      <StudioPhoto />
     </>
+  )
+}
+
+/** The studio photo with its caption, under the Studio and Careers statements. */
+export function StudioPhoto() {
+  return (
+    <div className="container-page">
+      <ImageReveal
+        className="aspect-[35/30] lg:aspect-auto lg:h-150"
+        image={
+          <Picture
+            name="studio/monday-planning"
+            alt="Five people reviewing printed wireframes and laptops around a long table in a bright studio"
+            sizes="(min-width: 90rem) 1280px, 100vw"
+            priority
+            className="size-full"
+          />
+        }
+      >
+        <p className="absolute bottom-6 left-6 rounded-xs bg-paper px-3 py-2 font-mono text-label-sm/[1.2] text-ink uppercase">
+          The studio — Monday planning
+        </p>
+      </ImageReveal>
+    </div>
   )
 }

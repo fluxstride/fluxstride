@@ -44,7 +44,7 @@ export const studioLinks: NavLink[] = [
   { to: '/work', label: 'Work' },
   { to: '/process', label: 'Process' },
   { to: '/studio', label: 'About' },
-  { to: '/studio#careers', label: 'Careers' },
+  { to: '/careers', label: 'Careers' },
   { to: '/insights', label: 'Insights' },
 ]
 

@@ -3,7 +3,7 @@ import { templates, templateTitle, visibleCaseStudies } from '@/content/case-stu
 import { BRAND, EMAIL_NEW_BUSINESS, LEGAL_NAME, socialLinks, X_HANDLE } from '@/content/site'
 import { legalDocuments, type LegalSlug } from '@/content/legal'
 import { faqs } from '@/content/process'
-import { services } from '@/content/services'
+import { serviceHref, services, type Service } from '@/content/services'
 
 /**
  * SEO: the single source of truth.
@@ -173,12 +173,32 @@ const caseStudyPages: PageSeo[] = [
     : []),
 ]
 
-/** One page per open role in content/careers. */
+/** One page per service in content/services. */
+const servicePages: PageSeo[] = services.map((service) => ({
+  path: serviceHref(service.slug),
+  title: service.title,
+  breadcrumb: service.shortTitle,
+  parent: '/services',
+  description: service.description,
+  image: og('og-services', `${service.title} at Fluxstride.`),
+  priority: 0.8,
+}))
+
+/** The careers page, then one page per open role in content/careers. */
+const careersPage: PageSeo = {
+  path: '/careers',
+  title: 'Careers · Join the Studio',
+  breadcrumb: 'Careers',
+  description: `Open roles at ${BRAND}, a senior design and engineering studio. Four-day focus weeks, remote-first, and a small team where your work ships.`,
+  image: og('og-studio', 'Careers at Fluxstride — join the stride.'),
+  priority: 0.7,
+}
+
 const rolePages: PageSeo[] = roles.map((role) => ({
   path: `/careers/${role.slug}`,
   title: `${role.title} · Careers`,
   breadcrumb: role.title,
-  parent: '/studio',
+  parent: '/careers',
   description: role.summary,
   image: og('og-studio', `${role.title} — join the Fluxstride team.`),
   priority: 0.6,
@@ -194,6 +214,8 @@ const maintenancePage: PageSeo = {
 
 export const pages: PageSeo[] = [
   ...staticPages,
+  ...servicePages,
+  careersPage,
   ...legalPages,
   ...rolePages,
   ...caseStudyPages,
@@ -334,7 +356,7 @@ function organisation() {
           '@type': 'Service',
           name: service.title,
           description: service.description,
-          url: absolute(`/services#${service.slug}`),
+          url: absolute(serviceHref(service.slug)),
         },
       })),
     },
@@ -367,21 +389,38 @@ function breadcrumbs(page: PageSeo) {
   }
 }
 
-/** The Process page FAQ. Built from the same list the page renders, so the answers always match what is visible. */
-function faqPage() {
+/** Strips the Markdown links content text allows: "[our work](/work)" → "our work". */
+const plain = (text: string) => text.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1')
+
+/**
+ * A page's FAQ (Process, or a service). Built from the same list the page renders, so the
+ * answers always match what is visible.
+ */
+function faqPage(items: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: items.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
-      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      acceptedAnswer: { '@type': 'Answer', text: plain(faq.answer) },
     })),
   }
 }
 
-/** Strips the Markdown links content text allows: "[our work](/work)" → "our work". */
-const plain = (text: string) => text.replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1')
+/** A service page's subject, offered by the organisation declared on the home page. */
+function serviceSchema(service: Service) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    serviceType: service.shortTitle,
+    description: service.description,
+    url: absolute(serviceHref(service.slug)),
+    provider: { '@id': ORG_ID },
+    areaServed: 'Worldwide',
+  }
+}
 
 /**
  * A role as a Google JobPosting. The description is the role's own sections as HTML.
@@ -454,7 +493,9 @@ export function structuredData(path: string): object[] {
   const page = pageFor(path)
   if (page.noindex) return []
   if (page.path === '/') return [organisation(), website()]
-  if (page.path === '/process') return [breadcrumbs(page), faqPage()]
+  if (page.path === '/process') return [breadcrumbs(page), faqPage(faqs)]
+  const service = services.find((candidate) => serviceHref(candidate.slug) === page.path)
+  if (service) return [breadcrumbs(page), serviceSchema(service), faqPage(service.faqs)]
   const role = roles.find((candidate) => `/careers/${candidate.slug}` === page.path)
   if (role && !role.sample) return [breadcrumbs(page), jobPosting(role)]
   return [breadcrumbs(page)]

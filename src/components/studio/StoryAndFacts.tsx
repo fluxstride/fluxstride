@@ -38,22 +38,31 @@ export function StoryAndFacts() {
         </Reveal>
       </section>
 
-      <div className="container-page pb-18 lg:pb-32">
-        <Reveal as="dl" stagger={0.08} className="flex flex-col border-t border-ink lg:grid lg:grid-cols-4">
-          {facts.map((fact) => (
-            <div
-              key={fact.label}
-              className="flex flex-col-reverse justify-end gap-1.5 py-6 not-first:border-t not-first:border-line lg:gap-2.5 lg:pt-8 lg:pr-6 lg:pb-0 lg:not-first:border-t-0 lg:not-first:border-l lg:not-first:pl-6"
-            >
-              {/* Label first in the markup so screen readers hear "Founded: 2019". */}
-              <dt className="text-[15px]/[1.2] text-stone">{fact.label}</dt>
-              <dd className="text-numeral-md text-ink">
-                {fact.count === false ? fact.value : <CountUp value={fact.value} />}
-              </dd>
-            </div>
-          ))}
-        </Reveal>
-      </div>
+      <FactRow facts={facts} />
     </>
+  )
+}
+
+type Fact = { value: string; label: string; count?: boolean }
+
+/** Numbers: also under the photo on /careers. */
+export function FactRow({ facts }: { facts: Fact[] }) {
+  return (
+    <div className="container-page pb-18 lg:pb-32">
+      <Reveal as="dl" stagger={0.08} className="flex flex-col border-t border-ink lg:grid lg:grid-cols-4">
+        {facts.map((fact) => (
+          <div
+            key={fact.label}
+            className="flex flex-col-reverse justify-end gap-1.5 py-6 not-first:border-t not-first:border-line lg:gap-2.5 lg:pt-8 lg:pr-6 lg:pb-0 lg:not-first:border-t-0 lg:not-first:border-l lg:not-first:pl-6"
+          >
+            {/* Label first in the markup so screen readers hear "Founded: 2019". */}
+            <dt className="text-[15px]/[1.2] text-stone">{fact.label}</dt>
+            <dd className="text-numeral-md text-ink">
+              {fact.count === false ? fact.value : <CountUp value={fact.value} />}
+            </dd>
+          </div>
+        ))}
+      </Reveal>
+    </div>
   )
 }

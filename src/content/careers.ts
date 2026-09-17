@@ -9,17 +9,18 @@ import {
   Send,
   Sparkles,
 } from 'lucide-react'
-import type { LegalSection } from './legal/schema'
+import type { LegalBlock, LegalSection } from './legal/schema'
 import { EMAIL_CAREERS, mailto } from './site'
 
 /**
- * Open roles: the Studio page's Careers list and one page per role at /careers/<slug>.
+ * Careers: the /careers page, the open roles it lists (also on the Studio page) and one page
+ * per role at /careers/<slug>.
  *
  * A role page is the role's own sections (the role, what you'll do, what you'll bring,
  * nice to have), then the sections every role shares (what we offer, how we hire). Sections
  * use the legal pages' blocks, so text accepts inline links: "[our work](/work)".
  *
- * PLACEHOLDERS: the roles, salaries, benefits and hiring steps come from the design. Replace
+ * PLACEHOLDERS: the roles, salaries, numbers, benefits and hiring steps come from the design. Replace
  * them with live vacancies before launch and remove `sample`. Sample roles never get
  * JobPosting structured data (advertising jobs that don't exist breaks Google's policy),
  * and every build lists them in a warning.
@@ -55,49 +56,109 @@ export type Role = {
 
 export const applyHref = (role: Role) => mailto(EMAIL_CAREERS, `Application: ${role.title}`)
 
+/** The /careers page: the statement, numbers and culture around the open roles. */
+export const careersPage = {
+  facts: [
+    { value: '14', label: 'Senior specialists' },
+    { value: '4-day', label: 'Focus weeks, same salary', count: false },
+    { value: '30', label: 'Days off, plus bank holidays' },
+    { value: '3', label: 'Time zones, one team' },
+  ],
+  culture: [
+    {
+      title: 'Small teams, real ownership.',
+      body: 'Two to four people on each project, talking to the client directly. No handoffs, no account managers.',
+    },
+    {
+      title: 'Senior by default.',
+      body: 'Everyone here has shipped real products. You learn from peers, not from process.',
+    },
+    {
+      title: 'Remote, not remote-ish.',
+      body: 'Written updates, async reviews and one studio week together every quarter.',
+    },
+    {
+      title: 'Room to grow.',
+      body: 'A learning budget, Friday focus time and a clear path to leading projects.',
+    },
+  ],
+  hiringIntro:
+    'Usually within three weeks. We reply to every application, and we pay for any work we ask you to do.',
+}
+
+/** "What we offer": the /careers page and every role page. */
+export const benefits: LegalBlock = {
+  type: 'cards',
+  items: [
+    {
+      icon: CalendarDays,
+      title: 'Four-day focus weeks',
+      body: 'Fridays are for learning, side projects or rest. Same salary.',
+    },
+    {
+      icon: Laptop,
+      title: 'Remote-first',
+      body: 'Work from anywhere in the UK or Europe, with a £1,000 home office budget.',
+    },
+    {
+      icon: GraduationCap,
+      title: '£2,000 learning budget',
+      body: 'Courses, books and conferences, plus time to use it.',
+    },
+    {
+      icon: Plane,
+      title: '30 days off',
+      body: 'Plus bank holidays, and the studio closes between Christmas and New Year.',
+    },
+    {
+      icon: Coins,
+      title: 'Profit share',
+      body: 'Ten per cent of annual profit, split across the team.',
+    },
+    {
+      icon: HeartHandshake,
+      title: 'Health & pension',
+      body: 'Private health cover and a 6% matched pension from day one.',
+    },
+  ],
+}
+
+/** "How we hire": the steps and the note under them, on /careers and every role page. */
+export const hiring: LegalBlock[] = [
+  {
+    type: 'table',
+    monoFirstColumn: true,
+    columns: [{ label: 'Step', width: 90 }, { label: 'Stage', width: 220 }, { label: 'What happens' }],
+    rows: [
+      [
+        '01',
+        'Intro call · 30 min',
+        'A conversation with the hiring lead about you, the role and how we work.',
+      ],
+      [
+        '02',
+        'Your work · 2–3 hours',
+        'A short, paid exercise, or a walkthrough of something you’ve built or designed.',
+      ],
+      [
+        '03',
+        'Team session · 90 min',
+        'Work through a real problem from a past project with two people you’d work with.',
+      ],
+      ['04', 'Offer · within 3 days', 'A decision either way, with feedback if it isn’t a yes.'],
+    ],
+  },
+  {
+    type: 'note',
+    icon: Sparkles,
+    text: 'We hire for craft and care, not for a checklist. If you meet most of what we’re looking for, apply. We welcome people of every background, and we’ll make any adjustments you need to do your best in the process.',
+  },
+]
+
 /** Shared by every role, after its own sections. */
 export function sharedSections(role: Role): LegalSection[] {
   return [
-    {
-      title: 'What we offer',
-      blocks: [
-        {
-          type: 'cards',
-          items: [
-            {
-              icon: CalendarDays,
-              title: 'Four-day focus weeks',
-              body: 'Fridays are for learning, side projects or rest. Same salary.',
-            },
-            {
-              icon: Laptop,
-              title: 'Remote-first',
-              body: 'Work from anywhere in the UK or Europe, with a £1,000 home office budget.',
-            },
-            {
-              icon: GraduationCap,
-              title: '£2,000 learning budget',
-              body: 'Courses, books and conferences, plus time to use it.',
-            },
-            {
-              icon: Plane,
-              title: '30 days off',
-              body: 'Plus bank holidays, and the studio closes between Christmas and New Year.',
-            },
-            {
-              icon: Coins,
-              title: 'Profit share',
-              body: 'Ten per cent of annual profit, split across the team.',
-            },
-            {
-              icon: HeartHandshake,
-              title: 'Health & pension',
-              body: 'Private health cover and a 6% matched pension from day one.',
-            },
-          ],
-        },
-      ],
-    },
+    { title: 'What we offer', blocks: [benefits] },
     {
       title: 'How we hire',
       blocks: [
@@ -105,34 +166,7 @@ export function sharedSections(role: Role): LegalSection[] {
           type: 'paragraph',
           text: 'Four steps, usually within three weeks. We reply to every application, and we pay for any work we ask you to do.',
         },
-        {
-          type: 'table',
-          monoFirstColumn: true,
-          columns: [{ label: 'Step', width: 90 }, { label: 'Stage', width: 220 }, { label: 'What happens' }],
-          rows: [
-            [
-              '01',
-              'Intro call · 30 min',
-              'A conversation with the hiring lead about you, the role and how we work.',
-            ],
-            [
-              '02',
-              'Your work · 2–3 hours',
-              'A short, paid exercise, or a walkthrough of something you’ve built or designed.',
-            ],
-            [
-              '03',
-              'Team session · 90 min',
-              'Work through a real problem from a past project with two people you’d work with.',
-            ],
-            ['04', 'Offer · within 3 days', 'A decision either way, with feedback if it isn’t a yes.'],
-          ],
-        },
-        {
-          type: 'note',
-          icon: Sparkles,
-          text: 'We hire for craft and care, not for a checklist. If you meet most of what we’re looking for, apply. We welcome people of every background, and we’ll make any adjustments you need to do your best in the process.',
-        },
+        ...hiring,
         {
           type: 'actions',
           items: [

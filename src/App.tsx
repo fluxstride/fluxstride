@@ -4,6 +4,8 @@ import { Layout } from '@/components/layout/Layout'
 import { roles } from '@/content/careers'
 import { templates, visibleCaseStudies } from '@/content/case-studies'
 import { legalDocuments } from '@/content/legal'
+import { services } from '@/content/services'
+import { Careers } from '@/pages/Careers'
 import { CaseStudyPage } from '@/pages/CaseStudy'
 import { CaseStudyTemplatePreview, CaseStudyTemplates } from '@/pages/CaseStudyTemplates'
 import { Contact } from '@/pages/Contact'
@@ -14,6 +16,7 @@ import { Maintenance } from '@/pages/Maintenance'
 import { NotFound } from '@/pages/NotFound'
 import { Process } from '@/pages/Process'
 import { RolePage } from '@/pages/Role'
+import { ServicePage } from '@/pages/Service'
 import { Services } from '@/pages/Services'
 import { Studio } from '@/pages/Studio'
 import { Work } from '@/pages/Work'
@@ -47,8 +50,16 @@ export function App() {
             </>
           ) : null}
           <Route path="services" element={<Services />} />
+          {services.map((service) => (
+            <Route
+              key={service.slug}
+              path={`services/${service.slug}`}
+              element={<ServicePage service={service} />}
+            />
+          ))}
           <Route path="process" element={<Process />} />
           <Route path="studio" element={<Studio />} />
+          <Route path="careers" element={<Careers />} />
           {roles.map((role) => (
             <Route key={role.slug} path={`careers/${role.slug}`} element={<RolePage role={role} />} />
           ))}

@@ -1,81 +1,25 @@
-import { ArrowLeft } from 'lucide-react'
 import { useId } from 'react'
 import { Link } from 'react-router'
 import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { DetailHeader } from '@/components/sections/DetailHeader'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { ButtonLink } from '@/components/ui/Button'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Eyebrow } from '@/components/ui/Typography'
 import { applyHref, roles, type Role } from '@/content/careers'
 import { EMAIL_CAREERS, mailto } from '@/content/site'
 
-/*
- * Design: Careers · Job Description, header.
- *   Breadcrumbs  "← All roles" left, "Studio / Careers / Role" right; as the case study hero
- *   Header       eyebrow, the title with its serif word on a second line (display-case),
- *                then the intro and Apply beside a 3×2 grid of facts (2 columns on mobile)
- */
+/* Design: Careers · Job Description, header. See DetailHeader. */
 export function RoleHeader({ role }: { role: Role }) {
-  const [sans, serif] = role.heading
-
   return (
-    <header>
-      <div className="container-page flex items-center justify-between gap-4 pt-5 lg:pt-8">
-        <Link
-          to="/studio#careers"
-          className="inline-flex shrink-0 items-center gap-2.5 text-sm/[1.2] font-medium transition-colors hover:text-flux lg:text-[15px]/[1.2]"
-        >
-          <ArrowLeft aria-hidden="true" size={16} strokeWidth={2} />
-          All roles
-        </Link>
-        <Eyebrow className="truncate max-lg:text-[10px]/[1.3] lg:text-label-sm">
-          Studio / Careers / {role.title}
-        </Eyebrow>
-      </div>
-
-      <div className="container-page flex flex-col gap-6 pt-8 pb-12 lg:gap-12 lg:pt-14 lg:pb-18">
-        <Reveal on="mount">
-          <Eyebrow className="max-lg:text-[10px]/[1.6]">(Careers) {role.team} · Open role</Eyebrow>
-        </Reveal>
-        <RevealText as="h1" on="mount" delay={0.1} className="text-display-case text-ink">
-          {sans}
-          <br />
-          <Accent className="leading-none lg:text-[1.107em]">{serif}</Accent>
-        </RevealText>
-
-        <div className="flex flex-col gap-8 lg:flex-row lg:gap-24">
-          <Reveal
-            on="mount"
-            delay={0.3}
-            className="flex flex-col items-start gap-6 lg:w-130 lg:shrink-0 lg:gap-8"
-          >
-            <p className="text-[17px]/[1.55] text-stone lg:text-[1.375rem]/[1.5] lg:text-ink">
-              {role.summary}
-            </p>
-            <ButtonLink to={applyHref(role)} className="max-lg:w-full max-lg:justify-between">
-              Apply for this role
-            </ButtonLink>
-          </Reveal>
-          <Reveal
-            as="dl"
-            on="mount"
-            delay={0.4}
-            stagger={0.05}
-            className="grid flex-1 grid-cols-2 content-start lg:grid-cols-3"
-          >
-            {role.facts.map(([label, value]) => (
-              <div
-                key={label}
-                className="flex flex-col gap-1.5 border-t border-line pt-3.25 pr-4 pb-3.5 lg:pt-4.25 lg:pb-4.5"
-              >
-                <dt className="font-mono text-[10px]/[1.3] text-stone uppercase lg:text-label-sm">{label}</dt>
-                <dd className="text-[15px]/[1.35] font-semibold lg:text-[17px]/[1.35]">{value}</dd>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </div>
-    </header>
+    <DetailHeader
+      back={{ to: '/careers', label: 'All roles' }}
+      trail={`Careers / ${role.title}`}
+      eyebrow={`(Careers) ${role.team} · Open role`}
+      heading={role.heading}
+      intro={role.summary}
+      action={{ to: applyHref(role), label: 'Apply for this role' }}
+      facts={role.facts}
+    />
   )
 }
 

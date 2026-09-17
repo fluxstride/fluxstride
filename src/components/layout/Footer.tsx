@@ -7,7 +7,7 @@ import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { Logo } from '@/components/ui/Logo'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { Eyebrow } from '@/components/ui/Typography'
-import { services } from '@/content/services'
+import { serviceHref, services } from '@/content/services'
 import { LEGAL_NAME, socialLinks, studioLinks } from '@/content/site'
 import { cn } from '@/lib/cn'
 import { openCookieSettings } from '@/lib/consent'
@@ -30,7 +30,7 @@ export function Footer() {
 
           <FooterColumn title="Services" className="lg:flex-1">
             {services.map((service) => (
-              <FooterLink key={service.slug} to={`/services#${service.slug}`}>
+              <FooterLink key={service.slug} to={serviceHref(service.slug)}>
                 {service.shortTitle}
               </FooterLink>
             ))}
