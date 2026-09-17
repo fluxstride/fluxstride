@@ -85,3 +85,13 @@ if (server.SITE_URL_IS_PLACEHOLDER) {
   ----------------------------------------------------------------
 `)
 }
+
+if (server.LEGAL_TODO.length) {
+  console.warn(`
+  ----------------------------------------------------------------
+  WARNING: the legal pages are not ready to publish (${server.LEGAL_TODO.length} to do)
+${server.LEGAL_TODO.map((item) => `    - ${item}`).join('\n')}
+  Tick them off in src/content/legal/index.ts (LEGAL_TODO).
+  ----------------------------------------------------------------
+`)
+}
