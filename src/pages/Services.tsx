@@ -14,22 +14,22 @@ import { pad } from '@/lib/format'
  * Design: Fluxstride — Services (desktop 1440, mobile 390).
  *
  *   Page Header      "What we do." (64px below; 40px on mobile)
- *   Jump To          3×3 index of anchor links on hairlines, 96px (56px) above the details
- *   Service Details  one ruled block per discipline, then the CTA band
+ *   Jump To          3×2 index of anchor links on hairlines, 96px (56px) above the details
+ *   Service Details  one ruled block per service, then the CTA band
  */
 export function Services() {
   return (
     <>
       <PageHeader
         className="pb-10 lg:pb-16"
-        eyebrow="(Services) Nine disciplines, one team"
+        eyebrow="(Services) Six services, one team"
         title={
           <>
             What we <br className="lg:hidden" />
             <Accent className="text-[1.017em] lg:text-[1.109em]">do.</Accent>
           </>
         }
-        intro="Hire us for one discipline or all nine. Every engagement gets senior people, a fixed scope and a shared roadmap."
+        intro="Hire us for one service or all six. Every engagement gets senior people, a fixed scope and a shared roadmap."
       />
       <JumpTo />
       <div className="container-page pb-18 lg:pb-32">

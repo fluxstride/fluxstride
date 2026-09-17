@@ -14,7 +14,7 @@ import { EASE_OUT } from '@/lib/motion'
 /*
  * Design: Home / Services (desktop grid) and Home Mobile / Services (accordion).
  *
- * Desktop: 3×3 grid of 380px cards on hairlines. One card is drawn "highlighted"
+ * Desktop: 3×2 grid of 380px cards on hairlines, in Design → Build → Run order. One card is drawn "highlighted"
  * (ink fill, solid icon, flux arrow). Here that highlight follows the pointer and
  * keyboard focus, gliding between cards, and rests on the first card.
  *
@@ -31,11 +31,11 @@ export function ServicesSection() {
     >
       <SectionHeader
         eyebrow="(02) What we do"
-        title="Nine disciplines. One team that ships."
+        title="Six services. One team that ships."
         titleId="services-title"
         titleClassName="max-lg:text-[2.375rem] lg:max-w-195"
         introClassName="max-lg:hidden"
-        intro="From a single website to a full software platform. Engineering, design and strategy share one roadmap, one channel and one definition of done."
+        intro="From a single website to a full platform. Design, engineering and infrastructure share one roadmap, one channel and one definition of done."
       />
       <ServiceGrid />
       <ServiceAccordion />

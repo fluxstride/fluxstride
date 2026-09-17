@@ -1,5 +1,5 @@
-import { services } from '@/content/services'
-import type { CaseStudy, ServiceSlug } from './schema'
+import { service } from '@/content/services'
+import type { CaseStudy } from './schema'
 
 /**
  * Case study registry.
@@ -51,23 +51,33 @@ export function nextCaseStudy(study: CaseStudy) {
   return visibleCaseStudies[index + 1] ?? pool[0]
 }
 
-/** The service's display name, e.g. "SEO" or "Website Design & Development". */
-export const serviceTitle = (study: Pick<CaseStudy, 'service'>) =>
-  services.find((service) => service.slug === study.service)?.title ?? study.service
+/** The lead service's name, e.g. "Mobile Development". */
+export const serviceTitle = (study: Pick<CaseStudy, 'services'>) => service(study.services[0]).title
+
+/** Short names of every service on the project, e.g. ["Mobile apps", "Product design"]. */
+export const serviceNames = (study: Pick<CaseStudy, 'services'>) =>
+  study.services.map((slug) => service(slug).shortTitle)
 
 /** Where a Work card should point: the full case study once one exists, otherwise its anchor on /work. */
 export const caseStudyHref = (slug: string) => (findCaseStudy(slug) ? `/work/${slug}` : `/work#${slug}`)
 
 const templateModules = import.meta.glob<StudyModule>('./templates/*.ts', { eager: true })
 
-/** Starter templates keyed by service. File names must match the service slug. */
+/**
+ * Starter templates keyed by file name, e.g. "mobile-app". A template is a page structure,
+ * not a service: each one names the services it usually covers, and a case study made from
+ * it can list any others. Its slug must be "template-<file name>".
+ */
 export const templates = Object.fromEntries(
   Object.entries(templateModules).flatMap(([file, { default: template }]) => {
     if (!template) return []
-    const service = file.replace(/^.*\/(.+)\.ts$/, '$1') as ServiceSlug
-    if (template.service !== service) {
-      throw new Error(`${file} declares service "${template.service}"; rename the file or fix the field`)
+    const id = file.replace(/^.*\/(.+)\.ts$/, '$1')
+    if (template.slug !== `template-${id}`) {
+      throw new Error(`${file} has slug "${template.slug}"; a template's slug must be "template-${id}"`)
     }
-    return [[service, template] as const]
+    return [[id, template] as const]
   }),
-) as Partial<Record<ServiceSlug, CaseStudy>>
+) as Record<string, CaseStudy>
+
+/** A template's name on /work/templates, e.g. "Mobile app". */
+export const templateTitle = (template: CaseStudy) => template.discipline ?? serviceTitle(template)

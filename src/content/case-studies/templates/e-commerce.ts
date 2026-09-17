@@ -12,7 +12,8 @@ import { defineCaseStudy } from '../schema'
 export default defineCaseStudy({
   slug: 'template-e-commerce',
   status: 'draft',
-  service: 'e-commerce',
+  services: ['web-design-frontend', 'product-design'],
+  discipline: 'E-commerce',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
+import type { ServiceSlug } from '@/content/services'
 import type { ImageName } from '@/content/images.generated'
 
 /**
@@ -7,7 +8,7 @@ import type { ImageName } from '@/content/images.generated'
  * Every case study is plain data: the page components read it and never need
  * editing for a new project. Start from a template instead of an empty file:
  *
- *   pnpm new:case-study <service> <slug>
+ *   pnpm new:case-study <template> <slug>
  *
  * See docs/case-studies.md for the full workflow.
  *
@@ -19,17 +20,8 @@ import type { ImageName } from '@/content/images.generated'
 /** A heading with the one serif italic phrase: ['A portal customers', 'actually use.'] */
 export type SplitTitle = readonly [plain: string, accent: string]
 
-/** One of the nine services on /services, matching `slug` in content/services.ts. */
-export type ServiceSlug =
-  | 'software-engineering'
-  | 'website-design-development'
-  | 'mobile-app-development'
-  | 'e-commerce'
-  | 'ui-ux-design'
-  | 'graphic-design'
-  | 'seo'
-  | 'tech-consultancy'
-  | 'website-maintenance'
+/** One of the six services on /services (content/services.ts). */
+export type { ServiceSlug }
 
 /**
  * An image from content/images.generated.ts. Leave `image` as null while you wait
@@ -484,10 +476,15 @@ export type CaseStudy = {
    * warning until the flag is removed. Never launch with one.
    */
   sample?: true
-  service: ServiceSlug
+  /**
+   * The services the project used, lead service first: ['mobile-development', 'product-design'].
+   * They drive the Work page filters, the card's services line and the default hero tags.
+   * (Not to be confused with `credits.services`, the deliverables listed at the bottom.)
+   */
+  services: readonly [ServiceSlug, ...ServiceSlug[]]
   /**
    * How the work is labelled where other pages link to it, e.g. "Mobile app" in the
-   * "Next project" block. Defaults to the service title.
+   * "Next project" block. Defaults to the lead service's title.
    */
   discipline?: string
   client: string
@@ -508,8 +505,8 @@ export type CaseStudy = {
     /** Six label/value pairs. */
     facts: [label: string, value: string][]
     /**
-     * The eyebrow after "(Case study)". Defaults to [industry, service title, year];
-     * set it to name more disciplines or a year range: ['Logistics', 'SEO & growth', '2025–26'].
+     * The eyebrow after "(Case study)". Defaults to [industry, each service, year];
+     * set it for shorter names or a year range: ['Logistics', 'Website rebuild', '2025–26'].
      */
     tags?: string[]
     media: Media

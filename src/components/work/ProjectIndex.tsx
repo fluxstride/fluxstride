@@ -66,7 +66,7 @@ export function ProjectIndex({ projects }: { projects: ProjectEntry[] }) {
           </Reveal>
         ) : (
           <p className="border-t border-line py-6.5 text-body text-stone">
-            No other projects in this discipline yet.
+            No other projects with this service yet.
           </p>
         )}
       </div>

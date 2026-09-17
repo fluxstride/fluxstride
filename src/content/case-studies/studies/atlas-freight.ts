@@ -1,7 +1,7 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * Atlas Freight · SEO
+ * Atlas Freight · Web & frontend, Backend
  * Design: "Case Study — SEO & Growth" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, traffic, rankings, vitals, team credits and quote are invented
@@ -27,7 +27,7 @@ export default defineCaseStudy({
   slug: 'atlas-freight',
   status: 'published',
   sample: true,
-  service: 'seo',
+  services: ['web-design-frontend', 'backend-development'],
   discipline: 'SEO & growth',
   client: 'Atlas Freight',
   industry: 'Logistics',

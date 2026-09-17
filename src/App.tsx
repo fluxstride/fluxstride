@@ -31,11 +31,11 @@ export function App() {
           {import.meta.env.DEV ? (
             <>
               <Route path="work/templates" element={<CaseStudyTemplates />} />
-              {Object.values(templates).map((template) => (
+              {Object.entries(templates).map(([id, template]) => (
                 <Route
-                  key={template.service}
-                  path={`work/templates/${template.service}`}
-                  element={<CaseStudyTemplatePreview template={template} />}
+                  key={id}
+                  path={`work/templates/${id}`}
+                  element={<CaseStudyTemplatePreview id={id} template={template} />}
                 />
               ))}
             </>

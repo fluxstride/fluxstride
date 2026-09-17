@@ -1,17 +1,18 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · SEO
- * Design: "Case Study Template — SEO" in the Pencil file.
+ * STARTER TEMPLATE · Website rebuild
+ * Design: "Case Study Template — Website rebuild" in the Pencil file.
  * Example of a finished page: "Case Study — SEO & Growth" (Atlas Freight).
  *
- * Copy it with `pnpm new:case-study seo <slug>`.
+ * Copy it with `pnpm new:case-study website-rebuild <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-seo',
+  slug: 'template-website-rebuild',
   status: 'draft',
-  service: 'seo',
+  services: ['web-design-frontend', 'backend-development'],
+  discipline: 'Website rebuild',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

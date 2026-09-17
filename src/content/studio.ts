@@ -13,7 +13,7 @@ export const story = {
   lead: 'Built by engineers and designers who were tired of the hand-off.',
   paragraphs: [
     'Fluxstride started with a simple frustration: agencies that design beautiful things nobody can build, and developers who build solid things nobody wants to use. We put both crafts in the same room, on the same roadmap.',
-    'Today we’re a compact team of senior specialists across software engineering, UI/UX, graphic design, SEO and tech consultancy. We keep the studio small on purpose — the people you meet in the pitch are the people who do the work.',
+    'Today we’re a compact team of senior specialists across product design, branding, web, mobile, backend and cloud engineering. We keep the studio small on purpose — the people you meet in the pitch are the people who do the work.',
     'Our name is our method. Flux: technology, markets and customers never stop changing. Stride: we respond with deliberate, confident steps forward — never noise for its own sake.',
   ],
 }
@@ -22,7 +22,7 @@ export const story = {
 export const facts: { value: string; label: string; count?: boolean }[] = [
   { value: '2019', label: 'Founded', count: false },
   { value: '14', label: 'Senior specialists' },
-  { value: '9', label: 'Disciplines under one roof' },
+  { value: '6', label: 'Services under one roof' },
   { value: '3', label: 'Time zones, one team' },
 ]
 

@@ -24,7 +24,7 @@ export function Hero() {
       <div className="@container flex flex-col gap-7 lg:gap-6">
         <Reveal on="mount" className="flex justify-between gap-6">
           <Eyebrow className="max-lg:text-label-sm">(01) Independent digital agency</Eyebrow>
-          <Eyebrow className="max-lg:hidden">Software · UI/UX · Design · Consultancy</Eyebrow>
+          <Eyebrow className="max-lg:hidden">Design · Build · Run</Eyebrow>
         </Reveal>
 
         {/* On desktop the size is also capped by the container (11.25cqw = 144px at 1280px wide)
@@ -49,11 +49,11 @@ export function Hero() {
         <div className="flex flex-col gap-7 lg:w-105 lg:shrink-0 lg:justify-between lg:border-t lg:border-ink lg:pt-5">
           <Reveal on="mount" delay={0.45} as="p" className="text-lead">
             <span className="lg:hidden">
-              Software engineering, UI/UX, graphic design and tech consultancy under one roof.
+              Product design, branding, web, mobile, backend and cloud under one roof.
             </span>
             <span className="max-lg:hidden">
-              Fluxstride is a software engineering and design studio. We build websites, apps and platforms,
-              design the experience and brand around them, and advise on the tech behind it all.
+              Fluxstride is a design and engineering studio. We design products and brands, build the
+              websites, apps and backends behind them, and run it all in the cloud.
             </span>
           </Reveal>
 

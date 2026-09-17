@@ -1,30 +1,22 @@
-import { publishedCaseStudies } from './case-studies'
+import { publishedCaseStudies, serviceNames } from './case-studies'
 import type { ImageName } from './images.generated'
+import { service, services, type ServiceSlug } from './services'
 
 /**
  * Case study cards and the project index. Feeds Home "Selected work" and the Work page.
  *
- * Cards read their client, industry, year, photo and headline figure from the case study
- * itself (src/content/case-studies/studies), so a card always matches its page. Only the
- * filter chips, the short services line and the badge label are written here.
+ * Cards read their client, industry, year, services, photo and headline figure from the case
+ * study itself (src/content/case-studies/studies), so a card always matches its page. Only
+ * the badge label is written here.
  *
  * PLACEHOLDERS: every client, result and image comes from the design mockups.
  * Replace with real, approved case studies before launch.
  */
 
-/** Work page filter categories, in the order the chips appear. */
-export const disciplines = [
-  { id: 'software', label: 'Software' },
-  { id: 'web', label: 'Web' },
-  { id: 'mobile', label: 'Mobile' },
-  { id: 'e-commerce', label: 'E-commerce' },
-  { id: 'ui-ux', label: 'UI/UX' },
-  { id: 'graphic-design', label: 'Graphic design' },
-  { id: 'seo', label: 'SEO' },
-  { id: 'consultancy', label: 'Consultancy' },
-] as const
+/** Work page filter chips: one per service, in the Services page order. */
+export const disciplines = services.map(({ slug, shortTitle }) => ({ id: slug, label: shortTitle }))
 
-export type Discipline = (typeof disciplines)[number]['id']
+export type Discipline = ServiceSlug
 
 export type CaseStudy = {
   slug: string
@@ -32,8 +24,9 @@ export type CaseStudy = {
   year: number
   client: string
   industry: string
-  /** Shown after the industry: "Fintech — Software, Web platform" */
+  /** Shown after the industry: "Fintech — Backend, Web & frontend" */
   services: string[]
+  /** Every service on the project; the Work page filters match any of them. */
   disciplines: Discipline[]
   /** Headline result on the image badge */
   metric: string
@@ -44,50 +37,18 @@ export type CaseStudy = {
 
 type Card = {
   slug: string
-  services: string[]
-  disciplines: Discipline[]
   /** Which of the case study's result figures goes on the badge, and its short label. */
   metric: { stat: number; label: string }
 }
 
 /** In curated order: the Work page keeps it for projects from the same year. */
 const cards: Card[] = [
-  {
-    slug: 'northwind',
-    services: ['Software', 'Web platform'],
-    disciplines: ['software', 'web'],
-    metric: { stat: 0, label: 'Qualified leads' },
-  },
-  {
-    slug: 'halden-coffee',
-    services: ['E-commerce', 'Shopify Plus'],
-    disciplines: ['e-commerce'],
-    metric: { stat: 1, label: 'Online revenue' },
-  },
-  {
-    slug: 'orbit-health',
-    services: ['Mobile app', 'UI/UX'],
-    disciplines: ['mobile', 'ui-ux'],
-    metric: { stat: 1, label: 'App Store rating' },
-  },
-  {
-    slug: 'kinetic-labs',
-    services: ['Website', 'Development'],
-    disciplines: ['web'],
-    metric: { stat: 0, label: 'Demo requests' },
-  },
-  {
-    slug: 'aurora-architects',
-    services: ['Brand identity', 'Graphic design'],
-    disciplines: ['graphic-design'],
-    metric: { stat: 0, label: 'Competition shortlists' },
-  },
-  {
-    slug: 'atlas-freight',
-    services: ['SEO', 'Content'],
-    disciplines: ['seo'],
-    metric: { stat: 0, label: 'Organic traffic' },
-  },
+  { slug: 'northwind', metric: { stat: 0, label: 'Qualified leads' } },
+  { slug: 'halden-coffee', metric: { stat: 1, label: 'Online revenue' } },
+  { slug: 'orbit-health', metric: { stat: 1, label: 'App Store rating' } },
+  { slug: 'kinetic-labs', metric: { stat: 0, label: 'Demo requests' } },
+  { slug: 'aurora-architects', metric: { stat: 0, label: 'Competition shortlists' } },
+  { slug: 'atlas-freight', metric: { stat: 0, label: 'Organic traffic' } },
 ]
 
 export const caseStudies: CaseStudy[] = cards.map((card) => {
@@ -103,8 +64,8 @@ export const caseStudies: CaseStudy[] = cards.map((card) => {
     year: study.year,
     client: study.client,
     industry: study.industry,
-    services: card.services,
-    disciplines: card.disciplines,
+    services: serviceNames(study),
+    disciplines: [...study.services],
     metric: stat.value,
     metricLabel: card.metric.label,
     image: photo.image,
@@ -121,55 +82,28 @@ export const caseStudy = (slug: string) => {
 export type ProjectEntry = {
   year: number
   client: string
+  /** Short service names, from `disciplines` */
   services: string[]
   industry: string
   disciplines: Discipline[]
 }
 
+const project = (year: number, client: string, industry: string, slugs: ServiceSlug[]): ProjectEntry => ({
+  year,
+  client,
+  industry,
+  disciplines: slugs,
+  services: slugs.map((slug) => service(slug).shortTitle),
+})
+
 /** "More projects" table on the Work page. */
 export const moreProjects: ProjectEntry[] = [
-  {
-    year: 2026,
-    client: 'Meridian Bank',
-    services: ['Software', 'UI/UX'],
-    industry: 'Finance',
-    disciplines: ['software', 'ui-ux'],
-  },
-  {
-    year: 2025,
-    client: 'Volta Energy',
-    services: ['Website', 'SEO'],
-    industry: 'Energy',
-    disciplines: ['web', 'seo'],
-  },
-  {
-    year: 2025,
-    client: 'Loom & Thread',
-    services: ['E-commerce', 'Graphic design'],
-    industry: 'Fashion',
-    disciplines: ['e-commerce', 'graphic-design'],
-  },
-  {
-    year: 2025,
-    client: 'Pathway Learning',
-    services: ['Mobile app', 'UI/UX'],
-    industry: 'Education',
-    disciplines: ['mobile', 'ui-ux'],
-  },
-  {
-    year: 2024,
-    client: 'Harbour Health',
-    services: ['Tech consultancy'],
-    industry: 'Healthcare',
-    disciplines: ['consultancy'],
-  },
-  {
-    year: 2024,
-    client: 'Northstar Legal',
-    services: ['Website', 'Maintenance'],
-    industry: 'Professional services',
-    disciplines: ['web'],
-  },
+  project(2026, 'Meridian Bank', 'Finance', ['backend-development', 'product-design']),
+  project(2025, 'Volta Energy', 'Energy', ['web-design-frontend']),
+  project(2025, 'Loom & Thread', 'Fashion', ['web-design-frontend', 'graphic-design-branding']),
+  project(2025, 'Pathway Learning', 'Education', ['mobile-development', 'product-design']),
+  project(2024, 'Harbour Health', 'Healthcare', ['cloud-devops']),
+  project(2024, 'Northstar Legal', 'Professional services', ['web-design-frontend', 'cloud-devops']),
 ]
 
 /** Total shown in "All case studies (24)" and the Work page eyebrow. */

@@ -109,7 +109,7 @@ export function HeroVisual({ className }: { className?: string }) {
           <div className="flex justify-between font-mono text-[clamp(0.5625rem,0.5161rem+0.1905vw,0.6875rem)] leading-[1.3] text-stone-light uppercase">
             <p data-caption="">Fig. 01 — Momentum</p>
             <p data-caption="" className="max-lg:hidden">
-              Software / Design / Consultancy
+              Design / Build / Run
             </p>
           </div>
           <p

@@ -140,11 +140,11 @@ export const engagementModels: EngagementModel[] = [
     name: 'Retainer',
     kicker: 'Monthly capacity',
     description:
-      'A dedicated slice of our team every month for continuous design, development, SEO and maintenance.',
+      'A dedicated slice of our team every month for continuous design, development, DevOps and support.',
     includes: ['Reserved monthly hours', 'Roadmap & priority support', 'Monthly reporting'],
     bestFor: 'Growing products',
     price: 'From £2.5k / mo',
-    href: contactHref(['maintenance']),
+    href: contactHref(['cloud-devops']),
     featured: true,
   },
   {
@@ -155,7 +155,7 @@ export const engagementModels: EngagementModel[] = [
     includes: ['Audits & reviews', 'Workshops & roadmaps', 'Fractional CTO'],
     bestFor: 'Decisions & due diligence',
     price: '£950 / day',
-    href: contactHref(['consultancy']),
+    href: contactHref(['not-sure']),
   },
 ]
 

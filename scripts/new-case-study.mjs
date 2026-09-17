@@ -1,9 +1,9 @@
-// Starts a new case study from one of the nine service templates.
+// Starts a new case study from one of the starter templates.
 //
 //   pnpm new:case-study                          list the templates
-//   pnpm new:case-study <service> <slug>         e.g. pnpm new:case-study seo atlas-freight
+//   pnpm new:case-study <template> <slug>        e.g. pnpm new:case-study mobile-app orbit-health
 //
-// Copies src/content/case-studies/templates/<service>.ts to
+// Copies src/content/case-studies/templates/<template>.ts to
 // src/content/case-studies/studies/<slug>.ts, sets the slug and keeps it as a draft.
 // Drafts render at /work/<slug> in `pnpm dev` with a banner listing every placeholder
 // left to fill; the build refuses to publish a study that still has any.
@@ -27,24 +27,24 @@ const fail = (message) => {
   process.exit(1)
 }
 
-const services = (await readdir(templatesDir))
+const templateIds = (await readdir(templatesDir))
   .filter((file) => file.endsWith('.ts'))
   .map((file) => file.replace(/\.ts$/, ''))
   .sort()
 
-const [service, slug] = process.argv.slice(2)
+const [template, slug] = process.argv.slice(2)
 
-if (!service) {
-  console.log('\n  Usage: pnpm new:case-study <service> <slug>\n\n  Templates:')
-  for (const name of services) console.log(`    ${name}`)
+if (!template) {
+  console.log('\n  Usage: pnpm new:case-study <template> <slug>\n\n  Templates:')
+  for (const name of templateIds) console.log(`    ${name}`)
   console.log('\n  Guide: docs/case-studies.md\n')
   process.exit(0)
 }
 
-if (!services.includes(service)) {
-  fail(`Unknown service "${service}". Pick one of:\n      ${services.join('\n      ')}`)
+if (!templateIds.includes(template)) {
+  fail(`Unknown template "${template}". Pick one of:\n      ${templateIds.join('\n      ')}`)
 }
-if (!slug) fail('Give the new case study a slug, e.g. pnpm new:case-study seo atlas-freight')
+if (!slug) fail('Give the new case study a slug, e.g. pnpm new:case-study mobile-app orbit-health')
 if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
   fail(`"${slug}" isn't a valid slug. Use lowercase letters, numbers and single hyphens.`)
 }
@@ -53,9 +53,9 @@ if (RESERVED.has(slug) || slug.startsWith('template-')) fail(`"${slug}" is reser
 const target = join(studiesDir, `${slug}.ts`)
 if (existsSync(target)) fail(`${relative(root, target)} already exists.`)
 
-const source = await readFile(join(templatesDir, `${service}.ts`), 'utf8')
-const slugLine = `slug: 'template-${service}',`
-if (!source.includes(slugLine)) fail(`Couldn't find "${slugLine}" in the ${service} template.`)
+const source = await readFile(join(templatesDir, `${template}.ts`), 'utf8')
+const slugLine = `slug: 'template-${template}',`
+if (!source.includes(slugLine)) fail(`Couldn't find "${slugLine}" in the ${template} template.`)
 
 const today = new Date().toISOString().slice(0, 10)
 const output = source
@@ -65,7 +65,7 @@ const output = source
     [
       '/**',
       ` * Case study: ${slug}`,
-      ` * Started ${today} from templates/${service}.ts. Its design is in the Pencil file.`,
+      ` * Started ${today} from templates/${template}.ts. Its design is in the Pencil file.`,
       ' *',
       ' * Replace every [bracketed] value and every `image: null`, delete sections that',
       " * don't apply, then set status to 'published'. Guide: docs/case-studies.md",

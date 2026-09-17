@@ -3,14 +3,20 @@ import { CaseStudyView } from '@/components/case-study/CaseStudyView'
 import { PageHeader } from '@/components/sections/PageHeader'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
-import { findPlaceholders, serviceTitle, templates, type CaseStudy } from '@/content/case-studies'
+import {
+  findPlaceholders,
+  serviceNames,
+  templates,
+  templateTitle,
+  type CaseStudy,
+} from '@/content/case-studies'
 
 /*
  * Development only (see App.tsx): browse the starter templates the way they render.
- * The matching designs are the "Case Study Template — <service>" frames in the Pencil file.
+ * The matching designs are the "Case Study Template — <name>" frames in the Pencil file.
  */
 
-/** /work/templates: one row per service. */
+/** /work/templates: one row per template. */
 export function CaseStudyTemplates() {
   return (
     <>
@@ -29,17 +35,17 @@ export function CaseStudyTemplates() {
         }
       />
       <ul className="container-page pb-section">
-        {Object.values(templates).map((template) => (
-          <li key={template.service} className="border-t border-line">
+        {Object.entries(templates).map(([id, template]) => (
+          <li key={id} className="border-t border-line">
             <Link
-              to={`/work/templates/${template.service}`}
+              to={`/work/templates/${id}`}
               className="group flex items-center justify-between gap-6 py-6 lg:py-8"
             >
               <span className="flex flex-col gap-2">
-                <span className="text-title-sm">{serviceTitle(template)}</span>
+                <span className="text-title-sm">{templateTitle(template)}</span>
                 <Eyebrow>
-                  {template.sections.length} sections · {findPlaceholders(template).length} placeholders to
-                  fill
+                  {serviceNames(template).join(' + ')} · {template.sections.length} sections ·{' '}
+                  {findPlaceholders(template).length} placeholders to fill
                 </Eyebrow>
               </span>
               <ArrowIcon size={24} />
@@ -51,14 +57,14 @@ export function CaseStudyTemplates() {
   )
 }
 
-/** /work/templates/<service> */
-export function CaseStudyTemplatePreview({ template }: { template: CaseStudy }) {
+/** /work/templates/<id> */
+export function CaseStudyTemplatePreview({ id, template }: { id: string; template: CaseStudy }) {
   return (
     <CaseStudyView
       study={template}
       draft={{
-        title: `Starter template · ${serviceTitle(template)}`,
-        file: `src/content/case-studies/templates/${template.service}.ts`,
+        title: `Starter template · ${templateTitle(template)}`,
+        file: `src/content/case-studies/templates/${id}.ts`,
       }}
     />
   )

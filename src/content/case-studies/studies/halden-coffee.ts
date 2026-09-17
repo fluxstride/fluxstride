@@ -2,7 +2,7 @@ import { Gift, Mail, Package, Repeat, Wallet, Zap } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
- * Halden Coffee · E-commerce
+ * Halden Coffee · Web & frontend (e-commerce), Product design
  * Design: "Case Study — E-commerce" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, revenue chart, team credits and quote are invented
@@ -28,7 +28,7 @@ export default defineCaseStudy({
   slug: 'halden-coffee',
   status: 'published',
   sample: true,
-  service: 'e-commerce',
+  services: ['web-design-frontend', 'product-design'],
   discipline: 'E-commerce',
   client: 'Halden Coffee',
   industry: 'Food & drink',

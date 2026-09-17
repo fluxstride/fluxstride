@@ -2,17 +2,18 @@ import { Globe, Layers, PenLine } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · Website Design & Development
- * Design: "Case Study Template — Website Design & Development" in the Pencil file.
+ * STARTER TEMPLATE · Website
+ * Design: "Case Study Template — Website" in the Pencil file.
  * Example of a finished page: "Case Study — Website" (Kinetic Labs).
  *
- * Copy it with `pnpm new:case-study website-design-development <slug>`.
+ * Copy it with `pnpm new:case-study website <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-website-design-development',
+  slug: 'template-website',
   status: 'draft',
-  service: 'website-design-development',
+  services: ['web-design-frontend', 'product-design'],
+  discipline: 'Website',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

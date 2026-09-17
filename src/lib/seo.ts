@@ -1,4 +1,4 @@
-import { serviceTitle, templates, visibleCaseStudies } from '@/content/case-studies'
+import { templates, templateTitle, visibleCaseStudies } from '@/content/case-studies'
 import { BRAND, EMAIL_NEW_BUSINESS, LEGAL_NAME, socialLinks, X_HANDLE } from '@/content/site'
 import { legalDocuments, type LegalSlug } from '@/content/legal'
 import { faqs } from '@/content/process'
@@ -58,9 +58,9 @@ export type PageSeo = {
 const staticPages: PageSeo[] = [
   {
     path: '/',
-    title: 'Fluxstride · Software Engineering & Design Studio',
+    title: 'Fluxstride · Design & Engineering Studio',
     description:
-      'Fluxstride is a software engineering and design studio. We build websites, apps and platforms, design the experience and brand around them, and advise on the tech behind it all.',
+      'Fluxstride is a design and engineering studio. We design products and brands, build the websites, apps and backends behind them, and run it all in the cloud.',
     image: DEFAULT_OG,
     priority: 1,
   },
@@ -75,11 +75,11 @@ const staticPages: PageSeo[] = [
   },
   {
     path: '/services',
-    title: 'Services · Software, Web, Apps, UI/UX & SEO',
+    title: 'Services · Design, Web, Mobile, Backend & Cloud',
     breadcrumb: 'Services',
     description:
-      'Software engineering, website design and development, mobile apps, e-commerce, UI/UX, graphic design, SEO, tech consultancy and website maintenance — from one senior team.',
-    image: og('og-services', 'What we do — nine disciplines, one team, at Fluxstride.'),
+      'Product design, branding, website and frontend development, mobile apps, backend development, and cloud & DevOps — from one senior team.',
+    image: og('og-services', 'What we do — six services, one team, at Fluxstride.'),
     priority: 0.9,
   },
   {
@@ -163,9 +163,9 @@ const caseStudyPages: PageSeo[] = [
   ...(import.meta.env.DEV
     ? [
         { path: '/work/templates', title: 'Case study templates', noindex: true },
-        ...Object.values(templates).map((template) => ({
-          path: `/work/templates/${template.service}`,
-          title: `Template · ${serviceTitle(template)}`,
+        ...Object.entries(templates).map(([id, template]) => ({
+          path: `/work/templates/${id}`,
+          title: `Template · ${templateTitle(template)}`,
           noindex: true,
         })),
       ].map((page) => ({ ...page, description: 'Development preview.', parent: '/work' }))

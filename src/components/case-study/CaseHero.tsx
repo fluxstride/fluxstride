@@ -6,7 +6,7 @@ import { Accent, Eyebrow } from '@/components/ui/Typography'
 import type { CaseStudy } from '@/content/case-studies/schema'
 import { MediaView } from './MediaView'
 
-type CaseHeroProps = { study: CaseStudy; serviceTitle: string }
+type CaseHeroProps = { study: CaseStudy; serviceNames: string[] }
 
 /*
  * Design: Case Study — Hero.
@@ -16,9 +16,9 @@ type CaseHeroProps = { study: CaseStudy; serviceTitle: string }
  *   Visual       full container width: 760px photo (420px mobile), or a browser screenshot
  *                at its own proportions
  */
-export function CaseHero({ study, serviceTitle }: CaseHeroProps) {
+export function CaseHero({ study, serviceNames }: CaseHeroProps) {
   const { hero } = study
-  const tags = hero.tags ?? [study.industry, serviceTitle, study.year || '[Year]']
+  const tags = hero.tags ?? [study.industry, ...serviceNames, study.year || '[Year]']
 
   return (
     <header>

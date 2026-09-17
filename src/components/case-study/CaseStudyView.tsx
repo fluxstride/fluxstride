@@ -1,5 +1,5 @@
 import { CtaBand } from '@/components/sections/CtaBand'
-import { serviceTitle } from '@/content/case-studies'
+import { serviceNames, serviceTitle } from '@/content/case-studies'
 import { findPlaceholders } from '@/content/case-studies/placeholders'
 import type { CaseStudy } from '@/content/case-studies/schema'
 import { CaseHero } from './CaseHero'
@@ -28,7 +28,7 @@ export function CaseStudyView({ study, next, draft }: CaseStudyViewProps) {
     <>
       {draft ? <DraftBanner {...draft} placeholders={findPlaceholders(study)} /> : null}
       <article>
-        <CaseHero study={study} serviceTitle={serviceTitle(study)} />
+        <CaseHero study={study} serviceNames={serviceNames(study)} />
         <ResultsBand results={study.results} />
         <CaseStory challenge={study.challenge} approach={study.approach} />
         {study.sections.map((section, i) => (

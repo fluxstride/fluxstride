@@ -5,18 +5,16 @@ import { Mark } from '@/components/ui/Logo'
 /*
  * Design: Home / Marquee Band (desktop) and Home Mobile / Marquee.
  * Ink band; items 40px/500 → 26px on mobile, separated by small Stride marks
- * (18px → 12px) with 36px → 20px gaps. Mobile uses shorter labels and drops three
- * items, so each item carries its mobile label, or null to hide it there.
+ * (18px → 12px) with 36px → 20px gaps. Mobile uses shorter labels, so each item carries
+ * its mobile label, or null to hide it there.
  */
 const DISCIPLINES: { label: string; mobile: string | null }[] = [
-  { label: 'Software engineering', mobile: 'Software' },
+  { label: 'Product design', mobile: 'Product' },
+  { label: 'Branding', mobile: 'Brand' },
   { label: 'Web development', mobile: 'Web' },
   { label: 'Mobile apps', mobile: 'Apps' },
-  { label: 'E-commerce', mobile: null },
-  { label: 'UI/UX design', mobile: 'UI/UX' },
-  { label: 'Graphic design', mobile: null },
-  { label: 'SEO', mobile: 'SEO' },
-  { label: 'Tech consultancy', mobile: null },
+  { label: 'Backend', mobile: 'Backend' },
+  { label: 'Cloud & DevOps', mobile: 'Cloud' },
 ]
 
 // Gap between every item and mark, 20px → 36px. Also used as the group's end padding
@@ -25,10 +23,7 @@ const GAP = 'gap-[clamp(1.25rem,0.8786rem+1.5238vw,2.25rem)] pr-[clamp(1.25rem,0
 
 export function DisciplineMarquee() {
   return (
-    <section
-      aria-label="Disciplines"
-      className="bg-ink py-[clamp(1rem,0.7679rem+0.9524vw,1.625rem)] text-paper"
-    >
+    <section aria-label="Services" className="bg-ink py-[clamp(1rem,0.7679rem+0.9524vw,1.625rem)] text-paper">
       <Marquee duration={45}>
         <ul className={`flex items-center ${GAP}`}>
           {DISCIPLINES.map(({ label, mobile }) => (

@@ -103,7 +103,7 @@ export function Work() {
                 sizes="(min-width: 90rem) 1280px, 100vw"
               />
             ) : (
-              <p className="text-body-lg text-stone">No case studies in this discipline yet.</p>
+              <p className="text-body-lg text-stone">No case studies with this service yet.</p>
             )}
             {rest.length ? (
               <div className="grid gap-y-8 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-18">

@@ -5,15 +5,12 @@
 
 /** "What do you need?" on the Contact form. */
 export const needs = [
-  { id: 'software', label: 'Software engineering' },
+  { id: 'product-design', label: 'Product design' },
+  { id: 'branding', label: 'Branding' },
   { id: 'website', label: 'Website' },
   { id: 'mobile', label: 'Mobile app' },
-  { id: 'e-commerce', label: 'E-commerce' },
-  { id: 'ui-ux', label: 'UI/UX design' },
-  { id: 'graphic-design', label: 'Graphic design' },
-  { id: 'seo', label: 'SEO' },
-  { id: 'consultancy', label: 'Tech consultancy' },
-  { id: 'maintenance', label: 'Maintenance' },
+  { id: 'backend', label: 'Backend' },
+  { id: 'cloud-devops', label: 'Cloud & DevOps' },
   { id: 'not-sure', label: 'Not sure yet' },
 ] as const
 
@@ -36,21 +33,21 @@ export const timelines = [
 ] as const
 
 /**
- * Home's quick builder groups the form's needs into six broader chips.
- * Each chip lists the form options it ticks when the brief is handed over.
+ * Home's quick builder: one chip per service. Each chip lists the form options it ticks
+ * when the brief is handed over.
  */
 export const quickNeeds: { label: string; needs: NeedId[] }[] = [
-  { label: 'Software', needs: ['software'] },
-  { label: 'Website / e-commerce', needs: ['website', 'e-commerce'] },
+  { label: 'Website', needs: ['website'] },
   { label: 'Mobile app', needs: ['mobile'] },
-  { label: 'Design', needs: ['ui-ux', 'graphic-design'] },
-  { label: 'SEO', needs: ['seo'] },
-  { label: 'Consultancy', needs: ['consultancy'] },
+  { label: 'Backend', needs: ['backend'] },
+  { label: 'Cloud & DevOps', needs: ['cloud-devops'] },
+  { label: 'Product design', needs: ['product-design'] },
+  { label: 'Branding', needs: ['branding'] },
 ]
 
 export type BudgetId = (typeof budgets)[number]['id']
 
-/** Link to the Contact form with these options ticked, e.g. /contact?need=seo&budget=10-25k#brief */
+/** Link to the Contact form with these options ticked, e.g. /contact?need=website&budget=10-25k#brief */
 export function contactHref(needIds: NeedId[], budget: BudgetId | null = null) {
   const params = new URLSearchParams()
   if (needIds.length) params.set('need', needIds.join(','))
@@ -72,7 +69,7 @@ export type TimelineId = (typeof timelines)[number]['id']
 const needIds = new Set<string>(needs.map((need) => need.id))
 const budgetIds = new Set<string>(budgets.map((budget) => budget.id))
 
-/** Reads the options a contactHref link ticks: "?need=seo,website&budget=10-25k". Unknown ids are ignored. */
+/** Reads the options a contactHref link ticks: "?need=backend,website&budget=10-25k". Unknown ids are ignored. */
 export function briefFromSearch(search: string) {
   const params = new URLSearchParams(search)
   const need = (params.get('need') ?? '').split(',').filter((id): id is NeedId => needIds.has(id))

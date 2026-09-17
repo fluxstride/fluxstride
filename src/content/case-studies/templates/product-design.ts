@@ -1,16 +1,17 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · UI/UX Design
- * Design: "Case Study Template — UI/UX Design" in the Pencil file.
+ * STARTER TEMPLATE · Product design
+ * Design: "Case Study Template — Product design" in the Pencil file.
  *
- * Copy it with `pnpm new:case-study ui-ux-design <slug>`.
+ * Copy it with `pnpm new:case-study product-design <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-ui-ux-design',
+  slug: 'template-product-design',
   status: 'draft',
-  service: 'ui-ux-design',
+  services: ['product-design'],
+  discipline: 'Product design',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

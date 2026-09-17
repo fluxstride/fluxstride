@@ -1,7 +1,7 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * Kinetic Labs · Website Design & Development
+ * Kinetic Labs · Web & frontend, Product design
  * Design: "Case Study — Website" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, scores, team credits and quote are invented for the
@@ -21,7 +21,7 @@ export default defineCaseStudy({
   slug: 'kinetic-labs',
   status: 'published',
   sample: true,
-  service: 'website-design-development',
+  services: ['web-design-frontend', 'product-design'],
   discipline: 'Website',
   client: 'Kinetic Labs',
   industry: 'SaaS',

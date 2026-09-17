@@ -2,16 +2,17 @@ import { Activity, Gauge, ListChecks, ShieldCheck } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · Website Maintenance
- * Design: "Case Study Template — Website Maintenance" in the Pencil file.
+ * STARTER TEMPLATE · Care & support
+ * Design: "Case Study Template — Care & support" in the Pencil file.
  *
- * Copy it with `pnpm new:case-study website-maintenance <slug>`.
+ * Copy it with `pnpm new:case-study care-plan <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-website-maintenance',
+  slug: 'template-care-plan',
   status: 'draft',
-  service: 'website-maintenance',
+  services: ['cloud-devops'],
+  discipline: 'Care & support',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

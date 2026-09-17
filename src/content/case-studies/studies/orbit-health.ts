@@ -2,7 +2,7 @@ import { Accessibility, Bell, Moon, ScanFace, Type, WifiOff } from 'lucide-react
 import { defineCaseStudy } from '../schema'
 
 /**
- * Orbit Health · Mobile App Development
+ * Orbit Health · Mobile, Product design
  * Design: "Case Study — Mobile App" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, reviews, team credits and quote are invented for the
@@ -13,7 +13,7 @@ export default defineCaseStudy({
   slug: 'orbit-health',
   status: 'published',
   sample: true,
-  service: 'mobile-app-development',
+  services: ['mobile-development', 'product-design'],
   discipline: 'Mobile app',
   client: 'Orbit Health',
   industry: 'Healthcare',

@@ -2,18 +2,19 @@ import { LayoutDashboard, ShieldCheck, Zap } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · Software Engineering
- * Design: "Case Study Template — Software Engineering" in the Pencil file.
+ * STARTER TEMPLATE · Software platform
+ * Design: "Case Study Template — Software platform" in the Pencil file.
  * Example of a finished page: "Case Study — Software Platform" (Northwind).
  *
- * Copy it with `pnpm new:case-study software-engineering <slug>`, then replace every
+ * Copy it with `pnpm new:case-study software-platform <slug>`, then replace every
  * [bracketed] value and every `image: null`. Delete any section that doesn't apply.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-software-engineering',
+  slug: 'template-software-platform',
   status: 'draft',
-  service: 'software-engineering',
+  services: ['backend-development', 'web-design-frontend'],
+  discipline: 'Software platform',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

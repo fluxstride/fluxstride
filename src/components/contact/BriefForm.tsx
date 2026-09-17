@@ -189,7 +189,7 @@ export function BriefForm() {
               </Field>
             </div>
 
-            <ChipGroup id={ids.needs} label="What do you need?" rows={[4, 4]}>
+            <ChipGroup id={ids.needs} label="What do you need?" rows={[4]}>
               {needs.map((need) => (
                 <Chip
                   key={need.id}

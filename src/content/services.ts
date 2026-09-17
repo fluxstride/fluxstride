@@ -1,29 +1,36 @@
 import type { LucideIcon } from 'lucide-react'
 import type { NeedId } from './brief'
-import {
-  CodeXml,
-  Compass,
-  Laptop,
-  Palette,
-  PenTool,
-  ScanSearch,
-  Smartphone,
-  Store,
-  Wrench,
-} from 'lucide-react'
+import { CloudCog, Laptop, Palette, PenTool, Server, Smartphone } from 'lucide-react'
 
 /**
- * The nine disciplines. One list feeds the Home grid, the Services page and
- * the footer, so a rename happens in one place.
+ * The six services, in Design → Build → Run order. One list feeds the Home grid, the Services
+ * page, the footer, the Work page filters, the case study tags and the structured data, so a
+ * rename happens in one place.
+ *
+ * Capabilities without a service of their own live inside one: e-commerce and technical SEO
+ * in Website Design & Frontend Development, maintenance and support plans in Cloud & DevOps.
+ * Audits and discovery are how projects start (the Consultancy model on /process).
  *
  * PLACEHOLDERS: timelines and investment bands are illustrative. Confirm pricing before launch.
  */
+export type ServiceSlug =
+  | 'product-design'
+  | 'graphic-design-branding'
+  | 'web-design-frontend'
+  | 'mobile-development'
+  | 'backend-development'
+  | 'cloud-devops'
+
+export type ServiceGroup = 'design' | 'build' | 'run'
+
 export type Service = {
-  /** Anchor on /services, e.g. /services#software-engineering */
-  slug: string
+  /** Anchor on /services, e.g. /services#backend-development */
+  slug: ServiceSlug
   title: string
-  /** Shorter name used in the footer */
+  /** Shorter name for the footer, the Work page filters and case study cards */
   shortTitle: string
+  /** Sets the order: Design, then Build, then Run. */
+  group: ServiceGroup
   icon: LucideIcon
   /** The Contact form option "Discuss this" ticks */
   need: NeedId
@@ -31,7 +38,7 @@ export type Service = {
   summary: string
   /** Longer pitch for the Services page */
   description: string
-  /** Home grid footer, e.g. "Web apps · APIs · Cloud" */
+  /** Home grid footer, e.g. "APIs · Databases · Integrations" */
   tags: string[]
   /** Services page tool list */
   tools: string[]
@@ -42,89 +49,12 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: 'software-engineering',
-    title: 'Software Engineering',
-    shortTitle: 'Software engineering',
-    icon: CodeXml,
-    need: 'software',
-    summary:
-      'Custom platforms, APIs and internal tools engineered to scale — clean architecture, tested and documented.',
-    description:
-      'Custom platforms, APIs and internal tools engineered to scale — clean architecture, tested, documented and handed over properly.',
-    tags: ['Web apps', 'APIs', 'Cloud'],
-    tools: ['TypeScript', 'Node', 'Python', 'AWS'],
-    included: [
-      'Custom web applications',
-      'APIs & integrations',
-      'Cloud architecture & DevOps',
-      'Automated testing & QA',
-    ],
-    timeline: '8–16 weeks',
-    investment: 'From £25k',
-  },
-  {
-    slug: 'website-design-development',
-    title: 'Website Design & Development',
-    shortTitle: 'Web design & development',
-    icon: Laptop,
-    need: 'website',
-    summary:
-      'Visually striking, high-performance websites built to turn visitors into customers and grow your business.',
-    description:
-      'Visually striking, high-performance websites that turn visitors into customers — and that your team can edit without calling us.',
-    tags: ['Next.js', 'Webflow', 'CMS'],
-    tools: ['Next.js', 'Webflow', 'Sanity'],
-    included: ['Strategy & sitemap', 'Bespoke design', 'CMS build & training', 'Performance & accessibility'],
-    timeline: '4–8 weeks',
-    investment: 'From £8k',
-  },
-  {
-    slug: 'mobile-app-development',
-    title: 'Mobile App Development',
-    shortTitle: 'Mobile apps',
-    icon: Smartphone,
-    need: 'mobile',
-    summary:
-      'Native and cross-platform apps with seamless experiences people return to — from MVP to App Store.',
-    description:
-      'Native and cross-platform apps with seamless experiences people return to, from first MVP to App Store launch and beyond.',
-    tags: ['iOS', 'Android', 'Flutter'],
-    tools: ['Swift', 'Kotlin', 'Flutter', 'React Native'],
-    included: [
-      'Discovery & MVP scoping',
-      'iOS & Android apps',
-      'Backend & notifications',
-      'App Store launch',
-    ],
-    timeline: '10–20 weeks',
-    investment: 'From £30k',
-  },
-  {
-    slug: 'e-commerce',
-    title: 'E-commerce Websites',
-    shortTitle: 'E-commerce',
-    icon: Store,
-    need: 'e-commerce',
-    summary: 'High-converting stores that showcase your products beautifully and make buying effortless.',
-    description:
-      'High-converting stores that showcase your products beautifully and make buying effortless on every device.',
-    tags: ['Shopify', 'WooCommerce', 'Headless'],
-    tools: ['Shopify', 'WooCommerce', 'Stripe'],
-    included: [
-      'Store design & build',
-      'Payments & shipping',
-      'Product data migration',
-      'Conversion optimisation',
-    ],
-    timeline: '6–10 weeks',
-    investment: 'From £12k',
-  },
-  {
-    slug: 'ui-ux-design',
-    title: 'UI/UX Design',
-    shortTitle: 'UI/UX design',
+    slug: 'product-design',
+    title: 'Product Design (UI/UX)',
+    shortTitle: 'Product design',
+    group: 'design',
     icon: PenTool,
-    need: 'ui-ux',
+    need: 'product-design',
     summary:
       'Research-led journeys, prototypes and polished interfaces, backed by design systems that scale.',
     description:
@@ -136,86 +66,119 @@ export const services: Service[] = [
     investment: 'From £6k',
   },
   {
-    slug: 'graphic-design',
-    title: 'Graphic Design',
-    shortTitle: 'Graphic design',
+    slug: 'graphic-design-branding',
+    title: 'Graphic Design & Branding',
+    shortTitle: 'Branding',
+    group: 'design',
     icon: Palette,
-    need: 'graphic-design',
-    summary: 'Logos, identities, marketing collateral and social graphics that make your brand unmistakable.',
+    need: 'branding',
+    summary: 'Logos, identities and brand systems that make you unmistakable, from pitch deck to signage.',
     description:
-      'Logos, identities, marketing collateral and social graphics that make your brand unmistakable wherever it shows up.',
-    tags: ['Identity', 'Print', 'Social'],
+      'Brand strategy, logos and visual identities, then the guidelines, collateral and social graphics that keep them unmistakable wherever they show up.',
+    tags: ['Identity', 'Guidelines', 'Collateral'],
     tools: ['Illustrator', 'Figma', 'After Effects'],
     included: [
+      'Brand strategy & positioning',
       'Logo & visual identity',
       'Brand guidelines',
-      'Print & marketing collateral',
-      'Social media graphics',
+      'Print, social & signage',
     ],
     timeline: '2–6 weeks',
     investment: 'From £3k',
   },
   {
-    slug: 'seo',
-    title: 'SEO',
-    shortTitle: 'SEO',
-    icon: ScanSearch,
-    need: 'seo',
+    slug: 'web-design-frontend',
+    title: 'Website Design & Frontend Development',
+    shortTitle: 'Web & frontend',
+    group: 'build',
+    icon: Laptop,
+    need: 'website',
     summary:
-      'Technical and content SEO that lifts your Google rankings and connects you with your ideal customers.',
+      'Fast, striking websites, online stores and web app frontends built to turn visitors into customers.',
     description:
-      'Technical and content SEO that lifts your Google rankings and connects you directly with your ideal customers.',
-    tags: ['Technical', 'Content', 'Local'],
-    tools: ['Search Console', 'Ahrefs', 'GA4'],
+      'Websites, online stores and web app frontends that turn visitors into customers — fast, accessible, found on Google, and easy for your team to edit.',
+    tags: ['Next.js', 'React', 'Shopify'],
+    tools: ['Next.js', 'React', 'Sanity', 'Shopify'],
     included: [
-      'Technical SEO audit',
-      'Keyword & content strategy',
-      'On-page optimisation',
-      'Monthly reporting',
+      'Strategy, sitemap & design',
+      'Frontend & CMS build',
+      'E-commerce & headless stores',
+      'Technical SEO & performance',
     ],
-    timeline: 'Ongoing',
-    investment: 'From £1.5k / mo',
+    timeline: '4–10 weeks',
+    investment: 'From £8k',
   },
   {
-    slug: 'tech-consultancy',
-    title: 'Tech Consultancy',
-    shortTitle: 'Tech consultancy',
-    icon: Compass,
-    need: 'consultancy',
+    slug: 'mobile-development',
+    title: 'Mobile Development',
+    shortTitle: 'Mobile apps',
+    group: 'build',
+    icon: Smartphone,
+    need: 'mobile',
     summary:
-      'Independent advice on stack, architecture, audits and digital roadmaps — so you invest in the right things.',
+      'Native and cross-platform apps with seamless experiences people return to — from MVP to App Store.',
     description:
-      'Independent, vendor-neutral advice on stack, architecture and digital roadmaps — so you invest in the right things, in the right order.',
-    tags: ['Audits', 'Architecture', 'Roadmaps'],
-    tools: ['Workshops', 'Audits', 'Advisory'],
+      'Native and cross-platform apps with seamless experiences people return to, from first MVP to App Store launch and beyond.',
+    tags: ['iOS', 'Android', 'React Native'],
+    tools: ['Swift', 'Kotlin', 'React Native', 'Flutter'],
     included: [
-      'Technology & stack audits',
-      'Architecture reviews',
-      'Digital roadmaps',
-      'Fractional CTO support',
+      'Discovery & MVP scoping',
+      'iOS & Android apps',
+      'Payments, push & offline',
+      'App Store launch & updates',
     ],
-    timeline: '1–4 weeks',
-    investment: 'From £950 / day',
+    timeline: '10–20 weeks',
+    investment: 'From £30k',
   },
   {
-    slug: 'website-maintenance',
-    title: 'Website Maintenance',
-    shortTitle: 'Website maintenance',
-    icon: Wrench,
-    need: 'maintenance',
+    slug: 'backend-development',
+    title: 'Backend Development',
+    shortTitle: 'Backend',
+    group: 'build',
+    icon: Server,
+    need: 'backend',
     summary:
-      'Proactive updates, security, backups and support that keep your site fast, secure and bug-free.',
+      'APIs, platforms and integrations engineered to scale — clean architecture, tested and documented.',
     description:
-      'Proactive updates, security, backups and support that keep your site smooth, secure and bug-free long after launch.',
-    tags: ['Security', 'Updates', 'SLA support'],
-    tools: ['WordPress', 'Webflow', 'Shopify'],
+      'The engine behind your product: APIs, databases, integrations and internal tools engineered to scale — tested, documented and handed over properly.',
+    tags: ['APIs', 'Databases', 'Integrations'],
+    tools: ['TypeScript', 'Node', 'Python', 'PostgreSQL'],
     included: [
-      'Updates & security patches',
-      'Backups & uptime monitoring',
-      'Bug fixes & small changes',
-      'Priority support SLA',
+      'APIs & platforms',
+      'Databases & data models',
+      'Integrations & payments',
+      'Automated testing & QA',
     ],
-    timeline: 'Ongoing',
-    investment: 'From £250 / mo',
+    timeline: '6–16 weeks',
+    investment: 'From £20k',
+  },
+  {
+    slug: 'cloud-devops',
+    title: 'Cloud & DevOps',
+    shortTitle: 'Cloud & DevOps',
+    group: 'run',
+    icon: CloudCog,
+    need: 'cloud-devops',
+    summary:
+      'Cloud infrastructure, release pipelines and support plans that keep your product fast, secure and online.',
+    description:
+      'Cloud architecture, deployment pipelines and monitoring, plus the support plans that keep your product updated, secure and online long after launch.',
+    tags: ['AWS', 'CI/CD', 'Support'],
+    tools: ['AWS', 'Vercel', 'Terraform', 'GitHub Actions'],
+    included: [
+      'Cloud architecture & migration',
+      'CI/CD & infrastructure as code',
+      'Monitoring, backups & security',
+      'Maintenance & support plans',
+    ],
+    timeline: '2–6 weeks, then ongoing',
+    investment: 'From £4k',
   },
 ]
+
+/** A service by slug. Throws on an unknown slug so a typo can't ship. */
+export function service(slug: ServiceSlug) {
+  const found = services.find((candidate) => candidate.slug === slug)
+  if (!found) throw new Error(`Unknown service "${slug}"`)
+  return found
+}

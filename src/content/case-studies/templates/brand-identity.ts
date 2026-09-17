@@ -1,17 +1,18 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · Graphic Design & Branding
- * Design: "Case Study Template — Graphic Design & Branding" in the Pencil file.
+ * STARTER TEMPLATE · Brand identity
+ * Design: "Case Study Template — Brand identity" in the Pencil file.
  * Example of a finished page: "Case Study — Brand Identity" (Aurora Architects).
  *
- * Copy it with `pnpm new:case-study graphic-design <slug>`.
+ * Copy it with `pnpm new:case-study brand-identity <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-graphic-design',
+  slug: 'template-brand-identity',
   status: 'draft',
-  service: 'graphic-design',
+  services: ['graphic-design-branding'],
+  discipline: 'Brand identity',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

@@ -2,17 +2,18 @@ import { Bell, ScanFace, WifiOff } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · Mobile App Development
- * Design: "Case Study Template — Mobile App Development" in the Pencil file.
+ * STARTER TEMPLATE · Mobile app
+ * Design: "Case Study Template — Mobile app" in the Pencil file.
  * Example of a finished page: "Case Study — Mobile App" (Orbit Health).
  *
- * Copy it with `pnpm new:case-study mobile-app-development <slug>`.
+ * Copy it with `pnpm new:case-study mobile-app <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-mobile-app-development',
+  slug: 'template-mobile-app',
   status: 'draft',
-  service: 'mobile-app-development',
+  services: ['mobile-development', 'product-design'],
+  discipline: 'Mobile app',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

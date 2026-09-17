@@ -1,16 +1,17 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * STARTER TEMPLATE · Tech Consultancy
- * Design: "Case Study Template — Tech Consultancy" in the Pencil file.
+ * STARTER TEMPLATE · Technical audit
+ * Design: "Case Study Template — Technical audit" in the Pencil file.
  *
- * Copy it with `pnpm new:case-study tech-consultancy <slug>`.
+ * Copy it with `pnpm new:case-study technical-audit <slug>`.
  * Guide: docs/case-studies.md
  */
 export default defineCaseStudy({
-  slug: 'template-tech-consultancy',
+  slug: 'template-technical-audit',
   status: 'draft',
-  service: 'tech-consultancy',
+  services: ['cloud-devops', 'backend-development'],
+  discipline: 'Technical audit',
   client: '[Client name]',
   industry: '[Industry]',
   year: 0,

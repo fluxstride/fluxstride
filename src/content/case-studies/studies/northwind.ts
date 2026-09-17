@@ -2,7 +2,7 @@ import { ListChecks, ShieldCheck, Smartphone } from 'lucide-react'
 import { defineCaseStudy } from '../schema'
 
 /**
- * Northwind · Software Engineering
+ * Northwind · Backend, Web & frontend, Product design
  * Design: "Case Study — Software Platform" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, team credits and quote are invented for the design
@@ -12,7 +12,7 @@ export default defineCaseStudy({
   slug: 'northwind',
   status: 'published',
   sample: true,
-  service: 'software-engineering',
+  services: ['backend-development', 'web-design-frontend', 'product-design'],
   discipline: 'Software platform',
   client: 'Northwind',
   industry: 'Fintech',
@@ -28,7 +28,7 @@ export default defineCaseStudy({
     title: ['A customer platform', 'that onboards itself.'],
     intro:
       "Northwind's customers loved the product once they were set up — but 62% never finished onboarding. We rebuilt the portal, the onboarding and the system behind it in 12 weeks.",
-    tags: ['Fintech', 'Software engineering', 'UI/UX', '2026'],
+    tags: ['Fintech', 'Backend & web', 'Product design', '2026'],
     facts: [
       ['Client', 'Northwind Ltd'],
       ['Industry', 'Fintech · B2B'],

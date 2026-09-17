@@ -1,7 +1,7 @@
 import { defineCaseStudy } from '../schema'
 
 /**
- * Aurora Architects · Graphic Design
+ * Aurora Architects · Graphic Design & Branding
  * Design: "Case Study — Brand Identity" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, identity, figures, team credits and quote are invented for the
@@ -12,7 +12,7 @@ export default defineCaseStudy({
   slug: 'aurora-architects',
   status: 'published',
   sample: true,
-  service: 'graphic-design',
+  services: ['graphic-design-branding'],
   discipline: 'Brand identity',
   client: 'Aurora Architects',
   industry: 'Architecture',
