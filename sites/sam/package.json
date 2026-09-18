@@ -1,0 +1,35 @@
+{
+  "name": "@fluxstride/sam",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Samuel Adekoya's personal site (sam.fluxstride.com).",
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "images": "node scripts/import-images.mjs",
+    "cf:preview": "pnpm build && wrangler dev",
+    "cf:deploy": "pnpm build && wrangler deploy",
+    "shots": "node scripts/screenshots.mjs",
+    "og-image": "node scripts/og-image.mjs"
+  },
+  "dependencies": {
+    "@fluxstride/design-system": "workspace:*",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.46.0",
+    "motion": "^13.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "playwright-core": "^1.63.0",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0",
+    "wrangler": "^4.131.2"
+  }
+}

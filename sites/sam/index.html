@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Marks JS as available before first paint so reveal animations start hidden
+         instead of flashing. See packages/design-system/styles/motion.css. -->
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+    <meta name="theme-color" content="#F5F7FB" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <!-- seo:start -->
+    <!-- Dev-only defaults. scripts/prerender.mjs replaces this whole block with the tags
+         built in src/lib/seo.ts. Do not remove the markers. -->
+    <title>Samuel Adekoya · Designer &amp; Software Engineer</title>
+    <!-- seo:end -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

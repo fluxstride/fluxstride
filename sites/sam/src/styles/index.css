@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+/* Fonts, colours, spacing, motion contract and base styles shared with every Fluxstride site. */
+@import '@fluxstride/design-system/styles/index.css';
+
+/*
+ * This site's own type scale, on top of the shared tokens. Sizes come from the Pencil
+ * frames "Samuel Adekoya — Home (Desktop/Mobile)": each clamp() equals the mobile
+ * size at 390px and the desktop size at 1440px (node packages/design-system/scripts/fluid.mjs).
+ * Keep the names in sync with src/lib/cn.ts.
+ */
+@theme {
+  /* Hero headline: 46px → 132px (sans), 52px → 150px (serif phrase) */
+  --text-sam-hero: clamp(2.875rem, 1.1571rem + 7.0476vw, 7.5rem);
+  --text-sam-hero--line-height: 1.02;
+  --text-sam-hero--font-weight: 600;
+  --text-sam-hero-accent: clamp(3.25rem, 1.3rem + 8vw, 8.5rem);
+  --text-sam-hero-accent--line-height: 1;
+
+  /* Section titles: 44px → 88px (sans), 50px → 100px (serif) */
+  --text-sam-title: clamp(2.75rem, 1.7286rem + 4.1905vw, 5.5rem);
+  --text-sam-title--line-height: 1;
+  --text-sam-title--font-weight: 600;
+  --text-sam-title-accent: clamp(3.125rem, 1.9643rem + 4.7619vw, 6.25rem);
+  --text-sam-title-accent--line-height: 0.95;
+
+  /* Contact headline: 50px → 104px (sans), 58px → 116px (serif) */
+  --text-sam-contact: clamp(3.125rem, 1.8714rem + 5.1429vw, 6.5rem);
+  --text-sam-contact--line-height: 1.02;
+  --text-sam-contact--font-weight: 600;
+  --text-sam-contact-accent: clamp(3.625rem, 2.2786rem + 5.5238vw, 7.25rem);
+  --text-sam-contact-accent--line-height: 1;
+
+  /* Footer wordmark: 92px → 172px (sans), 100px → 188px (serif) */
+  --text-sam-wordmark: clamp(5.75rem, 3.8929rem + 7.619vw, 10.75rem);
+  --text-sam-wordmark--line-height: 0.9;
+  --text-sam-wordmark--font-weight: 600;
+  --text-sam-wordmark-accent: clamp(6.25rem, 4.2071rem + 8.381vw, 11.75rem);
+  --text-sam-wordmark-accent--line-height: 0.88;
+
+  /* About pull quote: 46px → 84px, serif */
+  --text-sam-quote: clamp(2.875rem, 1.9929rem + 3.619vw, 5.25rem);
+  --text-sam-quote--line-height: 1;
+
+  /* "More work" index names: 30px → 56px */
+  --text-sam-index: clamp(1.875rem, 1.2714rem + 2.4762vw, 3.5rem);
+  --text-sam-index--line-height: 1.05;
+  --text-sam-index--font-weight: 600;
+
+  /* Service row names: 22px → 40px */
+  --text-sam-service: clamp(1.375rem, 0.9571rem + 1.7143vw, 2.5rem);
+  --text-sam-service--line-height: 1.1;
+  --text-sam-service--font-weight: 600;
+
+  /* Stat numbers: 52px → 88px */
+  --text-sam-stat: clamp(3.25rem, 2.4143rem + 3.4286vw, 5.5rem);
+  --text-sam-stat--line-height: 1;
+  --text-sam-stat--font-weight: 600;
+
+  /* Project names under the screenshots, stack items: 20px → 24px */
+  --text-sam-project: clamp(1.25rem, 1.1571rem + 0.381vw, 1.5rem);
+  --text-sam-project--line-height: 1.2;
+  --text-sam-project--font-weight: 600;
+}

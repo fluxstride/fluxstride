@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "sam-adekoya",
+  "compatibility_date": "2026-09-16",
+
+  // Static site: Cloudflare serves ./dist directly, no worker script.
+  "assets": {
+    "directory": "./dist",
+    // One prerendered page plus 404.html, served with a real 404 status for unknown paths.
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash",
+  },
+
+  // TODO before the first deploy: sam.fluxstride.com currently points at the old site.
+  // Deploying with this route moves the hostname to this worker.
+  "routes": [{ "pattern": "sam.fluxstride.com", "custom_domain": true }],
+
+  "observability": {
+    "enabled": true,
+  },
+}
