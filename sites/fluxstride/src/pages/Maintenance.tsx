@@ -1,6 +1,6 @@
 import { StandaloneScreen } from '@/components/layout/StandaloneScreen'
 import { ButtonLink } from '@/components/ui/Button'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 import { EMAIL_NEW_BUSINESS, mailto } from '@/content/site'
 import { useSeo } from '@/lib/useSeo'
 

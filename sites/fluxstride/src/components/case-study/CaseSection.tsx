@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 import { SectionHeader } from '@/components/ui/Section'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 import type { CaseStudySection } from '@/content/case-studies/schema'
 import { cn } from '@fluxstride/design-system/lib/cn'
 import { StatRow } from './parts'

@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Link, useLocation } from 'react-router'
 import { StandaloneScreen } from '@/components/layout/StandaloneScreen'
 import { ButtonLink } from '@/components/ui/Button'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 import { useSeo } from '@/lib/useSeo'
 
 const footLinks = [

@@ -2,7 +2,7 @@ import { ArrowUpRight, Briefcase, Calendar, Mail, type LucideIcon } from 'lucide
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { SmartLink } from '@/components/ui/SmartLink'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { nextSteps } from '@/content/brief'
 import { EMAIL_CAREERS, EMAIL_NEW_BUSINESS, INTRO_CALL_URL, mailto } from '@/content/site'
 import { pad } from '@/lib/format'

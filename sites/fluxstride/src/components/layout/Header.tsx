@@ -1,12 +1,15 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { useCallback, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { ButtonLink } from '@/components/ui/Button'
 import { Logo } from '@/components/ui/Logo'
-import { Eyebrow } from '@/components/ui/Typography'
+import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { AVAILABILITY, contactLink, EMAIL_NEW_BUSINESS, mailto, primaryNav } from '@/content/site'
 import { cn } from '@fluxstride/design-system/lib/cn'
-import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
+import { navUnderline } from '@fluxstride/design-system/lib/link-styles'
+import { EASE_OUT, menuItem, menuPanel } from '@fluxstride/design-system/lib/motion'
+import { useHeaderScroll, useMenuLock } from '@fluxstride/design-system/lib/useHeaderScroll'
+import { MenuButton } from '@fluxstride/design-system/ui/MenuButton'
 
 /*
  * Design (Component / Nav): paper background, 28×80 padding, logo left, five
@@ -19,17 +22,8 @@ import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
  */
 export function Header() {
   const [open, setOpen] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const { hidden, scrolled } = useHeaderScroll()
   const { pathname } = useLocation()
-  const { scrollY } = useScroll()
-
-  useMotionValueEvent(scrollY, 'change', (current) => {
-    const previous = scrollY.getPrevious() ?? 0
-    setScrolled(current > 8)
-    // Only hide after the header has scrolled out of its own height.
-    setHidden(current > previous && current > 120)
-  })
 
   // Close the menu whenever the route changes (including back/forward), adjusting
   // state during render rather than in an effect, as React recommends.
@@ -39,21 +33,8 @@ export function Header() {
     setOpen(false)
   }
 
-  useEffect(() => {
-    if (!open) return
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    const onKey = (event: KeyboardEvent) => event.key === 'Escape' && setOpen(false)
-    const desktop = window.matchMedia('(min-width: 64rem)')
-    const onBreakpoint = (event: MediaQueryListEvent) => event.matches && setOpen(false)
-    window.addEventListener('keydown', onKey)
-    desktop.addEventListener('change', onBreakpoint)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      window.removeEventListener('keydown', onKey)
-      desktop.removeEventListener('change', onBreakpoint)
-    }
-  }, [open])
+  const close = useCallback(() => setOpen(false), [])
+  useMenuLock(open, close)
 
   return (
     <>
@@ -82,13 +63,7 @@ export function Header() {
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      cn(
-                        'group relative block py-1 text-[15px] leading-[1.2] font-medium text-ink',
-                        'after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-ink after:transition-transform after:duration-500 after:ease-out-expo',
-                        isActive
-                          ? 'after:scale-x-100'
-                          : 'after:origin-right after:scale-x-0 hover:after:origin-left hover:after:scale-x-100',
-                      )
+                      cn('block py-1 text-[15px] leading-[1.2] font-medium text-ink', navUnderline(isActive))
                     }
                   >
                     {item.label}
@@ -105,11 +80,16 @@ export function Header() {
             </ButtonLink>
           </div>
 
-          <MenuButton open={open} onToggle={() => setOpen((value) => !value)} />
+          <MenuButton
+            open={open}
+            onToggle={() => setOpen((value) => !value)}
+            controls="mobile-menu"
+            className="lg:hidden"
+          />
         </div>
       </motion.header>
 
-      <MobileMenu open={open} onClose={() => setOpen(false)} />
+      <MobileMenu open={open} onClose={close} />
     </>
   )
 }
@@ -125,58 +105,6 @@ function Availability({ onDark = false }: { onDark?: boolean }) {
   )
 }
 
-function MenuButton({ open, onToggle }: { open: boolean; onToggle: () => void }) {
-  const line = 'absolute left-0 block h-[1.5px] w-5 rounded-full bg-current'
-  return (
-    <button
-      type="button"
-      onClick={onToggle}
-      aria-expanded={open}
-      aria-controls="mobile-menu"
-      className={cn(
-        'relative z-10 flex size-11 items-center justify-center rounded-full transition-colors duration-500 lg:hidden',
-        open ? 'bg-paper text-ink' : 'bg-ink text-paper',
-      )}
-    >
-      <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-      {/* Three lines (lucide "menu" at 20px) that fold into a cross */}
-      <span aria-hidden="true" className="relative block h-3.5 w-5">
-        <motion.span
-          className={line}
-          animate={open ? { top: 6.25, rotate: 45 } : { top: 0, rotate: 0 }}
-          transition={{ duration: 0.4, ease: EASE_OUT }}
-        />
-        <motion.span
-          className={cn(line, 'top-[6.25px]')}
-          animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }}
-          transition={{ duration: 0.25 }}
-        />
-        <motion.span
-          className={line}
-          animate={open ? { top: 6.25, rotate: -45 } : { top: 12.5, rotate: 0 }}
-          transition={{ duration: 0.4, ease: EASE_OUT }}
-        />
-      </span>
-    </button>
-  )
-}
-
-const menu = {
-  closed: {
-    clipPath: 'inset(0 0 100% 0)',
-    transition: { duration: 0.6, ease: EASE_OUT, when: 'afterChildren' },
-  },
-  open: {
-    clipPath: 'inset(0 0 0% 0)',
-    transition: { duration: 0.7, ease: EASE_OUT, staggerChildren: 0.05, delayChildren: 0.2 },
-  },
-} as const
-
-const menuItem = {
-  closed: { y: '110%', transition: { duration: 0.3 } },
-  open: { y: '0%', transition: { duration: 0.8, ease: EASE_OUT } },
-} as const
-
 function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = [{ to: '/', label: 'Home' }, ...primaryNav, { to: '/contact', label: 'Contact' }]
 
@@ -189,7 +117,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
           initial="closed"
           animate="open"
           exit="closed"
-          variants={menu}
+          variants={menuPanel}
           className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink px-gutter pt-28 pb-10 text-paper lg:hidden"
         >
           <nav aria-label="Mobile">

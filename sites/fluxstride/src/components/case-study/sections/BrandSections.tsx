@@ -1,6 +1,6 @@
 import { Mail } from 'lucide-react'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { Label } from '@/components/ui/Typography'
+import { Label } from '@fluxstride/design-system/ui/Typography'
 import type {
   DesignSystemSection,
   PaletteSection,

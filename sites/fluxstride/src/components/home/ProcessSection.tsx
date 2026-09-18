@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 import { useRef } from 'react'
 import { Section, SectionHeader } from '@/components/ui/Section'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 import { processSteps, type ProcessStep } from '@/content/process'
 import { cn } from '@fluxstride/design-system/lib/cn'
 import { gsap, MOTION_OK } from '@fluxstride/design-system/lib/gsap'

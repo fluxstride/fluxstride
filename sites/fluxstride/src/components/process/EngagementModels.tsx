@@ -2,7 +2,7 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { SmartLink } from '@/components/ui/SmartLink'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 import { engagementModels, type EngagementModel } from '@/content/process'
 import { cn } from '@fluxstride/design-system/lib/cn'
 

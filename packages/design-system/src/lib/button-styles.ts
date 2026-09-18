@@ -1,4 +1,4 @@
-import { cn } from '@fluxstride/design-system/lib/cn'
+import { cn } from './cn'
 
 /*
  * Buttons from the design:

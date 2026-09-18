@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { Label } from '@/components/ui/Typography'
+import { Label } from '@fluxstride/design-system/ui/Typography'
 import type { Feature, FeaturesSection, FeatureStyle, Stat } from '@/content/case-studies/schema'
 import { cn } from '@fluxstride/design-system/lib/cn'
 import { tone } from './tone'

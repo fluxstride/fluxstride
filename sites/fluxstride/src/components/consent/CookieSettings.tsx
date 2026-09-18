@@ -1,6 +1,6 @@
 import { X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { buttonClass } from '@/components/ui/button-styles'
+import { buttonClass } from '@fluxstride/design-system/lib/button-styles'
 import { consentCopy, cookieCategories } from '@/content/consent'
 import { acceptAll, closeCookieSettings, rejectAll, saveConsent, type ConsentChoices } from '@/lib/consent'
 import { cn } from '@fluxstride/design-system/lib/cn'

@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { cn } from '@fluxstride/design-system/lib/cn'
+import { cn } from '../lib/cn'
 
 type IconCircleProps = {
   icon: LucideIcon

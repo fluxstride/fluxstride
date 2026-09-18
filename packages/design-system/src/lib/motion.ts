@@ -16,3 +16,21 @@ export const stagger = (staggerChildren = 0.06, delayChildren = 0.05): Variants 
   visible: { transition: { staggerChildren, delayChildren } },
   exit: { transition: { staggerChildren: 0.02, staggerDirection: -1 } },
 })
+
+/** Full-screen mobile menu: the panel wipes down from the top, then its rows rise in. */
+export const menuPanel = {
+  closed: {
+    clipPath: 'inset(0 0 100% 0)',
+    transition: { duration: 0.6, ease: EASE_OUT, when: 'afterChildren' },
+  },
+  open: {
+    clipPath: 'inset(0 0 0% 0)',
+    transition: { duration: 0.7, ease: EASE_OUT, staggerChildren: 0.05, delayChildren: 0.2 },
+  },
+} as const satisfies Variants
+
+/** One row of the mobile menu. Put it inside an `overflow-hidden` wrapper so it rises from a mask. */
+export const menuItem = {
+  closed: { y: '110%', transition: { duration: 0.3 } },
+  open: { y: '0%', transition: { duration: 0.8, ease: EASE_OUT } },
+} as const satisfies Variants

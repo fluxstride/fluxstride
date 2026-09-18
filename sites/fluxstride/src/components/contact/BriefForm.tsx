@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Children, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, useLocation } from 'react-router'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { Button } from '@/components/ui/Button'
-import { Chip } from '@/components/ui/Chip'
+import { Button } from '@fluxstride/design-system/ui/Button'
+import { Chip } from '@fluxstride/design-system/ui/Chip'
 import {
   briefFromSearch,
   budgets,

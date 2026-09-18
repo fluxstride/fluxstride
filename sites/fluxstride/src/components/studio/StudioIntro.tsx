@@ -2,7 +2,7 @@ import { ImageReveal } from '@fluxstride/design-system/motion/ImageReveal'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Picture } from '@/components/ui/Picture'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 
 /*
  * Design: Studio / Page Header + Studio Image.

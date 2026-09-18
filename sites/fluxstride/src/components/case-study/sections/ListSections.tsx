@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight, Check } from 'lucide-react'
 import type { CSSProperties } from 'react'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { Label } from '@/components/ui/Typography'
+import { Label } from '@fluxstride/design-system/ui/Typography'
 import type {
   ArchitectureSection,
   ChecklistSection,

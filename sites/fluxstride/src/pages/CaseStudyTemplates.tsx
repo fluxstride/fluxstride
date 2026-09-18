@@ -1,8 +1,8 @@
 import { Link } from 'react-router'
 import { CaseStudyView } from '@/components/case-study/CaseStudyView'
 import { PageHeader } from '@/components/sections/PageHeader'
-import { ArrowIcon } from '@/components/ui/ArrowIcon'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { ArrowIcon } from '@fluxstride/design-system/ui/ArrowIcon'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import {
   findPlaceholders,
   serviceNames,

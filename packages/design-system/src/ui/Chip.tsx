@@ -1,8 +1,8 @@
 import { Check } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import type { ReactNode } from 'react'
-import { cn } from '@fluxstride/design-system/lib/cn'
-import { springy } from '@fluxstride/design-system/lib/motion'
+import { cn } from '../lib/cn'
+import { springy } from '../lib/motion'
 
 type ChipProps = {
   children: ReactNode

@@ -1,7 +1,7 @@
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { ButtonLink } from '@/components/ui/Button'
-import { Eyebrow } from '@/components/ui/Typography'
+import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { contactLink, EMAIL_NEW_BUSINESS, mailto, type NavLink } from '@/content/site'
 
 type CtaBandProps = {

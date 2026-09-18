@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Tokens, fonts, motion and helpers shared by every Fluxstride site. Consumed as source; there is no build step.",
+  "description": "Tokens, fonts, motion, UI primitives and helpers shared by every Fluxstride site. Consumed as source; there is no build step.",
   "exports": {
     "./styles/*": "./styles/*",
     "./lib/*": "./src/lib/*.ts",
-    "./motion/*": "./src/motion/*.tsx"
+    "./motion/*": "./src/motion/*.tsx",
+    "./ui/*": "./src/ui/*.tsx"
   },
   "dependencies": {
     "@fontsource-variable/inter-tight": "^5.3.0",
@@ -18,11 +19,13 @@
   },
   "peerDependencies": {
     "gsap": "^3.15.0",
+    "lucide-react": "^1.46.0",
     "motion": "^13.3.0",
     "react": "^19.3.0"
   },
   "devDependencies": {
     "gsap": "^3.15.0",
+    "lucide-react": "^1.46.0",
     "motion": "^13.3.0",
     "react": "^19.3.0"
   }

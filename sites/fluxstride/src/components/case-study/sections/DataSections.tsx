@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
 import type { CSSProperties, ReactNode } from 'react'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { Label } from '@/components/ui/Typography'
+import { Label } from '@fluxstride/design-system/ui/Typography'
 import type {
   BarsSection,
   ChartSection,

@@ -1,5 +1,5 @@
 import { ValueGrid } from '@/components/sections/ValueGrid'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 import { values } from '@/content/studio'
 
 /* Design: Studio / Values (ink). See ValueGrid. */

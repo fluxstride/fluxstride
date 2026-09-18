@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { buttonClass } from '@/components/ui/button-styles'
+import { buttonClass } from '@fluxstride/design-system/lib/button-styles'
 import { consentCopy } from '@/content/consent'
 import { acceptAll, openCookieSettings, rejectAll } from '@/lib/consent'
 import { cn } from '@fluxstride/design-system/lib/cn'

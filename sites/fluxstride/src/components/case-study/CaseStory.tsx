@@ -1,6 +1,6 @@
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { ArrowIcon } from '@/components/ui/ArrowIcon'
-import { Eyebrow } from '@/components/ui/Typography'
+import { ArrowIcon } from '@fluxstride/design-system/ui/ArrowIcon'
+import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import type { CaseStudy, StoryBlock } from '@/content/case-studies/schema'
 import { cn } from '@fluxstride/design-system/lib/cn'
 

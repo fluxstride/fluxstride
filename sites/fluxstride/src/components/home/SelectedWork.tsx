@@ -2,7 +2,7 @@ import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Section } from '@/components/ui/Section'
 import { TextLink } from '@/components/ui/TextLink'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { CaseCard } from '@/components/work/CaseCard'
 import { caseStudy, PROJECT_COUNT } from '@/content/work'
 

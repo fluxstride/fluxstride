@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { ButtonLink } from '@/components/ui/Button'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 
 type DetailHeaderProps = {
   /** "← All roles": where the page sits. */

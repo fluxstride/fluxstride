@@ -2,7 +2,7 @@ import { Download, Printer } from 'lucide-react'
 import { NavLink } from 'react-router'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { formatLegalDate, legalDocuments, type LegalDocument } from '@/content/legal'
 import { cn } from '@fluxstride/design-system/lib/cn'
 

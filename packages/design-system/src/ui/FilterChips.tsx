@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { useId } from 'react'
-import { cn } from '@fluxstride/design-system/lib/cn'
-import { springy } from '@fluxstride/design-system/lib/motion'
+import { cn } from '../lib/cn'
+import { springy } from '../lib/motion'
 
 export type FilterOption<T extends string> = { id: T; label: string }
 

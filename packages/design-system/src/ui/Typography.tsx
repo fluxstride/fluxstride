@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '@fluxstride/design-system/lib/cn'
+import { cn } from '../lib/cn'
 
 type TextProps = { children: ReactNode; className?: string }
 

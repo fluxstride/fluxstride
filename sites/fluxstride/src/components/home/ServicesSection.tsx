@@ -1,9 +1,10 @@
 import { Minus, Plus } from 'lucide-react'
-import { AnimatePresence, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import { useId, useState } from 'react'
+import { Collapse } from '@fluxstride/design-system/motion/Collapse'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { ArrowIcon } from '@/components/ui/ArrowIcon'
-import { IconCircle } from '@/components/ui/IconCircle'
+import { ArrowIcon } from '@fluxstride/design-system/ui/ArrowIcon'
+import { IconCircle } from '@fluxstride/design-system/ui/IconCircle'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { serviceHref, services, type Service } from '@/content/services'
@@ -198,23 +199,9 @@ function AccordionRow({
           <Toggle aria-hidden="true" size={18} strokeWidth={2} />
         </button>
       </h3>
-      <AnimatePresence initial={false}>
-        {open ? (
-          <motion.div
-            key="panel"
-            id={panelId}
-            role="region"
-            aria-label={service.title}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.45, ease: EASE_OUT }}
-            className="overflow-hidden"
-          >
-            <p className="pb-4.5 text-body leading-normal text-stone-light">{service.summary}</p>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      <Collapse open={open} id={panelId} label={service.title}>
+        <p className="pb-4.5 text-body leading-normal text-stone-light">{service.summary}</p>
+      </Collapse>
     </li>
   )
 }

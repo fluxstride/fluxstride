@@ -4,7 +4,7 @@ import { PhaseList } from '@/components/process/PhaseList'
 import { PrinciplesStrip } from '@/components/process/PrinciplesStrip'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { PageHeader } from '@/components/sections/PageHeader'
-import { Accent } from '@/components/ui/Typography'
+import { Accent } from '@fluxstride/design-system/ui/Typography'
 
 /*
  * Design: Fluxstride — Process (desktop 1440, mobile 390).

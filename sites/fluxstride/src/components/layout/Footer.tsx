@@ -3,10 +3,11 @@ import { AnimatePresence, motion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { ArrowIcon } from '@/components/ui/ArrowIcon'
+import { ArrowIcon } from '@fluxstride/design-system/ui/ArrowIcon'
 import { Logo } from '@/components/ui/Logo'
 import { SmartLink } from '@/components/ui/SmartLink'
-import { Eyebrow } from '@/components/ui/Typography'
+import { UnderlineOnHover } from '@fluxstride/design-system/ui/UnderlineOnHover'
+import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { serviceHref, services } from '@/content/services'
 import { LEGAL_NAME, socialLinks, studioLinks } from '@/content/site'
 import { cn } from '@fluxstride/design-system/lib/cn'
@@ -123,13 +124,7 @@ function FooterLink({ to, children }: { to: string; children: ReactNode }) {
         to={to}
         className="group inline-flex items-center gap-1.5 text-[15px] leading-[1.2] text-paper transition-colors hover:text-flux-light"
       >
-        <span className="relative">
-          {children}
-          <span
-            aria-hidden="true"
-            className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-current transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100"
-          />
-        </span>
+        <UnderlineOnHover>{children}</UnderlineOnHover>
       </SmartLink>
     </li>
   )

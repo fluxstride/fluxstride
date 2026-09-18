@@ -1,7 +1,7 @@
 import { CountUp } from '@fluxstride/design-system/motion/CountUp'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
-import { Eyebrow } from '@/components/ui/Typography'
+import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { facts, story } from '@/content/studio'
 
 /*

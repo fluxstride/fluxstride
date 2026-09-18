@@ -6,7 +6,7 @@ import { ValueGrid } from '@/components/sections/ValueGrid'
 import { CareersSection } from '@/components/studio/CareersSection'
 import { FactRow } from '@/components/studio/StoryAndFacts'
 import { StudioPhoto } from '@/components/studio/StudioIntro'
-import { Accent, Eyebrow } from '@/components/ui/Typography'
+import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { benefits, careersPage, hiring, roles } from '@/content/careers'
 import { EMAIL_CAREERS, mailto } from '@/content/site'
 

@@ -1,7 +1,7 @@
 import { ArrowRight, Check, type LucideIcon } from 'lucide-react'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
-import { Eyebrow } from '@/components/ui/Typography'
+import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { processSteps, type ProcessStep } from '@/content/process'
 import { cn } from '@fluxstride/design-system/lib/cn'
 

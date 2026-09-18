@@ -1,5 +1,5 @@
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
-import { Label } from '@/components/ui/Typography'
+import { Label } from '@fluxstride/design-system/ui/Typography'
 import type { BeforeAfterSection, GallerySection, ScreenshotSection } from '@/content/case-studies/schema'
 import { images } from '@/content/images.generated'
 import { cn } from '@fluxstride/design-system/lib/cn'
