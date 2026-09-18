@@ -1,0 +1,51 @@
+{
+  "name": "@fluxstride/site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "check": "pnpm typecheck",
+    "cf:preview": "pnpm build && wrangler dev",
+    "cf:deploy": "pnpm build && wrangler deploy",
+    "cf:maintenance": "pnpm build && wrangler deploy --config wrangler.maintenance.jsonc",
+    "assets:brand": "node scripts/import-brand-assets.mjs",
+    "assets:images": "node scripts/import-images.mjs",
+    "assets:logos": "node scripts/build-logos.mjs",
+    "new:case-study": "node scripts/new-case-study.mjs",
+    "shots": "node scripts/screenshots.mjs",
+    "legal:pdfs": "node scripts/legal-pdfs.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter-tight": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.46.0",
+    "motion": "^13.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router": "^8.3.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@fontsource/archivo-black": "^5.3.0",
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/inter-tight": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "@fontsource/syne": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "opentype.js": "^2.0.0",
+    "playwright-core": "^1.63.0",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0",
+    "wrangler": "^4.131.2"
+  }
+}

@@ -8,3 +8,8 @@
 allowBuilds:
   esbuild: true
   workerd: true
+
+# The monorepo: one folder per website under sites/, shared code under packages/.
+packages:
+  - sites/*
+  - packages/*

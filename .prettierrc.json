@@ -4,6 +4,19 @@
   "printWidth": 110,
   "trailingComma": "all",
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./src/styles/index.css",
-  "tailwindFunctions": ["cn"]
+  "tailwindFunctions": ["cn"],
+  "overrides": [
+    {
+      "files": "sites/fluxstride/**",
+      "options": {
+        "tailwindStylesheet": "./sites/fluxstride/src/styles/index.css"
+      }
+    },
+    {
+      "files": "sites/sam/**",
+      "options": {
+        "tailwindStylesheet": "./sites/sam/src/styles/index.css"
+      }
+    }
+  ]
 }

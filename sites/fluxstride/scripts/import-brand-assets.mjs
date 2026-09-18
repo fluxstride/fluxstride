@@ -12,7 +12,8 @@ import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const kit = join(root, 'brand-assets')
+// The brand kit is shared by every site, so it lives at the repo root.
+const kit = join(root, '..', '..', 'brand-assets')
 const pub = join(root, 'public')
 
 if (!existsSync(kit)) {

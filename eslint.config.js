@@ -5,7 +5,7 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'dist-ssr', '.wrangler', 'brand-assets'] },
+  { ignores: ['**/dist', '**/dist-ssr', '**/.wrangler', 'brand-assets'] },
   {
     files: ['**/*.{ts,tsx}'],
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
@@ -19,16 +19,16 @@ export default tseslint.config(
   },
   {
     // Entry points are never hot-reloaded, so the Fast Refresh rule does not apply.
-    files: ['src/main.tsx', 'src/entry-server.tsx'],
+    files: ['sites/*/src/main.tsx', 'sites/*/src/entry-server.tsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },
   {
-    files: ['worker/**/*.mjs'],
+    files: ['sites/*/worker/**/*.mjs'],
     extends: [js.configs.recommended],
     languageOptions: { globals: globals.serviceworker },
   },
   {
-    files: ['scripts/**/*.mjs'],
+    files: ['sites/*/scripts/**/*.mjs', 'packages/*/scripts/**/*.mjs'],
     extends: [js.configs.recommended],
     languageOptions: { globals: globals.node },
   },

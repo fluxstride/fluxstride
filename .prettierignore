@@ -1,9 +1,10 @@
-dist
-dist-ssr
-.wrangler
+**/dist
+**/dist-ssr
+**/.wrangler
 brand-assets
 pnpm-lock.yaml
-public
-.screenshots
-src/content/images.generated.ts
-src/content/logos.generated.ts
+sites/*/public
+**/.screenshots
+sites/fluxstride/src/content/images.generated.ts
+sites/fluxstride/src/content/logos.generated.ts
+sites/sam/src/content/images.generated.ts
