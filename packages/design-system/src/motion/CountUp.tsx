@@ -23,7 +23,8 @@ export function CountUp({ value, className }: CountUpProps) {
     const [, prefix, number, suffix] = match
     const target = Number(number)
     const decimals = number.includes('.') ? number.split('.')[1].length : 0
-    const render = (n: number) => `${prefix}${n.toFixed(decimals)}${suffix}`
+    // padStart keeps a leading zero ("06") at the same width while counting.
+    const render = (n: number) => `${prefix}${n.toFixed(decimals).padStart(number.length, '0')}${suffix}`
 
     const media = gsap.matchMedia()
     media.add(MOTION_OK, () => {

@@ -124,8 +124,9 @@ function splitWords(node: ReactNode, path = 'w'): ReactNode[] {
         out.push(...splitWords(element.props.children, key))
         return
       }
-      // Forced line breaks pass straight through.
-      if (element.type === 'br') {
+      // Forced line breaks, and decorative elements with no text (a dot, an icon),
+      // pass straight through.
+      if (element.type === 'br' || plainText(element.props.children) === '') {
         out.push(cloneElement(element, { key }))
         return
       }
