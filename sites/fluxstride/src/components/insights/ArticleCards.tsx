@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react'
-import { ImageReveal } from '@/components/motion/ImageReveal'
+import { ImageReveal } from '@fluxstride/design-system/motion/ImageReveal'
 import { Picture } from '@/components/ui/Picture'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { TextLink } from '@/components/ui/TextLink'
 import { formatDate, type Article } from '@/content/insights'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { initials } from '@/lib/format'
 
 /** Wraps a card title in a link when the article has a URL. */

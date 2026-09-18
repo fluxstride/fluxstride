@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowRight } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { SmartLink } from '@/components/ui/SmartLink'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 export type ServiceIndexItem = {
   href: string

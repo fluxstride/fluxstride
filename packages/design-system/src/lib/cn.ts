@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from 'clsx'
 import { extendTailwindMerge } from 'tailwind-merge'
 
 /**
- * Custom type tokens from src/styles/tokens.css. Keep this list in sync.
+ * Custom type tokens from styles/tokens.css. Keep this list in sync.
  *
  * Why it matters: tailwind-merge doesn't read our CSS. Without this list it
  * would treat `text-heading-xl` as a text *colour*, see it clash with
@@ -43,17 +43,24 @@ const TEXT_TOKENS = [
   'label-sm',
 ]
 
-const twMerge = extendTailwindMerge({
-  extend: {
-    theme: {
-      text: TEXT_TOKENS,
-      spacing: ['gutter', 'section'],
-      ease: ['out-expo', 'in-out-quart'],
+/**
+ * Builds a `cn` that also knows a site's own type tokens. A site that adds
+ * `--text-*` tokens in its stylesheet passes their names here, for the same
+ * reason as TEXT_TOKENS above.
+ */
+export function createCn(extraTextTokens: string[] = []) {
+  const twMerge = extendTailwindMerge({
+    extend: {
+      theme: {
+        text: [...TEXT_TOKENS, ...extraTextTokens],
+        spacing: ['gutter', 'section'],
+        ease: ['out-expo', 'in-out-quart'],
+      },
     },
-  },
-})
+  })
+
+  return (...inputs: ClassValue[]) => twMerge(clsx(inputs))
+}
 
 /** Joins class names, dropping falsy values, and resolves Tailwind conflicts so the last one wins. */
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+export const cn = createCn()

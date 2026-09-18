@@ -1,9 +1,9 @@
-import { ImageReveal } from '@/components/motion/ImageReveal'
+import { ImageReveal } from '@fluxstride/design-system/motion/ImageReveal'
 import { Picture } from '@/components/ui/Picture'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { caseStudyHref } from '@/content/case-studies'
 import type { CaseStudy } from '@/content/work'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 type CaseCardProps = {
   study: CaseStudy

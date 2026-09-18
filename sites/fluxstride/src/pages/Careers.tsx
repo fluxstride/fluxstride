@@ -1,6 +1,6 @@
 import { LegalBlockView } from '@/components/legal/LegalBlocks'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { ValueGrid } from '@/components/sections/ValueGrid'
 import { CareersSection } from '@/components/studio/CareersSection'

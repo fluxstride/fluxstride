@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
 import type { CSSProperties, ReactNode } from 'react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
   BarsSection,
@@ -11,7 +11,7 @@ import type {
   TableCell,
   TableSection,
 } from '@/content/case-studies/schema'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { Legend, Rating, Source, Tag } from '../parts'
 import { tone } from '../tone'
 

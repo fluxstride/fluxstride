@@ -1,9 +1,9 @@
 import { ArrowRight, Check, type LucideIcon } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Eyebrow } from '@/components/ui/Typography'
 import { processSteps, type ProcessStep } from '@/content/process'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 /** The phase drawn in flux blue: where most of the work (and most of the calendar) happens. */
 const HIGHLIGHTED = '03'

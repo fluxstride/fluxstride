@@ -1,10 +1,10 @@
 import { Download, Printer } from 'lucide-react'
 import { NavLink } from 'react-router'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
 import { formatLegalDate, legalDocuments, type LegalDocument } from '@/content/legal'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
  * Design: "Page Header" on the legal pages.

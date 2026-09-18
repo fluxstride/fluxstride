@@ -1,0 +1,51 @@
+/*
+ * Fluxstride design system: the styles every site shares.
+ *
+ * Import it straight after Tailwind in a site's stylesheet:
+ *
+ *   @import 'tailwindcss';
+ *   @import '@fluxstride/design-system/styles/index.css';
+ *
+ * It brings the brand fonts, the design tokens (colours, type scale, spacing),
+ * the no-flash motion contract and the base element styles.
+ */
+
+/* Self-hosted fonts (Fontsource). Only the weights and styles the design uses. */
+@import '@fontsource-variable/inter-tight/wght.css';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@import './tokens.css';
+@import './motion.css';
+
+/* The shared components use Tailwind classes too, and they live outside each site's
+   own folder, so tell Tailwind to scan them. Paths are relative to this file. */
+@source '../src';
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-body text-ink;
+  }
+
+  ::selection {
+    @apply bg-flux text-paper;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-flux;
+  }
+}

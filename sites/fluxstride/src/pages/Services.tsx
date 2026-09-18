@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { CtaBand } from '@/components/sections/CtaBand'
 import { PageHeader } from '@/components/sections/PageHeader'
 import { ServiceIndex } from '@/components/services/ServiceIndex'

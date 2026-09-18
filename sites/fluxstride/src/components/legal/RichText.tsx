@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { SmartLink } from '@/components/ui/SmartLink'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g
 

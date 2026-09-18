@@ -1,7 +1,7 @@
 import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { ButtonLink } from '@/components/ui/Button'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
 

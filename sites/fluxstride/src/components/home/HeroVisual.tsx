@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { MarkRings } from '@/components/ui/MarkRings'
-import { cn } from '@/lib/cn'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { cn } from '@fluxstride/design-system/lib/cn'
+import { gsap, MOTION_OK } from '@fluxstride/design-system/lib/gsap'
+import { useIsomorphicLayoutEffect } from '@fluxstride/design-system/lib/useIsomorphicLayoutEffect'
 
 /*
  * "FIG. 01 — MOMENTUM": concentric Stride-mark rings on a navy glow.

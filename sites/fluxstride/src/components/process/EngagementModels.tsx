@@ -1,10 +1,10 @@
 import { ArrowUpRight, Check } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { Accent } from '@/components/ui/Typography'
 import { engagementModels, type EngagementModel } from '@/content/process'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
  * Design: Process / Engagement Models (ink). 128px padding, header 64px above a row of

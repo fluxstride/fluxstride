@@ -1,4 +1,4 @@
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { principles } from '@/content/process'
 
 /*

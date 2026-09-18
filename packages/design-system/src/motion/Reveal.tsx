@@ -1,6 +1,6 @@
 import { useRef, type ReactNode, type RefObject } from 'react'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { gsap, MOTION_OK } from '../lib/gsap'
+import { useIsomorphicLayoutEffect } from '../lib/useIsomorphicLayoutEffect'
 
 type RevealTag =
   'div' | 'section' | 'article' | 'header' | 'figure' | 'ul' | 'ol' | 'dl' | 'p' | 'li' | 'span'

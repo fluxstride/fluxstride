@@ -17,6 +17,12 @@
       "options": {
         "tailwindStylesheet": "./sites/sam/src/styles/index.css"
       }
+    },
+    {
+      "files": "packages/design-system/**",
+      "options": {
+        "tailwindStylesheet": "./sites/fluxstride/src/styles/index.css"
+      }
     }
   ]
 }

@@ -1,10 +1,10 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useId } from 'react'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Button } from '@/components/ui/Button'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
-import { EASE_OUT } from '@/lib/motion'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
 import { newsletterMessages, useNewsletter } from '@/lib/useNewsletter'
 
 /*

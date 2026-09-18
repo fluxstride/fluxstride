@@ -1,4 +1,4 @@
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
  * Concentric Stride-mark rings around a solid Flux core: the hero's "Momentum" figure and

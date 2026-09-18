@@ -3,9 +3,9 @@ import { useRef } from 'react'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { Accent } from '@/components/ui/Typography'
 import { processSteps, type ProcessStep } from '@/content/process'
-import { cn } from '@/lib/cn'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { cn } from '@fluxstride/design-system/lib/cn'
+import { gsap, MOTION_OK } from '@fluxstride/design-system/lib/gsap'
+import { useIsomorphicLayoutEffect } from '@fluxstride/design-system/lib/useIsomorphicLayoutEffect'
 
 /*
  * Design: Home / Process.

@@ -3,7 +3,7 @@ import type { CSSProperties } from 'react'
 import { Picture } from '@/components/ui/Picture'
 import type { Media, MediaFrame } from '@/content/case-studies/schema'
 import { images } from '@/content/images.generated'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 type MediaViewProps = {
   media: Media

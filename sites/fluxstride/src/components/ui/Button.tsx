@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { ArrowIcon, type ArrowDirection } from './ArrowIcon'
 import { buttonClass, buttonIconSize, type ButtonStyleOptions } from './button-styles'
 import { SmartLink } from './SmartLink'

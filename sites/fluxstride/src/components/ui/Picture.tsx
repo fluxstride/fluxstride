@@ -1,5 +1,5 @@
 import { images, type ImageName } from '@/content/images.generated'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 type PictureProps = {
   name: ImageName

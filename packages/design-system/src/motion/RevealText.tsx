@@ -8,9 +8,9 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react'
-import { cn } from '@/lib/cn'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { cn } from '../lib/cn'
+import { gsap, MOTION_OK } from '../lib/gsap'
+import { useIsomorphicLayoutEffect } from '../lib/useIsomorphicLayoutEffect'
 
 type HeadingTag = 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'div'
 

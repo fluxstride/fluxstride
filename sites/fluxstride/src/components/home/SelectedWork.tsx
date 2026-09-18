@@ -1,5 +1,5 @@
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Section } from '@/components/ui/Section'
 import { TextLink } from '@/components/ui/TextLink'
 import { Accent, Eyebrow } from '@/components/ui/Typography'

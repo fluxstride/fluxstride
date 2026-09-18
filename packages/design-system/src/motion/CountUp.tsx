@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { gsap, MOTION_OK } from '../lib/gsap'
+import { useIsomorphicLayoutEffect } from '../lib/useIsomorphicLayoutEffect'
 
 type CountUpProps = {
   /** The finished value exactly as it should read, e.g. "140+", "£38m", "4.9/5", "72%". */

@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Eyebrow } from '@/components/ui/Typography'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 type PageHeaderProps = {
   /** e.g. "(Work) 24 projects · 2019 — 2026" */

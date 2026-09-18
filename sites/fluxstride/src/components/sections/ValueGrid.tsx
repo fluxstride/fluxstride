@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Section } from '@/components/ui/Section'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { pad } from '@/lib/format'
 
 type ValueGridProps = {

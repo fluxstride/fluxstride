@@ -1,8 +1,8 @@
 import { motion } from 'motion/react'
 import { useRef, type ReactNode } from 'react'
-import { ScrollTrigger } from '@/lib/gsap'
-import { EASE_OUT } from '@/lib/motion'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { ScrollTrigger } from '@fluxstride/design-system/lib/gsap'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
+import { useIsomorphicLayoutEffect } from '@fluxstride/design-system/lib/useIsomorphicLayoutEffect'
 
 type PageTransitionProps = { children: ReactNode; hash: string }
 

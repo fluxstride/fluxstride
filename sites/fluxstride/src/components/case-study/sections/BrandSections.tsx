@@ -1,5 +1,5 @@
 import { Mail } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
   DesignSystemSection,
@@ -7,7 +7,7 @@ import type {
   SampleComponent,
   TypographySection,
 } from '@/content/case-studies/schema'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { tone } from '../tone'
 
 type Props<T> = { section: T; dark: boolean }

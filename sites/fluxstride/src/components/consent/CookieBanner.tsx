@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import { buttonClass } from '@/components/ui/button-styles'
 import { consentCopy } from '@/content/consent'
 import { acceptAll, openCookieSettings, rejectAll } from '@/lib/consent'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
  * Design: "Cookie Consent — Banner" (desktop and mobile).

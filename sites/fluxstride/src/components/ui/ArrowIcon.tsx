@@ -1,5 +1,5 @@
 import { ArrowRight, ArrowUpRight, type LucideIcon } from 'lucide-react'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 export type ArrowDirection = 'right' | 'up-right'
 

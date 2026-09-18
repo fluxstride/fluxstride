@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import type { ProjectEntry } from '@/content/work'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
  * Design: Work / Project Index ("More projects").

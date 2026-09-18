@@ -5,8 +5,8 @@ import { ButtonLink } from '@/components/ui/Button'
 import { Logo } from '@/components/ui/Logo'
 import { Eyebrow } from '@/components/ui/Typography'
 import { AVAILABILITY, contactLink, EMAIL_NEW_BUSINESS, mailto, primaryNav } from '@/content/site'
-import { cn } from '@/lib/cn'
-import { EASE_OUT } from '@/lib/motion'
+import { cn } from '@fluxstride/design-system/lib/cn'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
 
 /*
  * Design (Component / Nav): paper background, 28×80 padding, logo left, five

@@ -1,6 +1,6 @@
-import { CountUp } from '@/components/motion/CountUp'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { CountUp } from '@fluxstride/design-system/motion/CountUp'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Eyebrow } from '@/components/ui/Typography'
 import { facts, story } from '@/content/studio'
 

@@ -3,10 +3,10 @@ import { motion } from 'motion/react'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Picture } from '@/components/ui/Picture'
 import { testimonials, type Testimonial } from '@/content/proof'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { initials, pad } from '@/lib/format'
-import { EASE_OUT } from '@/lib/motion'
-import { useMediaQuery, usePageVisible } from '@/lib/useMediaQuery'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
+import { useMediaQuery, usePageVisible } from '@fluxstride/design-system/lib/useMediaQuery'
 
 /** How long each testimonial stays up, in ms. Long enough to read a ~30-word quote. */
 const SLIDE_DURATION = 9000

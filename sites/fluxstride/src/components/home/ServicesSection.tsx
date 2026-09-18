@@ -1,15 +1,15 @@
 import { Minus, Plus } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useId, useState } from 'react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { IconCircle } from '@/components/ui/IconCircle'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { serviceHref, services, type Service } from '@/content/services'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { pad } from '@/lib/format'
-import { EASE_OUT } from '@/lib/motion'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
 
 /*
  * Design: Home / Services (desktop grid) and Home Mobile / Services (accordion).

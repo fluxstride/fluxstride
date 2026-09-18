@@ -1,10 +1,10 @@
-import { CountUp } from '@/components/motion/CountUp'
-import { Reveal } from '@/components/motion/Reveal'
+import { CountUp } from '@fluxstride/design-system/motion/CountUp'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Section } from '@/components/ui/Section'
 import { Eyebrow } from '@/components/ui/Typography'
 import { clientLogos } from '@/content/logos.generated'
 import { stats } from '@/content/proof'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { TestimonialCarousel } from './TestimonialCarousel'
 
 /*

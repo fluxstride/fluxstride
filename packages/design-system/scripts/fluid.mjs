@@ -1,7 +1,7 @@
 // Prints a fluid clamp() for a type or spacing token.
 //
-//   node scripts/fluid.mjs <size at 390px> <size at 1440px>
-//   node scripts/fluid.mjs 40 64
+//   node packages/design-system/scripts/fluid.mjs <size at 390px> <size at 1440px>
+//   node packages/design-system/scripts/fluid.mjs 40 64
 //   -> clamp(2.5rem, 1.9429rem + 2.2857vw, 4rem)
 //
 // 390px and 1440px are the widths of the mobile and desktop canvases in the
@@ -11,7 +11,7 @@ const DESKTOP = 1440
 
 const [min, max] = process.argv.slice(2).map(Number)
 if (!Number.isFinite(min) || !Number.isFinite(max)) {
-  console.error('Usage: node scripts/fluid.mjs <mobile px> <desktop px>')
+  console.error('Usage: node packages/design-system/scripts/fluid.mjs <mobile px> <desktop px>')
   process.exit(1)
 }
 

@@ -1,8 +1,8 @@
 import { Minus, Plus, Star } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type { Card, CardsSection, ReviewsSection } from '@/content/case-studies/schema'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { Tag } from '../parts'
 import { tone } from '../tone'
 

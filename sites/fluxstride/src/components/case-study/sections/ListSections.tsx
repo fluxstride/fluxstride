@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowRight, Check } from 'lucide-react'
 import type { CSSProperties } from 'react'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Label } from '@/components/ui/Typography'
 import type {
   ArchitectureSection,
@@ -11,7 +11,7 @@ import type {
   Step,
   StepsSection,
 } from '@/content/case-studies/schema'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { FeatureGrid } from '../parts'
 import { tone } from '../tone'
 

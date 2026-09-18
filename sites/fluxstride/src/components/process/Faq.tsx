@@ -2,13 +2,13 @@ import { Minus, Plus } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useId, useState } from 'react'
 import { RichText } from '@/components/legal/RichText'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Eyebrow } from '@/components/ui/Typography'
 import { faqs as processFaqs } from '@/content/process'
 import { EMAIL_NEW_BUSINESS, mailto } from '@/content/site'
-import { cn } from '@/lib/cn'
-import { EASE_OUT } from '@/lib/motion'
+import { cn } from '@fluxstride/design-system/lib/cn'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
 
 /*
  * Design: Process / FAQ. 128px padding; a 400px heading column 80px left of the questions.

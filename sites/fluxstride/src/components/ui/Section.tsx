@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import { RevealText } from '@/components/motion/RevealText'
-import { Reveal } from '@/components/motion/Reveal'
-import { cn } from '@/lib/cn'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { Eyebrow } from './Typography'
 
 export type SectionTone = 'paper' | 'paper-2' | 'ink'

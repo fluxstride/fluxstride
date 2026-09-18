@@ -1,6 +1,6 @@
-import { ImageReveal } from '@/components/motion/ImageReveal'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { ImageReveal } from '@fluxstride/design-system/motion/ImageReveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Picture } from '@/components/ui/Picture'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
 

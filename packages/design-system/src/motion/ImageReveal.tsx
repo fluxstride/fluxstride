@@ -1,7 +1,7 @@
 import { useRef, type ReactNode } from 'react'
-import { cn } from '@/lib/cn'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { cn } from '../lib/cn'
+import { gsap, MOTION_OK } from '../lib/gsap'
+import { useIsomorphicLayoutEffect } from '../lib/useIsomorphicLayoutEffect'
 
 type ImageRevealProps = {
   /** The image layer. It is scaled up slightly and drifts as the page scrolls. */

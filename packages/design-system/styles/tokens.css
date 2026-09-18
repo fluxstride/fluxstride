@@ -20,7 +20,7 @@
  * token is a clamp() that equals the mobile size at 390px, the desktop size at
  * 1440px, and interpolates linearly in between. Both canvases therefore match
  * the design exactly and tablets get proportionate sizes instead of a jump.
- * Generate a new one with:  node scripts/fluid.mjs <mobile px> <desktop px>
+ * Generate a new one with:  node packages/design-system/scripts/fluid.mjs <mobile px> <desktop px>
  */
 
 @theme {

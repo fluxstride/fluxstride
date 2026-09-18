@@ -1,4 +1,4 @@
-import { RevealText } from '@/components/motion/RevealText'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { PhaseList } from '@/components/process/PhaseList'
 import { Faq } from '@/components/process/Faq'
 import { CtaBand } from '@/components/sections/CtaBand'

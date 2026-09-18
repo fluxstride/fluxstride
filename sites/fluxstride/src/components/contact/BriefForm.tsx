@@ -2,7 +2,7 @@ import { Paperclip, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Children, useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, useLocation } from 'react-router'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Button } from '@/components/ui/Button'
 import { Chip } from '@/components/ui/Chip'
 import {
@@ -16,8 +16,8 @@ import {
 } from '@/content/brief'
 import { EMAIL_NEW_BUSINESS, mailto } from '@/content/site'
 import { MAX_ATTACHMENT_BYTES, sendBrief } from '@/lib/brief'
-import { cn } from '@/lib/cn'
-import { EASE_OUT } from '@/lib/motion'
+import { cn } from '@fluxstride/design-system/lib/cn'
+import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
 
 type Status = 'idle' | 'sending' | 'sent' | 'mail-client' | 'error'
 

@@ -1,6 +1,6 @@
 import { ArrowUpRight, Briefcase, Calendar, Mail, type LucideIcon } from 'lucide-react'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { Accent, Eyebrow } from '@/components/ui/Typography'
 import { nextSteps } from '@/content/brief'

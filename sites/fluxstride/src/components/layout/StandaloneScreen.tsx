@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react'
 import { useRef } from 'react'
 import { Link } from 'react-router'
-import { Reveal } from '@/components/motion/Reveal'
-import { RevealText } from '@/components/motion/RevealText'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
+import { RevealText } from '@fluxstride/design-system/motion/RevealText'
 import { Logo } from '@/components/ui/Logo'
 import { MarkRings } from '@/components/ui/MarkRings'
 import { BRAND } from '@/content/site'
-import { gsap, MOTION_OK } from '@/lib/gsap'
-import { useIsomorphicLayoutEffect } from '@/lib/useIsomorphicLayoutEffect'
+import { gsap, MOTION_OK } from '@fluxstride/design-system/lib/gsap'
+import { useIsomorphicLayoutEffect } from '@fluxstride/design-system/lib/useIsomorphicLayoutEffect'
 
 type StandaloneScreenProps = {
   /** Mono tag opposite the wordmark, e.g. "Error 404". */

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { buttonClass } from '@/components/ui/button-styles'
 import { consentCopy, cookieCategories } from '@/content/consent'
 import { acceptAll, closeCookieSettings, rejectAll, saveConsent, type ConsentChoices } from '@/lib/consent'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { AlwaysOn, Toggle } from './Toggle'
 
 /*

@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Marquee } from '@/components/motion/Marquee'
+import { Marquee } from '@fluxstride/design-system/motion/Marquee'
 import { Mark } from '@/components/ui/Logo'
 
 /*

@@ -180,7 +180,7 @@ Then commit the PDFs together with the change. A stale PDF is a stale policy. To
 **Print layout** (also used by the Print button):
 
 - Hidden: the site header, tabs, table of contents, related policies, footer and cookie UI (`print:hidden`).
-- Scroll-reveal animations are forced visible (`src/styles/motion.css`).
+- Scroll-reveal animations are forced visible (`packages/design-system/styles/motion.css`).
 - Cards, notes, table rows and stats don't split across pages (`break-inside-avoid`).
 
 ---

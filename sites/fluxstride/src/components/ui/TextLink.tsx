@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 import { ArrowIcon } from './ArrowIcon'
 import { SmartLink } from './SmartLink'
 

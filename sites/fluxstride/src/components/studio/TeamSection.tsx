@@ -1,5 +1,5 @@
-import { ImageReveal } from '@/components/motion/ImageReveal'
-import { Reveal } from '@/components/motion/Reveal'
+import { ImageReveal } from '@fluxstride/design-system/motion/ImageReveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { Picture } from '@/components/ui/Picture'
 import { SectionHeader } from '@/components/ui/Section'
 import { team, type TeamMember } from '@/content/studio'

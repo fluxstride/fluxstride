@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { Link } from 'react-router'
-import { Reveal } from '@/components/motion/Reveal'
+import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { DetailHeader } from '@/components/sections/DetailHeader'
 import { ArrowIcon } from '@/components/ui/ArrowIcon'
 import { ButtonLink } from '@/components/ui/Button'

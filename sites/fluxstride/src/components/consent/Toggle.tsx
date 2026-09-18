@@ -1,4 +1,4 @@
-import { cn } from '@/lib/cn'
+import { cn } from '@fluxstride/design-system/lib/cn'
 
 type ToggleProps = {
   checked: boolean
