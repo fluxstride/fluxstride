@@ -111,7 +111,7 @@ function BriefBuilder() {
           surface="dark"
           className="max-lg:flex max-lg:w-full max-lg:justify-between max-lg:px-5"
         >
-          Send brief — reply in 24h
+          Send brief: reply in 24h
         </ButtonLink>
         <SmartLink
           to="/contact#call"

@@ -3,7 +3,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Northwind · Backend, Web & frontend, Product design
- * Design: "Case Study — Software Platform" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study: Software Platform" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, team credits and quote are invented for the design
  * mockups. Replace them with a real, client-approved project and remove `sample` before launch.
@@ -27,7 +27,7 @@ export default defineCaseStudy({
   hero: {
     title: ['A customer platform', 'that onboards itself.'],
     intro:
-      "Northwind's customers loved the product once they were set up — but 62% never finished onboarding. We rebuilt the portal, the onboarding and the system behind it in 12 weeks.",
+      "Northwind's customers loved the product once they were set up, but 62% never finished onboarding. We rebuilt the portal, the onboarding and the system behind it in 12 weeks.",
     tags: ['Fintech', 'Backend & web', 'Product design', '2026'],
     facts: [
       ['Client', 'Northwind Ltd'],
@@ -48,7 +48,7 @@ export default defineCaseStudy({
   results: {
     timeframe: '6 months after launch',
     summary:
-      'Onboarding went from a support-heavy process to something customers finish on their own — in one sitting.',
+      'Onboarding went from a support-heavy process to something customers finish on their own, in one sitting.',
     stats: [
       { value: '+212%', label: 'qualified leads from the new sign-up flow', detail: 'vs previous 6 months' },
       { value: '86%', label: 'of new accounts now finish onboarding', detail: 'up from 38%' },
@@ -60,21 +60,21 @@ export default defineCaseStudy({
   challenge: {
     title: 'Great product, painful first week.',
     paragraphs: [
-      'Northwind sells expense and payroll tools to growing businesses. Their customers renewed at 94% — but only after a week of calls, spreadsheets and support tickets to get set up.',
+      'Northwind sells expense and payroll tools to growing businesses. Their customers renewed at 94%, but only after a week of calls, spreadsheets and support tickets to get set up.',
       "The 2019 portal couldn't keep up: every screen was bespoke, nothing worked on mobile, and the team spent more time answering questions than shipping features.",
     ],
     points: [
       '62% of new accounts never finished onboarding',
       '24 support tickets per 100 customers every month',
-      'No design system — each feature rebuilt from scratch',
+      'No design system: each feature rebuilt from scratch',
     ],
   },
 
   approach: {
     title: 'Fix the first hour, then the system.',
     paragraphs: [
-      "We interviewed 8 customers and shadowed the support team for a week. The biggest drop-off wasn't a missing feature — it was the six decisions customers had to make before seeing any value.",
-      'So we redesigned onboarding around a single goal: first payroll run in the first session. Everything else — the portal, the design system, the API — was rebuilt to support that.',
+      "We interviewed 8 customers and shadowed the support team for a week. The biggest drop-off wasn't a missing feature, it was the six decisions customers had to make before seeing any value.",
+      'So we redesigned onboarding around a single goal: first payroll run in the first session. Everything else (the portal, the design system, the API) was rebuilt to support that.',
     ],
   },
 
@@ -132,7 +132,7 @@ export default defineCaseStudy({
         {
           icon: Smartphone,
           title: 'Works on any device',
-          body: 'Approvals and payslips from a phone — 31% of sessions are now mobile.',
+          body: 'Approvals and payslips from a phone, 31% of sessions are now mobile.',
         },
         {
           icon: ShieldCheck,
@@ -191,7 +191,7 @@ export default defineCaseStudy({
   ],
 
   quote: {
-    text: "Fluxstride didn't just rebuild our portal — they fixed the first week of every customer relationship we have.",
+    text: "Fluxstride didn't just rebuild our portal, they fixed the first week of every customer relationship we have.",
     name: 'Jane Doe',
     role: 'Head of Product, Northwind',
     initials: 'JD',
@@ -206,10 +206,10 @@ export default defineCaseStudy({
       'QA & launch',
     ],
     team: [
-      'Hannah Cole — Client Partner',
-      'Daniel Mensah — Technical Lead',
-      'Priya Raman — Design Lead',
-      'Leo Park — Engineer',
+      'Hannah Cole, Client Partner',
+      'Daniel Mensah, Technical Lead',
+      'Priya Raman, Design Lead',
+      'Leo Park, Engineer',
     ],
     tools: ['TypeScript', 'Next.js', 'Node', 'PostgreSQL', 'Stripe', 'Okta'],
     toolsLabel: 'Stack',

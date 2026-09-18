@@ -9,7 +9,7 @@ import { LegalToc, LegalTocMobile } from '@/components/legal/LegalToc'
 import type { LegalDocument } from '@/content/legal'
 
 /*
- * Design: Fluxstride — Privacy Policy / Terms of Service / Cookie Policy (desktop 1440,
+ * Design: Fluxstride Privacy Policy / Terms of Service / Cookie Policy (desktop 1440,
  * mobile 390). One layout for all three; the wording lives in content/legal.
  *
  *   Page Header   title, intro, effective date and version

@@ -2,7 +2,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Aurora Architects · Graphic Design & Branding
- * Design: "Case Study — Brand Identity" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study: Brand Identity" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, identity, figures, team credits and quote are invented for the
  * design mockups. Replace them with a real, client-approved project and remove `sample`
@@ -27,7 +27,7 @@ export default defineCaseStudy({
   hero: {
     title: ['An identity built', 'like a building.'],
     intro:
-      'Aurora designs calm, long-lasting public buildings. Their old identity looked like a tech start-up. We created a brand as considered as their architecture — from the mark to the hoardings.',
+      'Aurora designs calm, long-lasting public buildings. Their old identity looked like a tech start-up. We created a brand as considered as their architecture, from the mark to the hoardings.',
     tags: ['Architecture', 'Brand identity', 'Graphic design', '2026'],
     facts: [
       ['Client', 'Aurora Architects'],
@@ -48,7 +48,7 @@ export default defineCaseStudy({
   results: {
     timeframe: 'First year',
     summary:
-      'A brand that finally looks like the work — and wins it. Aurora shortlisted for three major public competitions.',
+      'A brand that finally looks like the work, and wins it. Aurora shortlisted for three major public competitions.',
     stats: [
       { value: '3', label: 'major competition shortlists', detail: 'Was 0 in 2025' },
       { value: '+74%', label: 'inbound enquiries', detail: 'Year on year' },
@@ -60,11 +60,11 @@ export default defineCaseStudy({
   challenge: {
     title: 'Serious work, forgettable brand.',
     paragraphs: [
-      "Aurora's buildings win praise for their restraint and craft. Their identity — a gradient logo and stock photography — said the opposite, and bid teams kept rebuilding documents from scratch.",
+      "Aurora's buildings win praise for their restraint and craft. Their identity (a gradient logo and stock photography) said the opposite, and bid teams kept rebuilding documents from scratch.",
     ],
     points: [
       "Identity didn't reflect the studio's work",
-      'No templates — every bid designed from zero',
+      'No templates: every bid designed from zero',
       'Inconsistent across 3 offices',
     ],
   },
@@ -73,7 +73,7 @@ export default defineCaseStudy({
     title: 'Start from the drawings.',
     paragraphs: [
       "We spent two days in the studio going through sketchbooks and site models. The idea came from the section drawing: a simple, load-bearing 'A' built from four structural lines.",
-      "Everything else follows the same rules — a strict grid, materials-inspired colour and a typographic voice that's quiet but confident.",
+      "Everything else follows the same rules: a strict grid, materials-inspired colour and a typographic voice that's quiet but confident.",
     ],
   },
 
@@ -122,7 +122,7 @@ export default defineCaseStudy({
         {
           role: 'Text',
           typeface: 'Inter Tight',
-          sample: 'Clear, factual and generous with space — for bids, reports and signage.',
+          sample: 'Clear, factual and generous with space: for bids, reports and signage.',
           style: 'sans',
           weights: ['Regular', 'Medium', 'Semibold'],
         },
@@ -164,7 +164,7 @@ export default defineCaseStudy({
       'Templates & signage',
       'Brand guidelines',
     ],
-    team: ['Priya Raman — Design Lead', 'Ade Okafor — Graphic Designer', 'Hannah Cole — Client Partner'],
+    team: ['Priya Raman, Design Lead', 'Ade Okafor, Graphic Designer', 'Hannah Cole, Client Partner'],
     tools: ['Figma', 'Illustrator', 'InDesign', 'Frontify'],
   },
 

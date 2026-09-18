@@ -66,7 +66,7 @@ export function Steps({ section, dark }: Props<StepsSection>) {
 }
 
 /*
- * Design: Case Study — Software Platform, "03 — Process". Four white cards, 16px apart
+ * Design: Case Study: Software Platform, "03: Process". Four white cards, 16px apart
  * (stacked on mobile): 24px padding (20px), mono meta and number, a 3px rule (Flux blue
  * when highlighted), 26px title (22px), then ticked deliverables at 15px/1.45.
  */
@@ -108,7 +108,7 @@ export function Features({ section, dark }: Props<FeaturesSection>) {
 }
 
 /*
- * Design: Case Study — Software Platform, "05 — Engineering". Three columns 24px apart
+ * Design: Case Study: Software Platform, "05: Engineering". Three columns 24px apart
  * (stacked 12px apart on mobile): a mono layer name with a hairline and arrow, then boxes
  * 10px apart (15px title, 10px mono meta, 14/16px padding). A "Stack" row of chips follows.
  */
@@ -216,7 +216,7 @@ export function Checklist({ section, dark }: Props<ChecklistSection>) {
 }
 
 /*
- * Design: Case Study — Website Rebuild, "05 — The Rebuild". A 440px outlined panel: each
+ * Design: Case Study: Website Rebuild, "05: The Rebuild". A 440px outlined panel: each
  * metric with a green verdict, its value (40px, 32px on phones) beside the old one and a
  * 4px bar, then two figures split by a hairline.
  */
@@ -312,7 +312,7 @@ export function Roadmap({ section, dark }: Props<RoadmapSection>) {
 }
 
 /*
- * Design: Case Study — Mobile App, "04 — Journey". One row per path under a hairline
+ * Design: Case Study: Mobile App, "04: Journey". One row per path under a hairline
  * (28px padding, 20px mobile): mono label and summary, then a numbered box per step.
  * Every box is as wide as one step of the longer path, so the shorter row visibly shrinks.
  * Desktop 56px boxes 10px apart (16px numbers); mobile six to a row, 36px, 6px apart.

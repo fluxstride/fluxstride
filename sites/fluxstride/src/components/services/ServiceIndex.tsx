@@ -5,7 +5,7 @@ import { cn } from '@fluxstride/design-system/lib/cn'
 
 export type ServiceIndexItem = {
   href: string
-  /** Mono index, e.g. "03", or "—" for a link that isn't a service */
+  /** Mono index, e.g. "03", or "·" for a link that isn't a service */
   index: string
   title: string
   /** Drawn in flux blue, e.g. "All services" */

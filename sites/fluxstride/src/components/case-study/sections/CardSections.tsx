@@ -117,7 +117,7 @@ function Stars({ size, gap, dark }: { size: string; gap: string; dark: boolean }
 }
 
 /*
- * Design: Case Study — Mobile App, "05 — Ratings". The rating (120px, 80px mobile) with
+ * Design: Case Study: Mobile App, "05: Ratings". The rating (120px, 80px mobile) with
  * outline stars in a 320px column, then review cards side by side, 16px apart and aligned
  * to the top: 24px padding, 14px stars, 18px quote (16px mobile), mono author. Stacked on mobile.
  */

@@ -56,7 +56,7 @@ export async function sendBrief(brief: Brief): Promise<SendResult> {
     ]
       .filter(Boolean)
       .join('\n')
-    const subject = `Project brief${fields.company ? ` — ${fields.company}` : ''}`
+    const subject = `Project brief${fields.company ? `: ${fields.company}` : ''}`
     window.location.href = `${mailto(EMAIL_NEW_BUSINESS, subject)}&body=${encodeURIComponent(body)}`
     return 'mail-client'
   }

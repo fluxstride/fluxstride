@@ -40,7 +40,7 @@ export function ContactIntro() {
         </RevealText>
         <Reveal on="mount" delay={0.3}>
           <p className="text-[clamp(1rem,0.9536rem+0.1905vw,1.125rem)] leading-[1.5] text-stone">
-            Tell us a little about your project. A senior member of the team — not a salesperson — will reply
+            Tell us a little about your project. A senior member of the team, not a salesperson, will reply
             within one working day.
           </p>
         </Reveal>

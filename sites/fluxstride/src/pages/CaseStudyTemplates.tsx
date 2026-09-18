@@ -13,7 +13,7 @@ import {
 
 /*
  * Development only (see App.tsx): browse the starter templates the way they render.
- * The matching designs are the "Case Study Template — <name>" frames in the Pencil file.
+ * The matching designs are the "Case Study Template: <name>" frames in the Pencil file.
  */
 
 /** /work/templates: one row per template. */

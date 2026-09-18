@@ -3,9 +3,9 @@ import { EMAIL_ACCOUNTS, EMAIL_LEGAL, mailto } from '@/content/site'
 import { defineLegalDocument } from './schema'
 
 /*
- * Terms of service. Wording from the design (Fluxstride — Terms of Service).
+ * Terms of service. Wording from the design (Fluxstride: Terms of Service).
  *
- * PLACEHOLDERS — the commercial terms (deposit, payment terms, late interest, warranty
+ * PLACEHOLDERS: the commercial terms (deposit, payment terms, late interest, warranty
  * period, liability cap, notice periods) are design copy, not agreed policy. Have them
  * confirmed by the business and the whole text reviewed by a lawyer before launch.
  */
@@ -20,7 +20,7 @@ export default defineLegalDocument({
   effective: '2026-09-16',
   version: '4.0',
   summary: [
-    'Every project starts with a written proposal — it sets the scope, price and timeline.',
+    'Every project starts with a written proposal. It sets the scope, price and timeline.',
     'Invoices are due within 14 days. Projects start once the deposit is paid.',
     'You own everything we make for you once the final invoice is paid.',
     'We fix defects found within 30 days of launch, free of charge.',
@@ -47,7 +47,7 @@ export default defineLegalDocument({
         {
           type: 'list',
           items: [
-            "Don't misuse the site — no scraping, attacks or attempts to access areas that aren't public.",
+            "Don't misuse the site: no scraping, attacks or attempts to access areas that aren't public.",
             'Content on the site is ours or licensed to us; you may share links but not republish it.',
             'Articles and guides are general information, not professional advice for your situation.',
           ],
@@ -91,7 +91,7 @@ export default defineLegalDocument({
       blocks: [
         {
           type: 'paragraph',
-          text: "If priorities change, we'll write up a change request describing the impact on cost and timeline. Work on a change only starts once you approve it in writing — no surprise invoices.",
+          text: "If priorities change, we'll write up a change request describing the impact on cost and timeline. Work on a change only starts once you approve it in writing, no surprise invoices.",
         },
       ],
     },
@@ -122,7 +122,7 @@ export default defineLegalDocument({
               items: [
                 'All final designs, code and content we create for you',
                 'Full transfer on payment of the final invoice',
-                'Your data, content and brand assets — always',
+                'Your data, content and brand assets: always',
               ],
             },
             {

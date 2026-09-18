@@ -3,8 +3,8 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · E-commerce
- * Design: "Case Study Template — E-commerce" in the Pencil file.
- * Example of a finished page: "Case Study — E-commerce" (Halden Coffee).
+ * Design: "Case Study Template: E-commerce" in the Pencil file.
+ * Example of a finished page: "Case Study: E-commerce" (Halden Coffee).
  *
  * Copy it with `pnpm new:case-study e-commerce <slug>`.
  * Guide: docs/case-studies.md
@@ -184,7 +184,7 @@ export default defineCaseStudy({
       '[Integrations]',
       '[Conversion optimisation]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Shopify Plus]', '[e.g. Klaviyo]', '[e.g. Stripe]', '[e.g. GA4]'],
   },
 })

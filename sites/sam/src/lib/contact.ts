@@ -22,7 +22,7 @@ export async function sendMessage(message: ContactMessage): Promise<SendResult> 
     ]
       .filter(Boolean)
       .join('\n')
-    const subject = `New project — ${message.name}`
+    const subject = `New project: ${message.name}`
     window.location.href = `mailto:${PERSON.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     return 'mail-client'
   }

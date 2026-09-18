@@ -3,8 +3,8 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Website
- * Design: "Case Study Template — Website" in the Pencil file.
- * Example of a finished page: "Case Study — Website" (Kinetic Labs).
+ * Design: "Case Study Template: Website" in the Pencil file.
+ * Example of a finished page: "Case Study: Website" (Kinetic Labs).
  *
  * Copy it with `pnpm new:case-study website <slug>`.
  * Guide: docs/case-studies.md
@@ -173,7 +173,7 @@ export default defineCaseStudy({
       '[CMS setup]',
       '[SEO migration]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Next.js]', '[e.g. Sanity]', '[e.g. Vercel]', '[e.g. Figma]'],
   },
 })

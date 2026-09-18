@@ -5,7 +5,7 @@
 
 /*
  * This site's own type scale, on top of the shared tokens. Sizes come from the Pencil
- * frames "Samuel Adekoya — Home (Desktop/Mobile)": each clamp() equals the mobile
+ * frames "Samuel Adekoya: Home (Desktop/Mobile)": each clamp() equals the mobile
  * size at 390px and the desktop size at 1440px (node packages/design-system/scripts/fluid.mjs).
  * Keep the names in sync with src/lib/cn.ts.
  */

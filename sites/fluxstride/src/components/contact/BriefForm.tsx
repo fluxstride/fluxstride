@@ -274,7 +274,7 @@ export function BriefForm() {
                     <span className="max-lg:hidden">Attach a brief or RFP</span>
                   </label>
                 )}
-                <span className="text-sm/[1.2] text-stone max-lg:hidden">PDF, DOCX — up to 20MB</span>
+                <span className="text-sm/[1.2] text-stone max-lg:hidden">PDF, DOCX, up to 20MB</span>
               </div>
               {attachmentError ? (
                 <p role="alert" className="text-sm/[1.2] text-flux">
@@ -364,7 +364,7 @@ const messages: Partial<Record<Status, ReactNode>> = {
   'mail-client': (
     <>
       Your email app should have opened with the brief filled in. Send it from there
-      {' — '}and attach your file if you chose one.
+      {', '}and attach your file if you chose one.
     </>
   ),
   error: (

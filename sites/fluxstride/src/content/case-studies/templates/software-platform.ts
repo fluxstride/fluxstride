@@ -3,8 +3,8 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Software platform
- * Design: "Case Study Template — Software platform" in the Pencil file.
- * Example of a finished page: "Case Study — Software Platform" (Northwind).
+ * Design: "Case Study Template: Software platform" in the Pencil file.
+ * Example of a finished page: "Case Study: Software Platform" (Northwind).
  *
  * Copy it with `pnpm new:case-study software-platform <slug>`, then replace every
  * [bracketed] value and every `image: null`. Delete any section that doesn't apply.
@@ -184,7 +184,7 @@ export default defineCaseStudy({
       '[Backend & API]',
       '[QA & DevOps]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. React]', '[e.g. Node.js]', '[e.g. PostgreSQL]', '[e.g. AWS]'],
   },
 })

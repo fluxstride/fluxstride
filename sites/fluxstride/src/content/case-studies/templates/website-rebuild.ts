@@ -2,8 +2,8 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Website rebuild
- * Design: "Case Study Template — Website rebuild" in the Pencil file.
- * Example of a finished page: "Case Study — Website Rebuild" (Atlas Freight).
+ * Design: "Case Study Template: Website rebuild" in the Pencil file.
+ * Example of a finished page: "Case Study: Website Rebuild" (Atlas Freight).
  *
  * Copy it with `pnpm new:case-study website-rebuild <slug>`.
  * Guide: docs/case-studies.md
@@ -156,7 +156,7 @@ export default defineCaseStudy({
       '[Digital PR]',
       '[Reporting]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Ahrefs]', '[e.g. Search Console]', '[e.g. Screaming Frog]', '[e.g. GA4]'],
   },
 })

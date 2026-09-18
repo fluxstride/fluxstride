@@ -11,9 +11,9 @@ import { benefits, careersPage, hiring, roles } from '@/content/careers'
 import { EMAIL_CAREERS, mailto } from '@/content/site'
 
 /*
- * Design: Fluxstride — Careers (desktop 1440, mobile 390). The Studio page's parts, re-cut:
+ * Design: Fluxstride Careers (desktop 1440, mobile 390). The Studio page's parts, re-cut:
  *
- *   Statement + photo  "Do the best work of your career — in four focused days a week."
+ *   Statement + photo  "Do the best work of your career, in four focused days a week."
  *   Numbers            the Studio numbers row
  *   Open roles         the Studio careers list (paper-2), each role linking to its page
  *   How we work        the values grid (ink)
@@ -32,10 +32,10 @@ export function Careers() {
         </Reveal>
         <RevealText as="h1" on="mount" delay={0.1} stagger={0.035} className="text-statement text-ink">
           Do the best work <br className="max-lg:hidden" />
-          of your career<span className="max-lg:hidden"> —</span>
+          of your career<span className="max-lg:hidden">,</span>
           <br />
           <Accent className="text-[1.1em] lg:text-[1.125em]">
-            <span className="mr-[0.25em] lg:hidden">—</span>in four focused days a week.
+            <span className="mr-[0.25em] lg:hidden">,</span>in four focused days a week.
           </Accent>
         </RevealText>
       </header>

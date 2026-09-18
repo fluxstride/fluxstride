@@ -5,7 +5,7 @@ import { acceptAll, openCookieSettings, rejectAll } from '@/lib/consent'
 import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
- * Design: "Cookie Consent — Banner" (desktop and mobile).
+ * Design: "Cookie Consent: Banner" (desktop and mobile).
  *
  * Desktop: 600px ink card, 40px from the bottom-right corner, 28px padding, 20px gaps,
  *          4px corners, white/12 hairline, 0 16 48 ink/25 shadow. Accept (flux), Reject

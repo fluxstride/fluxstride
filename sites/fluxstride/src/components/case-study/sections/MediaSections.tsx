@@ -46,7 +46,7 @@ export function Screenshot({ section, dark }: Props<ScreenshotSection>) {
 }
 
 /*
- * Design: Case Study — Brand Identity, "06 — Applications". Four columns 24px apart (two,
+ * Design: Case Study: Brand Identity, "06: Applications". Four columns 24px apart (two,
  * 16px apart, on phones): name and mono count on one line under a hairline.
  */
 function Deliverables({ items, dark }: { items: [string, string][]; dark: boolean }) {
@@ -70,7 +70,7 @@ function Deliverables({ items, dark }: { items: [string, string][]; dark: boolea
 const galleryColumns = { 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4' }
 
 /*
- * Design: Case Study — Website, "04 — Templates". Cards 20px apart (12px on phones), the
+ * Design: Case Study: Website, "04: Templates". Cards 20px apart (12px on phones), the
  * caption 12px under each: 17px name (14px) with a mono number on the right.
  * Plain galleries crop to 4:3 so rows line up, unless outlined; screenshots and app screens
  * keep their shape. Phones show two columns.
@@ -109,7 +109,7 @@ export function Gallery({ section, dark }: Props<GallerySection>) {
 }
 
 /*
- * Design: Case Study — Mobile App, "03 — The app". Four 270px phones spread across a
+ * Design: Case Study: Mobile App, "03: The app". Four 270px phones spread across a
  * tinted panel (48px / 40px padding), a mono caption 20px under each. Mobile: no panel,
  * two 162px phones per row, 10px apart and 16px between rows; captions are read out only.
  */
@@ -143,7 +143,7 @@ function PanelGallery({ section, dark }: Props<GallerySection>) {
 }
 
 /*
- * Design: Case Study — Website, "03 — Redesign". Two 620px browsers 40px apart (stacked on
+ * Design: Case Study: Website, "03: Redesign". Two 620px browsers 40px apart (stacked on
  * phones), each under a tag and its address, with metric rows below: 15px label and value,
  * the new figures in Flux blue.
  */

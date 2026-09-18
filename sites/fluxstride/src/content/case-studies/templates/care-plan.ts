@@ -3,7 +3,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Care & support
- * Design: "Case Study Template — Care & support" in the Pencil file.
+ * Design: "Case Study Template: Care & support" in the Pencil file.
  *
  * Copy it with `pnpm new:case-study care-plan <slug>`.
  * Guide: docs/case-studies.md
@@ -32,7 +32,7 @@ export default defineCaseStudy({
       ['Client', '[Client name]'],
       ['Industry', '[Industry]'],
       ['Plan', '[Care plan name]'],
-      ['Since', '[Month YEAR — ongoing]'],
+      ['Since', '[Month YEAR to ongoing]'],
       ['Platform', '[CMS · hosting]'],
       ['Response', '[0h critical fix SLA]'],
     ],
@@ -206,7 +206,7 @@ export default defineCaseStudy({
       '[Content support]',
       '[Performance improvements]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Sentry]', '[e.g. UptimeRobot]', '[e.g. Cloudflare]', '[e.g. Linear]'],
   },
 })

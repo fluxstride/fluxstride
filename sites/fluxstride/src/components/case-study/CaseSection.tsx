@@ -60,7 +60,7 @@ type CaseSectionProps = {
 
 /*
  * Design: the numbered modules in the middle of every case study.
- *   Heading   "03 — Process" in Flux blue, 64px title (34px mobile) with the serif phrase
+ *   Heading   "03: Process" in Flux blue, 64px title (34px mobile) with the serif phrase
  *             on its own line, intro pinned bottom-right
  *   Spacing   160px above (88px mobile); ink and mist bands are full-bleed with 120px padding (64px)
  */
@@ -82,7 +82,7 @@ export function CaseSection({ section, number }: CaseSectionProps) {
     >
       <div className={cn('container-page flex flex-col', contentGap(section))}>
         <SectionHeader
-          eyebrow={`${String(number).padStart(2, '0')} — ${section.label}`}
+          eyebrow={`${String(number).padStart(2, '0')}: ${section.label}`}
           title={
             <>
               {section.title[0]}

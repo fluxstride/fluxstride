@@ -2,8 +2,8 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Brand identity
- * Design: "Case Study Template — Brand identity" in the Pencil file.
- * Example of a finished page: "Case Study — Brand Identity" (Aurora Architects).
+ * Design: "Case Study Template: Brand identity" in the Pencil file.
+ * Example of a finished page: "Case Study: Brand Identity" (Aurora Architects).
  *
  * Copy it with `pnpm new:case-study brand-identity <slug>`.
  * Guide: docs/case-studies.md
@@ -181,7 +181,7 @@ export default defineCaseStudy({
       '[Templates & print]',
       '[Brand guidelines]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Illustrator]', '[e.g. InDesign]', '[e.g. Figma]', '[e.g. Frontify]'],
   },
 })

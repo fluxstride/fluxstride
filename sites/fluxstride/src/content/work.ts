@@ -24,7 +24,7 @@ export type CaseStudy = {
   year: number
   client: string
   industry: string
-  /** Shown after the industry: "Fintech — Backend, Web & frontend" */
+  /** Shown after the industry: "Fintech: Backend, Web & frontend" */
   services: string[]
   /** Every service on the project; the Work page filters match any of them. */
   disciplines: Discipline[]

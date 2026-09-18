@@ -5,7 +5,7 @@ import { gsap, MOTION_OK } from '@fluxstride/design-system/lib/gsap'
 import { useIsomorphicLayoutEffect } from '@fluxstride/design-system/lib/useIsomorphicLayoutEffect'
 
 /*
- * "FIG. 01 — MOMENTUM": concentric Stride-mark rings on a navy glow.
+ * "FIG. 01: MOMENTUM": concentric Stride-mark rings on a navy glow.
  *
  * Design (Hero Visual): 820×380 on desktop, 350×240 on mobile. Everything in it is
  * a fixed proportion of the box on both canvases, so it is built from ratios:
@@ -107,7 +107,7 @@ export function HeroVisual({ className }: { className?: string }) {
         {/* Padding and caption sizes: 18px / 9px / 18px on mobile → 22px / 11px / 22px on desktop */}
         <div className="absolute inset-0 flex flex-col justify-between p-[clamp(1.125rem,1.0321rem+0.381vw,1.375rem)]">
           <div className="flex justify-between font-mono text-[clamp(0.5625rem,0.5161rem+0.1905vw,0.6875rem)] leading-[1.3] text-stone-light uppercase">
-            <p data-caption="">Fig. 01 — Momentum</p>
+            <p data-caption="">Fig. 01: Momentum</p>
             <p data-caption="" className="max-lg:hidden">
               Design / Build / Run
             </p>

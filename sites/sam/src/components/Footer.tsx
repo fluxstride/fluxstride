@@ -45,7 +45,7 @@ export function Footer() {
           <Reveal stagger={0.08} className="flex flex-col gap-2.5 md:max-w-105 lg:gap-3">
             <p className={label}>Also running</p>
             <p className="text-[0.9375rem]/[1.5] lg:text-[1.0625rem]/[1.5]">
-              {STUDIO.name} — the design & engineering studio I founded, for projects that need a full team.
+              {STUDIO.name}, the design & engineering studio I founded, for projects that need a full team.
             </p>
             <a
               href={STUDIO.url}
@@ -105,7 +105,7 @@ export function Footer() {
         <div className={`flex justify-between gap-4 border-t border-line-dark pt-5 lg:pt-6 ${label}`}>
           <p>
             © {new Date().getFullYear()} {PERSON.name}{' '}
-            <span className="max-lg:hidden">— Designed & built by me</span>
+            <span className="max-lg:hidden">. Designed & built by me</span>
           </p>
           <p className="max-lg:hidden">Lagos · Worldwide</p>
           <a href="#top" className="group inline-flex items-center gap-1 transition-colors hover:text-paper">

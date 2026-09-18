@@ -3,7 +3,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Halden Coffee · Web & frontend (e-commerce), Product design
- * Design: "Case Study — E-commerce" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study: E-commerce" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, revenue chart, team credits and quote are invented
  * for the design mockups. Replace them with a real, client-approved project and remove
@@ -80,7 +80,7 @@ export default defineCaseStudy({
     points: [
       '5-page checkout with forced account creation',
       'Subscriptions hidden behind a separate app',
-      'Slow product pages on mobile — 71% of traffic',
+      'Slow product pages on mobile: 71% of traffic',
     ],
   },
 
@@ -166,7 +166,7 @@ export default defineCaseStudy({
         {
           icon: Wallet,
           title: 'Express payments',
-          body: 'Shop Pay, Apple Pay, Google Pay and Klarna — 64% of orders now use one.',
+          body: 'Shop Pay, Apple Pay, Google Pay and Klarna, 64% of orders now use one.',
         },
         {
           icon: Repeat,
@@ -207,7 +207,7 @@ export default defineCaseStudy({
       'Subscription setup',
       'Email automation',
     ],
-    team: ['Priya Raman — Design Lead', 'Leo Park — Engineer', 'Hannah Cole — Client Partner'],
+    team: ['Priya Raman, Design Lead', 'Leo Park, Engineer', 'Hannah Cole, Client Partner'],
     tools: ['Shopify Plus', 'Recharge', 'Klaviyo', 'Shop Pay', 'Hotjar', 'GA4'],
     toolsLabel: 'Stack',
   },

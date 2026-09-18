@@ -73,7 +73,7 @@ export type Feature = { icon: LucideIcon; title: string; body: string }
 export type SectionTone = 'paper' | 'ink' | 'mist'
 
 type SectionBase = {
-  /** Mono label after the section number, e.g. "Process" → "03 — Process" */
+  /** Mono label after the section number, e.g. "Process" → "03: Process" */
   label: string
   title: SplitTitle
   /** Short paragraph beside the heading. */

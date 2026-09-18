@@ -18,7 +18,7 @@ import { tone } from '../tone'
 type Props<T> = { section: T; dark: boolean }
 
 /*
- * Design: Case Study — E-commerce, "04 — Conversion". A legend, then one row per stage
+ * Design: Case Study: E-commerce, "04: Conversion". A legend, then one row per stage
  * under a hairline: 220px name beside two bars (20px, 14px on phones) with their figure,
  * old in grey and new in Flux blue. Phones put the name above the bars.
  * Bars are decorative; the figures carry the numbers.
@@ -196,7 +196,7 @@ function SmallSource({ children, dark }: { children: ReactNode; dark: boolean })
 }
 
 /*
- * Design: "Case Study Section — Share of Voice". One row per competitor under a
+ * Design: "Case Study Section: Share of Voice". One row per competitor under a
  * hairline: 260px name beside two thin bars labelled "2025 · 6%". The highlighted row
  * (the client) is in Flux blue, the others' new bars in grey. Name above the bars on phones.
  */
@@ -256,7 +256,7 @@ function CompareBars({ section, dark }: Props<BarsSection>) {
 }
 
 /*
- * Design: Case Study — E-commerce, "05 — Revenue", on ink. Twelve columns 14px apart (4px on
+ * Design: Case Study: E-commerce, "05: Revenue", on ink. Twelve columns 14px apart (4px on
  * phones) on a 340px baseline (200px): `value` at the bottom, `stack` 2px above it in the
  * lighter blue. Columns before `changeAt` are grey. Month labels 12px below, the legend
  * 56px under the chart (32px, stacked).
@@ -404,7 +404,7 @@ export function Table({ section, dark }: Props<TableSection>) {
 }
 
 /*
- * Design: Case Study — Website, "06 — Performance". Four white cards 20px apart (2×2, 12px
+ * Design: Case Study: Website, "06: Performance". Four white cards 20px apart (2×2, 12px
  * on phones): a 120px ring (88px) with the score, the category under it. Vitals follow as
  * rows: mono code, name, old value, new value and a verdict tag on desktop.
  */
@@ -498,7 +498,7 @@ function Position({
 }
 
 /*
- * Design: "Case Study Section — Content Clusters". Three clusters 24px apart (stacked 40px
+ * Design: "Case Study Section: Content Clusters". Three clusters 24px apart (stacked 40px
  * apart on phones): a white pillar card, then its articles hanging off a Flux line.
  */
 export function Clusters({ section, dark }: Props<ClustersSection>) {
@@ -544,7 +544,7 @@ export function Clusters({ section, dark }: Props<ClustersSection>) {
 }
 
 /*
- * Design: Case Study — Website Rebuild, "04 — Rankings". A table on desktop: mono headings,
+ * Design: Case Study: Website Rebuild, "04: Rankings". A table on desktop: mono headings,
  * 70px rows, the new position in a Flux pill and the change with a trend arrow. On phones
  * each keyword is a row with its searches on the left and "38 → #3" on the right.
  */

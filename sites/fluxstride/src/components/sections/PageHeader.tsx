@@ -5,7 +5,7 @@ import { Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import { cn } from '@fluxstride/design-system/lib/cn'
 
 type PageHeaderProps = {
-  /** e.g. "(Work) 24 projects · 2019 — 2026" */
+  /** e.g. "(Work) 24 projects · 2019 to 2026" */
   eyebrow: ReactNode
   /** The page's h1. Plain text and <Accent> animate word by word. */
   title: ReactNode

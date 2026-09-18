@@ -75,11 +75,11 @@ vite.config.ts                    Strips drafts and templates from production bu
 
 **Designs.** The Pencil file is `Documents/pencil designs/fluxstride.pen`, and PNG exports live in `brand-assets/08-website-mockups/`:
 
-| In Pencil                                                             | Export                                        |
-| --------------------------------------------------------------------- | --------------------------------------------- |
-| _"Case Study Template — ‹Template›"_, desktop 1440 and _(Mobile)_ 390 | `case-study-templates/<template>-desktop.png` |
-| _"Case Study — ‹Name›"_: the finished examples                        | `case-studies/<name>-desktop.png`             |
-| _"Case Study Section — Content Clusters"_ and _"— Share of Voice"_    | `case-studies/section-library-*.png`          |
+| In Pencil                                                            | Export                                        |
+| -------------------------------------------------------------------- | --------------------------------------------- |
+| _"Case Study Template: ‹Template›"_, desktop 1440 and _(Mobile)_ 390 | `case-study-templates/<template>-desktop.png` |
+| _"Case Study: ‹Name›"_: the finished examples                        | `case-studies/<name>-desktop.png`             |
+| _"Case Study Section: Content Clusters"_ and _"Share of Voice"_      | `case-studies/section-library-*.png`          |
 
 The yellow notes in the template frames are the comments in the template files. The **section library** frames hold designed sections that no template uses yet (`clusters` and `bars` with `style: 'compare'`); they're built and ready to drop into any study.
 
@@ -120,15 +120,15 @@ Every template shares the same frame: **hero → results band → challenge → 
 
 | Template            | Usual services          | Sections, in order                                                                                                                                            | Finished example  |
 | ------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| `product-design`    | Product                 | Research `cards` (insights + quotes) + stats · User `flow` · Wireframe vs final `before-after` · Usability `bars` (ink) · Design system `gallery` (8) + stats | —                 |
+| `product-design`    | Product                 | Research `cards` (insights + quotes) + stats · User `flow` · Wireframe vs final `before-after` · Usability `bars` (ink) · Design system `gallery` (8) + stats | -                 |
 | `brand-identity`    | Branding                | The mark `gallery` (2×2) · Colour `palette` · `typography` (ink) · Applications `gallery` (3)                                                                 | Aurora Architects |
 | `website`           | Web & frontend, Product | Redesign `before-after` · Templates `gallery` (6) · Performance `scores` + Core Web Vitals (ink) · Editing `features`                                         | Kinetic Labs      |
 | `e-commerce`        | Web & frontend, Product | Store `screenshot` + features · Conversion funnel `bars` · Revenue `chart` (ink, launch marker) · Checkout `features`                                         | Halden Coffee     |
 | `website-rebuild`   | Web & frontend, Backend | Organic traffic `chart` · `rankings` · The rebuild `checklist` + vitals panel (ink)                                                                           | Atlas Freight     |
 | `mobile-app`        | Mobile apps, Product    | App screens `gallery` (phone, 4) · User journey `steps` (journey) · Store `reviews` (ink) · `features`                                                        | Orbit Health      |
 | `software-platform` | Backend, Web & frontend | Process `steps` (phases) · Product `screenshot` + features · Architecture `cards` (ink) + reliability stats                                                   | Northwind         |
-| `technical-audit`   | Cloud & DevOps, Backend | Audit scorecard `table` (ratings, risk tags) · Options `cards` (recommended highlight, pros/cons) · `roadmap` (ink) · Deliverables `gallery`                  | —                 |
-| `care-plan`         | Cloud & DevOps          | What's included `checklist` + SLA stats · Uptime `chart` (ink) · Monthly report `screenshot` (portrait) + sections · Support log `table`                      | —                 |
+| `technical-audit`   | Cloud & DevOps, Backend | Audit scorecard `table` (ratings, risk tags) · Options `cards` (recommended highlight, pros/cons) · `roadmap` (ink) · Deliverables `gallery`                  | -                 |
+| `care-plan`         | Cloud & DevOps          | What's included `checklist` + SLA stats · Uptime `chart` (ink) · Monthly report `screenshot` (portrait) + sections · Support log `table`                      | -                 |
 
 The finished examples went further than their templates, and show what's possible: Northwind uses `steps` cards and an `architecture` diagram, Kinetic Labs a `design-system` band, Orbit Health a numbered `flow` and a phone `gallery` panel, Aurora `screenshot` deliverables.
 
@@ -179,7 +179,7 @@ export default defineCaseStudy({
   sections: [/* see the section reference; numbered from 03 automatically */],
 
   quote: { text: '…', name: '…', role: '…', initials: 'JM' }, // optional
-  credits: { services: ['…'], team: ['Name — Role'], tools: ['…'], toolsLabel: 'Stack' },
+  credits: { services: ['…'], team: ['Name: Role'], tools: ['…'], toolsLabel: 'Stack' },
   next: 'halden-coffee', //                  optional; defaults to the next published study
 })
 ```
@@ -203,7 +203,7 @@ Every section also accepts:
 | Field   | Required | What it does                                                                                                                                              |
 | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `kind`  | yes      | Which layout to use (below).                                                                                                                              |
-| `label` | yes      | Mono eyebrow after the number: `label: 'Process'` → "03 — Process".                                                                                       |
+| `label` | yes      | Mono eyebrow after the number: `label: 'Process'` → "03: Process".                                                                                        |
 | `title` | yes      | `SplitTitle`.                                                                                                                                             |
 | `intro` | no       | Short paragraph beside the heading. One or two sentences.                                                                                                 |
 | `tone`  | no       | `'ink'` for a dark full-bleed band, `'mist'` for a pale blue-grey band padded like ink. Default `'paper'`. Never put two ink sections next to each other. |
@@ -356,7 +356,7 @@ Real store reviews only.
 `value` sets the **bar length**, from 0 to 100; bars are drawn relative to the largest value in the section, so you can use the real percentages. `display` is the number shown next to it.
 
 - `funnel`: a legend, then thick paired bars beside each stage (Halden Coffee's conversion).
-- `compare`: thin paired bars labelled "2025 · 6%", no legend. The `highlight: true` row is the client in Flux blue, the rest grey. Designed as share of voice: see the section library frame _"Case Study Section — Share of Voice"_.
+- `compare`: thin paired bars labelled "2025 · 6%", no legend. The `highlight: true` row is the client in Flux blue, the rest grey. Designed as share of voice: see the section library frame _"Case Study Section: Share of Voice"_.
 
 ### `chart`: columns over time
 
@@ -446,7 +446,7 @@ The first horizon is highlighted.
 { kind: 'clusters', clusters: [{ pillar: 'Freight forwarding', rank: '#1', visits: '8,200', articles: [{ title: '…', rank: '#3', visits: '1,100' }] }] }
 ```
 
-A pillar page with its supporting articles, three across (stacked on phones). Design: the section library frame _"Case Study Section — Content Clusters"_.
+A pillar page with its supporting articles, three across (stacked on phones). Design: the section library frame _"Case Study Section: Content Clusters"_.
 
 ### `palette`: brand colours
 
@@ -538,7 +538,7 @@ These come from the notes in the Pencil templates.
 - **Challenge and approach:** 60–90 words each, written for a non-technical buyer. Quote the client where you can. Three bullets max.
 - **Section intros:** one or two sentences. The heading makes the point and the intro gives context.
 - **Quote:** one or two sentences about the outcome, not about how nice we were to work with. Approved in writing.
-- **Credits:** services actually delivered, the core team (`'Name — Role'`) and up to six tools.
+- **Credits:** services actually delivered, the core team (`'Name: Role'`) and up to six tools.
 - **SEO:** a title of about 50–60 characters that leads with the client and the result; a description of about 140–160 characters that leads with the result.
 - **Confidentiality:** agree with the client what can be named. Blur anything sensitive in screenshots. Audit and care plan work often needs an anonymised client ("A UK logistics group").
 - **Placeholder convention:** anything in `[square brackets]` is unfinished. Don't use square brackets in real copy.

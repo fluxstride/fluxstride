@@ -3,8 +3,8 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Mobile app
- * Design: "Case Study Template — Mobile app" in the Pencil file.
- * Example of a finished page: "Case Study — Mobile App" (Orbit Health).
+ * Design: "Case Study Template: Mobile app" in the Pencil file.
+ * Example of a finished page: "Case Study: Mobile App" (Orbit Health).
  *
  * Copy it with `pnpm new:case-study mobile-app <slug>`.
  * Guide: docs/case-studies.md
@@ -145,7 +145,7 @@ export default defineCaseStudy({
       '[Backend & API]',
       '[App store launch]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. React Native]', '[e.g. Expo]', '[e.g. Firebase]', '[e.g. Figma]'],
   },
 })

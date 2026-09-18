@@ -25,7 +25,7 @@ type CaseCardProps = {
 }
 
 /*
- * Design: "Case — <client>" on Home / Selected Work and the Work page.
+ * Design: "Case: <client>" on Home / Selected Work and the Work page.
  *   image  20px padding, paper metric badge bottom-left (metric 18/600 → 16 on mobile,
  *          label mono 11 stone, 10×14 padding, 10px gap)
  *   meta   hairline, 16px above; client 24/500 → 20 and mono 12 services; side by side
@@ -81,7 +81,7 @@ export function CaseCard({
           {study.client}
         </h3>
         <p className={cn('font-mono text-label uppercase', dark ? 'text-stone-light' : 'text-stone')}>
-          {study.industry} — {study.services.join(', ')}
+          {study.industry}: {study.services.join(', ')}
         </p>
       </div>
     </>

@@ -7,7 +7,7 @@ import { PageHeader } from '@/components/sections/PageHeader'
 import { Accent } from '@fluxstride/design-system/ui/Typography'
 
 /*
- * Design: Fluxstride — Process (desktop 1440, mobile 390).
+ * Design: Fluxstride Process (desktop 1440, mobile 390).
  *
  *   Page Header        "The Stride Method." (100px; the serif phrase leads at 112px)
  *   Principles Strip   four working principles

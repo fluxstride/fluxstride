@@ -18,7 +18,7 @@ import { Accent, Eyebrow } from './ui'
 type Status = 'idle' | 'sending' | 'sent' | 'mail-client' | 'error'
 
 const statusMessage: Record<Exclude<Status, 'idle' | 'sending'>, string> = {
-  sent: 'Thanks — your message is in. I will reply within a day.',
+  sent: 'Thanks, your message is in. I will reply within a day.',
   'mail-client': 'Your email app should have opened with the message ready to send.',
   error: `That didn't send. Please email me at ${PERSON.email} instead.`,
 }

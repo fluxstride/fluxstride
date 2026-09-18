@@ -11,7 +11,7 @@ import { serviceHref, services, type Service } from '@/content/services'
 import { pad } from '@/lib/format'
 
 /*
- * Design: Fluxstride — Services (desktop 1440, mobile 390).
+ * Design: Fluxstride Services (desktop 1440, mobile 390).
  *
  *   Page Header      "What we do." (64px below; 40px on mobile)
  *   Jump To          3×2 index of anchor links on hairlines, 96px (56px) above the details

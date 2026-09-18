@@ -4,7 +4,7 @@ import { LegalToc, LegalTocMobile } from '@/components/legal/LegalToc'
 import { sharedSections, type Role } from '@/content/careers'
 
 /*
- * Design: Fluxstride — Careers · Job Description (desktop 1440, mobile 390). One layout for
+ * Design: Fluxstride Careers · Job Description (desktop 1440, mobile 390). One layout for
  * every role; the wording lives in content/careers.ts.
  *
  *   Header        breadcrumbs, title, intro and Apply beside the role's facts

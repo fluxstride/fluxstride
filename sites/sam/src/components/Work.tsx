@@ -102,7 +102,7 @@ function IndexRow({ project, index, delay }: { project: Project; index: number; 
         <span className="font-mono text-label text-flux-light max-lg:hidden">{number(index)}</span>
         <span className="flex min-w-0 flex-1 flex-col gap-1.5">
           <span className="font-mono text-[0.625rem] text-stone-light uppercase lg:hidden">
-            {number(index)} — {project.tags}
+            {number(index)}: {project.tags}
           </span>
           <span className="text-sam-index text-paper transition-transform duration-500 ease-out-expo lg:group-hover:translate-x-3">
             {project.name}
@@ -142,7 +142,7 @@ export function Work() {
           <div className="flex flex-col gap-4 lg:gap-6">
             <Reveal>
               <Eyebrow className="text-stone-light">
-                (01) Selected work — {PROJECTS.length} live products
+                (01) Selected work: {PROJECTS.length} live products
               </Eyebrow>
             </Reveal>
             <SectionTitle id="work-title" plain="Things I've" accent="shipped." />

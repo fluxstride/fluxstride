@@ -2,7 +2,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Atlas Freight · Web & frontend, Backend
- * Design: "Case Study — Website Rebuild" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study: Website Rebuild" (desktop) and "(Mobile)" in the Pencil file.
  *
  * A website rebuild told through its search results: the new server-rendered site is what
  * moved the traffic and rankings.
@@ -66,7 +66,7 @@ export default defineCaseStudy({
   results: {
     timeframe: '12 months',
     summary:
-      "Organic search became Atlas Freight's biggest source of qualified leads — overtaking paid search in month seven.",
+      "Organic search became Atlas Freight's biggest source of qualified leads, overtaking paid search in month seven.",
     stats: [
       { value: '+291%', label: 'organic sessions per month', detail: 'May 2025 → Apr 2026' },
       { value: '148', label: 'commercial keywords on page one', detail: 'Was 11' },
@@ -79,7 +79,7 @@ export default defineCaseStudy({
     title: 'Great service, invisible online.',
     paragraphs: [
       'Atlas Freight wins almost every customer it speaks to. The problem was getting found: its site was a JavaScript app Google struggled to index, and its best pages competed with thousands of near-duplicate quote URLs.',
-      'Paid search was covering the gap — at £84 per lead and rising.',
+      'Paid search was covering the gap: at £84 per lead and rising.',
     ],
     points: [
       'Only 11 commercial keywords on page one',
@@ -162,7 +162,7 @@ export default defineCaseStudy({
         },
         {
           title: 'Rebuilt the information architecture',
-          body: 'Services, routes and industries — any page within three clicks.',
+          body: 'Services, routes and industries, any page within three clicks.',
           tag: 'High',
         },
         {
@@ -216,11 +216,7 @@ export default defineCaseStudy({
       'Backend & page generation',
       'Analytics & reporting',
     ],
-    team: [
-      'Daniel Mensah — Engineering Lead',
-      'Leo Park — Frontend Engineer',
-      'Hannah Cole — Client Partner',
-    ],
+    team: ['Daniel Mensah, Engineering Lead', 'Leo Park, Frontend Engineer', 'Hannah Cole, Client Partner'],
     tools: ['Next.js', 'Node', 'PostgreSQL', 'Vercel', 'Search Console', 'Screaming Frog'],
     toolsLabel: 'Stack',
   },

@@ -38,7 +38,7 @@ export function Tag({
 /** Figures in a row under a hairline. Closes a section when it has `stats`. */
 /*
  * Figures in a row, each under a heavy rule: 40px value (28px on phones) over a short label.
- * Design: "Case Study Section — Content Clusters". Three stay in a row on phones.
+ * Design: "Case Study Section: Content Clusters". Three stay in a row on phones.
  */
 export function StatRow({ stats, dark }: { stats: Stat[]; dark: boolean }) {
   const t = tone(dark)
@@ -69,9 +69,9 @@ export function StatRow({ stats, dark }: { stats: Stat[]; dark: boolean }) {
 
 /*
  * Features with an icon, three to a row on desktop.
- *   ruled  Orbit Health "06 — Built in": 20px under a hairline, 40px apart; two columns on mobile
- *   plain  Northwind "04 — The product": no rule, under a screenshot; one column on mobile
- *   cards  Halden "06 — Checkout": white cards, icon in a 44px square tinted in the client's colours
+ *   ruled  Orbit Health "06: Built in": 20px under a hairline, 40px apart; two columns on mobile
+ *   plain  Northwind "04: The product": no rule, under a screenshot; one column on mobile
+ *   cards  Halden "06: Checkout": white cards, icon in a 44px square tinted in the client's colours
  */
 export function FeatureGrid({
   features,

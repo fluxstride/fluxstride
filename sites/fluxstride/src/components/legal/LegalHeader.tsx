@@ -22,7 +22,7 @@ export function LegalHeader({ doc }: { doc: LegalDocument }) {
       <div className="flex flex-col gap-5 lg:gap-6">
         <Reveal on="mount">
           <Eyebrow className="max-lg:text-label-sm">
-            (Legal) Last updated — <time dateTime={doc.updated}>{formatLegalDate(doc.updated)}</time>
+            (Legal) Last updated: <time dateTime={doc.updated}>{formatLegalDate(doc.updated)}</time>
           </Eyebrow>
         </Reveal>
         {/* Mobile stacks the two words 4px apart; the looser leading makes that gap. */}

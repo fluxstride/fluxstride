@@ -30,7 +30,7 @@ Everything on `/services/web-design-frontend` is one entry in `services`:
 | `included`                                                         | "What's included" (titles only on `/services`)              |
 | `process`                                                          | "How it works": four phases, each with three things you get |
 | `faqs`                                                             | "Good to know", and the page's FAQ structured data          |
-| `group`                                                            | The eyebrow — Design, Build or Run                          |
+| `group`                                                            | The eyebrow: Design, Build or Run                           |
 
 `faqs` answers accept inline links: `'… a care plan from our [Cloud & DevOps](/services/cloud-devops) team.'`
 
@@ -52,8 +52,8 @@ A service page publishes `BreadcrumbList`, `Service` (provided by the organisati
 
 ```
 careersPage   The /careers numbers, the "How we work" culture items and the hiring intro
-benefits      The "What we offer" cards — on /careers and inside every role page
-hiring        The four hiring steps and the note under them — same, in both places
+benefits      The "What we offer" cards, on /careers and inside every role page
+hiring        The four hiring steps and the note under them, same, in both places
 roles         One entry per open role; each becomes /careers/<slug>
 ```
 
@@ -76,7 +76,7 @@ Delete the entry. Nothing else references it. If the URL was advertised, conside
 
 ### `sample: true`
 
-Sample roles are invented content from the design. They render normally but get **no JobPosting structured data** — advertising jobs that don't exist breaks Google's policy — and every build prints a warning listing them.
+Sample roles are invented content from the design. They render normally but get **no JobPosting structured data**, advertising jobs that don't exist breaks Google's policy, and every build prints a warning listing them.
 
 ---
 

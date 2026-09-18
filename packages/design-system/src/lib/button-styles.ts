@@ -5,7 +5,7 @@ import { cn } from './cn'
  *
  *   variant   size  used for                               spec
  *   primary   md    "Start a project" (hero)               flux, 16/600, 18×24 pad, 18px arrow
- *   primary   lg    "Send brief — reply in 24h"            flux, 18/600, 22×30 pad, 20px arrow
+ *   primary   lg    "Send brief: reply in 24h"            flux, 18/600, 22×30 pad, 20px arrow
  *   outline   md    "See our work"                         1px ink border, 16/500, 18×20 pad
  *   ink       sm    nav "Start a project"                  ink, 14/500, 12×18 pad, 16px flux arrow
  *   any       dialog  cookie banner and Cookie settings     15/600, 13×20 pad, no icon

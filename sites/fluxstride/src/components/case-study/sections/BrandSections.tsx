@@ -26,7 +26,7 @@ function readableOn(hex: string) {
 }
 
 /*
- * Design: Case Study — Brand Identity, "04 — Colour". Five 420px swatches edge to edge, the
+ * Design: Case Study: Brand Identity, "04: Colour". Five 420px swatches edge to edge, the
  * name at the top (24px) and the values at the bottom; stacked 8px apart on phones, 115px
  * tall with the values straight under the name.
  */
@@ -69,7 +69,7 @@ const FONT_WEIGHTS: Record<string, number> = {
 }
 
 /*
- * Design: Case Study — Brand Identity, "05 — Typography", on ink. Two outlined cards 16px
+ * Design: Case Study: Brand Identity, "05: Typography", on ink. Two outlined cards 16px
  * apart (stacked on phones), aligned to the top: mono label, 180px "Aa" (96px), a sample line
  * (serif 40px / sans 24px; 26px / 18px on phones), then the alphabet or the weights.
  */
@@ -131,7 +131,7 @@ export function Typography({ section, dark }: Props<TypographySection>) {
 }
 
 /*
- * Design: Case Study — Website, "05 — Design system", on a mist band. A palette card (five
+ * Design: Case Study: Website, "05: Design system", on a mist band. A palette card (five
  * swatches 220px tall, 120px on phones) beside a 440px type card, 16px apart and stacked on
  * phones; the sample components 56px below (32px), buttons only on phones.
  */

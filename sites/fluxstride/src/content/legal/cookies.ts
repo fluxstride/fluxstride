@@ -3,12 +3,12 @@ import { EMAIL_PRIVACY, mailto } from '@/content/site'
 import { defineLegalDocument } from './schema'
 
 /*
- * Cookie policy. Wording from the design (Fluxstride — Cookie Policy).
+ * Cookie policy. Wording from the design (Fluxstride: Cookie Policy).
  *
  * The categories in "How we use them" come from content/consent.ts, the same list the
  * cookie banner and Cookie settings use, and their toggles change the visitor's consent.
  *
- * PLACEHOLDERS — the "Cookies we set" table follows the design. Before launch, check it
+ * PLACEHOLDERS: the "Cookies we set" table follows the design. Before launch, check it
  * against what the live site really sets (dev tools → Application → Cookies), keep it in
  * step with content/consent.ts, and have the policy reviewed.
  */
@@ -23,7 +23,7 @@ export default defineLegalDocument({
   effective: '2026-09-16',
   version: '2.1',
   summary: [
-    "Essential cookies keep the site working and secure — they're always on.",
+    "Essential cookies keep the site working and secure. They're always on.",
     'Analytics and marketing cookies only load after you accept them.',
     'We use privacy-friendly analytics and never sell data to advertisers.',
     'Change your mind any time from the "Cookie settings" link in the footer.',
@@ -40,7 +40,7 @@ export default defineLegalDocument({
       blocks: [
         {
           type: 'paragraph',
-          text: 'Cookies are small text files stored on your device when you visit a website. They help the site remember things like your preferences, and help us understand how the site is used. We also use similar technologies such as local storage and pixels — this policy covers those too.',
+          text: 'Cookies are small text files stored on your device when you visit a website. They help the site remember things like your preferences, and help us understand how the site is used. We also use similar technologies such as local storage and pixels. This policy covers those too.',
         },
       ],
     },
@@ -95,10 +95,10 @@ export default defineLegalDocument({
         {
           type: 'list',
           items: [
-            'Chrome — Settings › Privacy and security › Third-party cookies',
-            'Safari — Settings › Privacy › Prevent cross-site tracking',
-            'Firefox — Settings › Privacy & Security › Enhanced Tracking Protection',
-            'Edge — Settings › Cookies and site permissions',
+            'Chrome: Settings › Privacy and security › Third-party cookies',
+            'Safari: Settings › Privacy › Prevent cross-site tracking',
+            'Firefox: Settings › Privacy & Security › Enhanced Tracking Protection',
+            'Edge: Settings › Cookies and site permissions',
           ],
         },
       ],

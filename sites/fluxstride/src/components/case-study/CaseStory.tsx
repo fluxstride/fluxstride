@@ -5,7 +5,7 @@ import type { CaseStudy, StoryBlock } from '@/content/case-studies/schema'
 import { cn } from '@fluxstride/design-system/lib/cn'
 
 /*
- * Design: Case Study — Results band.
+ * Design: Case Study: Results band.
  *   Ink, 112px padding (56px). Label left, 32px summary right (22px, below, on mobile).
  *   Four stats: 72px values (40px) split by vertical hairlines; a 2×2 grid on mobile.
  */
@@ -48,7 +48,7 @@ export function ResultsBand({ results }: { results: CaseStudy['results'] }) {
 }
 
 /*
- * Design: Case Study — Story.
+ * Design: Case Study: Story.
  *   01 The challenge / 02 Our approach. Desktop: 460px label column (eyebrow + 40px
  *   heading) beside 20px body copy, each block under a hairline. Mobile: stacked, 26px heading.
  */
@@ -68,7 +68,7 @@ export function CaseStory({ challenge, approach }: Pick<CaseStudy, 'challenge' |
         >
           <div className="flex flex-col gap-4">
             <Eyebrow className="text-flux max-lg:text-label-sm">
-              {number} — {label}
+              {number}: {label}
             </Eyebrow>
             <h2
               id={`story-${number}`}

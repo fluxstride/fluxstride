@@ -23,7 +23,7 @@ export function TeamSection() {
         title="People you’ll work with."
         titleClassName="max-lg:text-[2.25rem]"
         titleGroupClassName="gap-5"
-        intro="No account managers in the middle — just the specialists building your product."
+        intro="No account managers in the middle, just the specialists building your product."
         introClassName="lg:w-85"
       />
       <Reveal

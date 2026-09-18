@@ -28,7 +28,7 @@ export function Maintenance() {
           <Accent>a moment.</Accent>
         </>
       }
-      intro={`We're making a few improvements. The site will be back shortly — for anything urgent, email ${EMAIL_NEW_BUSINESS}.`}
+      intro={`We're making a few improvements. The site will be back shortly, for anything urgent, email ${EMAIL_NEW_BUSINESS}.`}
       actions={
         <ButtonLink to={mailto(EMAIL_NEW_BUSINESS, 'Urgent: during maintenance')} className="px-5.5 py-4">
           Email us

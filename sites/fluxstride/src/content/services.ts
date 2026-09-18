@@ -263,7 +263,7 @@ export const services: Service[] = [
     summary:
       'Fast, striking websites, online stores and web app frontends built to turn visitors into customers.',
     description:
-      'Websites, online stores and web app frontends that turn visitors into customers — fast, accessible, found on Google, and easy for your team to edit.',
+      'Websites, online stores and web app frontends that turn visitors into customers: fast, accessible, found on Google, and easy for your team to edit.',
     headline: ['Websites that', 'win customers.'],
     tags: ['Next.js', 'React', 'Shopify'],
     tools: ['Next.js', 'React', 'Sanity', 'Shopify'],
@@ -348,7 +348,7 @@ export const services: Service[] = [
     icon: Smartphone,
     need: 'mobile',
     summary:
-      'Native and cross-platform apps with seamless experiences people return to — from MVP to App Store.',
+      'Native and cross-platform apps with seamless experiences people return to, from MVP to App Store.',
     description:
       'Native and cross-platform apps with seamless experiences people return to, from first MVP to App Store launch and beyond.',
     headline: ['Apps people', 'come back to.'],
@@ -435,9 +435,9 @@ export const services: Service[] = [
     icon: Server,
     need: 'backend',
     summary:
-      'APIs, platforms and integrations engineered to scale — clean architecture, tested and documented.',
+      'APIs, platforms and integrations engineered to scale: clean architecture, tested and documented.',
     description:
-      'The engine behind your product: APIs, databases, integrations and internal tools engineered to scale — tested, documented and handed over properly.',
+      'The engine behind your product: APIs, databases, integrations and internal tools engineered to scale: tested, documented and handed over properly.',
     headline: ['Systems built', 'to scale.'],
     tags: ['APIs', 'Databases', 'Integrations'],
     tools: ['TypeScript', 'Node', 'Python', 'PostgreSQL'],

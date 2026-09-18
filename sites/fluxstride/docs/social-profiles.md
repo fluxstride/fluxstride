@@ -1,6 +1,6 @@
 # Social profile kit
 
-Everything that goes on a Fluxstride profile: names, handles, bios at every length, links, categories, contact details, images and what to pin. Copy from here rather than writing fresh — the same words in the same order across platforms is what makes the studio look like one company.
+Everything that goes on a Fluxstride profile: names, handles, bios at every length, links, categories, contact details, images and what to pin. Copy from here rather than writing fresh: the same words in the same order across platforms is what makes the studio look like one company.
 
 **Fill in the `[bracketed]` items before publishing a profile.** They are facts nobody has confirmed yet.
 
@@ -20,7 +20,7 @@ Everything that goes on a Fluxstride profile: names, handles, bios at every leng
 | ----------------- | ----------------------------------------------------------------------------------------- |
 | Display name      | Fluxstride                                                                                |
 | Legal name        | Fluxstride Ltd                                                                            |
-| Handle (all)      | `@fluxstride` — claim it everywhere, even where you won't post                            |
+| Handle (all)      | `@fluxstride`, claim it everywhere, even where you won't post                             |
 | Website           | `https://fluxstride.com` **[confirm the domain]**                                         |
 | Tagline           | We build digital products that keep moving.                                               |
 | Category          | Design & engineering studio (software development / design agency, depending on the menu) |
@@ -30,7 +30,7 @@ Everything that goes on a Fluxstride profile: names, handles, bios at every leng
 | New business      | hello@fluxstride.com                                                                      |
 | Careers           | jobs@fluxstride.com                                                                       |
 | Hours             | Mon–Fri · 9:00–18:00 GMT                                                                  |
-| Phone             | [add or leave out — don't publish a number nobody answers]                                |
+| Phone             | [add or leave out, don't publish a number nobody answers]                                 |
 | Availability line | Booking Q4 projects (update each quarter; same words as the site header)                  |
 
 **The six services, in order.** Use these names, in this order, wherever a profile asks for services or specialties:
@@ -46,7 +46,7 @@ Product design (UI/UX) · Graphic design & branding · Website design & frontend
 5. Careers → /careers
 6. The Stride newsletter → /insights
 
-**Calls to action.** Pick one per profile and keep it — mixing them reads as indecision.
+**Calls to action.** Pick one per profile and keep it, mixing them reads as indecision.
 
 - Start a project → fluxstride.com/contact
 - See the work → fluxstride.com/work
@@ -59,17 +59,17 @@ Product design (UI/UX) · Graphic design & branding · Website design & frontend
 
 Each is written to fit its limit with room for an emoji or a line break. Counts are characters including spaces.
 
-**Ultra short (≤60) — display names, TikTok, Dribbble, directory rows**
+**Ultra short (≤60): display names, TikTok, Dribbble, directory rows**
 
 > Design & engineering studio. Products that keep moving. (55)
 
-**Short (≤100) — Pinterest, Threads, GitHub org tagline**
+**Short (≤100): Pinterest, Threads, GitHub org tagline**
 
 > A senior design & engineering studio. Websites, apps and platforms that keep moving. (84)
 
 **LinkedIn tagline (≤120)**
 
-> Design & engineering studio — product design, websites, apps, backend and cloud, from one senior team. (102)
+> Design & engineering studio: product design, websites, apps, backend and cloud, from one senior team. (102)
 
 **Instagram (≤150, line breaks count)**
 
@@ -80,7 +80,7 @@ Senior team, fixed scope, weekly demos
 ↓ Start a project
 ```
 
-(121 with the line breaks — room for an emoji or a line about availability.)
+(121 with the line breaks, room for an emoji or a line about availability.)
 
 **X / Threads / Bluesky (≤160)**
 
@@ -96,12 +96,12 @@ Senior team, fixed scope, weekly demos
 >
 > Six services, one senior team:
 >
-> • Product design (UI/UX) — research, prototypes and design systems
-> • Graphic design & branding — identities, guidelines and collateral
-> • Website design & frontend development — sites, stores and web apps
-> • Mobile development — iOS, Android and cross-platform apps
-> • Backend development — APIs, platforms and integrations
-> • Cloud & DevOps — infrastructure, releases and care plans
+> • Product design (UI/UX): research, prototypes and design systems
+> • Graphic design & branding: identities, guidelines and collateral
+> • Website design & frontend development: sites, stores and web apps
+> • Mobile development: iOS, Android and cross-platform apps
+> • Backend development: APIs, platforms and integrations
+> • Cloud & DevOps: infrastructure, releases and care plans
 >
 > How we work: a fixed scope after discovery, weekly demos you can click, and the people who pitch are the people who build. You own the code, the designs and the accounts from day one.
 >
@@ -120,7 +120,7 @@ Trim the middle for shorter fields; keep the first line and the last two.
 
 Every row is a field the platform asks for. Where it says "as above", use the block from the sections above unchanged.
 
-### LinkedIn — company page (the important one for B2B)
+### LinkedIn: company page (the important one for B2B)
 
 | Field         | What to put                                                                                                  |
 | ------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -142,17 +142,17 @@ Every row is a field the platform asks for. Where it says "as above", use the bl
 
 ### Instagram
 
-| Field         | What to put                                                                                                           |
-| ------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Username      | fluxstride                                                                                                            |
-| Name (30)     | Fluxstride — Design & Build (27) — the name field is searchable, so it carries keywords                               |
-| Category      | Web Designer, or Advertising/Marketing if that isn't offered                                                          |
-| Bio           | Instagram bio, as above                                                                                               |
-| Link          | The link menu (link-in-bio page), or /contact if you don't run one                                                    |
-| Contact       | Email hello@fluxstride.com · business address optional                                                                |
-| Action button | Book now → [booking link], only once booking is live                                                                  |
-| Highlights    | Work · Services · Process · Reviews · Team · Careers · Tips · Contact — covers in `04-social/profile-and-highlights/` |
-| Pinned posts  | Best case result, most-saved tip, and the studio introduction                                                         |
+| Field         | What to put                                                                                                          |
+| ------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Username      | fluxstride                                                                                                           |
+| Name (30)     | Fluxstride, Design & Build (27), the name field is searchable, so it carries keywords                                |
+| Category      | Web Designer, or Advertising/Marketing if that isn't offered                                                         |
+| Bio           | Instagram bio, as above                                                                                              |
+| Link          | The link menu (link-in-bio page), or /contact if you don't run one                                                   |
+| Contact       | Email hello@fluxstride.com · business address optional                                                               |
+| Action button | Book now → [booking link], only once booking is live                                                                 |
+| Highlights    | Work · Services · Process · Reviews · Team · Careers · Tips · Contact: covers in `04-social/profile-and-highlights/` |
+| Pinned posts  | Best case result, most-saved tip, and the studio introduction                                                        |
 
 ### X (Twitter)
 
@@ -167,7 +167,7 @@ Every row is a field the platform asks for. Where it says "as above", use the bl
 
 ### Threads / Bluesky / Mastodon
 
-Same handle, same bio as X. Threads pulls from Instagram — edit it there once Threads is linked.
+Same handle, same bio as X. Threads pulls from Instagram, edit it there once Threads is linked.
 
 ### Facebook page
 
@@ -221,7 +221,7 @@ Same handle, same bio as X. Threads pulls from Instagram — edit it there once 
 | ------------ | ---------------------------------------------------------------- |
 | Name         | Fluxstride                                                       |
 | Category     | Website designer (secondary: Software company, Graphic designer) |
-| Description  | Long about (750 max), no links — Google strips them              |
+| Description  | Long about (750 max), no links, Google strips them               |
 | Address      | [registered address, or hide it and set a service area]          |
 | Service area | United Kingdom + Europe                                          |
 | Hours        | Mon–Fri 9:00–18:00                                               |
@@ -230,7 +230,7 @@ Same handle, same bio as X. Threads pulls from Instagram — edit it there once 
 
 ### Directories (Clutch, DesignRush, The Manifest…)
 
-Long about, the six services with a rough percentage split of your work, minimum project size **[confirm — the site says from £3k]**, team size 14, founded 2019, and links to three case studies. Only claim reviews and ratings you actually have.
+Long about, the six services with a rough percentage split of your work, minimum project size **[confirm, the site says from £3k]**, team size 14, founded 2019, and links to three case studies. Only claim reviews and ratings you actually have.
 
 ---
 
@@ -252,7 +252,7 @@ All in `brand-assets/04-social/`:
 **Dark or light?** Use the dark set everywhere. Neither link previews nor profile banners can follow the
 viewer's colour scheme: a preview image is scraped once and cached by the platform, and every platform
 takes a single banner upload. One image has to work on a white feed and inside a dark-mode app, and the
-ink cards do both — they stand out against light feeds and sit naturally on dark profiles. The light
+ink cards do both: they stand out against light feeds and sit naturally on dark profiles. The light
 variants are for surfaces you don't control: a partner's press page, print, a slide on white.
 
 When you upload a banner, remember the avatar overlaps the lower-left corner on LinkedIn and X, and
@@ -266,7 +266,7 @@ Use the same avatar everywhere so the studio is recognisable in a crowded feed. 
 
 Ask the team to keep three things consistent; the rest is theirs.
 
-- **Headline:** `<Role> at Fluxstride — <what they do in six words>`, e.g. "Senior Engineer at Fluxstride — web platforms that scale".
+- **Headline:** `<Role> at Fluxstride: <what they do in six words>`, e.g. "Senior Engineer at Fluxstride: web platforms that scale".
 - **About, first line:** "I'm part of Fluxstride, a design and engineering studio building digital products that keep moving."
 - **Banner:** `banners/linkedin-personal-banner-*`.
 
@@ -276,13 +276,13 @@ People post more than pages do, so their posts are where the studio is actually 
 
 ## Keeping it current
 
-| When                   | What to change                                                                 |
-| ---------------------- | ------------------------------------------------------------------------------ |
-| Every quarter          | The availability line, and the pinned post                                     |
-| A new case study       | LinkedIn Featured, Instagram pinned, X pinned thread                           |
-| A role opens or closes | The hiring line, and the Careers highlight                                     |
-| Services change        | Every specialties/services list — they all come from `src/content/services.ts` |
-| The tagline changes    | Every bio in this file, then every profile                                     |
+| When                   | What to change                                                                |
+| ---------------------- | ----------------------------------------------------------------------------- |
+| Every quarter          | The availability line, and the pinned post                                    |
+| A new case study       | LinkedIn Featured, Instagram pinned, X pinned thread                          |
+| A role opens or closes | The hiring line, and the Careers highlight                                    |
+| Services change        | Every specialties/services list: they all come from `src/content/services.ts` |
+| The tagline changes    | Every bio in this file, then every profile                                    |
 
 The site is the source of truth. If a bio and the site disagree, the site is right and the bio is stale.
 
@@ -299,5 +299,5 @@ Per platform:
 - [ ] Contact email set to hello@fluxstride.com (careers profiles: jobs@)
 - [ ] Category, location and founded year filled in
 - [ ] One CTA, matching the button
-- [ ] Something pinned or featured — never an empty profile
+- [ ] Something pinned or featured, never an empty profile
 - [ ] Logged in the studio's password manager, with two-factor on

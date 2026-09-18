@@ -1,6 +1,6 @@
 /* global document, window -- code inside page.evaluate() runs in the browser */
 // Full-page screenshots at the two design widths, for comparing against the Pencil frames
-// "Samuel Adekoya — Home (Desktop/Mobile)".
+// "Samuel Adekoya: Home (Desktop/Mobile)".
 //
 //   pnpm dev                          (in another terminal)
 //   pnpm shots                        home page

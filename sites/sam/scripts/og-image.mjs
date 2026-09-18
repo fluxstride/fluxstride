@@ -1,4 +1,4 @@
-// Converts the Pencil export of "Samuel Adekoya — OG Image (1200×630)" into public/og.jpg.
+// Converts the Pencil export of "Samuel Adekoya: OG Image (1200×630)" into public/og.jpg.
 //
 //   1. In Pencil, export the frame as PNG at 2x.
 //   2. pnpm og-image <path-to-export.png>

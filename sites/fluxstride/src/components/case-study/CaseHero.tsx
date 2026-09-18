@@ -9,7 +9,7 @@ import { MediaView } from './MediaView'
 type CaseHeroProps = { study: CaseStudy; serviceNames: string[] }
 
 /*
- * Design: Case Study — Hero.
+ * Design: Case Study: Hero.
  *   Breadcrumbs  "← All work" left, "Work / Industry / Client" right; 32px from the nav (20px)
  *   Hero         eyebrow, 112px title with the serif phrase on its own line (48px mobile),
  *                520px intro beside a 3×2 grid of facts (2 columns on mobile)

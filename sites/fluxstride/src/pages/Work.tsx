@@ -29,7 +29,7 @@ function select<T extends { year: number; disciplines: readonly string[] }>(
 }
 
 /*
- * Design: Fluxstride — Work (desktop 1440, mobile 390).
+ * Design: Fluxstride Work (desktop 1440, mobile 390).
  *
  *   Page Header   "Selected work." with the intro on the right
  *   Filters       discipline chips + sort, 48px (32px mobile) above the cases
@@ -48,14 +48,14 @@ export function Work() {
   return (
     <>
       <PageHeader
-        eyebrow={`(Work) ${PROJECT_COUNT} projects · 2019 — 2026`}
+        eyebrow={`(Work) ${PROJECT_COUNT} projects · 2019 to 2026`}
         title={
           <>
             Selected <br className="lg:hidden" />
             <Accent className="text-[1.017em] lg:text-[1.109em]">work.</Accent>
           </>
         }
-        intro="Platforms, apps, stores and identities — each measured by what changed for the business after launch."
+        intro="Platforms, apps, stores and identities, each measured by what changed for the business after launch."
       />
 
       <Reveal

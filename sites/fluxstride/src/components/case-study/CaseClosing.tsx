@@ -8,7 +8,7 @@ import type { CaseStudy } from '@/content/case-studies/schema'
 import { MediaView } from './MediaView'
 
 /*
- * Design: Case Study — Testimonial. 200px side inset on desktop; 52px serif quote (28px),
+ * Design: Case Study: Testimonial. 200px side inset on desktop; 52px serif quote (28px),
  * then an avatar with the client's initials, name and role.
  */
 export function ClientQuote({ quote }: { quote: NonNullable<CaseStudy['quote']> }) {
@@ -34,7 +34,7 @@ export function ClientQuote({ quote }: { quote: NonNullable<CaseStudy['quote']> 
   )
 }
 
-/* Design: Case Study — Credits. Three columns (stacked on mobile): services, team, tool chips. */
+/* Design: Case Study: Credits. Three columns (stacked on mobile): services, team, tool chips. */
 export function Credits({ credits }: { credits: CaseStudy['credits'] }) {
   const lists = [
     ['Services', credits.services],
@@ -83,7 +83,7 @@ type NextProjectProps = {
 }
 
 /*
- * Design: Case Study — Next Project. Rule, "Next project" and the discipline, a 96px
+ * Design: Case Study: Next Project. Rule, "Next project" and the discipline, a 96px
  * client name (40px) with an up-right arrow, then its cover image (480px / 220px tall).
  */
 export function NextProject({ next, serviceTitle }: NextProjectProps) {

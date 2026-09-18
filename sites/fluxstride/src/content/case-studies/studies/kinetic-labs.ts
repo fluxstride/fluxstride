@@ -2,7 +2,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Kinetic Labs · Web & frontend, Product design
- * Design: "Case Study — Website" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study: Website" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, scores, team credits and quote are invented for the
  * design mockups. Replace them with a real, client-approved project and remove `sample`
@@ -64,7 +64,7 @@ export default defineCaseStudy({
   results: {
     timeframe: '90 days after launch',
     summary:
-      'More of the right visitors, staying longer and booking demos — without a developer for every page change.',
+      'More of the right visitors, staying longer and booking demos, without a developer for every page change.',
     stats: [
       { value: '4.4×', label: 'demo requests per month', detail: '22 → 96' },
       { value: '−46%', label: 'bounce rate on key landing pages', detail: '71% → 38%' },
@@ -89,7 +89,7 @@ export default defineCaseStudy({
     title: 'Message first, then a system.',
     paragraphs: [
       'We started with positioning workshops and 12 customer calls, rewrote the sitemap around three buyer journeys, then designed a component library that maps one-to-one to CMS blocks.',
-      'The marketing team now assembles new landing pages from 26 blocks in under an hour — no tickets required.',
+      'The marketing team now assembles new landing pages from 26 blocks in under an hour, no tickets required.',
     ],
   },
 
@@ -153,7 +153,7 @@ export default defineCaseStudy({
       tone: 'mist',
       label: 'Design system',
       title: ['Tokens to', 'templates.'],
-      intro: 'Colour, type and 26 blocks — shared between Figma, Storybook and Sanity.',
+      intro: 'Colour, type and 26 blocks: shared between Figma, Storybook and Sanity.',
       colours: [
         { name: 'Navy', hex: '#07122B' },
         { name: 'Signal', hex: '#2E6BFF' },
@@ -218,10 +218,10 @@ export default defineCaseStudy({
       'Sanity CMS & training',
     ],
     team: [
-      'Priya Raman — Design Lead',
-      'Leo Park — Engineer',
-      'Sam Adeyemi — Content Strategist',
-      'Hannah Cole — Client Partner',
+      'Priya Raman, Design Lead',
+      'Leo Park, Engineer',
+      'Sam Adeyemi, Content Strategist',
+      'Hannah Cole, Client Partner',
     ],
     tools: ['Next.js', 'Sanity', 'Vercel', 'Tailwind', 'Algolia', 'HubSpot'],
     toolsLabel: 'Stack',

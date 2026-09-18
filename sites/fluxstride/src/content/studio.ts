@@ -12,8 +12,8 @@ export const story = {
   lead: 'Built by engineers and designers who were tired of the hand-off.',
   paragraphs: [
     'Fluxstride started with a simple frustration: agencies that design beautiful things nobody can build, and developers who build solid things nobody wants to use. We put both crafts in the same room, on the same roadmap.',
-    'Today we’re a compact team of senior specialists across product design, branding, web, mobile, backend and cloud engineering. We keep the studio small on purpose — the people you meet in the pitch are the people who do the work.',
-    'Our name is our method. Flux: technology, markets and customers never stop changing. Stride: we respond with deliberate, confident steps forward — never noise for its own sake.',
+    'Today we’re a compact team of senior specialists across product design, branding, web, mobile, backend and cloud engineering. We keep the studio small on purpose: the people you meet in the pitch are the people who do the work.',
+    'Our name is our method. Flux: technology, markets and customers never stop changing. Stride: we respond with deliberate, confident steps forward, never noise for its own sake.',
   ],
 }
 
@@ -40,7 +40,7 @@ export const values: { title: string; body: string }[] = [
   },
   {
     title: 'Own the outcome.',
-    body: 'We measure success by what changes for your business — not by deliverables handed over.',
+    body: 'We measure success by what changes for your business, not by deliverables handed over.',
   },
 ]
 

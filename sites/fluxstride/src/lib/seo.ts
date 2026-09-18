@@ -38,7 +38,7 @@ const og = (name: string, alt: string): OgImage => ({
   alt,
 })
 
-export const DEFAULT_OG = og('og-default', 'Fluxstride — We build digital products that keep moving.')
+export const DEFAULT_OG = og('og-default', 'Fluxstride: We build digital products that keep moving.')
 
 export type PageSeo = {
   path: string
@@ -71,7 +71,7 @@ const staticPages: PageSeo[] = [
     breadcrumb: 'Work',
     description:
       'Platforms, apps, stores and identities, measured by what changed after launch. Case studies from fintech, retail, healthtech and SaaS clients.',
-    image: og('og-work', 'Selected work — platforms, apps, stores and identities by Fluxstride.'),
+    image: og('og-work', 'Selected work: platforms, apps, stores and identities by Fluxstride.'),
     priority: 0.9,
   },
   {
@@ -79,8 +79,8 @@ const staticPages: PageSeo[] = [
     title: 'Services · Design, Web, Mobile, Backend & Cloud',
     breadcrumb: 'Services',
     description:
-      'Product design, branding, website and frontend development, mobile apps, backend development, and cloud & DevOps — from one senior team.',
-    image: og('og-services', 'What we do — six services, one team, at Fluxstride.'),
+      'Product design, branding, website and frontend development, mobile apps, backend development, and cloud & DevOps, from one senior team.',
+    image: og('og-services', 'What we do: six services, one team, at Fluxstride.'),
     priority: 0.9,
   },
   {
@@ -89,7 +89,7 @@ const staticPages: PageSeo[] = [
     breadcrumb: 'Process',
     description:
       'Four steps, fixed-scope sprints and a live project board you can see any time. How Fluxstride takes a project from discovery to launch and growth.',
-    image: og('og-process', 'The Stride Method — how Fluxstride runs projects.'),
+    image: og('og-process', 'The Stride Method: how Fluxstride runs projects.'),
     priority: 0.8,
   },
   {
@@ -98,7 +98,7 @@ const staticPages: PageSeo[] = [
     breadcrumb: 'Studio',
     description:
       'A senior design and engineering studio. Meet the people, the values and the open roles behind Fluxstride.',
-    image: og('og-studio', 'The Fluxstride studio — people, values and careers.'),
+    image: og('og-studio', 'The Fluxstride studio: people, values and careers.'),
     priority: 0.7,
   },
   {
@@ -106,7 +106,7 @@ const staticPages: PageSeo[] = [
     title: 'Insights & Notes on Design and Engineering',
     breadcrumb: 'Insights',
     description:
-      'Practical writing on design, engineering, SEO and growth from the Fluxstride team — plus The Stride, our monthly newsletter.',
+      'Practical writing on design, engineering, SEO and growth from the Fluxstride team, plus The Stride, our monthly newsletter.',
     image: og('og-insights', 'Insights and notes from the Fluxstride team.'),
     priority: 0.7,
   },
@@ -190,7 +190,7 @@ const careersPage: PageSeo = {
   title: 'Careers · Join the Studio',
   breadcrumb: 'Careers',
   description: `Open roles at ${BRAND}, a senior design and engineering studio. Four-day focus weeks, remote-first, and a small team where your work ships.`,
-  image: og('og-studio', 'Careers at Fluxstride — join the stride.'),
+  image: og('og-studio', 'Careers at Fluxstride: join the stride.'),
   priority: 0.7,
 }
 
@@ -200,7 +200,7 @@ const rolePages: PageSeo[] = roles.map((role) => ({
   breadcrumb: role.title,
   parent: '/careers',
   description: role.summary,
-  image: og('og-studio', `${role.title} — join the Fluxstride team.`),
+  image: og('og-studio', `${role.title}: join the Fluxstride team.`),
   priority: 0.6,
 }))
 

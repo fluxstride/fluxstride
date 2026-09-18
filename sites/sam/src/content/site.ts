@@ -9,7 +9,7 @@ import type { ImageName } from './images.generated'
  */
 export const TO_CONFIRM = [
   'Location "Lagos, Nigeria" (hero clock, spec sheet, footer).',
-  'Availability badge "Open for projects — Oct" (AVAILABILITY below).',
+  'Availability badge "Open for projects · Oct" (AVAILABILITY below).',
   'The two bio paragraphs, including "In 2025 I started Fluxstride".',
   'Project category tags (guessed from each live site).',
   '"24h typical reply to a new brief".',
@@ -33,7 +33,7 @@ export const PERSON = {
 
 export const STUDIO = { name: 'Fluxstride', url: 'https://fluxstride.com', host: 'fluxstride.com' }
 
-export const AVAILABILITY = 'Open for projects — Oct'
+export const AVAILABILITY = 'Open for projects · Oct'
 
 export const SOCIALS = [
   { id: 'github', label: 'GitHub', href: 'https://github.com/fluxstride' },
@@ -50,12 +50,12 @@ export const NAV = [
 ] as const
 
 export const HERO = {
-  eyebrow: '(Portfolio — 2026 edition)',
+  eyebrow: '(Portfolio: 2026 edition)',
   /** Sans lines, then the serif phrase that ends with the flux dot. */
   lines: ['I design & engineer', 'digital products people'],
   accent: 'keep coming back to',
   intro:
-    "Hello — I'm Samuel. I help startups and enterprises take an idea from a sketch to something live in the market, and I do the design and the engineering myself.",
+    "Hello, I'm Samuel. I help startups and enterprises take an idea from a sketch to something live in the market, and I do the design and the engineering myself.",
   focus: 'Product design, branding, web, mobile, backend & cloud',
 }
 
@@ -154,28 +154,28 @@ export const PROJECTS: Project[] = [
 ]
 
 export const WORK_INTRO =
-  'Ten live products — from my own studio to car dealers, caterers and fintech founders. Every one of them is still running.'
+  'Ten live products: from my own studio to car dealers, caterers and fintech founders. Every one of them is still running.'
 
 export const ABOUT = {
   quote: "There's a lot more to me than a fancy title.",
   bio: [
-    "I'm a designer and software engineer. For the last few years I've been the person founders call when they need an idea turned into something real — a website that sells, an app people open daily, a store that actually converts.",
+    "I'm a designer and software engineer. For the last few years I've been the person founders call when they need an idea turned into something real: a website that sells, an app people open daily, a store that actually converts.",
     'I work end to end: the interface, the code behind it, the launch and the boring-but-vital upkeep after. In 2025 I started Fluxstride, a design & engineering studio, so bigger projects get a whole team. Smaller, personal ones still come straight to me.',
   ],
   facts: [
     { label: 'Now', value: 'Building Fluxstride, a design & engineering studio', href: STUDIO.url },
-    { label: 'Based in', value: 'Lagos, Nigeria — working worldwide' },
+    { label: 'Based in', value: 'Lagos, Nigeria, working worldwide' },
     { label: 'Works with', value: 'Founders, startups and enterprise teams' },
     {
       label: 'Toolkit',
-      value: 'TypeScript · React · Node.js · Python · AWS — full stack below',
+      value: 'TypeScript · React · Node.js · Python · AWS: full stack below',
       href: '#stack',
     },
   ],
   stats: [
     { value: '10', label: 'products live and still running' },
     { value: '06', label: 'disciplines, design to cloud' },
-    { value: '01', label: 'studio founded — Fluxstride' },
+    { value: '01', label: 'studio founded: Fluxstride' },
     { value: '24h', label: 'typical reply to a new brief' },
   ],
 }
@@ -208,14 +208,14 @@ export const SERVICES = [
   {
     slug: 'mobile-development',
     name: 'Mobile development',
-    summary: 'Native and cross-platform apps people return to — from MVP to the App Store.',
+    summary: 'Native and cross-platform apps people return to, from MVP to the App Store.',
     tags: 'iOS · Android · React Native',
   },
   {
     slug: 'backend-development',
     name: 'Backend development',
     summary:
-      'APIs, platforms and integrations engineered to scale — clean architecture, tested and documented.',
+      'APIs, platforms and integrations engineered to scale: clean architecture, tested and documented.',
     tags: 'Node.js · Python · PostgreSQL',
   },
   {
@@ -265,11 +265,11 @@ export const STACK_ALSO = [
   'Microservices',
   'Scalable architecture',
   'Performance tuning',
-  'Git — GitHub, GitLab, Bitbucket',
+  'Git: GitHub, GitLab, Bitbucket',
 ]
 
 export const STACK_INTRO =
-  'The tools I reach for daily — from the first sketch to the infrastructure, and the AI layer that ties it together.'
+  'The tools I reach for daily, from the first sketch to the infrastructure, and the AI layer that ties it together.'
 
 /** Contact form "I need help with" options. Mirrors SERVICES. */
 export const NEEDS = ['Website', 'Mobile app', 'Product design', 'Branding', 'Backend', 'Cloud & DevOps']

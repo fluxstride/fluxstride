@@ -34,7 +34,7 @@ function matches(article: Article, category: CategoryFilter, query: string) {
 }
 
 /*
- * Design: Fluxstride — Insights (desktop 1440, mobile 390).
+ * Design: Fluxstride Insights (desktop 1440, mobile 390).
  *
  *   Page Header   "Insights & notes."
  *   Filters       category chips + search, 56px (32px) above the featured article
@@ -72,7 +72,7 @@ export function Insights() {
             <Accent className="text-[1.017em] lg:text-[1.109em]">&amp; notes.</Accent>
           </>
         }
-        intro="Practical thinking on design, engineering and growth — written by the people doing the work."
+        intro="Practical thinking on design, engineering and growth, written by the people doing the work."
         introClassName="lg:w-75"
       />
 

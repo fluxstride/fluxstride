@@ -7,7 +7,7 @@ import { cn } from '@fluxstride/design-system/lib/cn'
 import { AlwaysOn, Toggle } from './Toggle'
 
 /*
- * Design: "Cookie Consent — Settings" (desktop modal, mobile sheet).
+ * Design: "Cookie Consent: Settings" (desktop modal, mobile sheet).
  *
  * Desktop: 640px white dialog, 12vh from the top over an ink/60 scrim, 4px corners,
  *          0 24 64 ink/40 shadow. Head 28/32/20/32 padding (mono 11 flux eyebrow, 28px

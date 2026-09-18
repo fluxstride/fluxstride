@@ -24,7 +24,7 @@ function selectedWork(service: Service) {
 }
 
 /*
- * Design: Fluxstride — Service · Website Design & Frontend Development (desktop 1440, mobile 390).
+ * Design: Fluxstride Service · Website Design & Frontend Development (desktop 1440, mobile 390).
  * One layout for every service; the words live in content/services.ts.
  *
  *   Header           breadcrumbs, "(Service 03 / 06) Build", headline, intro and button beside
@@ -128,7 +128,7 @@ export function ServicePage({ service }: { service: Service }) {
               ...services
                 .map((other, i) => ({ href: serviceHref(other.slug), index: pad(i + 1), title: other.title }))
                 .filter((item) => item.href !== serviceHref(service.slug)),
-              { href: '/services', index: '—', title: 'All services', accent: true },
+              { href: '/services', index: '·', title: 'All services', accent: true },
             ]}
           />
         </div>

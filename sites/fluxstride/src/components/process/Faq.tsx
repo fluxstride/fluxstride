@@ -45,8 +45,8 @@ export function Faq({ items = processFaqs }: { items?: { question: string; answe
             className="underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
           >
             {EMAIL_NEW_BUSINESS}
-          </a>{' '}
-          — a real person replies within one working day.
+          </a>
+          {'. '}A real person replies within one working day.
         </Reveal>
       </div>
 

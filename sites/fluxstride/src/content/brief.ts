@@ -80,6 +80,6 @@ export function briefFromSearch(search: string) {
 /** "What happens next" beside the Contact form. */
 export const nextSteps = [
   { title: 'We reply within 24 hours', body: 'With questions, or a time for a call.' },
-  { title: 'Intro call — 20 minutes', body: "We listen, then tell you honestly if we're the right fit." },
+  { title: 'Intro call: 20 minutes', body: "We listen, then tell you honestly if we're the right fit." },
   { title: 'Proposal in 5 days', body: 'Scope, timeline and a fixed price. No obligation.' },
 ]

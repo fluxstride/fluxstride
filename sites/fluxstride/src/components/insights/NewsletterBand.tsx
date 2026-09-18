@@ -22,7 +22,7 @@ export function NewsletterBand() {
       <div className="container-page flex flex-col gap-7 py-14 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:py-28">
         <div className="flex flex-col gap-5">
           <Reveal>
-            <Eyebrow onDark>Newsletter — monthly, no spam</Eyebrow>
+            <Eyebrow onDark>Newsletter: monthly, no spam</Eyebrow>
           </Reveal>
           <RevealText id="stride-newsletter-title" className="text-heading-2xl">
             Get <Accent className="text-[1.135em] lg:text-[1.111em]">The Stride.</Accent>

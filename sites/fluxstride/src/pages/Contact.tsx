@@ -2,7 +2,7 @@ import { BriefForm } from '@/components/contact/BriefForm'
 import { ContactIntro } from '@/components/contact/ContactIntro'
 
 /*
- * Design: Fluxstride — Contact (desktop 1440, mobile 390).
+ * Design: Fluxstride Contact (desktop 1440, mobile 390).
  *
  *   Main   96px top, 128px bottom (56 / 72 mobile). The 480px intro column sits 96px left
  *          of the brief form; mobile stacks them 48px apart.

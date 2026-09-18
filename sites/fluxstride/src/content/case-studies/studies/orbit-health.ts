@@ -3,11 +3,11 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * Orbit Health · Mobile, Product design
- * Design: "Case Study — Mobile App" (desktop) and "(Mobile)" in the Pencil file.
+ * Design: "Case Study: Mobile App" (desktop) and "(Mobile)" in the Pencil file.
  *
  * SAMPLE CONTENT: the client, figures, reviews, team credits and quote are invented for the
  * design mockups. Replace them with a real, client-approved project and remove `sample`
- * before launch. The step names in "04 — Journey" are only read out to screen readers.
+ * before launch. The step names in "04: Journey" are only read out to screen readers.
  */
 export default defineCaseStudy({
   slug: 'orbit-health',
@@ -60,7 +60,7 @@ export default defineCaseStudy({
   challenge: {
     title: 'Eleven steps between a patient and a GP.',
     paragraphs: [
-      'The old app asked for insurance details, symptoms and preferences before showing a single appointment. 58% of patients who started a booking gave up — and called the clinic instead.',
+      'The old app asked for insurance details, symptoms and preferences before showing a single appointment. 58% of patients who started a booking gave up, and called the clinic instead.',
     ],
     points: [
       '58% booking abandonment',
@@ -203,10 +203,10 @@ export default defineCaseStudy({
       'App Store launch',
     ],
     team: [
-      'Priya Raman — Design Lead',
-      'Daniel Mensah — Technical Lead',
-      'Leo Park — Engineer',
-      'Hannah Cole — Client Partner',
+      'Priya Raman, Design Lead',
+      'Daniel Mensah, Technical Lead',
+      'Leo Park, Engineer',
+      'Hannah Cole, Client Partner',
     ],
     tools: ['React Native', 'Expo', 'TypeScript', 'NHS login', 'Twilio', 'Sentry'],
     toolsLabel: 'Stack',

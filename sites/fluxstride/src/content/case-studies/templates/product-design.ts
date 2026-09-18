@@ -2,7 +2,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Product design
- * Design: "Case Study Template — Product design" in the Pencil file.
+ * Design: "Case Study Template: Product design" in the Pencil file.
  *
  * Copy it with `pnpm new:case-study product-design <slug>`.
  * Guide: docs/case-studies.md
@@ -191,7 +191,7 @@ export default defineCaseStudy({
       '[UI design]',
       '[Usability testing]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Figma]', '[e.g. Maze]', '[e.g. Dovetail]', '[e.g. Hotjar]'],
   },
 })

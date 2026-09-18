@@ -39,7 +39,7 @@ export function LegalSummary({ points }: { points: string[] }) {
 }
 
 /*
- * Design: "Section 01 — Who we are". Mono 13 flux number on a hairline rule, 36/26px
+ * Design: "Section 01: Who we are". Mono 13 flux number on a hairline rule, 36/26px
  * heading, then the blocks, all 20px apart.
  */
 export function LegalSectionView({ section, index }: { section: LegalSection; index: number }) {

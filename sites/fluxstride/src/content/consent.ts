@@ -67,11 +67,11 @@ export const optionalCategories = cookieCategories.filter(
 
 export const consentCopy = {
   banner: {
-    title: 'Cookies — only with your OK.',
+    title: 'Cookies: only with your OK.',
     body: "We use essential cookies to run this site. With your permission we'd also like to use analytics to improve it and measure our campaigns. No selling data, ever.",
     /** The mobile sheet uses a shorter line. */
     bodyShort:
-      'We use essential cookies to run this site, and — with your permission — analytics to improve it.',
+      'We use essential cookies to run this site, and, with your permission, analytics to improve it.',
   },
   settings: {
     eyebrow: 'Privacy preferences',

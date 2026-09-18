@@ -21,10 +21,10 @@ export function StudioIntro() {
         </Reveal>
         <RevealText as="h1" on="mount" delay={0.1} stagger={0.035} className="text-statement text-ink">
           A senior studio for <br className="max-lg:hidden" />
-          design &amp; engineering<span className="max-lg:hidden"> —</span>
+          design &amp; engineering<span className="max-lg:hidden">,</span>
           <br />
           <Accent className="text-[1.1em] lg:text-[1.125em]">
-            <span className="mr-[0.25em] lg:hidden">—</span>and every decision in between.
+            <span className="mr-[0.25em] lg:hidden">,</span>and every decision in between.
           </Accent>
         </RevealText>
       </header>
@@ -51,7 +51,7 @@ export function StudioPhoto() {
         }
       >
         <p className="absolute bottom-6 left-6 rounded-xs bg-paper px-3 py-2 font-mono text-label-sm/[1.2] text-ink uppercase">
-          The studio — Monday planning
+          The studio: Monday planning
         </p>
       </ImageReveal>
     </div>

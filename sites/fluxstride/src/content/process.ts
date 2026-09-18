@@ -35,7 +35,7 @@ export const processSteps: ProcessStep[] = [
     summary:
       'Workshops, audits, customer interviews and analytics deep-dives to find the real problem worth solving.',
     description:
-      'We get under the skin of your business, users and tech so we solve the right problem — not just the one in the brief.',
+      'We get under the skin of your business, users and tech so we solve the right problem, not just the one in the brief.',
     deliverables: ['Research report', 'Opportunity map'],
     activities: [
       'Stakeholder workshops',
@@ -69,7 +69,7 @@ export const processSteps: ProcessStep[] = [
     duration: 'Weeks 4–12',
     title: 'Design & Build',
     summary:
-      'Identity, UI and engineering in weekly shippable increments — reviewed live, never thrown over a wall.',
+      'Identity, UI and engineering in weekly shippable increments, reviewed live, never thrown over a wall.',
     description:
       'Design and engineering run side by side in weekly increments, reviewed live in a staging environment you can click through.',
     deliverables: ['Design system', 'Production code'],
@@ -130,7 +130,7 @@ export const engagementModels: EngagementModel[] = [
     name: 'Project',
     kicker: 'Fixed scope, fixed price',
     description:
-      'A defined outcome — a website, app, platform or identity — delivered through the Stride Method.',
+      'A defined outcome (a website, app, platform or identity) delivered through the Stride Method.',
     includes: ['Discovery to launch', 'Fixed price & timeline', '30 days post-launch support'],
     bestFor: 'New builds & rebrands',
     price: 'From £8k',

@@ -2,7 +2,7 @@ import { defineCaseStudy } from '../schema'
 
 /**
  * STARTER TEMPLATE · Technical audit
- * Design: "Case Study Template — Technical audit" in the Pencil file.
+ * Design: "Case Study Template: Technical audit" in the Pencil file.
  *
  * Copy it with `pnpm new:case-study technical-audit <slug>`.
  * Guide: docs/case-studies.md
@@ -190,7 +190,7 @@ export default defineCaseStudy({
       '[Roadmap & business case]',
       '[Vendor selection]',
     ],
-    team: ['[Name] — [Role]', '[Name] — [Role]', '[Name] — [Role]'],
+    team: ['[Name], [Role]', '[Name], [Role]', '[Name], [Role]'],
     tools: ['[e.g. Miro]', '[e.g. Notion]', '[e.g. Lucidchart]', '[e.g. Excel]'],
   },
 })

@@ -16,7 +16,7 @@ type CaseStudyViewProps = {
 }
 
 /*
- * Design: "Case Study — <service>" (desktop 1440, mobile 390) and the starter templates.
+ * Design: "Case Study: <service>" (desktop 1440, mobile 390) and the starter templates.
  *
  *   Hero → Results band → Story (01, 02) → numbered sections (03…) → Testimonial
  *   → Credits → Next project → CTA band

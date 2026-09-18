@@ -8,8 +8,8 @@ export const SITE_URL = 'https://sam.fluxstride.com'
 
 const TITLE = `${PERSON.name} · ${PERSON.role}`
 const DESCRIPTION =
-  'Samuel Adekoya designs and engineers digital products — product design, branding, websites, mobile apps, backends, cloud and AI — for startups and enterprises. Founder of Fluxstride.'
-const OG_IMAGE = { path: '/og.jpg', width: 1200, height: 630, alt: `${PERSON.name} — ${PERSON.role}` }
+  'Samuel Adekoya designs and engineers digital products (product design, branding, websites, mobile apps, backends, cloud and AI) for startups and enterprises. Founder of Fluxstride.'
+const OG_IMAGE = { path: '/og.jpg', width: 1200, height: 630, alt: `${PERSON.name}: ${PERSON.role}` }
 
 export type PageSeo = { path: string; title: string; description: string; noindex?: boolean }
 
