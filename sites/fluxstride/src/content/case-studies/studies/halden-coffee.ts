@@ -26,7 +26,7 @@ const revenue = [
 
 export default defineCaseStudy({
   slug: 'halden-coffee',
-  status: 'published',
+  status: 'draft',
   sample: true,
   services: ['web-design-frontend', 'product-design'],
   discipline: 'E-commerce',

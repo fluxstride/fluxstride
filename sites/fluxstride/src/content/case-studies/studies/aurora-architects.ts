@@ -10,7 +10,7 @@ import { defineCaseStudy } from '../schema'
  */
 export default defineCaseStudy({
   slug: 'aurora-architects',
-  status: 'published',
+  status: 'draft',
   sample: true,
   services: ['graphic-design-branding'],
   discipline: 'Brand identity',

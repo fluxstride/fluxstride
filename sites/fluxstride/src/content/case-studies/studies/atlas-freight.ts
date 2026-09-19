@@ -28,7 +28,7 @@ const sessions = [
 
 export default defineCaseStudy({
   slug: 'atlas-freight',
-  status: 'published',
+  status: 'draft',
   sample: true,
   services: ['web-design-frontend', 'backend-development'],
   discipline: 'Website rebuild',

@@ -19,7 +19,7 @@ const templates = [
 
 export default defineCaseStudy({
   slug: 'kinetic-labs',
-  status: 'published',
+  status: 'draft',
   sample: true,
   services: ['web-design-frontend', 'product-design'],
   discipline: 'Website',

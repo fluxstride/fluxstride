@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { RevealText } from '@fluxstride/design-system/motion/RevealText'
+import { ButtonAnchor } from '@fluxstride/design-system/ui/Button'
 import { Accent, Eyebrow } from '@fluxstride/design-system/ui/Typography'
 import type { CaseStudy } from '@/content/case-studies/schema'
 import { MediaView } from './MediaView'
@@ -46,14 +47,32 @@ export function CaseHero({ study, serviceNames }: CaseHeroProps) {
         </RevealText>
 
         <div className="flex flex-col gap-6 lg:flex-row lg:gap-24">
-          <Reveal
-            as="p"
-            on="mount"
-            delay={0.3}
-            className="text-[17px]/[1.55] text-stone lg:w-130 lg:shrink-0 lg:text-[1.375rem]/[1.5] lg:text-ink"
-          >
-            {hero.intro}
-          </Reveal>
+          <div className="flex flex-col items-start gap-6 lg:w-130 lg:shrink-0 lg:gap-8">
+            <Reveal
+              as="p"
+              on="mount"
+              delay={0.3}
+              className="text-[17px]/[1.55] text-stone lg:text-[1.375rem]/[1.5] lg:text-ink"
+            >
+              {hero.intro}
+            </Reveal>
+            {/* The work is live: let someone go and use it, not just read about it. */}
+            {hero.media.href ? (
+              <Reveal on="mount" delay={0.35}>
+                <ButtonAnchor
+                  href={hero.media.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="outline"
+                  size="sm"
+                  arrow="up-right"
+                >
+                  Visit {hero.media.url ?? 'the live site'}
+                  <span className="sr-only">, opens in a new tab</span>
+                </ButtonAnchor>
+              </Reveal>
+            ) : null}
+          </div>
           <Reveal
             as="dl"
             on="mount"

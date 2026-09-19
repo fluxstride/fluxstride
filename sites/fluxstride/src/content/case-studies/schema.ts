@@ -41,6 +41,12 @@ export type Media = {
   /** Browser frame only: the address shown in the chrome, e.g. "app.northwind.example/overview". */
   url?: string
   /**
+   * Makes that address a real link, and adds a "Visit site" link to the hero when it is set
+   * on the hero media. Only for pages that are live and public:
+   * "https://www.dexussynergy.com/vehicles". Invented addresses stay unlinked.
+   */
+  href?: string
+  /**
    * A different crop for phones, e.g. a page thumbnail redrawn for a narrower card.
    * Only for artwork made for both sizes; screenshots stay the desktop image.
    */

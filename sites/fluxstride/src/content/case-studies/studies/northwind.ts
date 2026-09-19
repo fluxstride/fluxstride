@@ -10,7 +10,7 @@ import { defineCaseStudy } from '../schema'
  */
 export default defineCaseStudy({
   slug: 'northwind',
-  status: 'published',
+  status: 'draft',
   sample: true,
   services: ['backend-development', 'web-design-frontend', 'product-design'],
   discipline: 'Software platform',

@@ -1,4 +1,4 @@
-import { ImageIcon, Lock } from 'lucide-react'
+import { ArrowUpRight, ImageIcon, Lock } from 'lucide-react'
 import type { CSSProperties } from 'react'
 import { Picture } from '@/components/ui/Picture'
 import type { Media, MediaFrame } from '@/content/case-studies/schema'
@@ -96,7 +96,7 @@ export function MediaView({
           className,
         )}
       >
-        <BrowserChrome url={media.url} designWidth={designWidth} />
+        <BrowserChrome url={media.url} href={media.href} designWidth={designWidth} />
         {box}
       </figure>
     )
@@ -125,27 +125,48 @@ export function MediaView({
  * dots, then an address pill (lock icon, 12px URL). Sizes are in em from a 16px base so
  * that on phones the whole frame scales down like the desktop screenshot it holds.
  */
-function BrowserChrome({ url, designWidth }: { url?: string; designWidth: number }) {
+function BrowserChrome({ url, href, designWidth }: { url?: string; href?: string; designWidth: number }) {
   return (
     <div
-      aria-hidden="true"
       className="flex items-center gap-[0.875em] border-b border-line bg-white px-[1em] pt-[0.6875em] pb-[0.625em] text-(length:--chrome-size) lg:text-base"
       // 100cqw is the frame's width; at designWidth it resolves to exactly 16px.
       style={{ '--chrome-size': `calc(100cqw / ${designWidth / 16})` } as CSSProperties}
     >
-      <span className="flex gap-[0.375em]">
+      <span aria-hidden="true" className="flex gap-[0.375em]">
         {[0, 1, 2].map((dot) => (
           <span key={dot} className="size-[0.625em] rounded-full bg-line" />
         ))}
       </span>
-      <span className="flex items-center gap-[0.5em] rounded-[0.75em] bg-paper px-[0.75em] py-[0.3125em] text-stone">
-        <Lock className="size-[0.6875em]" strokeWidth={2} />
-        {url ? (
+      {/* A live page is reachable from its own screenshot; an invented address stays decoration. */}
+      {url && href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="group/url flex items-center gap-[0.5em] rounded-[0.75em] bg-paper px-[0.75em] py-[0.3125em] text-stone transition-colors hover:bg-flux-soft hover:text-flux"
+        >
+          <Lock aria-hidden="true" className="size-[0.6875em]" strokeWidth={2} />
           <span className="text-[0.75em]/[1.25] whitespace-nowrap">{url}</span>
-        ) : (
-          <span className="h-[0.9375em] w-[6.25em]" />
-        )}
-      </span>
+          <ArrowUpRight
+            aria-hidden="true"
+            className="size-[0.75em] opacity-0 transition-opacity group-hover/url:opacity-100"
+            strokeWidth={2}
+          />
+          <span className="sr-only">Opens in a new tab</span>
+        </a>
+      ) : (
+        <span
+          aria-hidden="true"
+          className="flex items-center gap-[0.5em] rounded-[0.75em] bg-paper px-[0.75em] py-[0.3125em] text-stone"
+        >
+          <Lock className="size-[0.6875em]" strokeWidth={2} />
+          {url ? (
+            <span className="text-[0.75em]/[1.25] whitespace-nowrap">{url}</span>
+          ) : (
+            <span className="h-[0.9375em] w-[6.25em]" />
+          )}
+        </span>
+      )}
     </div>
   )
 }

@@ -11,7 +11,7 @@ import { defineCaseStudy } from '../schema'
  */
 export default defineCaseStudy({
   slug: 'orbit-health',
-  status: 'published',
+  status: 'draft',
   sample: true,
   services: ['mobile-development', 'product-design'],
   discipline: 'Mobile app',
