@@ -43,8 +43,8 @@ export default defineCaseStudy({
       image: 'case-studies/fluxstride-home',
       alt: 'The Fluxstride home page: the headline "We build digital products that keep moving" beside a dark panel with a blue mark radiating rings',
       brief: 'Website screenshot · home page · 2880×1800',
+      // No href: the hero link is a "visit the live site" button, and this is the live site.
       url: 'fluxstride.com',
-      href: 'https://www.fluxstride.com/',
     },
     frame: 'browser',
   },
