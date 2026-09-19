@@ -51,8 +51,28 @@ export default defineCaseStudy({
 
   cover: {
     image: 'case-studies/adunyato-cover',
-    alt: 'The Adunyato home page, headlined "A distinct taste for every party" beside a photograph of party jollof rice',
-    brief: 'Cover · home page on ink · 2400×1600',
+    alt: 'A deep wine Adunyato cover: the wordmark and the line “A Lagos caterer online, and taking bookings” beside a browser panel showing the live home page',
+    brief: 'Cover · Adunyato brand frame with the live home page · 2400×1600',
+  },
+
+  /** Adunyato's own tokens: --color-primary wine with the --color-accent rust. */
+  brandCover: {
+    background: '#6E1C1A',
+    panel: '#5A1614',
+    chrome: '#7A2522',
+    dot: '#9B5A54',
+    accent: '#E9722C',
+    foreground: '#F5EDE8',
+    muted: '#D3A9A1',
+    wordmark: 'Adunyato',
+    wordmarkFace: 'serif',
+    eyebrow: 'Catering & events',
+    line: 'A Lagos caterer online, and taking bookings.',
+    services: 'Design · Web · Cloud',
+    screen: {
+      image: 'case-studies/adunyato-home',
+      alt: 'The Adunyato home page: "A distinct taste for every party" beside a photograph of party jollof rice',
+    },
   },
 
   results: {

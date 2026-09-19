@@ -1,4 +1,5 @@
 import { ImageReveal } from '@fluxstride/design-system/motion/ImageReveal'
+import { CaseCover } from '@/components/work/CaseCover'
 import { Picture } from '@/components/ui/Picture'
 import { SmartLink } from '@/components/ui/SmartLink'
 import { caseStudyHref } from '@/content/case-studies'
@@ -47,14 +48,20 @@ export function CaseCard({
     <>
       <ImageReveal
         className={imageClassName}
+        // A drawn cover is a composition, not a photo: drifting it would push the wordmark out.
+        drift={!study.cover}
         image={
-          <Picture
-            name={study.image}
-            alt={study.imageAlt}
-            sizes={sizes}
-            className="size-full"
-            imgClassName="transition-[scale] duration-1000 ease-out-expo group-hover:scale-105"
-          />
+          study.cover ? (
+            <CaseCover cover={study.cover} sizes={sizes} />
+          ) : (
+            <Picture
+              name={study.image}
+              alt={study.imageAlt}
+              sizes={sizes}
+              className="size-full"
+              imgClassName="transition-[scale] duration-1000 ease-out-expo group-hover:scale-105"
+            />
+          )
         }
       >
         <p className="absolute bottom-5 left-5 inline-flex items-center gap-2.5 rounded-xs bg-paper px-3.5 py-2.5">

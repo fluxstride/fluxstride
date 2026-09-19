@@ -1,4 +1,5 @@
 import { publishedCaseStudies, serviceNames } from './case-studies'
+import type { BrandCover } from './case-studies/schema'
 import type { ImageName } from './images.generated'
 import { service, services, type ServiceSlug } from './services'
 
@@ -9,8 +10,9 @@ import { service, services, type ServiceSlug } from './services'
  * study itself (src/content/case-studies/studies), so a card always matches its page. Only
  * the badge label is written here.
  *
- * PLACEHOLDERS: every client, result and image comes from the design mockups.
- * Replace with real, approved case studies before launch.
+ * Every card below is a real, live project. The six design-stage studies (Northwind, Halden
+ * Coffee, Orbit Health, Kinetic Labs, Aurora Architects, Atlas Freight) are kept as drafts in
+ * studies/ for reference: they are reachable in development but never published or listed.
  */
 
 /** Work page filter chips: one per service, in the Services page order. */
@@ -33,6 +35,8 @@ export type CaseStudy = {
   metricLabel: string
   image: ImageName
   imageAlt: string
+  /** Card artwork drawn in code. The photo is the fallback when a study has none. */
+  cover?: BrandCover
 }
 
 type Card = {
@@ -43,12 +47,9 @@ type Card = {
 
 /** In curated order: the Work page keeps it for projects from the same year. */
 const cards: Card[] = [
-  { slug: 'northwind', metric: { stat: 0, label: 'Qualified leads' } },
-  { slug: 'halden-coffee', metric: { stat: 1, label: 'Online revenue' } },
-  { slug: 'orbit-health', metric: { stat: 1, label: 'App Store rating' } },
-  { slug: 'kinetic-labs', metric: { stat: 0, label: 'Demo requests' } },
-  { slug: 'aurora-architects', metric: { stat: 0, label: 'Competition shortlists' } },
-  { slug: 'atlas-freight', metric: { stat: 0, label: 'Organic traffic' } },
+  { slug: 'dexus-synergy', metric: { stat: 1, label: 'Vehicle types' } },
+  { slug: 'adunyato', metric: { stat: 1, label: 'Dishes online' } },
+  { slug: 'fluxstride', metric: { stat: 1, label: 'Shared components' } },
 ]
 
 export const caseStudies: CaseStudy[] = cards.map((card) => {
@@ -70,6 +71,7 @@ export const caseStudies: CaseStudy[] = cards.map((card) => {
     metricLabel: card.metric.label,
     image: photo.image,
     imageAlt: photo.alt,
+    cover: study.brandCover,
   }
 })
 
@@ -88,7 +90,13 @@ export type ProjectEntry = {
   disciplines: Discipline[]
 }
 
-const project = (year: number, client: string, industry: string, slugs: ServiceSlug[]): ProjectEntry => ({
+/** Builds a "More projects" row; its service names come from the services list. */
+export const project = (
+  year: number,
+  client: string,
+  industry: string,
+  slugs: ServiceSlug[],
+): ProjectEntry => ({
   year,
   client,
   industry,
@@ -96,15 +104,19 @@ const project = (year: number, client: string, industry: string, slugs: ServiceS
   services: slugs.map((slug) => service(slug).shortTitle),
 })
 
-/** "More projects" table on the Work page. */
-export const moreProjects: ProjectEntry[] = [
-  project(2026, 'Meridian Bank', 'Finance', ['backend-development', 'product-design']),
-  project(2025, 'Volta Energy', 'Energy', ['web-design-frontend']),
-  project(2025, 'Loom & Thread', 'Fashion', ['web-design-frontend', 'graphic-design-branding']),
-  project(2025, 'Pathway Learning', 'Education', ['mobile-development', 'product-design']),
-  project(2024, 'Harbour Health', 'Healthcare', ['cloud-devops']),
-  project(2024, 'Northstar Legal', 'Professional services', ['web-design-frontend', 'cloud-devops']),
-]
+/**
+ * "More projects" table on the Work page: projects worth listing that have no case study of
+ * their own. The table is hidden entirely while this is empty, so add a row with
+ * `project(year, client, industry, [services])` when a project is cleared to be named.
+ */
+export const moreProjects: ProjectEntry[] = []
 
-/** Total shown in "All case studies (24)" and the Work page eyebrow. */
-export const PROJECT_COUNT = 24
+/** Total shown in "All case studies (n)" and the Work page eyebrow. */
+export const PROJECT_COUNT = caseStudies.length + moreProjects.length
+
+/** "2026", or "2024 to 2026" once the work spans more than one year. */
+export const PROJECT_YEARS = (() => {
+  const years = [...caseStudies, ...moreProjects].map((item) => item.year)
+  const [first, last] = [Math.min(...years), Math.max(...years)]
+  return first === last ? `${first}` : `${first} to ${last}`
+})()

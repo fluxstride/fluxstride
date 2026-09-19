@@ -51,8 +51,27 @@ export default defineCaseStudy({
 
   cover: {
     image: 'case-studies/dexus-synergy-cover',
-    alt: 'The Dexus Synergy home page, headlined "Find a car worth keeping" over a photograph of a car on a mountain road',
-    brief: 'Cover · home page on ink · 2400×1600',
+    alt: 'A navy Dexus Synergy cover: the wordmark and the line “A dealership platform: public site, CMS and API” beside a browser panel showing the live home page',
+    brief: 'Cover · Dexus brand frame with the live home page · 2400×1600',
+  },
+
+  /** Dexus's own tokens: --brand #000F36 with the --brand-accent blue. */
+  brandCover: {
+    background: '#000F36',
+    panel: '#0A1A45',
+    chrome: '#0F2452',
+    dot: '#33456F',
+    accent: '#0095FF',
+    foreground: '#FFFFFF',
+    muted: '#8FA3C8',
+    wordmark: 'Dexus Synergy',
+    eyebrow: 'Automotive retail',
+    line: 'A dealership platform: public site, CMS and API.',
+    services: 'Design · Web · Backend · Cloud',
+    screen: {
+      image: 'case-studies/dexus-synergy-home',
+      alt: 'The Dexus Synergy home page: a car on a mountain road under the headline "Find a car worth keeping"',
+    },
   },
 
   results: {

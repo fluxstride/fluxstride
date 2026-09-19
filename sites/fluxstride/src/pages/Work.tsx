@@ -8,7 +8,14 @@ import { Accent } from '@fluxstride/design-system/ui/Typography'
 import { CaseCard } from '@/components/work/CaseCard'
 import { ProjectIndex } from '@/components/work/ProjectIndex'
 import { findCaseStudy } from '@/content/case-studies'
-import { caseStudies, disciplines, moreProjects, PROJECT_COUNT, type Discipline } from '@/content/work'
+import {
+  caseStudies,
+  disciplines,
+  moreProjects,
+  PROJECT_COUNT,
+  PROJECT_YEARS,
+  type Discipline,
+} from '@/content/work'
 import { ScrollTrigger } from '@fluxstride/design-system/lib/gsap'
 import { EASE_OUT } from '@fluxstride/design-system/lib/motion'
 
@@ -48,7 +55,7 @@ export function Work() {
   return (
     <>
       <PageHeader
-        eyebrow={`(Work) ${PROJECT_COUNT} projects · 2019 to 2026`}
+        eyebrow={`(Work) ${PROJECT_COUNT} ${PROJECT_COUNT === 1 ? 'project' : 'projects'} · ${PROJECT_YEARS}`}
         title={
           <>
             Selected <br className="lg:hidden" />
@@ -125,7 +132,8 @@ export function Work() {
           </motion.div>
         </AnimatePresence>
 
-        <ProjectIndex projects={projects} />
+        {/* Only once there are projects to list: an empty table is worse than no table. */}
+        {moreProjects.length ? <ProjectIndex projects={projects} /> : null}
       </div>
 
       <CtaBand />

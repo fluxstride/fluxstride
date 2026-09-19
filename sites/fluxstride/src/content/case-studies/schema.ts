@@ -62,6 +62,39 @@ export type Media = {
  */
 export type MediaFrame = 'browser' | 'phone' | 'plain'
 
+/**
+ * The artwork a Work card shows: the client's own colours and name around a live screenshot
+ * of their site. Drawn in code (components/work/CaseCover) rather than exported flat, so the
+ * whole composition reflows at every card size instead of being cropped, and so the wordmark
+ * stays real text. The `case-cover-*` frames in fluxstride.pen are the design it follows;
+ * `pnpm assets:covers` exports those frames as the flat picture used for sharing images.
+ *
+ * Colours come from the live site's own tokens, not from taste: read them off its stylesheet.
+ */
+export type BrandCover = {
+  background: string
+  /** The screen panel and its browser chrome, a shade either side of the background. */
+  panel: string
+  chrome: string
+  /** The three chrome dots. */
+  dot: string
+  accent: string
+  foreground: string
+  muted: string
+  /** The client's name, written the way they write it. */
+  wordmark: string
+  /** Which face it is set in. Defaults to the site's sans. */
+  wordmarkFace?: 'sans' | 'serif'
+  /** Mono line above the wordmark, e.g. "AUTOMOTIVE RETAIL". Drops out on narrow cards. */
+  eyebrow: string
+  /** One sentence under the rule. Drops out on all but wide cards. */
+  line: string
+  /** Mono line along the bottom. Only on the widest cards. */
+  services: string
+  /** The live site in the panel: a 1440×900 capture from `pnpm shots:projects`. */
+  screen: { image: ImageName; alt: string }
+}
+
 export type Stat = {
   /** "+212%", "4.8★", "£2.4m" */
   value: string
@@ -524,6 +557,9 @@ export type CaseStudy = {
    * Defaults to the hero image; set it when the hero is a screenshot.
    */
   cover?: Media
+
+  /** Work card artwork drawn in code. Without one the card falls back to `cover`. */
+  brandCover?: BrandCover
 
   results: {
     /** "First 12 months" */

@@ -10,6 +10,12 @@ type ImageRevealProps = {
   children?: ReactNode
   /** Size the frame here (height or aspect ratio). */
   className?: string
+  /**
+   * Parallax drift. On for photography, which is cropped to the frame anyway. Turn it off
+   * for a composed layer (a designed cover, a diagram): drift scales it up and would push
+   * part of the composition out of the frame.
+   */
+  drift?: boolean
 }
 
 /**
@@ -17,7 +23,7 @@ type ImageRevealProps = {
  * drifts gently inside its frame while the page scrolls (parallax).
  * Reduced motion: shown as-is, no wipe, no drift.
  */
-export function ImageReveal({ image, children, className }: ImageRevealProps) {
+export function ImageReveal({ image, children, className, drift = true }: ImageRevealProps) {
   const frameRef = useRef<HTMLDivElement>(null)
   const layerRef = useRef<HTMLDivElement>(null)
 
@@ -37,6 +43,7 @@ export function ImageReveal({ image, children, className }: ImageRevealProps) {
         ease: 'expo.inOut',
         scrollTrigger: { trigger: frame, start: 'top 90%', once: true },
       })
+      if (!drift) return
       gsap.fromTo(
         layer,
         { yPercent: -6, scale: 1.14 },
@@ -50,7 +57,7 @@ export function ImageReveal({ image, children, className }: ImageRevealProps) {
     })
 
     return () => media.revert()
-  }, [])
+  }, [drift])
 
   return (
     <div ref={frameRef} data-reveal="self" className={cn('relative isolate overflow-hidden', className)}>

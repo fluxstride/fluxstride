@@ -51,8 +51,27 @@ export default defineCaseStudy({
 
   cover: {
     image: 'case-studies/fluxstride-cover',
-    alt: 'The Fluxstride home page, headlined "We build digital products that keep moving"',
-    brief: 'Cover · home page on ink · 2400×1600',
+    alt: 'An ink Fluxstride cover: the wordmark and the line “The studio brand, site and design system” beside a browser panel showing the live home page',
+    brief: 'Cover · Fluxstride brand frame with the live home page · 2400×1600',
+  },
+
+  /** Our own tokens: ink, flux and paper. */
+  brandCover: {
+    background: '#0A0F1E',
+    panel: '#111831',
+    chrome: '#161E3C',
+    dot: '#2A3556',
+    accent: '#1F4FFF',
+    foreground: '#F5F7FB',
+    muted: '#97A0B3',
+    wordmark: 'fluxstride',
+    eyebrow: 'Design & engineering',
+    line: 'The studio brand, site and design system.',
+    services: 'Branding · Design · Web · Cloud',
+    screen: {
+      image: 'case-studies/fluxstride-home',
+      alt: 'The Fluxstride home page: "We build digital products that keep moving" beside a dark panel with a blue mark',
+    },
   },
 
   results: {
