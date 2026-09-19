@@ -63,11 +63,7 @@ export default defineCaseStudy({
     dot: '#33456F',
     accent: '#0095FF',
     foreground: '#FFFFFF',
-    muted: '#8FA3C8',
     wordmark: 'Dexus Synergy',
-    eyebrow: 'Automotive retail',
-    line: 'A dealership platform: public site, CMS and API.',
-    services: 'Design · Web · Backend · Cloud',
     screen: {
       image: 'case-studies/dexus-synergy-home',
       alt: 'The Dexus Synergy home page: a car on a mountain road under the headline "Find a car worth keeping"',

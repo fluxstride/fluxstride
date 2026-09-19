@@ -63,12 +63,8 @@ export default defineCaseStudy({
     dot: '#9B5A54',
     accent: '#E9722C',
     foreground: '#F5EDE8',
-    muted: '#D3A9A1',
     wordmark: 'Adunyato',
     wordmarkFace: 'serif',
-    eyebrow: 'Catering & events',
-    line: 'A Lagos caterer online, and taking bookings.',
-    services: 'Design · Web · Cloud',
     screen: {
       image: 'case-studies/adunyato-home',
       alt: 'The Adunyato home page: "A distinct taste for every party" beside a photograph of party jollof rice',

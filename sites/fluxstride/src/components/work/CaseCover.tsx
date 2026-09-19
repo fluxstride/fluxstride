@@ -11,14 +11,14 @@ type CaseCoverProps = {
 
 /*
  * Design: the `case-cover-*` frames in fluxstride.pen (1200×800).
- *   copy    the client's colour field: mono eyebrow, wordmark, accent rule, one line
+ *   copy    the client's colour field: their name over an accent rule
  *   screen  their live site in a browser panel, bleeding off the right edge
  *
- * Every size is in cqw, so the composition scales with the card instead of being cropped to
- * it: the same cover serves the 1280px featured card and a 350px phone card. The lines that
- * stop being legible drop out rather than shrinking into noise, so a narrow card keeps only
- * the wordmark, the rule and the screen. Below 24rem the split becomes a stack, because two
- * columns in 350px leaves room for neither.
+ * Just the name: the industry, the one-line description and the services are already under
+ * the card, and repeating them inside it only crowds the field. Every size is in cqw, so the
+ * composition scales with the card rather than being cropped to it, and the same cover serves
+ * the 1280px featured card and a 350px phone card. Below 24rem the split becomes a stack,
+ * because two columns in 350px leaves room for neither.
  */
 export function CaseCover({ cover, sizes, className }: CaseCoverProps) {
   const serif = cover.wordmarkFace === 'serif'
@@ -28,12 +28,6 @@ export function CaseCover({ cover, sizes, className }: CaseCoverProps) {
     <div className={cn('@container size-full', className)} style={{ backgroundColor: cover.background }}>
       <div className="flex size-full flex-col overflow-hidden @sm:flex-row @sm:items-center">
         <div className="flex min-w-0 flex-col gap-[2.5cqw] px-[6cqw] pt-[6cqw] pb-[4cqw] @sm:w-[40%] @sm:shrink-0 @sm:gap-[2cqw] @sm:px-[5cqw] @sm:py-0">
-          <p
-            className="hidden font-mono text-[1.25cqw] leading-none tracking-[0.2em] uppercase @4xl:block"
-            style={{ color: cover.accent }}
-          >
-            {cover.eyebrow}
-          </p>
           <p
             className={cn(
               'text-[6cqw] leading-[1.05]',
@@ -48,15 +42,6 @@ export function CaseCover({ cover, sizes, className }: CaseCoverProps) {
             className="h-[0.35cqw] min-h-px w-[7cqw] transition-[width] duration-700 ease-out-expo group-hover:w-[11cqw]"
             style={{ backgroundColor: cover.accent }}
           />
-          <p className="hidden text-[2cqw] leading-[1.4] @3xl:block" style={{ color: cover.muted }}>
-            {cover.line}
-          </p>
-          <p
-            className="mt-[2cqw] hidden font-mono text-[1.1cqw] leading-none tracking-[0.2em] uppercase @5xl:block"
-            style={{ color: cover.muted }}
-          >
-            {cover.services}
-          </p>
         </div>
 
         {/* items-start so a panel taller than the space keeps its masthead and loses its footer. */}

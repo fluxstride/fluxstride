@@ -54,6 +54,9 @@ src/content/case-studies/
 │   ├── technical-audit.ts
 │   └── care-plan.ts
 └── studies/           Real case studies. One file per project; the file name is the slug.
+                       The six design-stage studies (Northwind, Halden Coffee, Orbit Health,
+                       Kinetic Labs, Aurora Architects, Atlas Freight) are kept here as drafts
+                       for reference: reachable in development, never published or listed.
 
 src/components/case-study/
 ├── CaseStudyView.tsx  The whole page: hero → results → story → sections → quote → credits → next → CTA
@@ -166,6 +169,7 @@ export default defineCaseStudy({
   },
 
   cover: { image: '…', alt: '…', brief: '…' }, // optional; the card photo when the hero is a screenshot
+  brandCover: { background: '#000F36', wordmark: 'Dexus Synergy', … }, // optional; see Work card covers
 
   results: {
     timeframe: 'First 12 months',
@@ -573,6 +577,33 @@ These come from the notes in the Pencil templates.
 5. Write a real `alt`: describe what the screen shows, not "screenshot".
 
 Real images keep their own proportions, so screenshots are never cropped. `aspect` is ignored once `image` is set.
+
+### Work card covers
+
+A live project can have a `brandCover`: the client's own colours and name beside a browser
+panel holding a screenshot of their site. It is drawn by `components/work/CaseCover`, not
+exported as a picture, because Work cards crop from 35/32 to 2/1 and a picture would need a
+version per ratio. Sized in cqw, it scales with the card instead of being cropped to it.
+
+The cover carries the client's name and nothing else: the industry, the description and the
+services are already in the meta row under the card, and repeating them inside it crowds the
+field.
+
+Take the colours off the client's own stylesheet rather than sampling a screenshot: their
+tokens are in it (`--brand`, `--color-primary`), and a screenshot's dominant colour is
+usually its photography.
+
+The `case-cover-*` frames in `fluxstride.pen` are the design these follow, and still export
+the flat version used wherever a real picture is needed (the "Next project" block, sharing
+images). To rebuild that:
+
+```bash
+pnpm shots:projects     # recapture the live sites at 1440×900
+pnpm assets:covers      # composite each capture into its exported Pencil frame
+pnpm assets:images      # convert to AVIF/WebP and update the manifest
+```
+
+A study without a `brandCover` falls back to its `cover` picture, so nothing else changes.
 
 ---
 

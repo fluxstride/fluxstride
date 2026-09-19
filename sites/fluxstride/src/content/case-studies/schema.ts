@@ -63,7 +63,7 @@ export type Media = {
 export type MediaFrame = 'browser' | 'phone' | 'plain'
 
 /**
- * The artwork a Work card shows: the client's own colours and name around a live screenshot
+ * The artwork a Work card shows: the client's own colours and name beside a live screenshot
  * of their site. Drawn in code (components/work/CaseCover) rather than exported flat, so the
  * whole composition reflows at every card size instead of being cropped, and so the wordmark
  * stays real text. The `case-cover-*` frames in fluxstride.pen are the design it follows;
@@ -80,17 +80,10 @@ export type BrandCover = {
   dot: string
   accent: string
   foreground: string
-  muted: string
   /** The client's name, written the way they write it. */
   wordmark: string
   /** Which face it is set in. Defaults to the site's sans. */
   wordmarkFace?: 'sans' | 'serif'
-  /** Mono line above the wordmark, e.g. "AUTOMOTIVE RETAIL". Drops out on narrow cards. */
-  eyebrow: string
-  /** One sentence under the rule. Drops out on all but wide cards. */
-  line: string
-  /** Mono line along the bottom. Only on the widest cards. */
-  services: string
   /** The live site in the panel: a 1440×900 capture from `pnpm shots:projects`. */
   screen: { image: ImageName; alt: string }
 }

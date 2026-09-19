@@ -29,8 +29,8 @@ type CaseCardProps = {
  * Design: "Case: <client>" on Home / Selected Work and the Work page.
  *   image  20px padding, paper metric badge bottom-left (metric 18/600 → 16 on mobile,
  *          label mono 11 stone, 10×14 padding, 10px gap)
- *   meta   hairline, 16px above; client 24/500 → 20 and mono 12 services; side by side
- *          on desktop, stacked with a 6px gap on mobile
+ *   meta   hairline, 16px above; client 24/500 → 20, then the mono services line directly
+ *          under it, 6px below
  */
 export function CaseCard({
   study,
@@ -74,7 +74,7 @@ export function CaseCard({
 
       <div
         className={cn(
-          'flex flex-col gap-1.5 border-t pt-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6',
+          'flex flex-col gap-1.5 border-t pt-4',
           dark ? 'border-line-dark' : 'border-line',
           metaClassName,
         )}

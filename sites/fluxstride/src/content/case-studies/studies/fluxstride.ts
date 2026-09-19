@@ -63,11 +63,7 @@ export default defineCaseStudy({
     dot: '#2A3556',
     accent: '#1F4FFF',
     foreground: '#F5F7FB',
-    muted: '#97A0B3',
     wordmark: 'fluxstride',
-    eyebrow: 'Design & engineering',
-    line: 'The studio brand, site and design system.',
-    services: 'Branding · Design · Web · Cloud',
     screen: {
       image: 'case-studies/fluxstride-home',
       alt: 'The Fluxstride home page: "We build digital products that keep moving" beside a dark panel with a blue mark',
