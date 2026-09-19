@@ -9,9 +9,7 @@ import { defineCaseStudy } from '../schema'
  * every claim in it can be checked by viewing source.
  *
  * Screenshots: `pnpm shots:projects fluxstride` recaptures them from the live site.
- *
- * No `href` on the media here: a visitor reading this page is already on the site, so a
- * "Visit fluxstride.com" link would send them where they are.
+
  */
 export default defineCaseStudy({
   slug: 'fluxstride',
@@ -46,6 +44,7 @@ export default defineCaseStudy({
       alt: 'The Fluxstride home page: the headline "We build digital products that keep moving" beside a dark panel with a blue mark radiating rings',
       brief: 'Website screenshot · home page · 2880×1800',
       url: 'fluxstride.com',
+      href: 'https://www.fluxstride.com/',
     },
     frame: 'browser',
   },
@@ -141,6 +140,7 @@ export default defineCaseStudy({
             alt: 'The Fluxstride work page: the heading "Selected work" with service filter chips above a large case study card',
             brief: 'Website screenshot · work page · 1280×800',
             url: 'fluxstride.com/work',
+            href: 'https://www.fluxstride.com/work',
           },
           caption: 'Work',
           meta: 'Filtered by service',
@@ -151,6 +151,7 @@ export default defineCaseStudy({
             alt: 'The Fluxstride services page: the heading "What we do" above a two-column index of the six services with timelines and prices',
             brief: 'Website screenshot · services page · 1280×800',
             url: 'fluxstride.com/services',
+            href: 'https://www.fluxstride.com/services',
           },
           caption: 'Services',
           meta: 'Six services, one page each',
