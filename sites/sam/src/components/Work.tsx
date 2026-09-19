@@ -165,11 +165,11 @@ export function Work() {
           <ProjectCard project={second} index={2} delay={0.15} sizes="(min-width: 1024px) 35vw, 92vw" />
         </div>
         <div className="grid gap-12 lg:grid-cols-[504fr_784fr] lg:items-end lg:gap-6">
-          <ProjectCard project={third} index={3} sizes="(min-width: 1024px) 35vw, 92vw" />
-          <ProjectCard project={fourth} index={4} delay={0.15} sizes="(min-width: 1024px) 55vw, 92vw" />
+          {/* <ProjectCard project={third} index={3} sizes="(min-width: 1024px) 35vw, 92vw" /> */}
+          {/* <ProjectCard project={fourth} index={4} delay={0.15} sizes="(min-width: 1024px) 55vw, 92vw" /> */}
         </div>
 
-        <div>
+        {/* <div>
           <Reveal>
             <Eyebrow className="text-stone-light">More work</Eyebrow>
           </Reveal>
@@ -178,7 +178,7 @@ export function Work() {
               <IndexRow key={project.slug} project={project} index={offset + i} delay={i * 0.08} />
             ))}
           </Reveal>
-        </div>
+        </div> */}
       </div>
     </section>
   )

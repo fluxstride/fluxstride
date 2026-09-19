@@ -27,13 +27,14 @@ export const PERSON = {
   /** IANA zone for the live clock in the hero. */
   timeZone: 'Africa/Lagos',
   timeZoneLabel: 'WAT',
-  coordinates: '6°31′N 3°23′E',
+  // coordinates: '6°31′N 3°23′E',
   resume: 'https://drive.google.com/file/d/1B0eX5Pu4Zejzaq1ZbFnMmp0TEu6vupZc/view?usp=sharing',
 }
 
 export const STUDIO = { name: 'Fluxstride', url: 'https://fluxstride.com', host: 'fluxstride.com' }
 
-export const AVAILABILITY = 'Open for projects · Oct'
+// export const AVAILABILITY = 'Open for projects · Oct'
+export const AVAILABILITY = 'Open for projects'
 
 export const SOCIALS = [
   { id: 'github', label: 'GitHub', href: 'https://github.com/fluxstride' },
@@ -50,7 +51,8 @@ export const NAV = [
 ] as const
 
 export const HERO = {
-  eyebrow: '(Portfolio: 2026 edition)',
+  // eyebrow: '(Portfolio: 2026 edition)',
+  eyebrow: '(Portfolio)',
   /** Sans lines, then the serif phrase that ends with the flux dot. */
   lines: ['I design & engineer', 'digital products people'],
   accent: 'keep coming back to',
@@ -95,66 +97,67 @@ export const PROJECTS: Project[] = [
     tags: 'Catering & events · Website',
     image: 'adunyato',
   },
-  {
-    slug: 'foodsub',
-    name: 'FoodSub',
-    url: 'https://foodsub.vercel.app/',
-    host: 'foodsub.vercel.app',
-    tags: 'Food-tech · Landing page',
-    image: 'foodsub',
-  },
-  {
-    slug: 'ibiza-ng',
-    name: 'Ibiza NG',
-    url: 'https://ibiza-ng.vercel.app/',
-    host: 'ibiza-ng.vercel.app',
-    tags: 'Events & nightlife · Website',
-    image: 'ibiza-ng-hero',
-  },
-  {
-    slug: 'utta-holding',
-    name: 'Utta Holding',
-    url: 'https://hold-utta.vercel.app/',
-    host: 'hold-utta.vercel.app',
-    tags: 'Finance · Website',
-    image: 'utta-holding',
-  },
-  {
-    slug: 'slapa-group',
-    name: 'Slapa Group',
-    url: 'https://slapa-lp.vercel.app/',
-    host: 'slapa-lp.vercel.app',
-    tags: 'Web3 · Landing page',
-    image: 'slapa-group',
-  },
-  {
-    slug: 'synthetic-slapa',
-    name: 'Synthetic Slapa',
-    url: 'https://synth-slapa.vercel.app/',
-    host: 'synth-slapa.vercel.app',
-    tags: 'Web3 · Token launch',
-    image: 'synthetic-slapa',
-  },
-  {
-    slug: 'slapax',
-    name: 'Slapax',
-    url: 'https://slapa-x.vercel.app/',
-    host: 'slapa-x.vercel.app',
-    tags: 'Web3 · Swap platform',
-    image: 'slapax',
-  },
-  {
-    slug: 'utta-token',
-    name: 'Utta Token',
-    url: 'https://utta.vercel.app/',
-    host: 'utta.vercel.app',
-    tags: 'Web3 · Token launch',
-    image: 'utta-token',
-  },
+  // {
+  //   slug: 'foodsub',
+  //   name: 'FoodSub',
+  //   url: 'https://foodsub.vercel.app/',
+  //   host: 'foodsub.vercel.app',
+  //   tags: 'Food-tech · Landing page',
+  //   image: 'foodsub',
+  // },
+  // {
+  //   slug: 'ibiza-ng',
+  //   name: 'Ibiza NG',
+  //   url: 'https://ibiza-ng.vercel.app/',
+  //   host: 'ibiza-ng.vercel.app',
+  //   tags: 'Events & nightlife · Website',
+  //   image: 'ibiza-ng-hero',
+  // },
+  // {
+  //   slug: 'utta-holding',
+  //   name: 'Utta Holding',
+  //   url: 'https://hold-utta.vercel.app/',
+  //   host: 'hold-utta.vercel.app',
+  //   tags: 'Finance · Website',
+  //   image: 'utta-holding',
+  // },
+  // {
+  //   slug: 'slapa-group',
+  //   name: 'Slapa Group',
+  //   url: 'https://slapa-lp.vercel.app/',
+  //   host: 'slapa-lp.vercel.app',
+  //   tags: 'Web3 · Landing page',
+  //   image: 'slapa-group',
+  // },
+  // {
+  //   slug: 'synthetic-slapa',
+  //   name: 'Synthetic Slapa',
+  //   url: 'https://synth-slapa.vercel.app/',
+  //   host: 'synth-slapa.vercel.app',
+  //   tags: 'Web3 · Token launch',
+  //   image: 'synthetic-slapa',
+  // },
+  // {
+  //   slug: 'slapax',
+  //   name: 'Slapax',
+  //   url: 'https://slapa-x.vercel.app/',
+  //   host: 'slapa-x.vercel.app',
+  //   tags: 'Web3 · Swap platform',
+  //   image: 'slapax',
+  // },
+  // {
+  //   slug: 'utta-token',
+  //   name: 'Utta Token',
+  //   url: 'https://utta.vercel.app/',
+  //   host: 'utta.vercel.app',
+  //   tags: 'Web3 · Token launch',
+  //   image: 'utta-token',
+  // },
 ]
 
 export const WORK_INTRO =
-  'Ten live products: from my own studio to car dealers, caterers and fintech founders. Every one of them is still running.'
+  // 'Three live products: from my own studio to car dealers, caterers and fintech founders. Every one of them is still running.'
+  'Three live products: from my own studio to car dealers and caterers. Every one of them is still running.'
 
 export const ABOUT = {
   quote: "There's a lot more to me than a fancy title.",
@@ -173,7 +176,7 @@ export const ABOUT = {
     },
   ],
   stats: [
-    { value: '10', label: 'products live and still running' },
+    { value: PROJECTS.length.toString(), label: 'products live and still running' },
     { value: '06', label: 'disciplines, design to cloud' },
     { value: '01', label: 'studio founded: Fluxstride' },
     { value: '24h', label: 'typical reply to a new brief' },
@@ -209,7 +212,7 @@ export const SERVICES = [
     slug: 'mobile-development',
     name: 'Mobile development',
     summary: 'Native and cross-platform apps people return to, from MVP to the App Store.',
-    tags: 'iOS · Android · React Native',
+    tags: 'iOS · Android · React Native · Flutter',
   },
   {
     slug: 'backend-development',
@@ -222,7 +225,7 @@ export const SERVICES = [
     slug: 'cloud-devops',
     name: 'Cloud & DevOps',
     summary: 'Infrastructure, release pipelines and support that keep your product fast, secure and online.',
-    tags: 'AWS · GCP · Docker',
+    tags: 'AWS · GCP · Docker · CI/CD',
   },
 ]
 
@@ -240,18 +243,32 @@ export const STACK: { group: string; items: string[]; highlight?: boolean }[] = 
       'React Native',
       'Flutter',
       'Tailwind CSS',
+      'Chakra UI',
       'GSAP',
       'Framer Motion',
       'D3.js',
     ],
   },
-  { group: 'Backend', items: ['Node.js', 'NestJS', 'Express', 'Python', 'Flask', 'REST & webhooks'] },
-  { group: 'Data', items: ['PostgreSQL', 'MongoDB', 'Redis'] },
   {
-    group: 'AI',
+    group: 'Backend',
     items: [
-      'OpenAI, Claude & Gemini',
-      'Amazon Bedrock & AgentCore',
+      'Node.js',
+      'NestJS',
+      'Express',
+      'Python',
+      'Flask',
+      'Django',
+      'FastAPI',
+      'REST & webhooks',
+      'GraphQL',
+    ],
+  },
+  { group: 'Data', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'] },
+  {
+    group: 'Artificial Intelligence (AI)',
+    items: [
+      'OpenAI, Anthropic (Claude) & Google (Gemini)',
+      // 'Amazon Bedrock & AgentCore',
       'AI agents & workflow automation',
       'Document scanning & vetting pipelines',
     ],
