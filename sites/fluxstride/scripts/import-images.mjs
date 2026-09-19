@@ -45,9 +45,29 @@ const IMAGES = {
   'insights/technical-seo-javascript': { src: 'generated-1789579525110.png', widths: [480, 800] },
   'insights/build-buy-or-integrate': { src: 'generated-1789579529376.png', widths: [480, 800] },
   'insights/website-packages': { src: 'generated-1789579530858.png', widths: [480, 800] },
-  // Case studies (src/content/case-studies/studies). Hero photos double as the "Next project"
-  // cover. Screenshots are exported from the design at 2x without their browser chrome,
-  // which the page draws itself.
+  // Real projects. These sources are screenshots of the live sites, captured by
+  // `pnpm shots:projects` (scripts/capture-projects.mjs) at 1440 CSS pixels on a 2x
+  // screen. Recapture them whenever a client site changes.
+  // Covers are the screenshot centred on ink, built by `pnpm assets:covers`, so a Work card
+  // can crop to its own shape without cutting the page in half.
+  'case-studies/dexus-synergy-cover': { src: 'cs-dexus-cover.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/adunyato-cover': { src: 'cs-adunyato-cover.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/fluxstride-cover': { src: 'cs-fluxstride-cover.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/dexus-synergy-home': { src: 'cs-dexus-home.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/dexus-synergy-vehicles': { src: 'cs-dexus-vehicles.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/dexus-synergy-vehicle': { src: 'cs-dexus-vehicle.png', widths: [640, 1280] },
+  'case-studies/dexus-synergy-finance': { src: 'cs-dexus-finance.png', widths: [640, 1280] },
+  'case-studies/adunyato-home': { src: 'cs-adunyato-home.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/adunyato-menus': { src: 'cs-adunyato-menus.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/adunyato-catering': { src: 'cs-adunyato-catering.png', widths: [640, 1280] },
+  'case-studies/adunyato-gallery': { src: 'cs-adunyato-gallery.png', widths: [640, 1280] },
+  'case-studies/fluxstride-home': { src: 'cs-fluxstride-home.png', widths: SCREENSHOT_WIDTHS },
+  'case-studies/fluxstride-work': { src: 'cs-fluxstride-work.png', widths: [640, 1280] },
+  'case-studies/fluxstride-services': { src: 'cs-fluxstride-services.png', widths: [640, 1280] },
+  'case-studies/fluxstride-process': { src: 'cs-fluxstride-process.png', widths: [640, 1280] },
+  // Design-stage case studies (src/content/case-studies/studies). Hero photos double as the
+  // "Next project" cover. Screenshots are exported from the design at 2x without their browser
+  // chrome, which the page draws itself.
   'case-studies/northwind-hero': { src: 'generated-1789579203190.png' },
   'case-studies/northwind-dashboard': { src: 'cs-northwind-dashboard.png', widths: SCREENSHOT_WIDTHS },
   'case-studies/orbit-health-hero': { src: 'generated-1789577326370.png' },

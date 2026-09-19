@@ -93,6 +93,172 @@ export const images = {
     ],
     "color": "#b8c8c8"
   },
+  "case-studies/dexus-synergy-cover": {
+    "src": "cs-dexus-cover.png",
+    "width": 2400,
+    "height": 1600,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2400
+    ],
+    "color": "#080838"
+  },
+  "case-studies/adunyato-cover": {
+    "src": "cs-adunyato-cover.png",
+    "width": 2400,
+    "height": 1600,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2400
+    ],
+    "color": "#681818"
+  },
+  "case-studies/fluxstride-cover": {
+    "src": "cs-fluxstride-cover.png",
+    "width": 2400,
+    "height": 1600,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2400
+    ],
+    "color": "#080818"
+  },
+  "case-studies/dexus-synergy-home": {
+    "src": "cs-dexus-home.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/dexus-synergy-vehicles": {
+    "src": "cs-dexus-vehicles.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/dexus-synergy-vehicle": {
+    "src": "cs-dexus-vehicle.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/dexus-synergy-finance": {
+    "src": "cs-dexus-finance.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/adunyato-home": {
+    "src": "cs-adunyato-home.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/adunyato-menus": {
+    "src": "cs-adunyato-menus.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/adunyato-catering": {
+    "src": "cs-adunyato-catering.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/adunyato-gallery": {
+    "src": "cs-adunyato-gallery.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/fluxstride-home": {
+    "src": "cs-fluxstride-home.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1024,
+      1600,
+      2560
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/fluxstride-work": {
+    "src": "cs-fluxstride-work.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/fluxstride-services": {
+    "src": "cs-fluxstride-services.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
+  "case-studies/fluxstride-process": {
+    "src": "cs-fluxstride-process.png",
+    "width": 2880,
+    "height": 1800,
+    "widths": [
+      640,
+      1280
+    ],
+    "color": "#f8f8f8"
+  },
   "case-studies/northwind-hero": {
     "src": "generated-1789579203190.png",
     "width": 1408,
