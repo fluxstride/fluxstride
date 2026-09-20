@@ -21,7 +21,7 @@ type CaseCardProps = {
    * rendered as an article carrying the slug as its anchor id.
    */
   link?: boolean
-  /** Extra classes for the client/services row (spacing differs between Home and Work). */
+  /** Extra classes for the client/services row. */
   metaClassName?: string
 }
 
@@ -30,7 +30,7 @@ type CaseCardProps = {
  *   image  20px padding, paper metric badge bottom-left (metric 18/600 → 16 on mobile,
  *          label mono 11 stone, 10×14 padding, 10px gap)
  *   meta   hairline, 16px above; client 24/500 → 20, then the mono services line directly
- *          under it, 6px below
+ *          under it, 12px below (10px on mobile)
  */
 export function CaseCard({
   study,
@@ -74,7 +74,7 @@ export function CaseCard({
 
       <div
         className={cn(
-          'flex flex-col gap-1.5 border-t pt-4',
+          'flex flex-col gap-2.5 border-t pt-4 lg:gap-3',
           dark ? 'border-line-dark' : 'border-line',
           metaClassName,
         )}

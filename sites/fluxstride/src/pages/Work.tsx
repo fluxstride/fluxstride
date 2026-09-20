@@ -104,7 +104,6 @@ export function Work() {
               <CaseCard
                 study={featured}
                 link={Boolean(findCaseStudy(featured.slug))}
-                metaClassName="gap-0"
                 surface="light"
                 imageClassName="aspect-[35/32] lg:aspect-auto lg:h-160"
                 sizes="(min-width: 90rem) 1280px, 100vw"
@@ -119,7 +118,6 @@ export function Work() {
                     key={study.slug}
                     study={study}
                     link={Boolean(findCaseStudy(study.slug))}
-                    metaClassName="gap-0"
                     surface="light"
                     imageClassName="aspect-[35/24] lg:aspect-auto lg:h-120"
                     sizes="(min-width: 64rem) 50vw, 100vw"

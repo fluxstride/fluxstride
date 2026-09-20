@@ -103,7 +103,6 @@ export function ServicePage({ service }: { service: Service }) {
                 key={study.slug}
                 study={study}
                 link={Boolean(findCaseStudy(study.slug))}
-                metaClassName="gap-0"
                 surface="light"
                 imageClassName="aspect-[35/24] lg:aspect-auto lg:h-120"
                 sizes="(min-width: 64rem) 50vw, 100vw"
