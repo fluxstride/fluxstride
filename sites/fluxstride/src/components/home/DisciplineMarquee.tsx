@@ -1,12 +1,15 @@
 import { Fragment } from 'react'
 import { Marquee } from '@fluxstride/design-system/motion/Marquee'
-import { Mark } from '@/components/ui/Logo'
 
 /*
  * Design: Home / Marquee Band (desktop) and Home Mobile / Marquee.
- * Ink band; items 40px/500 → 26px on mobile, separated by small Stride marks
- * (18px → 12px) with 36px → 20px gaps. Mobile uses shorter labels, so each item carries
- * its mobile label, or null to hide it there.
+ * Ink band; items 40px/500 → 26px on mobile, separated by neutral dots (6px → 4px)
+ * with 36px → 20px gaps. Mobile uses shorter labels, so each item carries its mobile
+ * label, or null to hide it there.
+ *
+ * The design separated the items with Stride marks. Between the header lockup, the hero
+ * rings and the footer wordmark, that put the logo on screen a dozen more times over, so
+ * the band uses a plain dot instead and lets the services do the talking.
  */
 const DISCIPLINES: { label: string; mobile: string | null }[] = [
   { label: 'Product design', mobile: 'Product' },
@@ -17,7 +20,7 @@ const DISCIPLINES: { label: string; mobile: string | null }[] = [
   { label: 'Cloud & DevOps', mobile: 'Cloud' },
 ]
 
-// Gap between every item and mark, 20px → 36px. Also used as the group's end padding
+// Gap between every item and dot, 20px → 36px. Also used as the group's end padding
 // so the seam between the two copies in the loop is the same width.
 const GAP = 'gap-[clamp(1.25rem,0.8786rem+1.5238vw,2.25rem)] pr-[clamp(1.25rem,0.8786rem+1.5238vw,2.25rem)]'
 
@@ -39,7 +42,7 @@ export function DisciplineMarquee() {
                 )}
               </li>
               <li aria-hidden="true" className={mobile === null ? 'flex max-lg:hidden' : 'flex'}>
-                <Mark className="size-[clamp(0.75rem,0.6107rem+0.5714vw,1.125rem)]" />
+                <span className="size-[clamp(0.25rem,0.2036rem+0.1905vw,0.375rem)] rounded-full bg-stone" />
               </li>
             </Fragment>
           ))}
