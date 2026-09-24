@@ -28,7 +28,7 @@ export const PERSON = {
   timeZone: 'Africa/Lagos',
   timeZoneLabel: 'WAT',
   // coordinates: '6°31′N 3°23′E',
-  resume: 'https://drive.google.com/file/d/1B0eX5Pu4Zejzaq1ZbFnMmp0TEu6vupZc/view?usp=sharing',
+  resume: 'https://drive.google.com/file/d/1NUs_xOvx6NpFnuopfRynHLtVjOp4-W4g/view?usp=sharing',
 }
 
 export const STUDIO = { name: 'Fluxstride', url: 'https://fluxstride.com', host: 'fluxstride.com' }
