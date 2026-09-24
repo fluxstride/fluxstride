@@ -1,6 +1,7 @@
 import { Lock } from 'lucide-react'
 import { ClipReveal } from '@fluxstride/design-system/motion/ClipReveal'
-import { DrawRule } from '@fluxstride/design-system/motion/DrawRule'
+// Only the parked IndexRow below draws a rule.
+// import { DrawRule } from '@fluxstride/design-system/motion/DrawRule'
 import { Reveal } from '@fluxstride/design-system/motion/Reveal'
 import { ArrowIcon } from '@fluxstride/design-system/ui/ArrowIcon'
 import { PROJECTS, WORK_INTRO, type Project } from '@/content/site'
@@ -87,6 +88,8 @@ function ProjectCard({
   )
 }
 
+// Row for the dormant "More work" index below; restore both together.
+/*
 function IndexRow({ project, index, delay }: { project: Project; index: number; delay: number }) {
   return (
     <li className="relative">
@@ -126,10 +129,13 @@ function IndexRow({ project, index, delay }: { project: Project; index: number; 
     </li>
   )
 }
+*/
 
 export function Work() {
-  const [feature, first, second, third, fourth, ...rest] = PROJECTS
-  const offset = 5
+  // Restore the trailing bindings when the shelved projects return to PROJECTS.
+  // const [feature, first, second, third, fourth, ...rest] = PROJECTS
+  // const offset = 5
+  const [feature, first, second] = PROJECTS
 
   return (
     <section
@@ -164,10 +170,11 @@ export function Work() {
           <ProjectCard project={first} index={1} sizes="(min-width: 1024px) 55vw, 92vw" />
           <ProjectCard project={second} index={2} delay={0.15} sizes="(min-width: 1024px) 35vw, 92vw" />
         </div>
-        <div className="grid gap-12 lg:grid-cols-[504fr_784fr] lg:items-end lg:gap-6">
-          {/* <ProjectCard project={third} index={3} sizes="(min-width: 1024px) 35vw, 92vw" /> */}
-          {/* <ProjectCard project={fourth} index={4} delay={0.15} sizes="(min-width: 1024px) 55vw, 92vw" /> */}
-        </div>
+        {/* The second row is dormant until the shelved projects return:
+            <div className="grid gap-12 lg:grid-cols-[504fr_784fr] lg:items-end lg:gap-6">
+              <ProjectCard project={third} index={3} sizes="(min-width: 1024px) 35vw, 92vw" />
+              <ProjectCard project={fourth} index={4} delay={0.15} sizes="(min-width: 1024px) 55vw, 92vw" />
+            </div> */}
 
         {/* <div>
           <Reveal>

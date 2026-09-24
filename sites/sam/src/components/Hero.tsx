@@ -78,7 +78,7 @@ export function Hero() {
       <Reveal on="mount" className="flex justify-between gap-6 max-md:hidden">
         <Eyebrow>{HERO.eyebrow}</Eyebrow>
         <Eyebrow>
-          Lagos, NG · {PERSON.coordinates} · <LocalTime />
+          Lagos, NG · <LocalTime />
         </Eyebrow>
       </Reveal>
 
